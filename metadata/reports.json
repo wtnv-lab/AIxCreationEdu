@@ -17,7 +17,7 @@
     ],
     "output_md": "reports/00-overview.md",
     "source_docx": "source-docx/00-overview.docx",
-    "abstract": "生成AIの普及は，教育におけるクリエイティブの意味を大きく変えつつある。これまで創作や開発の授業では，文章を書く，映像を編集する，コードを書く，地図を作る，資料を調べるといった個別技能の習熟が，成果物の質を大きく左右してきた。しかし生成AIは，企画案の整理，文章化，画像・映像表現，コード生成，データ分析，発表資料作成までを支援する。したがって教育の焦点は，技能の代替ではなく，「何を問うのか」「どのような価値を社会に届けるのか」「AIの出...",
+    "abstract": "生成AIによって創作・開発・調査・表現のハードルが下がるなか、教育の焦点が個別技能の習熟から、問いの設定、資料の読解、倫理的判断、社会的価値への接続へ移ることを総括する。六篇の実践を通じて、AIを効率化ツールではなく、学習者の構想力・編集力・批判的思考を拡張する伴走者として位置づける。",
     "authors": [
       {
         "affiliation": "東京大学 大学院情報学環・学際情報学府",
@@ -40,27 +40,23 @@
     "ai_collaborators": [
       {
         "name": "ChatGPT",
-        "version": "ChatGPT-5.2 / GPT-5.2",
-        "provider": "OpenAI",
-        "note": "公式発表に基づく、ChatGPTにおけるGPT-5.2系の最新版表記。"
+        "version": "GPT-5.5",
+        "provider": "OpenAI"
       },
       {
         "name": "Gemini",
         "version": "Gemini 3.1 Pro",
-        "provider": "Google",
-        "note": "公式発表に基づく、Gemini 3.1 Proの最新版表記。"
+        "provider": "Google"
       },
       {
         "name": "Codex",
-        "version": "GPT-5.3-Codex",
-        "provider": "OpenAI",
-        "note": "公式発表に基づく、Codex向け最新エージェント型コーディングモデル表記。"
+        "version": "GPT-5.5",
+        "provider": "OpenAI"
       },
       {
         "name": "GitHub Copilot",
-        "version": "Copilot Auto / GPT-5.3-Codex・GPT-5.4系",
-        "provider": "GitHub",
-        "note": "公式Changelogに基づく、Copilotの自動モデル選択と現行候補モデルの表記。利用可能モデルはプラン・ポリシー・画面により変動する。"
+        "version": "GPT-5.5",
+        "provider": "GitHub"
       }
     ]
   },
@@ -82,7 +78,7 @@
     ],
     "output_md": "reports/01-information-visualization-osint.md",
     "source_docx": "source-docx/01-information-visualization-osint.docx",
-    "abstract": "東京大学前期課程「情報メディア基礎論」では，情報を“ストック”し，データビジュアライゼーションやデジタルアーカイブによって“フロー”化するメディア実践を通じて，情報・メディア・社会の関係を学ぶ。授業では，学生が自らテーマを設定し，データを収集・整理したうえで，ArcGISやRe:Earthを用いて2D／3D地図上に可視化し，成果物をウェブ公開する。シラバスでも，デジタルアーカイブは出来事の多面的な実相を蓄積する基盤であり，データビジュア...",
+    "abstract": "東京大学の情報メディア教育を軸に、データ可視化、デジタルアーカイブ、OSINTを組み合わせ、公開情報を検証可能な形で読み解き社会へ伝える学習モデルを示す。生成AIは結論を代行するのではなく、観察結果の言語化、仮説比較、推論の飛躍の点検を支える対話的な編集者として位置づけられる。",
     "authors": [
       {
         "affiliation": "東京大学 大学院情報学環・学際情報学府",
@@ -105,27 +101,23 @@
     "ai_collaborators": [
       {
         "name": "ChatGPT",
-        "version": "ChatGPT-5.2 / GPT-5.2",
-        "provider": "OpenAI",
-        "note": "公式発表に基づく、ChatGPTにおけるGPT-5.2系の最新版表記。"
+        "version": "GPT-5.5",
+        "provider": "OpenAI"
       },
       {
         "name": "Gemini",
         "version": "Gemini 3.1 Pro",
-        "provider": "Google",
-        "note": "公式発表に基づく、Gemini 3.1 Proの最新版表記。"
+        "provider": "Google"
       },
       {
         "name": "Codex",
-        "version": "GPT-5.3-Codex",
-        "provider": "OpenAI",
-        "note": "公式発表に基づく、Codex向け最新エージェント型コーディングモデル表記。"
+        "version": "GPT-5.5",
+        "provider": "OpenAI"
       },
       {
         "name": "GitHub Copilot",
-        "version": "Copilot Auto / GPT-5.3-Codex・GPT-5.4系",
-        "provider": "GitHub",
-        "note": "公式Changelogに基づく、Copilotの自動モデル選択と現行候補モデルの表記。利用可能モデルはプラン・ポリシー・画面により変動する。"
+        "version": "GPT-5.5",
+        "provider": "GitHub"
       }
     ]
   },
@@ -147,7 +139,7 @@
     ],
     "output_md": "reports/02-photo-colorization-peace-education.md",
     "source_docx": "source-docx/02-photo-colorization-peace-education.docx",
-    "abstract": "長崎県立長崎東高校の生徒による「あの日に色がさすとき」は，AIによるモノクロ写真のカラー化を起点に，戦前・戦後の長崎の記憶を次世代へ継承する探究型学習の実践である。生徒たちは，戦前・戦後の長崎を写した白黒写真20点を題材に，AIで自動カラー化したうえで，被爆者や専門家への聞き取りを通じて色味を補正し，写真集としてまとめた。題材には，長崎大学核兵器廃絶研究センター（RECNA）の「被爆前の日常アーカイブ」に関わる写真が用いられ，完成した写...",
+    "abstract": "長崎東高校の写真集制作を事例に、AIによる白黒写真カラー化を、過去を正確に復元する処理ではなく、証言・専門知・地域の記憶と照合しながら歴史を自分ごと化する探究として捉える。AIリテラシー、資料批判、平和教育、社会発信を結び、若い世代が記憶を継承し対話を生む実践モデルを示す。",
     "authors": [
       {
         "affiliation": "東京大学 大学院情報学環・学際情報学府",
@@ -170,27 +162,23 @@
     "ai_collaborators": [
       {
         "name": "ChatGPT",
-        "version": "ChatGPT-5.2 / GPT-5.2",
-        "provider": "OpenAI",
-        "note": "公式発表に基づく、ChatGPTにおけるGPT-5.2系の最新版表記。"
+        "version": "GPT-5.5",
+        "provider": "OpenAI"
       },
       {
         "name": "Gemini",
         "version": "Gemini 3.1 Pro",
-        "provider": "Google",
-        "note": "公式発表に基づく、Gemini 3.1 Proの最新版表記。"
+        "provider": "Google"
       },
       {
         "name": "Codex",
-        "version": "GPT-5.3-Codex",
-        "provider": "OpenAI",
-        "note": "公式発表に基づく、Codex向け最新エージェント型コーディングモデル表記。"
+        "version": "GPT-5.5",
+        "provider": "OpenAI"
       },
       {
         "name": "GitHub Copilot",
-        "version": "Copilot Auto / GPT-5.3-Codex・GPT-5.4系",
-        "provider": "GitHub",
-        "note": "公式Changelogに基づく、Copilotの自動モデル選択と現行候補モデルの表記。利用可能モデルはプラン・ポリシー・画面により変動する。"
+        "version": "GPT-5.5",
+        "provider": "GitHub"
       }
     ]
   },
@@ -212,7 +200,7 @@
     ],
     "output_md": "reports/03-digital-citizenship.md",
     "source_docx": "source-docx/03-digital-citizenship.docx",
-    "abstract": "デジタルシティズンシップ教育は，ICT機器の操作方法を教える教育にとどまらない。デジタル社会において，自ら情報を収集・判断・発信し，他者と協働しながら責任ある市民として参加する力を育てる教育である。筆者のデジタルシティズンシップ教育実践では，情報リテラシー，メディアリテラシー，情報モラル，情報活用能力が区別され，情報活用能力は，情報を主体的に収集・整理・判断・発信し，問題解決や新たな価値創造に活用する力として整理されている。ここから見え...",
+    "abstract": "生成AI時代のデジタルシティズンシップ教育を、禁止や管理ではなく、技術がある社会でどう判断し参加するかを学ぶ教育として再定義する。AIの出力を疑い、根拠を確認し、他者や社会への影響を考えながら表現する力を、情報リテラシー、メディアリテラシー、公共性の学習として整理する。",
     "authors": [
       {
         "affiliation": "東京大学 大学院情報学環・学際情報学府",
@@ -235,27 +223,23 @@
     "ai_collaborators": [
       {
         "name": "ChatGPT",
-        "version": "ChatGPT-5.2 / GPT-5.2",
-        "provider": "OpenAI",
-        "note": "公式発表に基づく、ChatGPTにおけるGPT-5.2系の最新版表記。"
+        "version": "GPT-5.5",
+        "provider": "OpenAI"
       },
       {
         "name": "Gemini",
         "version": "Gemini 3.1 Pro",
-        "provider": "Google",
-        "note": "公式発表に基づく、Gemini 3.1 Proの最新版表記。"
+        "provider": "Google"
       },
       {
         "name": "Codex",
-        "version": "GPT-5.3-Codex",
-        "provider": "OpenAI",
-        "note": "公式発表に基づく、Codex向け最新エージェント型コーディングモデル表記。"
+        "version": "GPT-5.5",
+        "provider": "OpenAI"
       },
       {
         "name": "GitHub Copilot",
-        "version": "Copilot Auto / GPT-5.3-Codex・GPT-5.4系",
-        "provider": "GitHub",
-        "note": "公式Changelogに基づく、Copilotの自動モデル選択と現行候補モデルの表記。利用可能モデルはプラン・ポリシー・画面により変動する。"
+        "version": "GPT-5.5",
+        "provider": "GitHub"
       }
     ]
   },
@@ -277,7 +261,7 @@
     ],
     "output_md": "reports/04-student-hackathon.md",
     "source_docx": "source-docx/04-student-hackathon.docx",
-    "abstract": "学生ハッカソンにおける生成AIの導入は，「開発」教育の重心を大きく変えつつある。従来のハッカソンでは，限られた時間内にアイデアを実装できるかどうかが，参加者のプログラミング経験やフレームワーク習熟度に強く左右されていた。しかし現在は，生成AIがコード生成，UI設計，API連携，デバッグ，スライドや動画の作成まで支援することで，初期実装のハードルは大幅に下がっている。GitHub Copilotに関する実験研究でも，AIペアプログラマを利...",
+    "abstract": "生成AIによってコード生成、UI設計、デバッグ、発表資料作成まで支援されることで、学生ハッカソンの重心が実装技能から課題設定、体験設計、社会的価値の構想へ移ることを論じる。Hack-1グランプリやメディアハッカソンを事例に、AIを伴走者として使いながら発想を形にし、人間が検証・編集する開発教育の姿を示す。",
     "authors": [
       {
         "affiliation": "東京大学 大学院情報学環・学際情報学府",
@@ -300,27 +284,23 @@
     "ai_collaborators": [
       {
         "name": "ChatGPT",
-        "version": "ChatGPT-5.2 / GPT-5.2",
-        "provider": "OpenAI",
-        "note": "公式発表に基づく、ChatGPTにおけるGPT-5.2系の最新版表記。"
+        "version": "GPT-5.5",
+        "provider": "OpenAI"
       },
       {
         "name": "Gemini",
         "version": "Gemini 3.1 Pro",
-        "provider": "Google",
-        "note": "公式発表に基づく、Gemini 3.1 Proの最新版表記。"
+        "provider": "Google"
       },
       {
         "name": "Codex",
-        "version": "GPT-5.3-Codex",
-        "provider": "OpenAI",
-        "note": "公式発表に基づく、Codex向け最新エージェント型コーディングモデル表記。"
+        "version": "GPT-5.5",
+        "provider": "OpenAI"
       },
       {
         "name": "GitHub Copilot",
-        "version": "Copilot Auto / GPT-5.3-Codex・GPT-5.4系",
-        "provider": "GitHub",
-        "note": "公式Changelogに基づく、Copilotの自動モデル選択と現行候補モデルの表記。利用可能モデルはプラン・ポリシー・画面により変動する。"
+        "version": "GPT-5.5",
+        "provider": "GitHub"
       }
     ]
   },
@@ -342,7 +322,7 @@
     ],
     "output_md": "reports/05-digital-archive-ai.md",
     "source_docx": "source-docx/05-digital-archive-ai.docx",
-    "abstract": "デジタルアーカイブとAIを組み合わせた教育実践は，資料を単に保存・閲覧する段階から，学習者が問いを立て，資料を読み解き，他者へ伝える探究的な学びへと発展させる可能性を持つ。デジタルアーカイブは，写真，文書，地図，映像，文化財などを体系的に蓄積する基盤である。しかし，資料が「そこにある」だけでは，学習者の関心や授業実践には直結しにくい。重要なのは，ストックされた資料を，学習者の問い，対話，表現を通じてフロー化する設計である。 その代表例が...",
+    "abstract": "デジタルアーカイブを資料保存の基盤にとどめず、学習者が問いを立て、資料を選び、AIの支援も用いて意味を構成し社会へ伝える探究環境として捉える。ジャパンサーチ、AIカラー化教材、S×UKILAM連携を通じて、一次資料性と生成AIの利便性を組み合わせた教育実践の可能性を整理する。",
     "authors": [
       {
         "affiliation": "東京大学 大学院情報学環・学際情報学府",
@@ -365,27 +345,23 @@
     "ai_collaborators": [
       {
         "name": "ChatGPT",
-        "version": "ChatGPT-5.2 / GPT-5.2",
-        "provider": "OpenAI",
-        "note": "公式発表に基づく、ChatGPTにおけるGPT-5.2系の最新版表記。"
+        "version": "GPT-5.5",
+        "provider": "OpenAI"
       },
       {
         "name": "Gemini",
         "version": "Gemini 3.1 Pro",
-        "provider": "Google",
-        "note": "公式発表に基づく、Gemini 3.1 Proの最新版表記。"
+        "provider": "Google"
       },
       {
         "name": "Codex",
-        "version": "GPT-5.3-Codex",
-        "provider": "OpenAI",
-        "note": "公式発表に基づく、Codex向け最新エージェント型コーディングモデル表記。"
+        "version": "GPT-5.5",
+        "provider": "OpenAI"
       },
       {
         "name": "GitHub Copilot",
-        "version": "Copilot Auto / GPT-5.3-Codex・GPT-5.4系",
-        "provider": "GitHub",
-        "note": "公式Changelogに基づく、Copilotの自動モデル選択と現行候補モデルの表記。利用可能モデルはプラン・ポリシー・画面により変動する。"
+        "version": "GPT-5.5",
+        "provider": "GitHub"
       }
     ]
   },
@@ -407,7 +383,7 @@
     ],
     "output_md": "reports/06-sf-prototyping.md",
     "source_docx": "source-docx/06-sf-prototyping.docx",
-    "abstract": "SFプロトタイピングは，サイエンス・フィクションの発想を用いて，まだ存在しない技術・制度・生活様式を物語として描き，他者と未来像を議論する方法である。Brian David Johnsonは，SFを単なる空想ではなく，未来の技術や製品の含意を検討するための実践的な道具として位置づけた。日本でも，企業や行政，大学において，未来洞察，事業構想，組織変革の手法として導入が進んでいる。 従来のSFプロトタイピングでは，小説家，SF作家，デザイナ...",
+    "abstract": "生成AIを用いて未来社会の物語や世界観を短時間で立ち上げ、参加者がそれを批判・修正・再構成するSFプロトタイピング手法を示す。専門家不在でも未来構想を民主化し、教育、産学協創、業務改革において人間の想像力、批判力、合意形成力を拡張する方法として位置づける。",
     "authors": [
       {
         "affiliation": "東京大学 大学院情報学環・学際情報学府",
@@ -430,27 +406,23 @@
     "ai_collaborators": [
       {
         "name": "ChatGPT",
-        "version": "ChatGPT-5.2 / GPT-5.2",
-        "provider": "OpenAI",
-        "note": "公式発表に基づく、ChatGPTにおけるGPT-5.2系の最新版表記。"
+        "version": "GPT-5.5",
+        "provider": "OpenAI"
       },
       {
         "name": "Gemini",
         "version": "Gemini 3.1 Pro",
-        "provider": "Google",
-        "note": "公式発表に基づく、Gemini 3.1 Proの最新版表記。"
+        "provider": "Google"
       },
       {
         "name": "Codex",
-        "version": "GPT-5.3-Codex",
-        "provider": "OpenAI",
-        "note": "公式発表に基づく、Codex向け最新エージェント型コーディングモデル表記。"
+        "version": "GPT-5.5",
+        "provider": "OpenAI"
       },
       {
         "name": "GitHub Copilot",
-        "version": "Copilot Auto / GPT-5.3-Codex・GPT-5.4系",
-        "provider": "GitHub",
-        "note": "公式Changelogに基づく、Copilotの自動モデル選択と現行候補モデルの表記。利用可能モデルはプラン・ポリシー・画面により変動する。"
+        "version": "GPT-5.5",
+        "provider": "GitHub"
       }
     ]
   }

@@ -80,6 +80,7 @@ def frontmatter(report: dict, project: dict) -> str:
         f'date: "{project["date"]}"',
         f'version: "{project["version"]}"',
         f'kind: "{report["kind"]}"',
+        f'abstract: "{report.get("abstract", "")}"',
         "audience:",
         yaml_list(project["audience"]),
         "authors:",
@@ -306,7 +307,7 @@ def paragraph_to_markdown(blocks: list[Paragraph | str], report: dict, project: 
         if block.image_markdown:
             lines.extend(block.image_markdown + [""])
 
-    abstract = clean_text(" ".join(abstract_parts))
+    abstract = clean_text(report.get("abstract") or " ".join(abstract_parts))
     if len(abstract) > 220:
         abstract = abstract[:220].rstrip() + "..."
     return "\n".join(lines).strip() + "\n", references, abstract
