@@ -255,7 +255,7 @@ def paragraph_to_markdown(blocks: list[Paragraph | str], report: dict, project: 
         elif block.is_list or normalized.startswith(("・", "•", "●", "○")):
             lines.append(f"- {stripped}")
         else:
-            if len(abstract_parts) < 2:
+            if len(abstract_parts) < 2 and len(normalized) >= 80:
                 abstract_parts.append(normalized)
             lines.extend([normalized, ""])
 
