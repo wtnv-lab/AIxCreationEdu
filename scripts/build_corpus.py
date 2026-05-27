@@ -52,18 +52,53 @@ def yaml_list(values: Iterable[str], indent: int = 2) -> str:
     return "\n".join(f"{pad}- {json.dumps(v, ensure_ascii=False)}" for v in values)
 
 
+def author_markdown(project: dict) -> str:
+    lines: list[str] = []
+    for group in project.get("authors", []):
+        lines.append(f"### {group['affiliation']}")
+        lines.append("")
+        for member in group.get("members", []):
+            lines.append(f"- {member}")
+        lines.append("")
+    return "\n".join(lines).strip()
+
+
+def ai_collaborator_markdown(project: dict) -> str:
+    lines: list[str] = []
+    for tool in project.get("ai_collaborators", []):
+        note = f"。{tool['note']}" if tool.get("note") else ""
+        lines.append(f"- {tool['name']}（{tool['provider']}）: {tool['version']}{note}")
+    return "\n".join(lines)
+
+
 def frontmatter(report: dict, project: dict) -> str:
-    return "\n".join(
+    lines = [
+        "---",
+        f'id: "{report["id"]}"',
+        f'title: "{report["title"]}"',
+        f'project: "{project["title"]}"',
+        f'date: "{project["date"]}"',
+        f'version: "{project["version"]}"',
+        f'kind: "{report["kind"]}"',
+        "audience:",
+        yaml_list(project["audience"]),
+        "authors:",
+    ]
+    for group in project.get("authors", []):
+        lines.append(f'  - affiliation: "{group["affiliation"]}"')
+        lines.append("    members:")
+        lines.append(yaml_list(group.get("members", []), indent=6))
+    lines.extend(
         [
-            "---",
-            f'id: "{report["id"]}"',
-            f'title: "{report["title"]}"',
-            f'project: "{project["title"]}"',
-            f'date: "{project["date"]}"',
-            f'version: "{project["version"]}"',
-            f'kind: "{report["kind"]}"',
-            "audience:",
-            yaml_list(project["audience"]),
+            "ai_collaborators:",
+        ]
+    )
+    for tool in project.get("ai_collaborators", []):
+        lines.append(f'  - name: "{tool["name"]}"')
+        lines.append(f'    version: "{tool["version"]}"')
+        lines.append(f'    provider: "{tool["provider"]}"')
+    lines.extend(
+        [
             "themes:",
             yaml_list(report["themes"]),
             "keywords:",
@@ -74,6 +109,15 @@ def frontmatter(report: dict, project: dict) -> str:
             "",
         ]
     )
+    return "\n".join(lines)
+
+
+def author_plain_list(project: dict) -> list[str]:
+    authors: list[str] = []
+    for group in project.get("authors", []):
+        for member in group.get("members", []):
+            authors.append(f"{group['affiliation']} {member}")
+    return authors
 
 
 def read_relationships(zf: ZipFile) -> dict[str, str]:
@@ -327,6 +371,14 @@ def write_readme(config: dict, abstracts: dict[str, str]) -> None:
 
 このリポジトリは、教育関係者および教育ソリューション提供企業が、生成AI時代の教育実践を検討するための公開資料集です。人間が読みやすいMarkdown本文と、AIエージェントやRAGで扱いやすいメタデータを併置しています。
 
+## 著者
+
+{author_markdown(project)}
+
+## AI協働ツール
+
+{ai_collaborator_markdown(project)}
+
 ## レポート一覧
 
 {chr(10).join(report_lines)}
@@ -415,10 +467,13 @@ def write_references(config: dict, references: dict[str, list[str]]) -> None:
 
 
 def write_metadata(config: dict, abstracts: dict[str, str], chunks: list[dict]) -> None:
+    project = config["project"]
     reports = []
     for report in config["reports"]:
         item = {k: report[k] for k in ["id", "title", "kind", "themes", "keywords", "output_md", "source_docx"]}
         item["abstract"] = abstracts.get(report["id"], "")
+        item["authors"] = project.get("authors", [])
+        item["ai_collaborators"] = project.get("ai_collaborators", [])
         reports.append(item)
     (ROOT / "metadata" / "reports.json").write_text(json.dumps(reports, ensure_ascii=False, indent=2), encoding="utf-8")
     with (ROOT / "metadata" / "chunks.jsonl").open("w", encoding="utf-8") as f:
@@ -438,6 +493,14 @@ def write_llms(config: dict, abstracts: dict[str, str]) -> None:
         f"# {project['title']}",
         "",
         f"> {project['description']}",
+        "",
+        "## 著者",
+        "",
+        author_markdown(project),
+        "",
+        "## AI協働ツール",
+        "",
+        ai_collaborator_markdown(project),
         "",
         "## 利用想定",
         "",
@@ -465,6 +528,14 @@ def write_llms(config: dict, abstracts: dict[str, str]) -> None:
 > {project['description']}
 
 This repository publishes Markdown reports and AI-readable metadata for planning education practices and solutions around AI, creativity, information literacy, archives, prototyping, and digital citizenship.
+
+## Authors
+
+{author_markdown(project)}
+
+## AI Collaborators
+
+{ai_collaborator_markdown(project)}
 
 ## Core Reports
 

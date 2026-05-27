@@ -138,3 +138,16 @@ AIとクリエイティブと教育を検討するために、ウェブ調査に
   - 用途: 生成AIの教授・学習実践研究を俯瞰し、実装前の論点整理に役立つレビュー。
 - [bellingcat-toolkit] [Bellingcat, Online Open Source Investigation Toolkit.](https://bellingcat.gitbook.io/toolkit)
   - 用途: OSINT教育で使える画像・動画検証、地理情報、ウェブアーカイブ等の実践的ツール集。
+
+## AI協働ツールの最新版確認
+
+- [openai-gpt-5-2-chatgpt] [OpenAI, Introducing GPT-5.2, 2025.](https://openai.com/index/introducing-gpt-5-2/)
+  - 用途: ChatGPTにおけるGPT-5.2系の表記確認に使用。
+- [openai-gpt-5-3-codex] [OpenAI, Introducing GPT-5.3-Codex, 2026.](https://openai.com/index/introducing-gpt-5-3-codex/)
+  - 用途: Codex向け最新エージェント型コーディングモデルの表記確認に使用。
+- [google-gemini-3-1-pro] [Google, Gemini 3.1 Pro: A smarter model for your most complex tasks, 2026.](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro)
+  - 用途: Geminiの最新版表記確認に使用。
+- [github-copilot-auto-model-selection] [GitHub Changelog, GitHub Copilot CLI now supports Copilot auto model selection, 2026.](https://github.blog/changelog/2026-04-17-github-copilot-cli-now-supports-copilot-auto-model-selection/)
+  - 用途: GitHub CopilotのAutoモデル選択と候補モデル表記確認に使用。
+- [github-copilot-gpt-5-2-deprecation] [GitHub Changelog, Upcoming deprecation of GPT-5.2 and GPT-5.2-Codex, 2026.](https://github.blog/changelog/2026-05-01-upcoming-deprecation-of-gpt-5-2-and-gpt-5-2-codex)
+  - 用途: GitHub CopilotにおけるGPT-5.3-Codex移行推奨の確認に使用。

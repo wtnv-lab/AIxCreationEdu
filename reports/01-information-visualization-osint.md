@@ -9,6 +9,31 @@ audience:
   - "教育関係者"
   - "教育ソリューション提供企業"
   - "AI時代の教育・創造性・情報リテラシーに関心を持つ研究者と実践者"
+authors:
+  - affiliation: "東京大学 大学院情報学環・学際情報学府"
+    members:
+      - "教授 渡邉英徳"
+      - "特任准教授 原田真喜子（都留文科大学 地域交流研究センター 特任講師）"
+      - "博士後期課程 小松尚平"
+      - "博士後期課程 片山実咲"
+      - "博士後期課程 楊欽"
+      - "博士後期課程 森吉蓉子"
+  - affiliation: "同志社大学 文化情報学府"
+    members:
+      - "准教授 大井将生"
+ai_collaborators:
+  - name: "ChatGPT"
+    version: "ChatGPT-5.2 / GPT-5.2"
+    provider: "OpenAI"
+  - name: "Gemini"
+    version: "Gemini 3.1 Pro"
+    provider: "Google"
+  - name: "Codex"
+    version: "GPT-5.3-Codex"
+    provider: "OpenAI"
+  - name: "GitHub Copilot"
+    version: "Copilot Auto / GPT-5.3-Codex・GPT-5.4系"
+    provider: "GitHub"
 themes:
   - "生成AI"
   - "情報可視化"

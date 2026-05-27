@@ -4,6 +4,28 @@
 
 This repository publishes Markdown reports and AI-readable metadata for planning education practices and solutions around AI, creativity, information literacy, archives, prototyping, and digital citizenship.
 
+## Authors
+
+### 東京大学 大学院情報学環・学際情報学府
+
+- 教授 渡邉英徳
+- 特任准教授 原田真喜子（都留文科大学 地域交流研究センター 特任講師）
+- 博士後期課程 小松尚平
+- 博士後期課程 片山実咲
+- 博士後期課程 楊欽
+- 博士後期課程 森吉蓉子
+
+### 同志社大学 文化情報学府
+
+- 准教授 大井将生
+
+## AI Collaborators
+
+- ChatGPT（OpenAI）: ChatGPT-5.2 / GPT-5.2。公式発表に基づく、ChatGPTにおけるGPT-5.2系の最新版表記。
+- Gemini（Google）: Gemini 3.1 Pro。公式発表に基づく、Gemini 3.1 Proの最新版表記。
+- Codex（OpenAI）: GPT-5.3-Codex。公式発表に基づく、Codex向け最新エージェント型コーディングモデル表記。
+- GitHub Copilot（GitHub）: Copilot Auto / GPT-5.3-Codex・GPT-5.4系。公式Changelogに基づく、Copilotの自動モデル選択と現行候補モデルの表記。利用可能モデルはプラン・ポリシー・画面により変動する。
+
 ## Core Reports
 
 - [AIとクリエイティブと教育 総括レポート](reports/00-overview.md): 生成AIの普及は，教育におけるクリエイティブの意味を大きく変えつつある。これまで創作や開発の授業では，文章を書く，映像を編集する，コードを書く，地図を作る，資料を調べるといった個別技能の習熟が，成果物の質を大きく左右してきた。しかし生成AIは，企画案の整理，文章化，画像・映像表現，コード生成，データ分析，発表資料作成までを支援する。したがって教育の焦点は，技能の代替ではなく，「何を問うのか」「どのような価値を社会に届けるのか」「AIの出...
@@ -20,7 +42,7 @@ This repository publishes Markdown reports and AI-readable metadata for planning
 - [Report metadata](metadata/reports.json): Machine-readable report index.
 - [Chunked corpus](metadata/chunks.jsonl): Section-level JSONL for retrieval and analysis.
 - [References](references/references.md): Extracted references and related cases.
-- [Supplemental references](references/references.md#追加推奨リファレンス): Curated references from web research covering 政策・ガイドライン, 創造性・学習理論, AIリテラシー・教育実践事例, AI社会動向・実証研究.
+- [Supplemental references](references/references.md#追加推奨リファレンス): Curated references from web research covering 政策・ガイドライン, 創造性・学習理論, AIリテラシー・教育実践事例, AI社会動向・実証研究, AI協働ツールの最新版確認.
 
 ## Optional
 
