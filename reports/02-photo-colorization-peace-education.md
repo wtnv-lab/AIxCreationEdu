@@ -33,7 +33,6 @@ keywords:
   - "高校教育"
   - "歴史資料"
 license: "CC BY 4.0"
-source_docx: "../source-docx/02-photo-colorization-peace-education.docx"
 ---
 
 # AIによるモノクロ写真カラー化を活かした高校生の平和教育実践

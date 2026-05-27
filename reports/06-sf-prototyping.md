@@ -33,7 +33,6 @@ keywords:
   - "創造性"
   - "ワークショップ"
 license: "CC BY 4.0"
-source_docx: "../source-docx/06-sf-prototyping.docx"
 ---
 
 # 生成AIを用いたSFプロトタイピング

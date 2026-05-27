@@ -33,7 +33,6 @@ keywords:
   - "メディアリテラシー"
   - "探究学習"
 license: "CC BY 4.0"
-source_docx: "../source-docx/01-information-visualization-osint.docx"
 ---
 
 # AIと情報可視化・OSINT教育

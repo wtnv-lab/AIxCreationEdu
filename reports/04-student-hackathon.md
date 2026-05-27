@@ -33,7 +33,6 @@ keywords:
   - "実装の民主化"
   - "創造性"
 license: "CC BY 4.0"
-source_docx: "../source-docx/04-student-hackathon.docx"
 ---
 
 # AI時代の学生ハッカソン：実装の民主化と発想力への転換

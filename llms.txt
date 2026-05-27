@@ -46,5 +46,4 @@ This repository publishes Markdown reports and AI-readable metadata for planning
 
 ## Optional
 
-- [Source DOCX files](source-docx/): Editable Word originals for regeneration.
-- [Build script](scripts/build_corpus.py): Converts DOCX sources into Markdown and metadata.
+- [Build script](scripts/build_corpus.py): Converts local DOCX sources into Markdown and metadata.

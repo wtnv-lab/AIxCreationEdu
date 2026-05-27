@@ -33,7 +33,6 @@ keywords:
   - "情報モラル"
   - "教育実践"
 license: "CC BY 4.0"
-source_docx: "../source-docx/03-digital-citizenship.docx"
 ---
 
 # AIを活かしたデジタルシティズンシップ教育

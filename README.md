@@ -42,23 +42,6 @@
 - 続いて [`llms-full.md`](llms-full.md) を読ませると、各レポートの要約、テーマ、参照先をまとめて利用できます。
 - 検索・RAG用途では [`metadata/chunks.jsonl`](metadata/chunks.jsonl) を使うと、見出し単位の分割済みテキストとして扱えます。
 
-## Word原稿から再生成する
-
-Word原稿は [`source-docx/`](source-docx/) に置きます。差し替えや追加をした後、[`config/reports.json`](config/reports.json) を更新し、次を実行してください。
-
-```bash
-python3 scripts/build_corpus.py
-```
-
-生成される主なファイルは次の通りです。
-
-- `reports/*.md`: 公開用Markdownレポート
-- `references/references.md`: レポート別の参考文献・関連資料リスト
-- `metadata/reports.json`: レポート単位の機械可読メタデータ
-- `metadata/chunks.jsonl`: AI検索・RAG向けのチャンクデータ
-- `llms.txt`: AIエージェント向けの入口
-- `llms-full.md`: AI投入用の統合概要
-
 ## ライセンス
 
 本文とメタデータは、特記がない限り `CC BY 4.0` で公開します。利用時は著者・出典を表示してください。

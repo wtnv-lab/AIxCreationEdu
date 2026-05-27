@@ -13,7 +13,6 @@ themes:
 keywords:
   - "AI教育"
 license: "CC BY 4.0"
-source_docx: "../source-docx/07-new-report.docx"
 ---
 
 # 新規レポートタイトル

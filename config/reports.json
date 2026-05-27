@@ -56,7 +56,6 @@
     {
       "id": "00-overview",
       "title": "AIとクリエイティブと教育 総括レポート",
-      "source_docx": "source-docx/00-overview.docx",
       "output_md": "reports/00-overview.md",
       "kind": "overview",
       "themes": [
@@ -76,7 +75,6 @@
     {
       "id": "01-information-visualization-osint",
       "title": "AIと情報可視化・OSINT教育",
-      "source_docx": "source-docx/01-information-visualization-osint.docx",
       "output_md": "reports/01-information-visualization-osint.md",
       "kind": "report",
       "themes": [
@@ -96,7 +94,6 @@
     {
       "id": "02-photo-colorization-peace-education",
       "title": "AIによるモノクロ写真カラー化を活かした高校生の平和教育実践",
-      "source_docx": "source-docx/02-photo-colorization-peace-education.docx",
       "output_md": "reports/02-photo-colorization-peace-education.md",
       "kind": "report",
       "themes": [
@@ -116,7 +113,6 @@
     {
       "id": "03-digital-citizenship",
       "title": "AIを活かしたデジタルシティズンシップ教育",
-      "source_docx": "source-docx/03-digital-citizenship.docx",
       "output_md": "reports/03-digital-citizenship.md",
       "kind": "report",
       "themes": [
@@ -136,7 +132,6 @@
     {
       "id": "04-student-hackathon",
       "title": "AI時代の学生ハッカソン：実装の民主化と発想力への転換",
-      "source_docx": "source-docx/04-student-hackathon.docx",
       "output_md": "reports/04-student-hackathon.md",
       "kind": "report",
       "themes": [
@@ -156,7 +151,6 @@
     {
       "id": "05-digital-archive-ai",
       "title": "デジタルアーカイブとAIを活かした教育実践",
-      "source_docx": "source-docx/05-digital-archive-ai.docx",
       "output_md": "reports/05-digital-archive-ai.md",
       "kind": "report",
       "themes": [
@@ -176,7 +170,6 @@
     {
       "id": "06-sf-prototyping",
       "title": "生成AIを用いたSFプロトタイピング",
-      "source_docx": "source-docx/06-sf-prototyping.docx",
       "output_md": "reports/06-sf-prototyping.md",
       "kind": "report",
       "themes": [

@@ -96,7 +96,6 @@ def frontmatter(report: dict, project: dict) -> str:
             "keywords:",
             yaml_list(report["keywords"]),
             f'license: "{project["license"]}"',
-            f'source_docx: "../{report["source_docx"]}"',
             "---",
             "",
         ]
@@ -431,23 +430,6 @@ def write_readme(config: dict, abstracts: dict[str, str]) -> None:
 - 続いて [`llms-full.md`](llms-full.md) を読ませると、各レポートの要約、テーマ、参照先をまとめて利用できます。
 - 検索・RAG用途では [`metadata/chunks.jsonl`](metadata/chunks.jsonl) を使うと、見出し単位の分割済みテキストとして扱えます。
 
-## Word原稿から再生成する
-
-Word原稿は [`source-docx/`](source-docx/) に置きます。差し替えや追加をした後、[`config/reports.json`](config/reports.json) を更新し、次を実行してください。
-
-```bash
-python3 scripts/build_corpus.py
-```
-
-生成される主なファイルは次の通りです。
-
-- `reports/*.md`: 公開用Markdownレポート
-- `references/references.md`: レポート別の参考文献・関連資料リスト
-- `metadata/reports.json`: レポート単位の機械可読メタデータ
-- `metadata/chunks.jsonl`: AI検索・RAG向けのチャンクデータ
-- `llms.txt`: AIエージェント向けの入口
-- `llms-full.md`: AI投入用の統合概要
-
 ## ライセンス
 
 本文とメタデータは、特記がない限り `{project['license']}` で公開します。利用時は著者・出典を表示してください。
@@ -513,7 +495,7 @@ def write_metadata(config: dict, abstracts: dict[str, str], chunks: list[dict]) 
     project = config["project"]
     reports = []
     for report in config["reports"]:
-        item = {k: report[k] for k in ["id", "title", "kind", "themes", "keywords", "output_md", "source_docx"]}
+        item = {k: report[k] for k in ["id", "title", "kind", "themes", "keywords", "output_md"]}
         item["abstract"] = abstracts.get(report["id"], "")
         item["authors"] = project.get("authors", [])
         reports.append(item)
@@ -593,8 +575,7 @@ This repository publishes Markdown reports and AI-readable metadata for planning
 
 ## Optional
 
-- [Source DOCX files](source-docx/): Editable Word originals for regeneration.
-- [Build script](scripts/build_corpus.py): Converts DOCX sources into Markdown and metadata.
+- [Build script](scripts/build_corpus.py): Converts local DOCX sources into Markdown and metadata.
 """
     (ROOT / "llms.txt").write_text(llms, encoding="utf-8")
     (ROOT / "llms-full.md").write_text("\n".join(full_sections), encoding="utf-8")
@@ -678,7 +659,8 @@ def build(config_path: Path) -> None:
 
     for report in config["reports"]:
         report["references"] = report_references.get(report["id"], [])
-        docx_path = ROOT / report["source_docx"]
+        source_docx = report.get("source_docx", f"source-docx/{report['id']}.docx")
+        docx_path = ROOT / source_docx
         if not docx_path.exists():
             raise FileNotFoundError(f"Missing source DOCX: {docx_path}")
         blocks = parse_docx(docx_path, report["id"])

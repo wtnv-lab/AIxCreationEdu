@@ -33,7 +33,6 @@ keywords:
   - "学習設計"
   - "教育実践"
 license: "CC BY 4.0"
-source_docx: "../source-docx/00-overview.docx"
 ---
 
 # AIとクリエイティブと教育 総括レポート
