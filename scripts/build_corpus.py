@@ -91,15 +91,6 @@ def frontmatter(report: dict, project: dict) -> str:
         lines.append(yaml_list(group.get("members", []), indent=6))
     lines.extend(
         [
-            "ai_collaborators:",
-        ]
-    )
-    for tool in project.get("ai_collaborators", []):
-        lines.append(f'  - name: "{tool["name"]}"')
-        lines.append(f'    version: "{tool["version"]}"')
-        lines.append(f'    provider: "{tool["provider"]}"')
-    lines.extend(
-        [
             "themes:",
             yaml_list(report["themes"]),
             "keywords:",
@@ -474,7 +465,6 @@ def write_metadata(config: dict, abstracts: dict[str, str], chunks: list[dict]) 
         item = {k: report[k] for k in ["id", "title", "kind", "themes", "keywords", "output_md", "source_docx"]}
         item["abstract"] = abstracts.get(report["id"], "")
         item["authors"] = project.get("authors", [])
-        item["ai_collaborators"] = project.get("ai_collaborators", [])
         reports.append(item)
     (ROOT / "metadata" / "reports.json").write_text(json.dumps(reports, ensure_ascii=False, indent=2), encoding="utf-8")
     with (ROOT / "metadata" / "chunks.jsonl").open("w", encoding="utf-8") as f:

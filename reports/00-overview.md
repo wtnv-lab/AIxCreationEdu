@@ -22,19 +22,6 @@ authors:
   - affiliation: "同志社大学 文化情報学府"
     members:
       - "准教授 大井将生"
-ai_collaborators:
-  - name: "ChatGPT"
-    version: "GPT-5.5"
-    provider: "OpenAI"
-  - name: "Gemini"
-    version: "Gemini 3.1 Pro"
-    provider: "Google"
-  - name: "Codex"
-    version: "GPT-5.5"
-    provider: "OpenAI"
-  - name: "GitHub Copilot"
-    version: "GPT-5.5"
-    provider: "GitHub"
 themes:
   - "生成AI"
   - "創造性"

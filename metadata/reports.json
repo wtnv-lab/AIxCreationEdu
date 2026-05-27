@@ -36,28 +36,6 @@
           "准教授 大井将生"
         ]
       }
-    ],
-    "ai_collaborators": [
-      {
-        "name": "ChatGPT",
-        "version": "GPT-5.5",
-        "provider": "OpenAI"
-      },
-      {
-        "name": "Gemini",
-        "version": "Gemini 3.1 Pro",
-        "provider": "Google"
-      },
-      {
-        "name": "Codex",
-        "version": "GPT-5.5",
-        "provider": "OpenAI"
-      },
-      {
-        "name": "GitHub Copilot",
-        "version": "GPT-5.5",
-        "provider": "GitHub"
-      }
     ]
   },
   {
@@ -96,28 +74,6 @@
         "members": [
           "准教授 大井将生"
         ]
-      }
-    ],
-    "ai_collaborators": [
-      {
-        "name": "ChatGPT",
-        "version": "GPT-5.5",
-        "provider": "OpenAI"
-      },
-      {
-        "name": "Gemini",
-        "version": "Gemini 3.1 Pro",
-        "provider": "Google"
-      },
-      {
-        "name": "Codex",
-        "version": "GPT-5.5",
-        "provider": "OpenAI"
-      },
-      {
-        "name": "GitHub Copilot",
-        "version": "GPT-5.5",
-        "provider": "GitHub"
       }
     ]
   },
@@ -158,28 +114,6 @@
           "准教授 大井将生"
         ]
       }
-    ],
-    "ai_collaborators": [
-      {
-        "name": "ChatGPT",
-        "version": "GPT-5.5",
-        "provider": "OpenAI"
-      },
-      {
-        "name": "Gemini",
-        "version": "Gemini 3.1 Pro",
-        "provider": "Google"
-      },
-      {
-        "name": "Codex",
-        "version": "GPT-5.5",
-        "provider": "OpenAI"
-      },
-      {
-        "name": "GitHub Copilot",
-        "version": "GPT-5.5",
-        "provider": "GitHub"
-      }
     ]
   },
   {
@@ -218,28 +152,6 @@
         "members": [
           "准教授 大井将生"
         ]
-      }
-    ],
-    "ai_collaborators": [
-      {
-        "name": "ChatGPT",
-        "version": "GPT-5.5",
-        "provider": "OpenAI"
-      },
-      {
-        "name": "Gemini",
-        "version": "Gemini 3.1 Pro",
-        "provider": "Google"
-      },
-      {
-        "name": "Codex",
-        "version": "GPT-5.5",
-        "provider": "OpenAI"
-      },
-      {
-        "name": "GitHub Copilot",
-        "version": "GPT-5.5",
-        "provider": "GitHub"
       }
     ]
   },
@@ -280,28 +192,6 @@
           "准教授 大井将生"
         ]
       }
-    ],
-    "ai_collaborators": [
-      {
-        "name": "ChatGPT",
-        "version": "GPT-5.5",
-        "provider": "OpenAI"
-      },
-      {
-        "name": "Gemini",
-        "version": "Gemini 3.1 Pro",
-        "provider": "Google"
-      },
-      {
-        "name": "Codex",
-        "version": "GPT-5.5",
-        "provider": "OpenAI"
-      },
-      {
-        "name": "GitHub Copilot",
-        "version": "GPT-5.5",
-        "provider": "GitHub"
-      }
     ]
   },
   {
@@ -341,28 +231,6 @@
           "准教授 大井将生"
         ]
       }
-    ],
-    "ai_collaborators": [
-      {
-        "name": "ChatGPT",
-        "version": "GPT-5.5",
-        "provider": "OpenAI"
-      },
-      {
-        "name": "Gemini",
-        "version": "Gemini 3.1 Pro",
-        "provider": "Google"
-      },
-      {
-        "name": "Codex",
-        "version": "GPT-5.5",
-        "provider": "OpenAI"
-      },
-      {
-        "name": "GitHub Copilot",
-        "version": "GPT-5.5",
-        "provider": "GitHub"
-      }
     ]
   },
   {
@@ -401,28 +269,6 @@
         "members": [
           "准教授 大井将生"
         ]
-      }
-    ],
-    "ai_collaborators": [
-      {
-        "name": "ChatGPT",
-        "version": "GPT-5.5",
-        "provider": "OpenAI"
-      },
-      {
-        "name": "Gemini",
-        "version": "Gemini 3.1 Pro",
-        "provider": "Google"
-      },
-      {
-        "name": "Codex",
-        "version": "GPT-5.5",
-        "provider": "OpenAI"
-      },
-      {
-        "name": "GitHub Copilot",
-        "version": "GPT-5.5",
-        "provider": "GitHub"
       }
     ]
   }
