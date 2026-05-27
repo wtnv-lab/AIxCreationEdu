@@ -1,0 +1,79 @@
+{
+  "project": {
+    "title": "AIとクリエイティブと教育",
+    "description": "生成AI時代の創造性、表現、情報リテラシー、教育実践を横断的に検討する公開レポート集。",
+    "version": "1.0.0",
+    "date": "2026-05-27",
+    "license": "CC BY 4.0",
+    "audience": [
+      "教育関係者",
+      "教育ソリューション提供企業",
+      "AI時代の教育・創造性・情報リテラシーに関心を持つ研究者と実践者"
+    ]
+  },
+  "reports": [
+    {
+      "id": "00-overview",
+      "title": "AIとクリエイティブと教育 総括レポート",
+      "source_docx": "source-docx/00-overview.docx",
+      "output_md": "reports/00-overview.md",
+      "kind": "overview",
+      "themes": ["生成AI", "創造性", "教育実践", "総括"],
+      "keywords": ["AIと教育", "クリエイティブ", "学習設計", "教育実践"]
+    },
+    {
+      "id": "01-information-visualization-osint",
+      "title": "AIと情報可視化・OSINT教育",
+      "source_docx": "source-docx/01-information-visualization-osint.docx",
+      "output_md": "reports/01-information-visualization-osint.md",
+      "kind": "report",
+      "themes": ["生成AI", "情報可視化", "OSINT", "探究学習"],
+      "keywords": ["情報可視化", "OSINT", "メディアリテラシー", "探究学習"]
+    },
+    {
+      "id": "02-photo-colorization-peace-education",
+      "title": "AIによるモノクロ写真カラー化を活かした高校生の平和教育実践",
+      "source_docx": "source-docx/02-photo-colorization-peace-education.docx",
+      "output_md": "reports/02-photo-colorization-peace-education.md",
+      "kind": "report",
+      "themes": ["生成AI", "写真カラー化", "平和教育", "歴史学習"],
+      "keywords": ["写真カラー化", "平和教育", "高校教育", "歴史資料"]
+    },
+    {
+      "id": "03-digital-citizenship",
+      "title": "AIを活かしたデジタルシティズンシップ教育",
+      "source_docx": "source-docx/03-digital-citizenship.docx",
+      "output_md": "reports/03-digital-citizenship.md",
+      "kind": "report",
+      "themes": ["生成AI", "デジタルシティズンシップ", "AIリテラシー", "情報モラル"],
+      "keywords": ["デジタルシティズンシップ", "AIリテラシー", "情報モラル", "教育実践"]
+    },
+    {
+      "id": "04-student-hackathon",
+      "title": "AI時代の学生ハッカソン：実装の民主化と発想力への転換",
+      "source_docx": "source-docx/04-student-hackathon.docx",
+      "output_md": "reports/04-student-hackathon.md",
+      "kind": "report",
+      "themes": ["生成AI", "ハッカソン", "プロトタイピング", "実装教育"],
+      "keywords": ["学生ハッカソン", "プロダクト開発", "実装の民主化", "創造性"]
+    },
+    {
+      "id": "05-digital-archive-ai",
+      "title": "デジタルアーカイブとAIを活かした教育実践",
+      "source_docx": "source-docx/05-digital-archive-ai.docx",
+      "output_md": "reports/05-digital-archive-ai.md",
+      "kind": "report",
+      "themes": ["生成AI", "デジタルアーカイブ", "教育実践", "資料活用"],
+      "keywords": ["デジタルアーカイブ", "資料活用", "探究学習", "AI教育"]
+    },
+    {
+      "id": "06-sf-prototyping",
+      "title": "生成AIを用いたSFプロトタイピング",
+      "source_docx": "source-docx/06-sf-prototyping.docx",
+      "output_md": "reports/06-sf-prototyping.md",
+      "kind": "report",
+      "themes": ["生成AI", "SFプロトタイピング", "未来構想", "創造性教育"],
+      "keywords": ["SFプロトタイピング", "未来洞察", "創造性", "ワークショップ"]
+    }
+  ]
+}

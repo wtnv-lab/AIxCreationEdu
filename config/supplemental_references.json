@@ -1,0 +1,181 @@
+{
+  "title": "追加推奨リファレンス",
+  "description": "AIとクリエイティブと教育を検討するために、ウェブ調査に基づいて追加した参考文献・事例。",
+  "accessed": "2026-05-27",
+  "sections": [
+    {
+      "id": "policy-guidance",
+      "title": "政策・ガイドライン",
+      "items": [
+        {
+          "id": "unesco-genai-education-2023",
+          "title": "UNESCO, Guidance for Generative AI in Education and Research, 2023.",
+          "url": "https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research",
+          "note": "生成AIを教育・研究に導入する際の人間中心アプローチ、政策、年齢制限、教員・学習者の能力形成を整理した国際的基礎資料。"
+        },
+        {
+          "id": "unesco-ai-students-2024",
+          "title": "UNESCO, AI Competency Framework for Students, 2024.",
+          "url": "https://www.unesco.org/en/articles/ai-competency-framework-students",
+          "note": "学習者をAIの受動的利用者ではなく、責任ある利用者・共同設計者として育てる観点を補強する資料。"
+        },
+        {
+          "id": "unesco-mil-curriculum",
+          "title": "UNESCO, Media and Information Literacy Curriculum for Teachers and Learners.",
+          "url": "https://www.unesco.org/mil4teachers/en/curriculum",
+          "note": "OSINT、偽情報、デジタルシティズンシップと接続するメディア情報リテラシー教育の参照枠。"
+        },
+        {
+          "id": "oecd-digital-education-outlook-2026",
+          "title": "OECD, OECD Digital Education Outlook 2026: Exploring Effective Uses of Generative AI in Education, 2026.",
+          "url": "https://www.oecd.org/en/publications/oecd-digital-education-outlook-2026_062a7394-en.html",
+          "note": "生成AIを教育で有効に使う条件を、学習設計・政策・人間中心性の観点から整理した最新の国際比較資料。"
+        },
+        {
+          "id": "mext-genai-guideline-v2-2024",
+          "title": "文部科学省『初等中等教育段階における生成AIの利活用に関するガイドライン（Ver.2.0）』2024年.",
+          "url": "https://www.mext.go.jp/a_menu/other/mext_02412.html",
+          "note": "日本の学校教育で生成AIを扱う際の基本方針、留意点、具体的な利活用場面を示す国内基準。"
+        },
+        {
+          "id": "bunka-ai-copyright",
+          "title": "文化庁『AIと著作権について』.",
+          "url": "https://www.bunka.go.jp/seisaku/chosakuken/aiandcopyright.html",
+          "note": "AI生成物、学習データ、著作権侵害リスクを扱う授業・教材・企業利用のための重要な国内参照先。"
+        },
+        {
+          "id": "meti-ai-guidelines-2024",
+          "title": "総務省・経済産業省『AI事業者ガイドライン（第1.0版）』2024年.",
+          "url": "https://www.meti.go.jp/press/2024/04/20240419004/20240419004.html",
+          "note": "教育ソリューション提供企業がAIサービスを設計・提供する際のリスク管理と責任あるAI利用の参照先。"
+        }
+      ]
+    },
+    {
+      "id": "creativity-learning",
+      "title": "創造性・学習理論",
+      "items": [
+        {
+          "id": "oecd-pisa-creative-thinking-2024",
+          "title": "OECD, PISA 2022 Results (Volume III): Creative Minds, Creative Schools, 2024.",
+          "url": "https://www.oecd.org/en/publications/pisa-2022-results-volume-iii_765ee8c2-en.html",
+          "note": "15歳の創造的思考を国際比較したPISA初の本格評価。AI時代の創造性評価を考える土台になる。"
+        },
+        {
+          "id": "oecd-creative-thinking-topic",
+          "title": "OECD, Creative Thinking.",
+          "url": "https://www.oecd.org/en/topics/creative-thinking.html",
+          "note": "創造的思考を教育政策・評価へ位置づけるための概要ページ。"
+        },
+        {
+          "id": "resnick-lifelong-kindergarten-2017",
+          "title": "Mitchel Resnick, Lifelong Kindergarten: Cultivating Creativity through Projects, Passion, Peers, and Play, MIT Press, 2017.",
+          "url": "https://mitpress.mit.edu/9780262037297/",
+          "note": "プロジェクト、情熱、仲間、遊びを軸にした創造的学習の基礎文献。AI時代の制作教育との接続が強い。"
+        },
+        {
+          "id": "resnick-four-ps-2014",
+          "title": "Mitchel Resnick, Give P's a Chance: Projects, Peers, Passion, Play, 2014.",
+          "url": "https://www.media.mit.edu/~mres/papers/constructionism-2014.pdf",
+          "note": "Creative LearningのFour P'sを短く整理した論文。授業設計テンプレート化しやすい。"
+        },
+        {
+          "id": "harvard-project-zero-impact",
+          "title": "Harvard Graduate School of Education, The Impact of Project Zero.",
+          "url": "https://www.gse.harvard.edu/hgse100/story/home-base-human-potential",
+          "note": "芸術教育、思考の可視化、メイカー教育、遊びの教育学など、創造性教育の実践研究を広く位置づける参照先。"
+        }
+      ]
+    },
+    {
+      "id": "ai-literacy-practice",
+      "title": "AIリテラシー・教育実践事例",
+      "items": [
+        {
+          "id": "mit-raise-day-of-ai",
+          "title": "MIT RAISE, Day of AI.",
+          "url": "https://raise.mit.edu/resources/curricula/day-of-ai/",
+          "note": "K-12向けにAIの基礎と責任ある利用を扱う無料カリキュラム。学校導入事例として有用。"
+        },
+        {
+          "id": "mit-raise-daily",
+          "title": "MIT RAISE, Developing AI Literacy (DAILy) Curriculum.",
+          "url": "https://raise.mit.edu/daily",
+          "note": "AIの仕組み、よい使い方、害への配慮を扱うAIリテラシーカリキュラム。"
+        },
+        {
+          "id": "raspberrypi-deepmind-experience-ai",
+          "title": "Raspberry Pi Foundation and Google DeepMind, Experience AI.",
+          "url": "https://www.raspberrypi.org/blog/experience-ai-deepmind-ai-education/",
+          "note": "Google DeepMindとRaspberry Pi Foundationによる中高生向けAI教育リソース。"
+        },
+        {
+          "id": "harvard-ai-pedagogy-project",
+          "title": "Harvard metaLAB, AI Pedagogy Project, 2023.",
+          "url": "https://cyber.harvard.edu/story/2023-11/harvards-metalab-introduces-ai-pedagogy-project",
+          "note": "大学教育でAIを批判的・創造的に扱うための実践例と教材設計の参照先。"
+        },
+        {
+          "id": "harvard-teach-with-genai",
+          "title": "Harvard University, Teach with Generative AI.",
+          "url": "https://www.harvard.edu/ai/teaching-resources/",
+          "note": "生成AIを授業準備、課題設計、プロトタイプ改善、学生の創造性支援に使う際の大学向けガイド。"
+        },
+        {
+          "id": "cs50-ai-duck-2024",
+          "title": "Liu et al., Teaching CS50 with AI: Leveraging Generative Artificial Intelligence in Computer Science Education, SIGCSE 2024.",
+          "url": "https://cs.harvard.edu/malan/publications/V1fp0567-liu.pdf",
+          "note": "CS50のAI Duck Debuggerなど、AIを答えの代替ではなく学習支援として設計する事例。"
+        },
+        {
+          "id": "khanmigo-responsible-ai",
+          "title": "Khan Academy, What is Khan Academy’s approach to responsible AI development?",
+          "url": "https://support.khanacademy.org/hc/en-us/articles/13965308352781-What-is-Khan-Academy-s-approach-to-responsible-AI-development",
+          "note": "AIチューター/教師支援ツールを教育サービスとして提供する企業・NPOのリスク評価事例。"
+        },
+        {
+          "id": "khanmigo-introduction",
+          "title": "Khan Academy, Introducing Khanmigo.",
+          "url": "https://support.khanacademy.org/hc/en-us/articles/14394953976333--Update-Introducing-Khanmigo-Khan-Academy-s-AI-Tool",
+          "note": "AIチューターを教育現場へ導入する代表的な事例。"
+        }
+      ]
+    },
+    {
+      "id": "ai-society-evidence",
+      "title": "AI社会動向・実証研究",
+      "items": [
+        {
+          "id": "stanford-ai-index-2025",
+          "title": "Stanford HAI, The 2025 AI Index Report, 2025.",
+          "url": "https://hai.stanford.edu/ai-index/2025-ai-index-report",
+          "note": "AIの性能、投資、政策、教育、社会影響を概観する年次レポート。企画立案時の背景資料として有用。"
+        },
+        {
+          "id": "peng-copilot-productivity-2023",
+          "title": "Peng et al., The Impact of AI on Developer Productivity: Evidence from GitHub Copilot, 2023.",
+          "url": "https://arxiv.org/abs/2302.06590",
+          "note": "AIによる実装支援が生産性へ与える影響を扱う研究。ハッカソンや実装教育の根拠資料。"
+        },
+        {
+          "id": "genai-higher-ed-policy-2023",
+          "title": "Moorhouse et al., Generative AI in Higher Education: Seeing ChatGPT Through Universities' Policies, Resources, and Guidelines, 2023.",
+          "url": "https://arxiv.org/abs/2312.05235",
+          "note": "大学が生成AIをどう方針化し、教育リソース化しているかを比較する資料。"
+        },
+        {
+          "id": "genai-education-systematic-review-2024",
+          "title": "A Systematic Review of Generative AI for Teaching and Learning Practice, 2024.",
+          "url": "https://arxiv.org/abs/2406.09520",
+          "note": "生成AIの教授・学習実践研究を俯瞰し、実装前の論点整理に役立つレビュー。"
+        },
+        {
+          "id": "bellingcat-toolkit",
+          "title": "Bellingcat, Online Open Source Investigation Toolkit.",
+          "url": "https://bellingcat.gitbook.io/toolkit",
+          "note": "OSINT教育で使える画像・動画検証、地理情報、ウェブアーカイブ等の実践的ツール集。"
+        }
+      ]
+    }
+  ]
+}

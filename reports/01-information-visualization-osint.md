@@ -1,0 +1,58 @@
+---
+id: "01-information-visualization-osint"
+title: "AIと情報可視化・OSINT教育"
+project: "AIとクリエイティブと教育"
+date: "2026-05-27"
+version: "1.0.0"
+kind: "report"
+audience:
+  - "教育関係者"
+  - "教育ソリューション提供企業"
+  - "AI時代の教育・創造性・情報リテラシーに関心を持つ研究者と実践者"
+themes:
+  - "生成AI"
+  - "情報可視化"
+  - "OSINT"
+  - "探究学習"
+keywords:
+  - "情報可視化"
+  - "OSINT"
+  - "メディアリテラシー"
+  - "探究学習"
+license: "CC BY 4.0"
+source_docx: "../source-docx/01-information-visualization-osint.docx"
+---
+
+# AIと情報可視化・OSINT教育
+
+AIとOSINTで学ぶ情報メディア実践
+
+――データを読み解き，社会へ伝える教育モデル
+
+東京大学前期課程「情報メディア基礎論」では，情報を“ストック”し，データビジュアライゼーションやデジタルアーカイブによって“フロー”化するメディア実践を通じて，情報・メディア・社会の関係を学ぶ。授業では，学生が自らテーマを設定し，データを収集・整理したうえで，ArcGISやRe:Earthを用いて2D／3D地図上に可視化し，成果物をウェブ公開する。シラバスでも，デジタルアーカイブは出来事の多面的な実相を蓄積する基盤であり，データビジュアライゼーションはそれを社会的コミュニケーションへ接続する方法として位置づけられている。
+
+本実践の特徴は，この一連のプロセスに生成AIとの対話を組み込む点にある。学生は，テーマ設定，データ探索，仮説形成，地図化，文章化，公開時の説明文作成に至る各段階でAIを活用する。AIは，単に答えを出す存在ではなく，観察結果を言語化し，複数の解釈可能性を比較し，データの不足や推論の飛躍を指摘する「対話的な編集者」として機能する。これは，AIを安全かつ批判的に使う能力を，単なる操作技能ではなく，倫理・判断・創造を含む総合的なコンピテンシーとして捉える近年のAI教育論とも合致する。UNESCOのAIコンピテンシー枠組みも，学生をAIの受動的利用者ではなく，責任ある利用者・共同設計者として育成する必要性を示している。
+
+近年は，この方法をホルムズ海峡周辺の船舶動向を題材とするOSINT教育にも展開している。AIS，衛星画像，公開報道，SNS上の専門的知見を組み合わせ，船舶の航跡，AIS信号の途絶や偽装，衛星画像上の船影との照合などを通じて，不確実な情報を検証する初歩を学ぶ。実際のOSINT活動では，MarineTraffic等のAISデータとSentinel-1 SAR，Sentinel-2光学画像を照合し，AISスプーフィングやダーク・ベッセルの可能性を検討してきた。こうした実践は，公開情報を用いた調査報道や市民調査の方法論とも接続する。Bellingcatのオンライン調査ツールキットは，衛星・地図サービス，画像・動画検証，ウェブアーカイブなどを組み合わせる実践的手法を体系化しており，OSINTを学ぶうえで有用な参照点となる。
+
+また，本実践はメディア・情報リテラシー教育の拡張としても位置づけられる。UNESCOは，偽情報，ヘイトスピーチ，メディア不信，AIを含むデジタル技術の進展に対応するため，メディア・情報リテラシーを21世紀の基礎的能力として整理している。OSINT教育において重要なのは，データを「見つける」ことだけではない。情報源の性質を見極め，複数のデータを照合し，確度の異なる推論を区別し，社会に伝える際の表現責任を自覚することである。これは，データ可視化を単なる表現技術ではなく，社会の中で意味を生み出す批判的実践として捉えるデータ・ビジュアライゼーション研究とも重なる。
+
+本実践は，東京大学の授業，読売新聞との学術指導，日本テレビとの共同研究を横断する「教育×AI×OSINT」の試みである。学生と記者は，AIを用いながら，データを集め，疑い，照合し，仮説を組み立て，社会に向けて表現するプロセスを学ぶ。重要なのは，AIに判断を委ねることではなく，AIとの対話を通じて，人間の側の観察力，批判的思考，表現力を拡張することである。危機下の情報環境では，データはしばしば欠落し，歪み，意図的に偽装される。そのような状況において，公開情報を検証可能なかたちで読み解き，社会的コミュニケーションへ接続する力を育てることは，情報メディア教育の重要な課題である。本モデルは，生成AI時代におけるデータリテラシー，メディアリテラシー，調査報道教育を架橋する実践的な教育モデルとして位置づけられる。
+
+## 参考文献・関連資料
+
+- [UNESCO, AI Competency Framework for Students, 2024.](https://www.unesco.org/en/articles/ai-competency-framework-students)
+
+- [UNESCO, Media and Information Literacy Curriculum for Teachers and Learners.](https://www.unesco.org/en/media-information-literacy)
+
+- [Bellingcat, Online Open Source Investigation Toolkit.](https://bellingcat.gitbook.io/toolkit)
+
+- [Bellingcat, First Steps to Getting Started in Open Source Research, 2021.](https://www.bellingcat.com/resources/2021/11/09/first-steps-to-getting-started-in-open-source-research/)
+
+- [Gray, J., Bounegru, L., Milan, S. and Ciuccarelli, P., Ways of Seeing Data: Toward a Critical Literacy for Data Visualizations as Research Objects and Research Devices, 2016.](https://www.researchgate.net/publication/312284929_Ways_of_Seeing_Data_Toward_a_Critical_Literacy_for_Data_Visualizations_as_Research_Objects_and_Research_Devices)
+
+- [Cairo, A., The Truthful Art: Data, Charts, and Maps for Communication, New Riders, 2016.](https://www.peachpit.com/store/truthful-art-data-charts-and-maps-for-communication-9780321934079)
+
+- [東京大学授業カタログ「情報メディア基礎論」。](https://catalog.he.u-tokyo.ac.jp/detail?code=30259)
+
+- 渡邉研究室関連実践資料「AIとOSINTで学ぶ情報メディア実践」。
