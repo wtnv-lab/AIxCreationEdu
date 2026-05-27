@@ -54,18 +54,10 @@ AIとOSINTで学ぶ情報メディア実践
 
 ## 参考文献・関連資料
 
-- [UNESCO, AI Competency Framework for Students, 2024.](https://www.unesco.org/en/articles/ai-competency-framework-students)
-
-- [UNESCO, Media and Information Literacy Curriculum for Teachers and Learners.](https://www.unesco.org/en/media-information-literacy)
-
-- [Bellingcat, Online Open Source Investigation Toolkit.](https://bellingcat.gitbook.io/toolkit)
-
-- [Bellingcat, First Steps to Getting Started in Open Source Research, 2021.](https://www.bellingcat.com/resources/2021/11/09/first-steps-to-getting-started-in-open-source-research/)
-
-- [Gray, J., Bounegru, L., Milan, S. and Ciuccarelli, P., Ways of Seeing Data: Toward a Critical Literacy for Data Visualizations as Research Objects and Research Devices, 2016.](https://www.researchgate.net/publication/312284929_Ways_of_Seeing_Data_Toward_a_Critical_Literacy_for_Data_Visualizations_as_Research_Objects_and_Research_Devices)
-
-- [Cairo, A., The Truthful Art: Data, Charts, and Maps for Communication, New Riders, 2016.](https://www.peachpit.com/store/truthful-art-data-charts-and-maps-for-communication-9780321934079)
-
-- [東京大学授業カタログ「情報メディア基礎論」。](https://catalog.he.u-tokyo.ac.jp/detail?code=30259)
-
-- 渡邉研究室関連実践資料「AIとOSINTで学ぶ情報メディア実践」。
+- UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students
+- UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum
+- Bellingcat. n.d. Online Open Source Investigation Toolkit. Bellingcat. Retrieved May 27, 2026 from https://bellingcat.gitbook.io/toolkit
+- Bellingcat. 2021. First Steps to Getting Started in Open Source Research. Bellingcat. Retrieved May 27, 2026 from https://www.bellingcat.com/resources/2021/11/09/first-steps-to-getting-started-in-open-source-research/
+- Jonathan Gray, Liliana Bounegru, Stefania Milan, and Paolo Ciuccarelli. 2016. Ways of Seeing Data: Toward a Critical Literacy for Data Visualizations as Research Objects and Research Devices. In Innovative Methods in Media and Communication Research. Retrieved May 27, 2026 from https://www.researchgate.net/publication/312284929_Ways_of_Seeing_Data_Toward_a_Critical_Literacy_for_Data_Visualizations_as_Research_Objects_and_Research_Devices
+- Alberto Cairo. 2016. The Truthful Art: Data, Charts, and Maps for Communication. New Riders. Retrieved May 27, 2026 from https://www.peachpit.com/store/truthful-art-data-charts-and-maps-for-communication-9780321934079
+- 東京大学. n.d. 情報メディア基礎論. 東京大学授業カタログ. Retrieved May 27, 2026 from https://catalog.he.u-tokyo.ac.jp/detail?code=30259

@@ -238,10 +238,11 @@ def parse_docx(docx_path: Path, report_id: str) -> list[Paragraph | str]:
 
 def paragraph_to_markdown(blocks: list[Paragraph | str], report: dict, project: dict) -> tuple[str, list[str], str]:
     lines: list[str] = [frontmatter(report, project), f"# {report['title']}", ""]
-    references: list[str] = []
+    references: list[str] = report.get("references", [])
     abstract_parts: list[str] = []
     saw_title = False
     in_references = False
+    has_reference_overrides = bool(references)
 
     for block in blocks:
         if isinstance(block, str):
@@ -266,15 +267,16 @@ def paragraph_to_markdown(blocks: list[Paragraph | str], report: dict, project: 
             continue
 
         if re.search(r"参考文献|関連研究|参考資料|参照資料", normalized):
-            if not in_references:
+            if not in_references and not has_reference_overrides:
                 lines.extend(["## 参考文献・関連資料", ""])
             in_references = True
             continue
 
         stripped = re.sub(r"^[・•●○]\s*", "", normalized)
         if in_references:
-            references.append(stripped)
-            lines.extend([f"- {stripped}", ""])
+            if not has_reference_overrides:
+                references.append(stripped)
+                lines.extend([f"- {stripped}", ""])
             continue
 
         heading_level = None
@@ -297,6 +299,11 @@ def paragraph_to_markdown(blocks: list[Paragraph | str], report: dict, project: 
 
         if block.image_markdown:
             lines.extend(block.image_markdown + [""])
+
+    if has_reference_overrides:
+        lines.extend(["## 参考文献・関連資料", ""])
+        lines.extend([f"- {ref}" for ref in references])
+        lines.append("")
 
     abstract = clean_text(report.get("abstract") or " ".join(abstract_parts))
     if len(abstract) > 220:
@@ -349,6 +356,49 @@ def chunk_markdown(report: dict, markdown: str, max_chars: int = 1200) -> list[d
                 flush()
     flush()
     return chunks
+
+
+def supplemental_citation(item: dict) -> str:
+    if item.get("citation"):
+        return item["citation"]
+
+    title = item["title"].rstrip(".")
+    url = item["url"]
+    org_match = re.match(r"^([^,]+),\s*(.+),\s*(\d{4})$", title)
+    if org_match:
+        org, work, year = org_match.groups()
+        return f"{org}. {year}. {work}. Retrieved May 27, 2026 from {url}"
+
+    jp_match = re.match(r"^([^『]+)『(.+)』(\d{4})年$", title)
+    if jp_match:
+        org, work, year = jp_match.groups()
+        return f"{org}. {year}. {work}. Retrieved May 27, 2026 from {url}"
+
+    if title.startswith("文化庁『") and title.endswith("』"):
+        return f"文化庁. n.d. {title[4:-1]}. Retrieved May 27, 2026 from {url}"
+
+    if title.startswith("MIT RAISE, "):
+        return f"MIT RAISE. n.d. {title.removeprefix('MIT RAISE, ')}. Retrieved May 27, 2026 from {url}"
+    if title.startswith("Raspberry Pi Foundation and Google DeepMind, "):
+        return f"Raspberry Pi Foundation and Google DeepMind. n.d. {title.removeprefix('Raspberry Pi Foundation and Google DeepMind, ')}. Retrieved May 27, 2026 from {url}"
+    if title.startswith("Harvard University, "):
+        return f"Harvard University. n.d. {title.removeprefix('Harvard University, ')}. Retrieved May 27, 2026 from {url}"
+    if title.startswith("Harvard metaLAB, "):
+        return f"Harvard metaLAB. 2023. {title.removeprefix('Harvard metaLAB, ').removesuffix(', 2023')}. Retrieved May 27, 2026 from {url}"
+    if title.startswith("Khan Academy, "):
+        return f"Khan Academy. n.d. {title.removeprefix('Khan Academy, ')}. Retrieved May 27, 2026 from {url}"
+    if title.startswith("Bellingcat, "):
+        return f"Bellingcat. n.d. {title.removeprefix('Bellingcat, ')}. Retrieved May 27, 2026 from {url}"
+    if title.startswith("Stanford HAI, "):
+        return f"Stanford HAI. 2025. {title.removeprefix('Stanford HAI, ').removesuffix(', 2025')}. Retrieved May 27, 2026 from {url}"
+    if title.startswith("OpenAI, "):
+        return f"OpenAI. 2026. {title.removeprefix('OpenAI, ').removesuffix(', 2026')}. Retrieved May 27, 2026 from {url}"
+    if title.startswith("Google, "):
+        return f"Google. 2026. {title.removeprefix('Google, ').removesuffix(', 2026')}. Retrieved May 27, 2026 from {url}"
+    if title.startswith("GitHub Changelog, "):
+        return f"GitHub. 2026. {title.removeprefix('GitHub Changelog, ').removesuffix(', 2026')}. GitHub Changelog. Retrieved May 27, 2026 from {url}"
+
+    return f"{title}. Retrieved May 27, 2026 from {url}"
 
 
 def write_readme(config: dict, abstracts: dict[str, str]) -> None:
@@ -440,13 +490,14 @@ def write_references(config: dict, references: dict[str, list[str]]) -> None:
         for section in supplemental.get("sections", []):
             lines.extend([f"## {section['title']}", ""])
             for item in section.get("items", []):
-                lines.append(f"- [{item['id']}] [{item['title']}]({item['url']})")
+                citation = supplemental_citation(item)
+                lines.append(f"- [{item['id']}] {citation}")
                 if item.get("note"):
                     lines.append(f"  - 用途: {item['note']}")
                 bib_lines.extend(
                     [
                         f"@misc{{{item['id']},",
-                        f"  title = {{{item['title']}}},",
+                        f"  title = {{{citation}}},",
                         f"  url = {{{item['url']}}},",
                         f"  note = {{{item.get('note', '')}}}",
                         "}",
@@ -609,6 +660,14 @@ def write_prompts() -> None:
 
 def build(config_path: Path) -> None:
     config = json.loads(config_path.read_text(encoding="utf-8"))
+    report_references_path = ROOT / "config" / "report_references.json"
+    report_references = {}
+    if report_references_path.exists():
+        report_references = json.loads(report_references_path.read_text(encoding="utf-8"))
+    report_replacements_path = ROOT / "config" / "report_replacements.json"
+    report_replacements = {}
+    if report_replacements_path.exists():
+        report_replacements = json.loads(report_replacements_path.read_text(encoding="utf-8"))
     project = config["project"]
     abstracts: dict[str, str] = {}
     references: dict[str, list[str]] = {}
@@ -618,11 +677,14 @@ def build(config_path: Path) -> None:
         (ROOT / folder).mkdir(exist_ok=True)
 
     for report in config["reports"]:
+        report["references"] = report_references.get(report["id"], [])
         docx_path = ROOT / report["source_docx"]
         if not docx_path.exists():
             raise FileNotFoundError(f"Missing source DOCX: {docx_path}")
         blocks = parse_docx(docx_path, report["id"])
         markdown, refs, abstract = paragraph_to_markdown(blocks, report, project)
+        for replacement in report_replacements.get(report["id"], []):
+            markdown = markdown.replace(replacement["from"], replacement["to"])
         output_path = ROOT / report["output_md"]
         output_path.parent.mkdir(parents=True, exist_ok=True)
         output_path.write_text(markdown, encoding="utf-8")

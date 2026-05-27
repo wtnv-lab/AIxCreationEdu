@@ -56,14 +56,8 @@ source_docx: "../source-docx/02-photo-colorization-peace-education.docx"
 
 ## 参考文献・関連資料
 
-- 渡邉英徳・庭田杏珠「『記憶の解凍』：カラー化写真をもとにした“フロー”の生成と記憶の継承」『デジタルアーカイブ学会誌』3巻3号，2019年。
-
-- 長崎県立長崎東中学校・高等学校「あの日に色がさすとき――高校生がAIとカラー化した長崎の戦前・戦後」。
-
-- 長崎新聞「戦前戦後の長崎をAIでカラー化 長崎東高生が写真集制作『戦争を自分事に』」2026年4月1日。
-
-- 毎日新聞「戦前の長崎をAIで再現 記憶継承へ，高校生がカラー写真集作成」2026年4月7日。
-
-- NIB NEWS NNN「原爆投下前の長崎の白黒写真をカラー化 高校生が最新技術を活用し挑戦」2025年6月12日，ほか関連記事。
-
-- CAMPFIRE「高校生が挑む持続可能な平和活動のエコシステムを作りたい！」2026年。
+- Hidenori Watanave and Anju Niwata. 2019. 「記憶の解凍」：カラー化写真をもとにした“フロー”の生成と記憶の継承. デジタルアーカイブ学会誌 3, 3 (2019), 317–323. https://doi.org/10.24506/jsda.3.3_317
+- 長崎県立長崎東中学校・高等学校. n.d. WWL・DX: あの日に色がさすとき. Retrieved May 27, 2026 from https://www.news.ed.jp/higashi-h/wwldx.html
+- 長崎県立長崎東中学校・高等学校. 2026. あの日に色がさすとき: 高校生がAIとカラー化した長崎の戦前・戦後. Retrieved May 27, 2026 from https://www.news.ed.jp/higashi-h/img/file13.pdf
+- NCC長崎文化放送. 2026. AIでよみがえる戦前の長崎 高校生が写真集制作. Retrieved May 27, 2026 from https://www.ncctv.co.jp/news/article/16463000
+- 日テレNEWS NNN. 2025. 次世代への継承「原爆投下前の長崎の白黒写真をカラー化」高校生が最新技術を活用し挑戦《長崎》. Retrieved May 27, 2026 from https://news.ntv.co.jp/category/society/ni48845778ff4347bbaedd512c7cdeeece

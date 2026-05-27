@@ -23,7 +23,8 @@
           "id": "unesco-mil-curriculum",
           "title": "UNESCO, Media and Information Literacy Curriculum for Teachers and Learners.",
           "url": "https://www.unesco.org/mil4teachers/en/curriculum",
-          "note": "OSINT、偽情報、デジタルシティズンシップと接続するメディア情報リテラシー教育の参照枠。"
+          "note": "OSINT、偽情報、デジタルシティズンシップと接続するメディア情報リテラシー教育の参照枠。",
+          "citation": "UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum"
         },
         {
           "id": "oecd-digital-education-outlook-2026",
@@ -65,13 +66,15 @@
           "id": "oecd-creative-thinking-topic",
           "title": "OECD, Creative Thinking.",
           "url": "https://www.oecd.org/en/topics/creative-thinking.html",
-          "note": "創造的思考を教育政策・評価へ位置づけるための概要ページ。"
+          "note": "創造的思考を教育政策・評価へ位置づけるための概要ページ。",
+          "citation": "OECD. n.d. Creative Thinking. OECD. Retrieved May 27, 2026 from https://www.oecd.org/en/topics/creative-thinking.html"
         },
         {
           "id": "resnick-lifelong-kindergarten-2017",
           "title": "Mitchel Resnick, Lifelong Kindergarten: Cultivating Creativity through Projects, Passion, Peers, and Play, MIT Press, 2017.",
           "url": "https://mitpress.mit.edu/9780262037297/",
-          "note": "プロジェクト、情熱、仲間、遊びを軸にした創造的学習の基礎文献。AI時代の制作教育との接続が強い。"
+          "note": "プロジェクト、情熱、仲間、遊びを軸にした創造的学習の基礎文献。AI時代の制作教育との接続が強い。",
+          "citation": "Mitchel Resnick. 2017. Lifelong Kindergarten: Cultivating Creativity through Projects, Passion, Peers, and Play. MIT Press. Retrieved May 27, 2026 from https://mitpress.mit.edu/9780262037297/"
         },
         {
           "id": "resnick-four-ps-2014",
@@ -125,7 +128,8 @@
           "id": "cs50-ai-duck-2024",
           "title": "Liu et al., Teaching CS50 with AI: Leveraging Generative Artificial Intelligence in Computer Science Education, SIGCSE 2024.",
           "url": "https://cs.harvard.edu/malan/publications/V1fp0567-liu.pdf",
-          "note": "CS50のAI Duck Debuggerなど、AIを答えの代替ではなく学習支援として設計する事例。"
+          "note": "CS50のAI Duck Debuggerなど、AIを答えの代替ではなく学習支援として設計する事例。",
+          "citation": "Michael Liu, Mark Wang, Manaswi Prabhakar, and David J. Malan. 2024. Teaching CS50 with AI: Leveraging Generative Artificial Intelligence in Computer Science Education. In Proceedings of the 55th ACM Technical Symposium on Computer Science Education (SIGCSE 2024). Retrieved May 27, 2026 from https://cs.harvard.edu/malan/publications/V1fp0567-liu.pdf"
         },
         {
           "id": "khanmigo-responsible-ai",
@@ -155,19 +159,22 @@
           "id": "peng-copilot-productivity-2023",
           "title": "Peng et al., The Impact of AI on Developer Productivity: Evidence from GitHub Copilot, 2023.",
           "url": "https://arxiv.org/abs/2302.06590",
-          "note": "AIによる実装支援が生産性へ与える影響を扱う研究。ハッカソンや実装教育の根拠資料。"
+          "note": "AIによる実装支援が生産性へ与える影響を扱う研究。ハッカソンや実装教育の根拠資料。",
+          "citation": "Sidney Peng, Eirini Kalliamvakou, Peter Cihon, and Mert Demirer. 2023. The Impact of AI on Developer Productivity: Evidence from GitHub Copilot. arXiv:2302.06590. Retrieved May 27, 2026 from https://arxiv.org/abs/2302.06590"
         },
         {
           "id": "genai-higher-ed-policy-2023",
           "title": "Moorhouse et al., Generative AI in Higher Education: Seeing ChatGPT Through Universities' Policies, Resources, and Guidelines, 2023.",
           "url": "https://arxiv.org/abs/2312.05235",
-          "note": "大学が生成AIをどう方針化し、教育リソース化しているかを比較する資料。"
+          "note": "大学が生成AIをどう方針化し、教育リソース化しているかを比較する資料。",
+          "citation": "Benjamin L. Moorhouse et al. 2023. Generative AI in Higher Education: Seeing ChatGPT Through Universities’ Policies, Resources, and Guidelines. arXiv:2312.05235. Retrieved May 27, 2026 from https://arxiv.org/abs/2312.05235"
         },
         {
           "id": "genai-education-systematic-review-2024",
           "title": "A Systematic Review of Generative AI for Teaching and Learning Practice, 2024.",
           "url": "https://arxiv.org/abs/2406.09520",
-          "note": "生成AIの教授・学習実践研究を俯瞰し、実装前の論点整理に役立つレビュー。"
+          "note": "生成AIの教授・学習実践研究を俯瞰し、実装前の論点整理に役立つレビュー。",
+          "citation": "A Systematic Review of Generative AI for Teaching and Learning Practice. 2024. arXiv:2406.09520. Retrieved May 27, 2026 from https://arxiv.org/abs/2406.09520"
         },
         {
           "id": "bellingcat-toolkit",
@@ -197,7 +204,8 @@
           "id": "github-copilot-gpt-5-5",
           "title": "GitHub Changelog, GPT-5.5 is generally available for GitHub Copilot, 2026.",
           "url": "https://github.blog/changelog/2026-04-24-gpt-5-5-is-generally-available-for-github-copilot/",
-          "note": "GitHub CopilotにおけるGPT-5.5の利用可能性確認に使用。"
+          "note": "GitHub CopilotにおけるGPT-5.5の利用可能性確認に使用。",
+          "citation": "GitHub. 2026. GPT-5.5 is generally available for GitHub Copilot. GitHub Changelog. Retrieved May 27, 2026 from https://github.blog/changelog/2026-04-24-gpt-5-5-is-generally-available-for-github-copilot/"
         }
       ]
     }

@@ -56,14 +56,8 @@ AIは，この学習過程をさらに拡張する。たとえば，白黒写真
 
 ## 参考文献・関連資料
 
-- 大井将生・渡邉英徳「ジャパンサーチを活用した小中高でのキュレーション授業デザイン：デジタルアーカイブの教育活用意義と可能性」『デジタルアーカイブ学会誌』4(4)，2020。
-
-- 大井将生・宮田諭志・大野健人・大向一輝・渡邉英徳「デジタルアーカイブを活用したキュレーション学習モデル：探究学習における『問い』と『資料』の接続」『デジタルアーカイブ学会誌』7(1)，2023。
-
-- 大井将生・宮田諭志・渡邉英徳「AIによる白黒写真の自動カラー化を活用した歴史を『自分ごととして』考えるきっかけを作る教材の開発」。
-
-- 大井将生・渡邉英徳「S×UKILAM連携：多様な資料を学校教育で活用するための『人』と『データ』のネットワーク構築」『デジタルアーカイブ学会誌』6(S3)，2022。
-
-- UNESCO, AI Competency Framework for Students, 2024.
-
-- UNESCO, Media and Information Literacy Curriculum for Teachers and Learners.
+- Masao Oi and Hidenori Watanave. 2020. ジャパンサーチを活用した小中高でのキュレーション授業デザイン：デジタルアーカイブの教育活用意義と可能性. デジタルアーカイブ学会誌 4, 4 (2020), 352–359. https://doi.org/10.24506/jsda.4.4_352
+- Masao Oi and Hidenori Watanave. 2022. S×UKILAM連携：多様な資料を学校教育で活用するための「人」と「データ」のネットワーク構築. デジタルアーカイブ学会誌 6, s3 (2022), s214–s217. https://doi.org/10.24506/jsda.6.s3_s214
+- ADEAC. n.d. S×UKILAM：Primary Source Sets／スキラム連携：多様な資料を活用した教材アーカイブ. Retrieved May 27, 2026 from https://adeac.jp/adeac-lab/top/sxukilam/index.html
+- UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students
+- UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum

@@ -56,18 +56,11 @@ source_docx: "../source-docx/04-student-hackathon.docx"
 
 ## 参考文献・関連資料
 
-- [Wing, J. M., “Computational Thinking,” Communications of the ACM, 2006.](https://dl.acm.org/doi/10.1145/1118178.1118215)
-
-- [Peng, S. et al., “The Impact of AI on Developer Productivity: Evidence from GitHub Copilot,” 2023.](https://arxiv.org/abs/2302.06590)
-
-- [UNESCO, AI Competency Framework for Students, 2024.](https://www.unesco.org/en/articles/ai-competency-framework-students)
-
-- [OECD, AI and the Future of Skills, Volume 2, 2023.](https://www.oecd.org/en/publications/ai-and-the-future-of-skills-volume-2_a9fe53cb-en.html)
-
-- [東京大学大学院情報学環「Hack-1グランプリ2025」開催レポート。](https://www.iii.u-tokyo.ac.jp/research/20250725report)
-
-- [東京大学大学院情報学環「Hack-1グランプリ2026」告知。](https://www.iii.u-tokyo.ac.jp/event/20260404event)
-
-- [GMO Developers「Hack-1グランプリ2026 デモデーレポート」。](https://developers.gmo.jp/events/)
-
-- [日テレ共創ラボ「日テレ クリエイティブメディアハッカソン開催レポート」。](https://lab.ntvhd.co.jp/topics/2026/04/post-24.html)
+- Jeannette M. Wing. 2006. Computational Thinking. Communications of the ACM 49, 3 (March 2006), 33–35. https://doi.org/10.1145/1118178.1118215
+- Sidney Peng, Eirini Kalliamvakou, Peter Cihon, and Mert Demirer. 2023. The Impact of AI on Developer Productivity: Evidence from GitHub Copilot. arXiv:2302.06590. Retrieved May 27, 2026 from https://arxiv.org/abs/2302.06590
+- UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students
+- OECD. 2023. AI and the Future of Skills, Volume 2. OECD Publishing. https://doi.org/10.1787/a9fe53cb-en
+- 東京大学大学院情報学環・学際情報学府. 2025. Hack-1グランプリ2025 開催レポート. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/research/20250725report
+- 東京大学大学院情報学環・学際情報学府. 2026. Hack-1グランプリ2026 告知. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/event/20260404event
+- GMO Developers. n.d. Events. GMO Developers. Retrieved May 27, 2026 from https://developers.gmo.jp/events/
+- 日テレ共創ラボ. 2026. 日テレ クリエイティブメディアハッカソン開催レポート. Retrieved May 27, 2026 from https://lab.ntvhd.co.jp/topics/2026/04/post-24.html

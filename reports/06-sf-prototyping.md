@@ -54,18 +54,10 @@ SFプロトタイピングは，サイエンス・フィクションの発想を
 
 ## 参考文献・関連資料
 
-- Brian David Johnson, Science Fiction Prototyping: Designing the Future with Science Fiction, Morgan & Claypool, 2011.
-
-- 宮本道人・難波優輝・大澤博隆『SFプロトタイピング：SFからイノベーションを生み出す新戦略』早川書房，2021。
-
-- 楊欽・渡邉英徳「小説家不要のSFプロトタイピングワークショップ手法の提案：生成AIとの共同作業によるストーリーテリング支援」人工知能学会全国大会，2024。 [https://www.jstage.jst.go.jp/article/pjsai/JSAI2024/0/JSAI2024_2A4GS1004/_article/-char/ja/](https://www.jstage.jst.go.jp/article/pjsai/JSAI2024/0/JSAI2024_2A4GS1004/_article/-char/ja/)
-
-- 楊欽・渡邉英徳「SFプロトタイピングにおける生成AIの活用：ストーリー共創を促すワークショップデザイン」投稿論文稿，2025。
-
-- Jakob Tholander and Martin Jonsson, “Design Ideation with AI,” ACM DIS, 2023. [https://dl.acm.org/doi/10.1145/3563657.3596014](https://dl.acm.org/doi/10.1145/3563657.3596014)
-
-- Haoran Chu and Sixiao Liu, “Can AI Tell Good Stories? Narrative Transportation and Persuasion with ChatGPT,” 2023.
-
-- 東京大学「グローバルインターンシッププログラム・企業協創プログラム」関連情報。 [https://www.u-tokyo.ac.jp/ja/students/special-activities/ugip.html](https://www.u-tokyo.ac.jp/ja/students/special-activities/ugip.html)
-
-- ダイキン工業・東京大学「問いから考える包括連携と協創」関連発表。 [https://www.daikin.co.jp/press/2018/20181217](https://www.daikin.co.jp/press/2018/20181217)
+- Brian David Johnson. 2011. Science Fiction Prototyping: Designing the Future with Science Fiction. Morgan & Claypool. https://doi.org/10.2200/S00336ED1V01Y201102CSL003
+- 宮本道人, 難波優輝, and 大澤博隆. 2021. SFプロトタイピング：SFからイノベーションを生み出す新戦略. 早川書房.
+- Qin Yang and Hidenori Watanave. 2024. 小説家不要のSFプロトタイピングワークショップ手法の提案：生成AIとの共同作業によるストーリーテリング支援. In 2024年度人工知能学会全国大会（第38回）. https://doi.org/10.11517/pjsai.JSAI2024.0_2A4GS1004
+- Jakob Tholander and Martin Jonsson. 2023. Design Ideation with AI. In Proceedings of the 2023 ACM Designing Interactive Systems Conference (DIS '23). ACM, 1934–1946. https://doi.org/10.1145/3563657.3596014
+- Haoran Chu and Sixiao Liu. 2024. Can AI tell good stories? Narrative transportation and persuasion with ChatGPT. Journal of Communication 74, 5 (October 2024), 347–358. https://doi.org/10.1093/joc/jqae029
+- 東京大学. n.d. グローバルインターンシッププログラム・企業協創プログラム. Retrieved May 27, 2026 from https://www.u-tokyo.ac.jp/ja/students/special-activities/ugip.html
+- ダイキン工業. 2018. 東京大学とダイキン工業「空気の価値化」を目指す産学協創協定を締結. Retrieved May 27, 2026 from https://www.daikin.co.jp/press/2018/20181217
