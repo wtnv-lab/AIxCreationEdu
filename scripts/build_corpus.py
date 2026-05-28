@@ -89,21 +89,13 @@ AI_REPORT_LIST_FIELDS = [
 
 
 def report_metadata_markdown(report: dict, project: dict) -> str:
-    lines = [
-        "## メタデータ",
-        "",
-        f"- ID: `{report['id']}`",
-        f"- プロジェクト: {project['title']}",
-        f"- 日付: {project['date']}",
-        f"- バージョン: {project['version']}",
-        f"- 種別: {report['kind']}",
-        f"- 概要: {report.get('abstract', '')}",
-        f"- 著者: {', '.join(report_authors(report, project))}",
-        "",
-        "### 想定読者",
-        "",
-        *[f"- {audience}" for audience in report_audience(report, project)],
-    ]
+    def cell(value: str | list[str]) -> str:
+        if isinstance(value, list):
+            text = "<br>".join(value)
+        else:
+            text = value
+        return text.replace("|", "\\|").replace("\n", "<br>")
+
     metadata_labels = {
         "key_takeaways": "主要示唆",
         "use_cases": "活用場面",
@@ -111,28 +103,36 @@ def report_metadata_markdown(report: dict, project: dict) -> str:
         "implementation_ideas": "実装アイデア",
         "related_reports": "関連レポート",
     }
+    rows: list[tuple[str, str | list[str]]] = [
+        ("ID", f"`{report['id']}`"),
+        ("プロジェクト", project["title"]),
+        ("日付", project["date"]),
+        ("バージョン", project["version"]),
+        ("種別", report["kind"]),
+        ("概要", report.get("abstract", "")),
+        ("著者", report_authors(report, project)),
+        ("想定読者", report_audience(report, project)),
+    ]
     for field in AI_REPORT_LIST_FIELDS:
         values = report.get(field, [])
         if values:
-            lines.extend(["", f"### {metadata_labels[field]}", "", *[f"- {value}" for value in values]])
+            rows.append((metadata_labels[field], values))
     if report.get("citation_note"):
-        lines.extend(["", "### 引用メモ", "", report["citation_note"]])
-    lines.extend(
+        rows.append(("引用メモ", report["citation_note"]))
+    rows.extend(
         [
-            "",
-            "### テーマ",
-            "",
-            *[f"- {theme}" for theme in report["themes"]],
-            "",
-            "### キーワード",
-            "",
-            *[f"- {keyword}" for keyword in report["keywords"]],
-            "",
-            "### ライセンス",
-            "",
-            project["license"],
+            ("テーマ", report["themes"]),
+            ("キーワード", report["keywords"]),
+            ("ライセンス", project["license"]),
         ]
     )
+    lines = [
+        "## メタデータ",
+        "",
+        "| 項目 | 内容 |",
+        "| --- | --- |",
+        *[f"| {label} | {cell(value)} |" for label, value in rows],
+    ]
     return "\n".join(lines)
 
 
