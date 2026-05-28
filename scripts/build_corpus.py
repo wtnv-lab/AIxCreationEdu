@@ -11,7 +11,6 @@ import argparse
 import html
 import json
 import re
-import shutil
 import textwrap
 from dataclasses import dataclass
 from pathlib import Path
@@ -246,8 +245,7 @@ def parse_table(table: ET.Element, rels: dict[str, str], zf: ZipFile, assets_dir
 
 def parse_docx(docx_path: Path, report_id: str) -> list[Paragraph | str]:
     assets_dir = ROOT / "assets" / report_id
-    if assets_dir.exists():
-        shutil.rmtree(assets_dir)
+    assets_dir.mkdir(parents=True, exist_ok=True)
 
     blocks: list[Paragraph | str] = []
     with ZipFile(docx_path) as zf:
@@ -680,6 +678,26 @@ def write_figures_metadata() -> None:
             "source": "ユーザー提供Wordファイルから抽出",
             "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
             "related_sections": ["AI時代の平和教育に向けて"],
+        },
+        {
+            "id": "05-sukilam-workshop",
+            "report_id": "05-digital-archive-ai",
+            "path": "assets/05-digital-archive-ai/sukilam-workshop.png",
+            "alt": "S×UKILAMワークショップのコンセプトを示す教室写真ベースの図版",
+            "caption": "S×UKILAMワークショップのコンセプト：多様な資料から教材を共創する",
+            "source": "ユーザー提供画像 図1.png",
+            "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+            "related_sections": ["デジタルアーカイブとAIを活かした教育実践"],
+        },
+        {
+            "id": "05-sukilam-network",
+            "report_id": "05-digital-archive-ai",
+            "path": "assets/05-digital-archive-ai/sukilam-network.png",
+            "alt": "S×UKILAM連携における人とデータのネットワーク構造を示す図",
+            "caption": "S×UKILAM連携における「人」と「データ」のネットワーク",
+            "source": "ユーザー提供画像 図2.png",
+            "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+            "related_sections": ["デジタルアーカイブとAIを活かした教育実践"],
         },
     ]
     (ROOT / "metadata" / "figures.json").write_text(json.dumps(figures, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

@@ -34,5 +34,29 @@
     "related_sections": [
       "AI時代の平和教育に向けて"
     ]
+  },
+  {
+    "id": "05-sukilam-workshop",
+    "report_id": "05-digital-archive-ai",
+    "path": "assets/05-digital-archive-ai/sukilam-workshop.png",
+    "alt": "S×UKILAMワークショップのコンセプトを示す教室写真ベースの図版",
+    "caption": "S×UKILAMワークショップのコンセプト：多様な資料から教材を共創する",
+    "source": "ユーザー提供画像 図1.png",
+    "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+    "related_sections": [
+      "デジタルアーカイブとAIを活かした教育実践"
+    ]
+  },
+  {
+    "id": "05-sukilam-network",
+    "report_id": "05-digital-archive-ai",
+    "path": "assets/05-digital-archive-ai/sukilam-network.png",
+    "alt": "S×UKILAM連携における人とデータのネットワーク構造を示す図",
+    "caption": "S×UKILAM連携における「人」と「データ」のネットワーク",
+    "source": "ユーザー提供画像 図2.png",
+    "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+    "related_sections": [
+      "デジタルアーカイブとAIを活かした教育実践"
+    ]
   }
 ]
