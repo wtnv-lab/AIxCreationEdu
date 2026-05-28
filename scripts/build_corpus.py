@@ -456,7 +456,7 @@ def write_readme(config: dict, abstracts: dict[str, str]) -> None:
     report_lines = []
     for report in config["reports"]:
         report_lines.append(
-            f"- [{report['title']}]({report['output_md']})（著者: {', '.join(report_authors(report, project))}）: {abstracts.get(report['id'], '')}"
+            f"- [{report['title']}]({report['output_md']}): {abstracts.get(report['id'], '')}"
         )
 
     readme = f"""# {project['title']}
