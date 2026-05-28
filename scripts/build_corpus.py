@@ -88,36 +88,49 @@ AI_REPORT_LIST_FIELDS = [
 ]
 
 
-def frontmatter(report: dict, project: dict) -> str:
+def report_metadata_markdown(report: dict, project: dict) -> str:
     lines = [
-        "---",
-        f'id: "{report["id"]}"',
-        f'title: "{report["title"]}"',
-        f'project: "{project["title"]}"',
-        f'date: "{project["date"]}"',
-        f'version: "{project["version"]}"',
-        f'kind: "{report["kind"]}"',
-        f'abstract: "{report.get("abstract", "")}"',
-        "audience:",
-        yaml_list(report_audience(report, project)),
-        "authors:",
-        yaml_list(report_authors(report, project)),
+        "## メタデータ",
+        "",
+        f"- ID: `{report['id']}`",
+        f"- プロジェクト: {project['title']}",
+        f"- 日付: {project['date']}",
+        f"- バージョン: {project['version']}",
+        f"- 種別: {report['kind']}",
+        f"- 概要: {report.get('abstract', '')}",
+        f"- 著者: {', '.join(report_authors(report, project))}",
+        "",
+        "### 想定読者",
+        "",
+        *[f"- {audience}" for audience in report_audience(report, project)],
     ]
+    metadata_labels = {
+        "key_takeaways": "主要示唆",
+        "use_cases": "活用場面",
+        "learning_activities": "学習活動案",
+        "implementation_ideas": "実装アイデア",
+        "related_reports": "関連レポート",
+    }
     for field in AI_REPORT_LIST_FIELDS:
         values = report.get(field, [])
         if values:
-            lines.extend([f"{field}:", yaml_list(values)])
+            lines.extend(["", f"### {metadata_labels[field]}", "", *[f"- {value}" for value in values]])
     if report.get("citation_note"):
-        lines.append(f'citation_note: "{report["citation_note"]}"')
+        lines.extend(["", "### 引用メモ", "", report["citation_note"]])
     lines.extend(
         [
-            "themes:",
-            yaml_list(report["themes"]),
-            "keywords:",
-            yaml_list(report["keywords"]),
-            f'license: "{project["license"]}"',
-            "---",
             "",
+            "### テーマ",
+            "",
+            *[f"- {theme}" for theme in report["themes"]],
+            "",
+            "### キーワード",
+            "",
+            *[f"- {keyword}" for keyword in report["keywords"]],
+            "",
+            "### ライセンス",
+            "",
+            project["license"],
         ]
     )
     return "\n".join(lines)
@@ -264,7 +277,7 @@ def parse_docx(docx_path: Path, report_id: str) -> list[Paragraph | str]:
 
 
 def paragraph_to_markdown(blocks: list[Paragraph | str], report: dict, project: dict) -> tuple[str, list[str], str]:
-    lines: list[str] = [frontmatter(report, project), f"# {report['title']}", ""]
+    lines: list[str] = [f"# {report['title']}", ""]
     references: list[str] = report.get("references", [])
     abstract_parts: list[str] = []
     saw_title = False
@@ -335,6 +348,7 @@ def paragraph_to_markdown(blocks: list[Paragraph | str], report: dict, project: 
     abstract = clean_text(report.get("abstract") or " ".join(abstract_parts))
     if len(abstract) > 220:
         abstract = abstract[:220].rstrip() + "..."
+    lines.extend(["", report_metadata_markdown(report | {"abstract": abstract}, project), ""])
     return "\n".join(lines).strip() + "\n", references, abstract
 
 
@@ -386,11 +400,18 @@ def chunk_markdown(report: dict, markdown: str, max_chars: int = 1200) -> list[d
         current_lines = []
 
     in_frontmatter = False
+    in_report_metadata = False
     for line in markdown.splitlines():
         if line == "---":
             in_frontmatter = not in_frontmatter
             continue
         if in_frontmatter:
+            continue
+        if line.startswith("## メタデータ"):
+            flush()
+            in_report_metadata = True
+            continue
+        if in_report_metadata:
             continue
         if line.startswith("## "):
             flush()
