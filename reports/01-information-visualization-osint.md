@@ -12,17 +12,7 @@ audience:
   - "OSINTや調査報道の基礎を教育・研修化したい報道関係者"
   - "公開情報の検証と社会的説明を扱う教材・サービス企画者"
 authors:
-  - affiliation: "東京大学 大学院情報学環・学際情報学府"
-    members:
-      - "教授 [渡邉英徳](https://researchmap.jp/hwtnv)"
-      - "特任准教授 [原田真喜子](https://researchmap.jp/kokima)（都留文科大学 地域交流研究センター 特任講師）"
-      - "博士後期課程 [小松尚平](https://researchmap.jp/komanbe)"
-      - "博士後期課程 [片山実咲](https://researchmap.jp/misaki_katayama)"
-      - "博士後期課程 [楊欽](https://researchmap.jp/kevinyang)"
-      - "博士後期課程 [森吉蓉子](https://researchmap.jp/ymoriyos)"
-  - affiliation: "同志社大学 文化情報学府"
-    members:
-      - "准教授 [大井将生](https://researchmap.jp/m-oi)"
+  - "渡邉英徳"
 themes:
   - "生成AI"
   - "情報可視化"

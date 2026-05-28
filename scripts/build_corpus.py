@@ -75,6 +75,10 @@ def report_audience(report: dict, project: dict) -> list[str]:
     return report.get("audience") or project["audience"]
 
 
+def report_authors(report: dict, project: dict) -> list[str]:
+    return report.get("authors") or author_plain_list(project)
+
+
 def frontmatter(report: dict, project: dict) -> str:
     lines = [
         "---",
@@ -88,11 +92,8 @@ def frontmatter(report: dict, project: dict) -> str:
         "audience:",
         yaml_list(report_audience(report, project)),
         "authors:",
+        yaml_list(report_authors(report, project)),
     ]
-    for group in project.get("authors", []):
-        lines.append(f'  - affiliation: "{group["affiliation"]}"')
-        lines.append("    members:")
-        lines.append(yaml_list(group.get("members", []), indent=6))
     lines.extend(
         [
             "themes:",
@@ -330,6 +331,7 @@ def chunk_markdown(report: dict, markdown: str, max_chars: int = 1200) -> list[d
                     "report_id": report["id"],
                     "title": report["title"],
                     "section": current_heading,
+                    "authors": report.get("authors", []),
                     "audience": report.get("audience", []),
                     "themes": report["themes"],
                     "keywords": report["keywords"],
@@ -409,7 +411,9 @@ def write_readme(config: dict, abstracts: dict[str, str]) -> None:
     project = config["project"]
     report_lines = []
     for report in config["reports"]:
-        report_lines.append(f"- [{report['title']}]({report['output_md']}): {abstracts.get(report['id'], '')}")
+        report_lines.append(
+            f"- [{report['title']}]({report['output_md']})（著者: {', '.join(report_authors(report, project))}）: {abstracts.get(report['id'], '')}"
+        )
 
     readme = f"""# {project['title']}
 
@@ -501,9 +505,9 @@ def write_metadata(config: dict, abstracts: dict[str, str], chunks: list[dict]) 
     reports = []
     for report in config["reports"]:
         item = {k: report[k] for k in ["id", "title", "kind", "themes", "keywords", "output_md"]}
+        item["authors"] = report_authors(report, project)
         item["audience"] = report_audience(report, project)
         item["abstract"] = abstracts.get(report["id"], "")
-        item["authors"] = project.get("authors", [])
         reports.append(item)
     (ROOT / "metadata" / "reports.json").write_text(json.dumps(reports, ensure_ascii=False, indent=2), encoding="utf-8")
     with (ROOT / "metadata" / "chunks.jsonl").open("w", encoding="utf-8") as f:
@@ -540,12 +544,15 @@ def write_llms(config: dict, abstracts: dict[str, str]) -> None:
         "",
     ]
     for report in config["reports"]:
-        report_links.append(f"- [{report['title']}]({report['output_md']}): {abstracts.get(report['id'], '')}")
+        report_links.append(
+            f"- [{report['title']}]({report['output_md']})（著者: {', '.join(report_authors(report, project))}）: {abstracts.get(report['id'], '')}"
+        )
         full_sections.extend(
             [
                 f"### {report['title']}",
                 "",
                 f"- ファイル: [`{report['output_md']}`]({report['output_md']})",
+                f"- 著者: {', '.join(report_authors(report, project))}",
                 f"- 想定読者: {', '.join(report_audience(report, project))}",
                 f"- テーマ: {', '.join(report['themes'])}",
                 f"- キーワード: {', '.join(report['keywords'])}",
@@ -665,6 +672,7 @@ def build(config_path: Path) -> None:
         (ROOT / folder).mkdir(exist_ok=True)
 
     for report in config["reports"]:
+        report["authors"] = report_authors(report, project)
         report["audience"] = report_audience(report, project)
         report["references"] = report_references.get(report["id"], [])
         source_docx = report.get("source_docx", f"source-docx/{report['id']}.docx")
