@@ -71,6 +71,10 @@ def ai_collaborator_markdown(project: dict) -> str:
     return "\n".join(lines)
 
 
+def report_audience(report: dict, project: dict) -> list[str]:
+    return report.get("audience") or project["audience"]
+
+
 def frontmatter(report: dict, project: dict) -> str:
     lines = [
         "---",
@@ -82,7 +86,7 @@ def frontmatter(report: dict, project: dict) -> str:
         f'kind: "{report["kind"]}"',
         f'abstract: "{report.get("abstract", "")}"',
         "audience:",
-        yaml_list(project["audience"]),
+        yaml_list(report_audience(report, project)),
         "authors:",
     ]
     for group in project.get("authors", []):
@@ -326,6 +330,7 @@ def chunk_markdown(report: dict, markdown: str, max_chars: int = 1200) -> list[d
                     "report_id": report["id"],
                     "title": report["title"],
                     "section": current_heading,
+                    "audience": report.get("audience", []),
                     "themes": report["themes"],
                     "keywords": report["keywords"],
                     "text": text,
@@ -496,6 +501,7 @@ def write_metadata(config: dict, abstracts: dict[str, str], chunks: list[dict]) 
     reports = []
     for report in config["reports"]:
         item = {k: report[k] for k in ["id", "title", "kind", "themes", "keywords", "output_md"]}
+        item["audience"] = report_audience(report, project)
         item["abstract"] = abstracts.get(report["id"], "")
         item["authors"] = project.get("authors", [])
         reports.append(item)
@@ -540,6 +546,7 @@ def write_llms(config: dict, abstracts: dict[str, str]) -> None:
                 f"### {report['title']}",
                 "",
                 f"- ファイル: [`{report['output_md']}`]({report['output_md']})",
+                f"- 想定読者: {', '.join(report_audience(report, project))}",
                 f"- テーマ: {', '.join(report['themes'])}",
                 f"- キーワード: {', '.join(report['keywords'])}",
                 f"- 概要: {abstracts.get(report['id'], '')}",
@@ -658,6 +665,7 @@ def build(config_path: Path) -> None:
         (ROOT / folder).mkdir(exist_ok=True)
 
     for report in config["reports"]:
+        report["audience"] = report_audience(report, project)
         report["references"] = report_references.get(report["id"], [])
         source_docx = report.get("source_docx", f"source-docx/{report['id']}.docx")
         docx_path = ROOT / source_docx
