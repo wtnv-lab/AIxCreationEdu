@@ -1,0 +1,91 @@
+[
+  {
+    "term": "生成AI",
+    "reading": "せいせいAI",
+    "definition": "テキスト、画像、コードなどを生成するAI。各レポートでは、学習者の構想、検証、編集を支援する伴走者として位置づける。",
+    "related_reports": [
+      "00-overview",
+      "03-digital-citizenship",
+      "04-student-hackathon",
+      "06-sf-prototyping"
+    ]
+  },
+  {
+    "term": "情報可視化",
+    "reading": "じょうほうかしか",
+    "definition": "データや公開情報を地図、図表、タイムラインなどに変換し、関係性や偏りを読み解けるようにする方法。",
+    "related_reports": [
+      "01-information-visualization-osint",
+      "05-digital-archive-ai"
+    ]
+  },
+  {
+    "term": "OSINT",
+    "reading": "おーしんと",
+    "definition": "公開情報を収集、照合、検証して分析する手法。教育では根拠に基づく推論と説明責任を学ぶ題材になる。",
+    "related_reports": [
+      "01-information-visualization-osint",
+      "03-digital-citizenship"
+    ]
+  },
+  {
+    "term": "GIS",
+    "reading": "じーあいえす",
+    "definition": "地理情報を扱うシステムや方法。地域課題、災害、都市、文化資源などを空間的に分析する学習に使える。",
+    "related_reports": [
+      "01-information-visualization-osint"
+    ]
+  },
+  {
+    "term": "AIカラー化",
+    "reading": "えーあいからーか",
+    "definition": "白黒写真にAIで色を付ける処理。平和教育では、復元の正確さだけでなく資料批判と記憶継承の対話を促す入口になる。",
+    "related_reports": [
+      "02-photo-colorization-peace-education",
+      "05-digital-archive-ai"
+    ]
+  },
+  {
+    "term": "デジタルシティズンシップ",
+    "reading": "でじたるしてぃずんしっぷ",
+    "definition": "デジタル技術のある社会で、情報を判断し、他者や公共性を考えながら参加する力。",
+    "related_reports": [
+      "03-digital-citizenship"
+    ]
+  },
+  {
+    "term": "デジタルアーカイブ",
+    "reading": "でじたるあーかいぶ",
+    "definition": "資料をデジタル化して保存・公開・活用する仕組み。各レポートでは探究学習や資料再編集の基盤として扱う。",
+    "related_reports": [
+      "02-photo-colorization-peace-education",
+      "05-digital-archive-ai"
+    ]
+  },
+  {
+    "term": "ハッカソン",
+    "reading": "はっかそん",
+    "definition": "短期間で課題発見、アイデア創出、プロトタイプ制作、発表を行う実践形式。生成AI時代には発想と検証の比重が高まる。",
+    "related_reports": [
+      "04-student-hackathon",
+      "06-sf-prototyping"
+    ]
+  },
+  {
+    "term": "SFプロトタイピング",
+    "reading": "えすえふぷろとたいぴんぐ",
+    "definition": "未来社会の物語や世界観を作り、それを批判・修正しながら現在の選択肢を考える手法。",
+    "related_reports": [
+      "06-sf-prototyping",
+      "04-student-hackathon"
+    ]
+  },
+  {
+    "term": "RAG",
+    "reading": "らぐ",
+    "definition": "検索で取得した資料を根拠にAIが回答する仕組み。このリポジトリではmetadata/chunks.jsonlを主な検索単位として想定する。",
+    "related_reports": [
+      "00-overview"
+    ]
+  }
+]

@@ -41,9 +41,12 @@ This repository publishes Markdown reports and AI-readable metadata for planning
 - [Full AI context](llms-full.md): Consolidated overview of all reports.
 - [Report metadata](metadata/reports.json): Machine-readable report index.
 - [Chunked corpus](metadata/chunks.jsonl): Section-level JSONL for retrieval and analysis.
+- [Glossary](metadata/glossary.json): Terms and short definitions for AI/RAG grounding.
+- [Figure metadata](metadata/figures.json): Captions, alt text, and source notes for visual assets.
 - [References](references/references.md): Extracted references and related cases.
 - [Supplemental references](references/references.md#追加推奨リファレンス): Curated references from web research covering 政策・ガイドライン, 創造性・学習理論, AIリテラシー・教育実践事例, AI社会動向・実証研究, AI協働ツールの最新版確認.
 
 ## Optional
 
 - [Build script](scripts/build_corpus.py): Converts local DOCX sources into Markdown and metadata.
+- [Prompts](prompts/): Reusable prompts for lesson planning, service design, comparison, citation-aware answering, and implementation roadmaps.
