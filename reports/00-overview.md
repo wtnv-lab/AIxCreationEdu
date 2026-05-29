@@ -1,14 +1,14 @@
 # AIとクリエイティブと教育 総括レポート
 
-生成AIの普及は，教育における「クリエイティブ」の意味を，制作技能の獲得から，問いを立て，素材を読み解き，社会に届く表現へ編集する力へと移しつつある。文章，映像，コード，地図，データ分析，発表資料といった制作のハードルは下がった[2]。しかし，それは人間の役割が小さくなることを意味しない。むしろ教育の焦点は，「何を問うのか」「どの資料を信頼するのか」「誰にどのような価値を届けるのか」「AIの出力をどのように検証し，責任ある表現へ仕上げるのか」に移っている。本レポート集は，AIを使う教育ではなく，AIとともに考え，つくり，確かめ，社会へ接続する教育を構想するための資料である。
+生成AIの普及は，教育における「クリエイティブ」の意味を，制作技能の獲得から，問いを立て，素材を読み解き，社会に届く表現へ編集する力へと移しつつある。文章，映像，コード，地図，データ分析，発表資料といった制作のハードルは下がった[1]。しかし，それは人間の役割が小さくなることを意味しない。むしろ教育の焦点は，「何を問うのか」「どの資料を信頼するのか」「誰にどのような価値を届けるのか」「AIの出力をどのように検証し，責任ある表現へ仕上げるのか」に移っている。本レポート集は，AIを使う教育ではなく，AIとともに考え，つくり，確かめ，社会へ接続する教育を構想するための資料である。
 
-七篇の実践レポートに共通するのは，AIを単なる効率化ツールではなく，学習者の構想力，編集力，批判的思考を拡張する伴走者として位置づけている点である。AIは制作や調査を速めるが，問いを立て，根拠を選び，出力を検証し，誰に何を届けるのかを決めるのは人間である。[AIと情報可視化・OSINT教育](01-information-visualization-osint.md)は，この責任ある利用を，公開情報の検証と社会的説明の実践へ広げる。学生はAIS，衛星画像，公開報道，SNS上の専門的知見などを組み合わせ，不確実な情報を検証する過程を学ぶ。ここで生成AIは，結論を代行する存在ではなく，観察結果を言語化し，複数の解釈可能性を比較し，推論の飛躍を点検する対話的な編集者である。情報可視化とOSINTは，データを見つける技術ではなく，観察と推論を区別し，検証可能な説明として社会へ提示するリテラシーとして位置づけられる[1]。
+七篇の実践レポートに共通するのは，AIを単なる効率化ツールではなく，学習者の構想力，編集力，批判的思考を拡張する伴走者として位置づけている点である。AIは制作や調査を速めるが，問いを立て，根拠を選び，出力を検証し，誰に何を届けるのかを決めるのは人間である。[AIと情報可視化・OSINT教育](01-information-visualization-osint.md)は，この責任ある利用を，公開情報の検証と社会的説明の実践へ広げる。学生はAIS，衛星画像，公開報道，SNS上の専門的知見などを組み合わせ，不確実な情報を検証する過程を学ぶ。ここで生成AIは，結論を代行する存在ではなく，観察結果を言語化し，複数の解釈可能性を比較し，推論の飛躍を点検する対話的な編集者である。情報可視化とOSINTは，データを見つける技術ではなく，観察と推論を区別し，検証可能な説明として社会へ提示するリテラシーとして位置づけられる[2]。
 
 [AIによるモノクロ写真カラー化を活かした高校生の平和教育実践](02-photo-colorization-peace-education.md)は，AIを過去と現在を再接続する媒介として捉える。白黒写真のカラー化は，過去を単に鮮明にする処理ではない。学習者が資料を読み，色を推定し，証言や地域の記憶と照合しながら，遠い出来事を自分たちの現在へ引き寄せる探究である。AIカラー化の価値は，復元結果そのものではなく，その不確実性を手がかりに資料批判，対話，平和教育，社会発信を結びつける点にある。
 
 [AIを活かしたデジタルシティズンシップ教育](03-digital-citizenship.md)は，AI時代の学びを公共性の問題として位置づける。生成AIは，学習者の表現機会を広げる一方で，著作権，個人情報，バイアス，偽情報，責任の所在といった問題を伴う。したがって必要なのは，AIを禁止する態度でも，無条件に使いこなす技能でもない。AIの出力を疑い，根拠を確認し，他者や社会への影響を考えながら表現する力である。UNESCOのAIコンピテンシー枠組みやメディア・情報リテラシー教育は，学習者をAIの受動的利用者ではなく，責任ある利用者・共同設計者として育てる必要を示している[3,4,5]。
 
-[AI時代の学生ハッカソン：実装の民主化と発想力への転換](04-student-hackathon.md)は，この変化をもっとも端的に示している。生成AIによってコード生成，UI設計，デバッグ，発表資料作成が支援されると，学生ハッカソンの重心は「実装できるか」から「何を実装する価値があるか」へ移る[7]。日テレ クリエイティブメディアハッカソンも，メディア体験そのものを再設計する実践として同じ方向性を示している[6]。重要なのは，短時間で動くものを作ることだけではない。課題の切り取り方，ユーザー体験の設計，プロトタイプを社会に伝える表現，そしてAIが生成した成果物を人間が検証し，意思決定するプロセスそのものが学習対象になる。
+[AI時代の学生ハッカソン：実装の民主化と発想力への転換](04-student-hackathon.md)は，この変化をもっとも端的に示している。生成AIによってコード生成，UI設計，デバッグ，発表資料作成が支援されると，学生ハッカソンの重心は「実装できるか」から「何を実装する価値があるか」へ移る[6]。日テレ クリエイティブメディアハッカソンも，メディア体験そのものを再設計する実践として同じ方向性を示している[7]。重要なのは，短時間で動くものを作ることだけではない。課題の切り取り方，ユーザー体験の設計，プロトタイプを社会に伝える表現，そしてAIが生成した成果物を人間が検証し，意思決定するプロセスそのものが学習対象になる。
 
 [デジタルアーカイブとAIを活かした教育実践](05-digital-archive-ai.md)は，デジタルアーカイブを資料保存の基盤にとどめず，学習者が問いを立て，資料を選び，AIの支援も用いて意味を構成し社会へ伝える探究環境として捉える。資料を保存する「ストック」は，問い，対話，表現を通じて社会的な「フロー」へ変換されるとき，教育的な力を持つ。一次資料性と生成AIの利便性を両立させるには，検索，要約，比較，再編集の各段階で出典確認と文脈理解を学習活動に組み込む必要がある。
 
@@ -20,13 +20,13 @@
 
 ## 参考文献・関連資料
 
-1. Bellingcat. n.d. Online Open Source Investigation Toolkit. Bellingcat. Retrieved May 27, 2026 from https://bellingcat.gitbook.io/toolkit
-2. GitHub. 2022. Research: quantifying GitHub Copilot’s impact on developer productivity and happiness. GitHub Blog. Retrieved May 27, 2026 from https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/
+1. GitHub. 2022. Research: quantifying GitHub Copilot’s impact on developer productivity and happiness. GitHub Blog. Retrieved May 27, 2026 from https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/
+2. Bellingcat. n.d. Online Open Source Investigation Toolkit. Bellingcat. Retrieved May 27, 2026 from https://bellingcat.gitbook.io/toolkit
 3. UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students
 4. UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum
 5. UNESCO. n.d. Media and Information Literacy. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/media-information-literacy
-6. 日テレ共創ラボ. 2026. 日テレ クリエイティブメディアハッカソン開催レポート. Retrieved May 27, 2026 from https://lab.ntvhd.co.jp/topics/2026/04/post-24.html
-7. 東京大学大学院情報学環・学際情報学府. 2025. Hack-1グランプリ2025 開催レポート. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/research/20250725report
+6. 東京大学大学院情報学環・学際情報学府. 2025. Hack-1グランプリ2025 開催レポート. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/research/20250725report
+7. 日テレ共創ラボ. 2026. 日テレ クリエイティブメディアハッカソン開催レポート. Retrieved May 27, 2026 from https://lab.ntvhd.co.jp/topics/2026/04/post-24.html
 
 ## メタデータ
 

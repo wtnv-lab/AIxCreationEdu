@@ -2,13 +2,13 @@
 
 > 禁止から参加へ，AI時代の判断と公共性を育てる学び
 
-デジタルシティズンシップ教育は，ICT機器の操作方法を教える教育にとどまらない。デジタル社会において，自ら情報を収集・判断・発信し，他者と協働しながら責任ある市民として参加する力を育てる教育である。筆者のデジタルシティズンシップ教育実践では，情報リテラシー，メディアリテラシー，情報モラル，情報活用能力が区別され，情報活用能力は，情報を主体的に収集・整理・判断・発信し，問題解決や新たな価値創造に活用する力として整理されている[1,5]。ここから見えてくるのは，AI時代の教育を「危険な技術から子どもを遠ざける」ものではなく，「技術がある社会でどう判断し，どう参加するか」を学ぶ教育として再定義する視点である。
+デジタルシティズンシップ教育は，ICT機器の操作方法を教える教育にとどまらない。デジタル社会において，自ら情報を収集・判断・発信し，他者と協働しながら責任ある市民として参加する力を育てる教育である。筆者のデジタルシティズンシップ教育実践では，情報リテラシー，メディアリテラシー，情報モラル，情報活用能力が区別され，情報活用能力は，情報を主体的に収集・整理・判断・発信し，問題解決や新たな価値創造に活用する力として整理されている[1,2]。ここから見えてくるのは，AI時代の教育を「危険な技術から子どもを遠ざける」ものではなく，「技術がある社会でどう判断し，どう参加するか」を学ぶ教育として再定義する視点である。
 
 従来の学校教育では，端末利用やSNS利用をめぐって，いじめ，不適切投稿，課金，個人情報流出などのリスクを避けるため，禁止や制限を中心とする管理型の指導が行われやすかった。こうした課題に対して，本レポートは「禁止」中心の発想から，デジタルツールを社会をより良くする道具として活用する方向への転換を重視する。理想は，児童生徒が自律的に時間を管理し，情報を吟味し，適切に発信する力を身につけることである。これは，デジタル空間を現実社会から切り離された特殊な場所として扱うのではなく，権利，責任，倫理，公共性が交差する生活世界として捉える教育である。
 
 生成AIの普及は，この転換をさらに重要にしている。AIは，文章作成，画像生成，要約，翻訳，プログラミング，調査補助などを可能にする一方，ハルシネーション，著作権，個人情報，バイアス，依存，責任の所在といった新たな課題を生む。したがって，AIを禁止するだけでは不十分である。むしろ，AIの出力を疑い，根拠を確認し，自分の判断として再構成する訓練が必要になる。AIは「答えを出す機械」ではなく，問いを深めるための対話相手として位置づけられるべきである。
 
-国際的にも，AIリテラシーとデジタルシティズンシップは結びつけて論じられている。UNESCOのAI Competency Framework for Studentsは，児童生徒がAIを安全かつ意味ある形で扱うため，AIの仕組み，倫理，人間中心性，AIシステム設計を含む能力を育成する必要を示している[4]。ISTE Standards for Studentsも，変化する技術環境のなかで，学習者の主体性を高め，デジタル市民として安全・倫理的にふるまう力を重視している[2]。さらにOECD Digital Education Outlook 2026は，生成AIを学習の代替ではなく，明確な教育原理に導かれた学習支援として設計する必要を論じている[3]。
+国際的にも，AIリテラシーとデジタルシティズンシップは結びつけて論じられている。UNESCOのAI Competency Framework for Studentsは，児童生徒がAIを安全かつ意味ある形で扱うため，AIの仕組み，倫理，人間中心性，AIシステム設計を含む能力を育成する必要を示している[3]。ISTE Standards for Studentsも，変化する技術環境のなかで，学習者の主体性を高め，デジタル市民として安全・倫理的にふるまう力を重視している[4]。さらにOECD Digital Education Outlook 2026は，生成AIを学習の代替ではなく，明確な教育原理に導かれた学習支援として設計する必要を論じている[5]。
 
 AIを活かしたデジタルシティズンシップ教育の中核は，第一に，情報環境を読む力である。SNS，ビッグデータ，ターゲティング広告，フィルターバブル，エコーチェンバー，確証バイアス，ディープフェイク，アテンションエコノミーなどを理解し，情報が自分に「自然に届いている」のではなく，アルゴリズムや経済的動機によって選別されていることを学ぶ必要がある。そのため，情報を受け取る前，拡散する前に立ち止まり，情報源や表示の仕組みを確認する態度が重視される。
 
@@ -21,10 +21,10 @@ AIを活かしたデジタルシティズンシップ教育の中核は，第一
 ## 参考文献・関連資料
 
 1. Atsushi Yoshino. 2023. 日本のデジタル・シティズンシップ教育の受容状況における情報モラル教育・道徳科の位置づけについての一考察. 早稲田大学大学院教育学研究科紀要：別冊 31, 1 (2023), 45–55. Retrieved May 27, 2026 from https://waseda.repo.nii.ac.jp/records/2000538
-2. ISTE. n.d. ISTE Standards: For Students. ISTE. Retrieved May 27, 2026 from https://iste.org/standards/students
-3. OECD. 2026. OECD Digital Education Outlook 2026: Exploring Effective Uses of Generative AI in Education. OECD Publishing. https://doi.org/10.1787/062a7394-en
-4. UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students
-5. UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum
+2. UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum
+3. UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students
+4. ISTE. n.d. ISTE Standards: For Students. ISTE. Retrieved May 27, 2026 from https://iste.org/standards/students
+5. OECD. 2026. OECD Digital Education Outlook 2026: Exploring Effective Uses of Generative AI in Education. OECD Publishing. https://doi.org/10.1787/062a7394-en
 
 ## メタデータ
 

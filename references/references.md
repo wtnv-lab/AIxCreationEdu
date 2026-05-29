@@ -2,63 +2,63 @@
 
 ## AIとクリエイティブと教育 総括レポート
 
-1. [00-overview-ref-01] Bellingcat. n.d. Online Open Source Investigation Toolkit. Bellingcat. Retrieved May 27, 2026 from https://bellingcat.gitbook.io/toolkit
-2. [00-overview-ref-02] GitHub. 2022. Research: quantifying GitHub Copilot’s impact on developer productivity and happiness. GitHub Blog. Retrieved May 27, 2026 from https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/
+1. [00-overview-ref-01] GitHub. 2022. Research: quantifying GitHub Copilot’s impact on developer productivity and happiness. GitHub Blog. Retrieved May 27, 2026 from https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/
+2. [00-overview-ref-02] Bellingcat. n.d. Online Open Source Investigation Toolkit. Bellingcat. Retrieved May 27, 2026 from https://bellingcat.gitbook.io/toolkit
 3. [00-overview-ref-03] UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students
 4. [00-overview-ref-04] UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum
 5. [00-overview-ref-05] UNESCO. n.d. Media and Information Literacy. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/media-information-literacy
-6. [00-overview-ref-06] 日テレ共創ラボ. 2026. 日テレ クリエイティブメディアハッカソン開催レポート. Retrieved May 27, 2026 from https://lab.ntvhd.co.jp/topics/2026/04/post-24.html
-7. [00-overview-ref-07] 東京大学大学院情報学環・学際情報学府. 2025. Hack-1グランプリ2025 開催レポート. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/research/20250725report
+6. [00-overview-ref-06] 東京大学大学院情報学環・学際情報学府. 2025. Hack-1グランプリ2025 開催レポート. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/research/20250725report
+7. [00-overview-ref-07] 日テレ共創ラボ. 2026. 日テレ クリエイティブメディアハッカソン開催レポート. Retrieved May 27, 2026 from https://lab.ntvhd.co.jp/topics/2026/04/post-24.html
 
 ## AIと情報可視化・OSINT教育
 
-1. [01-information-visualization-osint-ref-01] Alberto Cairo. 2016. The Truthful Art: Data, Charts, and Maps for Communication. New Riders. Retrieved May 27, 2026 from https://www.peachpit.com/store/truthful-art-data-charts-and-maps-for-communication-9780321934079
-2. [01-information-visualization-osint-ref-02] Bellingcat. 2021. First Steps to Getting Started in Open Source Research. Bellingcat. Retrieved May 27, 2026 from https://www.bellingcat.com/resources/2021/11/09/first-steps-to-getting-started-in-open-source-research/
-3. [01-information-visualization-osint-ref-03] Bellingcat. n.d. Online Open Source Investigation Toolkit. Bellingcat. Retrieved May 27, 2026 from https://bellingcat.gitbook.io/toolkit
-4. [01-information-visualization-osint-ref-04] Hidenori Watanave. 2022. ArcGIS Onlineを用いたオープンデータの可視化・学生作品（2022年度）. Hidenori Watanave Lab. Retrieved May 27, 2026 from https://labo.wtnv.jp/2022/05/arcgis-online2022.html
-5. [01-information-visualization-osint-ref-05] Jonathan Gray, Liliana Bounegru, Stefania Milan, and Paolo Ciuccarelli. 2016. Ways of Seeing Data: Toward a Critical Literacy for Data Visualizations as Research Objects and Research Devices. In Innovative Methods in Media and Communication Research. Retrieved May 27, 2026 from https://www.researchgate.net/publication/312284929_Ways_of_Seeing_Data_Toward_a_Critical_Literacy_for_Data_Visualizations_as_Research_Objects_and_Research_Devices
-6. [01-information-visualization-osint-ref-06] UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students
-7. [01-information-visualization-osint-ref-07] UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum
-8. [01-information-visualization-osint-ref-08] wtnv-lab. 2026. gee-sentinel2-osi. GitHub repository. Retrieved May 27, 2026 from https://github.com/wtnv-lab/gee-sentinel2-osi
-9. [01-information-visualization-osint-ref-09] 国土交通省 Project PLATEAU. 2023. 大学生が挑戦。GISを使って過去の災害データを可視化・継承する. PLATEAU Journal. Retrieved May 27, 2026 from https://www.mlit.go.jp/plateau/journal/j033/
-10. [01-information-visualization-osint-ref-10] 日テレNEWS NNN. 2026. 【独自分析】カーグ島で大規模石油流出か…広い海域に拡散 イランの石油輸出拠点. Retrieved May 27, 2026 from https://news.ntv.co.jp/category/society/615836a23a684a0f9a880625bbfc7f6c
-11. [01-information-visualization-osint-ref-11] 日テレNEWS. 2026. 【独自分析】カーグ島で大規模石油流出か…広い海域に拡散 イランの石油輸出拠点. YouTube. Retrieved May 28, 2026 from https://www.youtube.com/watch?v=ulJRQ8TvkW4
-12. [01-information-visualization-osint-ref-12] 東京大学. n.d. 情報メディア基礎論. 東京大学授業カタログ. Retrieved May 27, 2026 from https://catalog.he.u-tokyo.ac.jp/detail?code=30259
-13. [01-information-visualization-osint-ref-13] 東京大学大学院情報学環・学際情報学府. 2025. 東京大学情報学環渡邉英徳研究室と日本テレビホールディングス、「先端技術を活用した報道手法のアップデート」を目的に共同研究を開始. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/news/2025020321925
-14. [01-information-visualization-osint-ref-14] 渡邉英徳. n.d. 戦災・災害のOSINT. note. Retrieved May 27, 2026 from https://note.com/hwtnv/m/m04416eca695b
+1. [01-information-visualization-osint-ref-01] 東京大学. n.d. 情報メディア基礎論. 東京大学授業カタログ. Retrieved May 27, 2026 from https://catalog.he.u-tokyo.ac.jp/detail?code=30259
+2. [01-information-visualization-osint-ref-02] Hidenori Watanave. 2022. ArcGIS Onlineを用いたオープンデータの可視化・学生作品（2022年度）. Hidenori Watanave Lab. Retrieved May 27, 2026 from https://labo.wtnv.jp/2022/05/arcgis-online2022.html
+3. [01-information-visualization-osint-ref-03] 国土交通省 Project PLATEAU. 2023. 大学生が挑戦。GISを使って過去の災害データを可視化・継承する. PLATEAU Journal. Retrieved May 27, 2026 from https://www.mlit.go.jp/plateau/journal/j033/
+4. [01-information-visualization-osint-ref-04] UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students
+5. [01-information-visualization-osint-ref-05] wtnv-lab. 2026. gee-sentinel2-osi. GitHub repository. Retrieved May 27, 2026 from https://github.com/wtnv-lab/gee-sentinel2-osi
+6. [01-information-visualization-osint-ref-06] Bellingcat. 2021. First Steps to Getting Started in Open Source Research. Bellingcat. Retrieved May 27, 2026 from https://www.bellingcat.com/resources/2021/11/09/first-steps-to-getting-started-in-open-source-research/
+7. [01-information-visualization-osint-ref-07] Bellingcat. n.d. Online Open Source Investigation Toolkit. Bellingcat. Retrieved May 27, 2026 from https://bellingcat.gitbook.io/toolkit
+8. [01-information-visualization-osint-ref-08] 渡邉英徳. n.d. 戦災・災害のOSINT. note. Retrieved May 27, 2026 from https://note.com/hwtnv/m/m04416eca695b
+9. [01-information-visualization-osint-ref-09] UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum
+10. [01-information-visualization-osint-ref-10] Alberto Cairo. 2016. The Truthful Art: Data, Charts, and Maps for Communication. New Riders. Retrieved May 27, 2026 from https://www.peachpit.com/store/truthful-art-data-charts-and-maps-for-communication-9780321934079
+11. [01-information-visualization-osint-ref-11] Jonathan Gray, Liliana Bounegru, Stefania Milan, and Paolo Ciuccarelli. 2016. Ways of Seeing Data: Toward a Critical Literacy for Data Visualizations as Research Objects and Research Devices. In Innovative Methods in Media and Communication Research. Retrieved May 27, 2026 from https://www.researchgate.net/publication/312284929_Ways_of_Seeing_Data_Toward_a_Critical_Literacy_for_Data_Visualizations_as_Research_Objects_and_Research_Devices
+12. [01-information-visualization-osint-ref-12] 日テレNEWS NNN. 2026. 【独自分析】カーグ島で大規模石油流出か…広い海域に拡散 イランの石油輸出拠点. Retrieved May 27, 2026 from https://news.ntv.co.jp/category/society/615836a23a684a0f9a880625bbfc7f6c
+13. [01-information-visualization-osint-ref-13] 日テレNEWS. 2026. 【独自分析】カーグ島で大規模石油流出か…広い海域に拡散 イランの石油輸出拠点. YouTube. Retrieved May 28, 2026 from https://www.youtube.com/watch?v=ulJRQ8TvkW4
+14. [01-information-visualization-osint-ref-14] 東京大学大学院情報学環・学際情報学府. 2025. 東京大学情報学環渡邉英徳研究室と日本テレビホールディングス、「先端技術を活用した報道手法のアップデート」を目的に共同研究を開始. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/news/2025020321925
 
 ## AIによるモノクロ写真カラー化を活かした高校生の平和教育実践
 
-1. [02-photo-colorization-peace-education-ref-01] Hidenori Watanave and Anju Niwata. 2019. 「記憶の解凍」：カラー化写真をもとにした“フロー”の生成と記憶の継承. デジタルアーカイブ学会誌 3, 3 (2019), 317–323. https://doi.org/10.24506/jsda.3.3_317
-2. [02-photo-colorization-peace-education-ref-02] NCC長崎文化放送. 2026. AIでよみがえる戦前の長崎 高校生が写真集制作. Retrieved May 27, 2026 from https://www.ncctv.co.jp/news/article/16463000
-3. [02-photo-colorization-peace-education-ref-03] 日テレNEWS NNN. 2025. 次世代への継承「原爆投下前の長崎の白黒写真をカラー化」高校生が最新技術を活用し挑戦《長崎》. Retrieved May 27, 2026 from https://news.ntv.co.jp/category/society/ni48845778ff4347bbaedd512c7cdeeece
-4. [02-photo-colorization-peace-education-ref-04] 長崎県立長崎東中学校・高等学校. 2026. あの日に色がさすとき: 高校生がAIとカラー化した長崎の戦前・戦後. Retrieved May 27, 2026 from https://www.news.ed.jp/higashi-h/img/file13.pdf
-5. [02-photo-colorization-peace-education-ref-05] 長崎県立長崎東中学校・高等学校. n.d. WWL・DX: あの日に色がさすとき. Retrieved May 27, 2026 from https://www.news.ed.jp/higashi-h/wwldx.html
+1. [02-photo-colorization-peace-education-ref-01] 長崎県立長崎東中学校・高等学校. 2026. あの日に色がさすとき: 高校生がAIとカラー化した長崎の戦前・戦後. Retrieved May 27, 2026 from https://www.news.ed.jp/higashi-h/img/file13.pdf
+2. [02-photo-colorization-peace-education-ref-02] 長崎県立長崎東中学校・高等学校. n.d. WWL・DX: あの日に色がさすとき. Retrieved May 27, 2026 from https://www.news.ed.jp/higashi-h/wwldx.html
+3. [02-photo-colorization-peace-education-ref-03] NCC長崎文化放送. 2026. AIでよみがえる戦前の長崎 高校生が写真集制作. Retrieved May 27, 2026 from https://www.ncctv.co.jp/news/article/16463000
+4. [02-photo-colorization-peace-education-ref-04] 日テレNEWS NNN. 2025. 次世代への継承「原爆投下前の長崎の白黒写真をカラー化」高校生が最新技術を活用し挑戦《長崎》. Retrieved May 27, 2026 from https://news.ntv.co.jp/category/society/ni48845778ff4347bbaedd512c7cdeeece
+5. [02-photo-colorization-peace-education-ref-05] Hidenori Watanave and Anju Niwata. 2019. 「記憶の解凍」：カラー化写真をもとにした“フロー”の生成と記憶の継承. デジタルアーカイブ学会誌 3, 3 (2019), 317–323. https://doi.org/10.24506/jsda.3.3_317
 
 ## AIを活かしたデジタルシティズンシップ教育
 
 1. [03-digital-citizenship-ref-01] Atsushi Yoshino. 2023. 日本のデジタル・シティズンシップ教育の受容状況における情報モラル教育・道徳科の位置づけについての一考察. 早稲田大学大学院教育学研究科紀要：別冊 31, 1 (2023), 45–55. Retrieved May 27, 2026 from https://waseda.repo.nii.ac.jp/records/2000538
-2. [03-digital-citizenship-ref-02] ISTE. n.d. ISTE Standards: For Students. ISTE. Retrieved May 27, 2026 from https://iste.org/standards/students
-3. [03-digital-citizenship-ref-03] OECD. 2026. OECD Digital Education Outlook 2026: Exploring Effective Uses of Generative AI in Education. OECD Publishing. https://doi.org/10.1787/062a7394-en
-4. [03-digital-citizenship-ref-04] UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students
-5. [03-digital-citizenship-ref-05] UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum
+2. [03-digital-citizenship-ref-02] UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum
+3. [03-digital-citizenship-ref-03] UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students
+4. [03-digital-citizenship-ref-04] ISTE. n.d. ISTE Standards: For Students. ISTE. Retrieved May 27, 2026 from https://iste.org/standards/students
+5. [03-digital-citizenship-ref-05] OECD. 2026. OECD Digital Education Outlook 2026: Exploring Effective Uses of Generative AI in Education. OECD Publishing. https://doi.org/10.1787/062a7394-en
 
 ## AI時代の学生ハッカソン：実装の民主化と発想力への転換
 
-1. [04-student-hackathon-ref-01] GMO Developers. 2026. 【前編】Hack-1グランプリ2026 デモデーレポート｜AI時代の学生ハッカソンに圧倒される2日間。「小さくなる日本」をどう表現する？ Retrieved May 28, 2026 from https://developers.gmo.jp/events/83407/
-2. [04-student-hackathon-ref-02] GMO Developers. n.d. Events. GMO Developers. Retrieved May 27, 2026 from https://developers.gmo.jp/events/
-3. [04-student-hackathon-ref-03] Jeannette M. Wing. 2006. Computational Thinking. Communications of the ACM 49, 3 (March 2006), 33–35. https://doi.org/10.1145/1118178.1118215
-4. [04-student-hackathon-ref-04] OECD. 2023. AI and the Future of Skills, Volume 2. OECD Publishing. https://doi.org/10.1787/a9fe53cb-en
-5. [04-student-hackathon-ref-05] Sidney Peng, Eirini Kalliamvakou, Peter Cihon, and Mert Demirer. 2023. The Impact of AI on Developer Productivity: Evidence from GitHub Copilot. arXiv:2302.06590. Retrieved May 27, 2026 from https://arxiv.org/abs/2302.06590
-6. [04-student-hackathon-ref-06] UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students
+1. [04-student-hackathon-ref-01] Sidney Peng, Eirini Kalliamvakou, Peter Cihon, and Mert Demirer. 2023. The Impact of AI on Developer Productivity: Evidence from GitHub Copilot. arXiv:2302.06590. Retrieved May 27, 2026 from https://arxiv.org/abs/2302.06590
+2. [04-student-hackathon-ref-02] Jeannette M. Wing. 2006. Computational Thinking. Communications of the ACM 49, 3 (March 2006), 33–35. https://doi.org/10.1145/1118178.1118215
+3. [04-student-hackathon-ref-03] 東京大学大学院情報学環・学際情報学府. 2025. Hack-1グランプリ2025 開催レポート. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/research/20250725report
+4. [04-student-hackathon-ref-04] 東京大学大学院情報学環・学際情報学府. 2026. Hack-1グランプリ2026 告知. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/event/20260404event
+5. [04-student-hackathon-ref-05] GMO Developers. 2026. 【前編】Hack-1グランプリ2026 デモデーレポート｜AI時代の学生ハッカソンに圧倒される2日間。「小さくなる日本」をどう表現する？ Retrieved May 28, 2026 from https://developers.gmo.jp/events/83407/
+6. [04-student-hackathon-ref-06] GMO Developers. n.d. Events. GMO Developers. Retrieved May 27, 2026 from https://developers.gmo.jp/events/
 7. [04-student-hackathon-ref-07] 日テレ共創ラボ. 2026. 日テレ クリエイティブメディアハッカソン開催レポート. Retrieved May 27, 2026 from https://lab.ntvhd.co.jp/topics/2026/04/post-24.html
-8. [04-student-hackathon-ref-08] 東京大学大学院情報学環・学際情報学府. 2025. Hack-1グランプリ2025 開催レポート. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/research/20250725report
-9. [04-student-hackathon-ref-09] 東京大学大学院情報学環・学際情報学府. 2026. Hack-1グランプリ2026 告知. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/event/20260404event
+8. [04-student-hackathon-ref-08] UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students
+9. [04-student-hackathon-ref-09] OECD. 2023. AI and the Future of Skills, Volume 2. OECD Publishing. https://doi.org/10.1787/a9fe53cb-en
 
 ## デジタルアーカイブとAIを活かした教育実践
 
-1. [05-digital-archive-ai-ref-01] ADEAC. n.d. S×UKILAM：Primary Source Sets／スキラム連携：多様な資料を活用した教材アーカイブ. Retrieved May 27, 2026 from https://adeac.jp/adeac-lab/top/sxukilam/index.html
-2. [05-digital-archive-ai-ref-02] Masao Oi and Hidenori Watanave. 2020. ジャパンサーチを活用した小中高でのキュレーション授業デザイン：デジタルアーカイブの教育活用意義と可能性. デジタルアーカイブ学会誌 4, 4 (2020), 352–359. https://doi.org/10.24506/jsda.4.4_352
+1. [05-digital-archive-ai-ref-01] Masao Oi and Hidenori Watanave. 2020. ジャパンサーチを活用した小中高でのキュレーション授業デザイン：デジタルアーカイブの教育活用意義と可能性. デジタルアーカイブ学会誌 4, 4 (2020), 352–359. https://doi.org/10.24506/jsda.4.4_352
+2. [05-digital-archive-ai-ref-02] ADEAC. n.d. S×UKILAM：Primary Source Sets／スキラム連携：多様な資料を活用した教材アーカイブ. Retrieved May 27, 2026 from https://adeac.jp/adeac-lab/top/sxukilam/index.html
 3. [05-digital-archive-ai-ref-03] Masao Oi and Hidenori Watanave. 2022. S×UKILAM連携：多様な資料を学校教育で活用するための「人」と「データ」のネットワーク構築. デジタルアーカイブ学会誌 6, s3 (2022), s214–s217. https://doi.org/10.24506/jsda.6.s3_s214
 4. [05-digital-archive-ai-ref-04] UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students
 5. [05-digital-archive-ai-ref-05] UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum
@@ -66,27 +66,27 @@
 ## 生成AIを用いたSFプロトタイピング
 
 1. [06-sf-prototyping-ref-01] Brian David Johnson. 2011. Science Fiction Prototyping: Designing the Future with Science Fiction. Morgan & Claypool. https://doi.org/10.2200/S00336ED1V01Y201102CSL003
-2. [06-sf-prototyping-ref-02] Haoran Chu and Sixiao Liu. 2024. Can AI tell good stories? Narrative transportation and persuasion with ChatGPT. Journal of Communication 74, 5 (October 2024), 347–358. https://doi.org/10.1093/joc/jqae029
-3. [06-sf-prototyping-ref-03] Jakob Tholander and Martin Jonsson. 2023. Design Ideation with AI. In Proceedings of the 2023 ACM Designing Interactive Systems Conference (DIS '23). ACM, 1934–1946. https://doi.org/10.1145/3563657.3596014
-4. [06-sf-prototyping-ref-04] Qin Yang and Hidenori Watanave. 2024. 小説家不要のSFプロトタイピングワークショップ手法の提案：生成AIとの共同作業によるストーリーテリング支援. In 2024年度人工知能学会全国大会（第38回）. https://doi.org/10.11517/pjsai.JSAI2024.0_2A4GS1004
-5. [06-sf-prototyping-ref-05] ダイキン工業. 2018. 東京大学とダイキン工業「空気の価値化」を目指す産学協創協定を締結. Retrieved May 27, 2026 from https://www.daikin.co.jp/press/2018/20181217
-6. [06-sf-prototyping-ref-06] 宮本道人, 難波優輝, and 大澤博隆. 2021. SFプロトタイピング：SFからイノベーションを生み出す新戦略. 早川書房.
-7. [06-sf-prototyping-ref-07] 東京大学. n.d. グローバルインターンシッププログラム・企業協創プログラム. Retrieved May 27, 2026 from https://www.u-tokyo.ac.jp/ja/students/special-activities/ugip.html
+2. [06-sf-prototyping-ref-02] 宮本道人, 難波優輝, and 大澤博隆. 2021. SFプロトタイピング：SFからイノベーションを生み出す新戦略. 早川書房.
+3. [06-sf-prototyping-ref-03] Qin Yang and Hidenori Watanave. 2024. 小説家不要のSFプロトタイピングワークショップ手法の提案：生成AIとの共同作業によるストーリーテリング支援. In 2024年度人工知能学会全国大会（第38回）. https://doi.org/10.11517/pjsai.JSAI2024.0_2A4GS1004
+4. [06-sf-prototyping-ref-04] Haoran Chu and Sixiao Liu. 2024. Can AI tell good stories? Narrative transportation and persuasion with ChatGPT. Journal of Communication 74, 5 (October 2024), 347–358. https://doi.org/10.1093/joc/jqae029
+5. [06-sf-prototyping-ref-05] Jakob Tholander and Martin Jonsson. 2023. Design Ideation with AI. In Proceedings of the 2023 ACM Designing Interactive Systems Conference (DIS '23). ACM, 1934–1946. https://doi.org/10.1145/3563657.3596014
+6. [06-sf-prototyping-ref-06] 東京大学. n.d. グローバルインターンシッププログラム・企業協創プログラム. Retrieved May 27, 2026 from https://www.u-tokyo.ac.jp/ja/students/special-activities/ugip.html
+7. [06-sf-prototyping-ref-07] ダイキン工業. 2018. 東京大学とダイキン工業「空気の価値化」を目指す産学協創協定を締結. Retrieved May 27, 2026 from https://www.daikin.co.jp/press/2018/20181217
 
 ## AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ
 
-1. [07-minecraft-ai-education-ref-01] Code.org. n.d. Hour of AI with Minecraft. Retrieved May 29, 2026 from https://code.org/en-US/minecraft
-2. [07-minecraft-ai-education-ref-02] Mahajan, J. et al. 2023. MineObserver 2.0: A Deep Learning & In-Game Framework for Assessing Natural Language Descriptions of Minecraft Imagery. arXiv:2301.08167. Retrieved May 29, 2026 from https://arxiv.org/abs/2301.08167
-3. [07-minecraft-ai-education-ref-03] Microsoft Japan. 2019. Minecraft Hour of Code: AI for Good 日本語版提供開始. Retrieved May 29, 2026 from https://news.microsoft.com/ja-jp/2019/12/09/191209-information/
-4. [07-minecraft-ai-education-ref-04] Minecraft Education. n.d. AI Foundations. Retrieved May 29, 2026 from https://education.minecraft.net/en-us/lessons/ai-foundations
-5. [07-minecraft-ai-education-ref-05] Minecraft Education. n.d. BBC Day of AI. Retrieved May 29, 2026 from https://education.minecraft.net/en-us/resources/bbc-day-of-ai
-6. [07-minecraft-ai-education-ref-06] National 4-H Council and Microsoft. 2025. National 4-H Council and Microsoft Extend $10M Partnership to Expand AI Education for Rural Youth and Educators. Retrieved May 29, 2026 from https://4-h.org/about/blog/national-4-h-council-and-microsoft-extend-10m-partnership-to-expand-ai-education-for-rural-youth-and-educators/
-7. [07-minecraft-ai-education-ref-07] Tadimalla, S. Y. and Maher, M. L. 2024. AI Literacy for All: Adjustable Interdisciplinary Socio-technical Curriculum. arXiv:2403.04824. Retrieved May 29, 2026 from https://arxiv.org/abs/2403.04824
-8. [07-minecraft-ai-education-ref-08] UNESCO. 2023. Guidance for generative AI in education and research. UNESCO. Retrieved May 29, 2026 from https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research
-9. [07-minecraft-ai-education-ref-09] UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 29, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students
-10. [07-minecraft-ai-education-ref-10] きのこぐものしたにあったまち. n.d. きのこぐものしたにあったまち｜ブロッククラフトで学ぶ広島・長崎歴史探訪ワークショップ. Retrieved May 29, 2026 from https://peacecraft.info/
-11. [07-minecraft-ai-education-ref-11] マイクラカップ. 2026. 石川県輪島市門前町にて、マイクラ×ARワークショップ「門前の記憶と未来」を開催しました. Retrieved May 29, 2026 from https://mccup.jp/eventreports/26671/
-12. [07-minecraft-ai-education-ref-12] 内外教育ウェブ. 2026. 「マイクラ」で北方領土啓発＝北海道標津町. Retrieved May 29, 2026 from https://edu-naigai.jiji.com/timeline/3411
+1. [07-minecraft-ai-education-ref-01] UNESCO. 2023. Guidance for generative AI in education and research. UNESCO. Retrieved May 29, 2026 from https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research
+2. [07-minecraft-ai-education-ref-02] UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 29, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students
+3. [07-minecraft-ai-education-ref-03] きのこぐものしたにあったまち. n.d. きのこぐものしたにあったまち｜ブロッククラフトで学ぶ広島・長崎歴史探訪ワークショップ. Retrieved May 29, 2026 from https://peacecraft.info/
+4. [07-minecraft-ai-education-ref-04] マイクラカップ. 2026. 石川県輪島市門前町にて、マイクラ×ARワークショップ「門前の記憶と未来」を開催しました. Retrieved May 29, 2026 from https://mccup.jp/eventreports/26671/
+5. [07-minecraft-ai-education-ref-05] 内外教育ウェブ. 2026. 「マイクラ」で北方領土啓発＝北海道標津町. Retrieved May 29, 2026 from https://edu-naigai.jiji.com/timeline/3411
+6. [07-minecraft-ai-education-ref-06] Minecraft Education. n.d. AI Foundations. Retrieved May 29, 2026 from https://education.minecraft.net/en-us/lessons/ai-foundations
+7. [07-minecraft-ai-education-ref-07] National 4-H Council and Microsoft. 2025. National 4-H Council and Microsoft Extend $10M Partnership to Expand AI Education for Rural Youth and Educators. Retrieved May 29, 2026 from https://4-h.org/about/blog/national-4-h-council-and-microsoft-extend-10m-partnership-to-expand-ai-education-for-rural-youth-and-educators/
+8. [07-minecraft-ai-education-ref-08] Minecraft Education. n.d. BBC Day of AI. Retrieved May 29, 2026 from https://education.minecraft.net/en-us/resources/bbc-day-of-ai
+9. [07-minecraft-ai-education-ref-09] Code.org. n.d. Hour of AI with Minecraft. Retrieved May 29, 2026 from https://code.org/en-US/minecraft
+10. [07-minecraft-ai-education-ref-10] Microsoft Japan. 2019. Minecraft Hour of Code: AI for Good 日本語版提供開始. Retrieved May 29, 2026 from https://news.microsoft.com/ja-jp/2019/12/09/191209-information/
+11. [07-minecraft-ai-education-ref-11] Mahajan, J. et al. 2023. MineObserver 2.0: A Deep Learning & In-Game Framework for Assessing Natural Language Descriptions of Minecraft Imagery. arXiv:2301.08167. Retrieved May 29, 2026 from https://arxiv.org/abs/2301.08167
+12. [07-minecraft-ai-education-ref-12] Tadimalla, S. Y. and Maher, M. L. 2024. AI Literacy for All: Adjustable Interdisciplinary Socio-technical Curriculum. arXiv:2403.04824. Retrieved May 29, 2026 from https://arxiv.org/abs/2403.04824
 
 # 追加推奨リファレンス
 
