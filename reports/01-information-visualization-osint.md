@@ -4,7 +4,7 @@ AIとOSINTで学ぶ情報メディア実践
 
 ――データを読み解き，社会へ伝える教育モデル
 
-本レポートが示すのは，公開情報を集める技術そのものではなく，公開情報を検証可能な知識へと組み替え，社会に伝える力を育てる教育モデルである。東京大学前期課程「情報メディア基礎論」では，情報を“ストック”し，データビジュアライゼーションやデジタルアーカイブによって“フロー”化するメディア実践を通じて，情報・メディア・社会の関係を学ぶ。授業では，学生が自らテーマを設定し，データを収集・整理したうえで，ArcGISやRe:Earthを用いて2D／3D地図上に可視化し，成果物をウェブ公開する。2022年度のArcGIS Onlineを用いた学生作品，2023年度のProject PLATEAUとRe:Earthを用いた3D都市モデルの可視化は，いずれもデータを単なる素材ではなく，社会的な問いを共有する表現へ変換する実践として位置づけられる。
+本レポートが示すのは，公開情報を集める技術そのものではなく，公開情報を検証可能な知識へと組み替え，社会に伝える力を育てる教育モデルである。東京大学前期課程「情報メディア基礎論」では，情報を“ストック”し，データビジュアライゼーションやデジタルアーカイブによって“フロー”化するメディア実践を通じて，情報・メディア・社会の関係を学ぶ。授業では，学生が自ら問いを設定し，データを収集・整理したうえで，ArcGISやRe:Earthを用いて2D／3D地図上に可視化し，成果物をウェブ公開する。2022年度のArcGIS Onlineを用いた学生作品，2023年度のProject PLATEAUとRe:Earthを用いた3D都市モデルの可視化は，いずれもデータを単なる素材ではなく，根拠をもつ社会的な説明へ変換する実践として位置づけられる。
 
 ![GIS・データ可視化を用いた学生作品例](../assets/01-information-visualization-osint/gis-education-examples.jpg)
 
@@ -16,24 +16,24 @@ AIとOSINTで学ぶ情報メディア実践
 
 また，本実践はメディア・情報リテラシー教育の拡張としても位置づけられる。UNESCOは，偽情報，ヘイトスピーチ，メディア不信，AIを含むデジタル技術の進展に対応するため，メディア・情報リテラシーを21世紀の基礎的能力として整理している。OSINT教育において重要なのは，データを「見つける」ことだけではない。情報源の性質を見極め，複数のデータを照合し，確度の異なる推論を区別し，社会に伝える際の表現責任を自覚することである。これは，データ可視化を単なる表現技術ではなく，社会の中で意味を生み出す批判的実践として捉えるデータ・ビジュアライゼーション研究とも重なる。
 
-本実践は，東京大学の授業，読売新聞との学術指導，日本テレビとの共同研究を横断する「教育×AI×OSINT」の試みである。学生や記者は，AIを用いながら，データを集め，疑い，照合し，仮説を組み立て，社会に向けて説明するプロセスを学ぶ。重要なのは，AIに判断を委ねることではなく，AIとの対話を通じて，人間の観察力，批判的思考，表現力を拡張することである。本モデルは，生成AI時代におけるデータリテラシー，メディアリテラシー，調査報道教育を架橋する実践的な教育モデルとして位置づけられる。
+本実践は，東京大学の授業，読売新聞との学術指導，日本テレビとの共同研究を横断する「教育×AI×OSINT」の試みである。学生や記者は，AIを用いながら，データを集め，疑い，照合し，仮説を組み立て，社会に向けて説明するプロセスを学ぶ。重要なのは，AIに判断を委ねることではなく，AIとの対話を通じて，人間の観察力，批判的思考，表現力を拡張することである。公開情報を扱う教育は，結論の速さよりも，根拠の透明性と説明責任を学ぶ場として設計される必要がある。
 
 ## 参考文献・関連資料
 
+- Alberto Cairo. 2016. The Truthful Art: Data, Charts, and Maps for Communication. New Riders. Retrieved May 27, 2026 from https://www.peachpit.com/store/truthful-art-data-charts-and-maps-for-communication-9780321934079
+- Bellingcat. 2021. First Steps to Getting Started in Open Source Research. Bellingcat. Retrieved May 27, 2026 from https://www.bellingcat.com/resources/2021/11/09/first-steps-to-getting-started-in-open-source-research/
+- Bellingcat. n.d. Online Open Source Investigation Toolkit. Bellingcat. Retrieved May 27, 2026 from https://bellingcat.gitbook.io/toolkit
+- Hidenori Watanave. 2022. ArcGIS Onlineを用いたオープンデータの可視化・学生作品（2022年度）. Hidenori Watanave Lab. Retrieved May 27, 2026 from https://labo.wtnv.jp/2022/05/arcgis-online2022.html
+- Jonathan Gray, Liliana Bounegru, Stefania Milan, and Paolo Ciuccarelli. 2016. Ways of Seeing Data: Toward a Critical Literacy for Data Visualizations as Research Objects and Research Devices. In Innovative Methods in Media and Communication Research. Retrieved May 27, 2026 from https://www.researchgate.net/publication/312284929_Ways_of_Seeing_Data_Toward_a_Critical_Literacy_for_Data_Visualizations_as_Research_Objects_and_Research_Devices
 - UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students
 - UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum
-- Bellingcat. n.d. Online Open Source Investigation Toolkit. Bellingcat. Retrieved May 27, 2026 from https://bellingcat.gitbook.io/toolkit
-- Bellingcat. 2021. First Steps to Getting Started in Open Source Research. Bellingcat. Retrieved May 27, 2026 from https://www.bellingcat.com/resources/2021/11/09/first-steps-to-getting-started-in-open-source-research/
-- Jonathan Gray, Liliana Bounegru, Stefania Milan, and Paolo Ciuccarelli. 2016. Ways of Seeing Data: Toward a Critical Literacy for Data Visualizations as Research Objects and Research Devices. In Innovative Methods in Media and Communication Research. Retrieved May 27, 2026 from https://www.researchgate.net/publication/312284929_Ways_of_Seeing_Data_Toward_a_Critical_Literacy_for_Data_Visualizations_as_Research_Objects_and_Research_Devices
-- Alberto Cairo. 2016. The Truthful Art: Data, Charts, and Maps for Communication. New Riders. Retrieved May 27, 2026 from https://www.peachpit.com/store/truthful-art-data-charts-and-maps-for-communication-9780321934079
-- 東京大学. n.d. 情報メディア基礎論. 東京大学授業カタログ. Retrieved May 27, 2026 from https://catalog.he.u-tokyo.ac.jp/detail?code=30259
-- Hidenori Watanave. 2022. ArcGIS Onlineを用いたオープンデータの可視化・学生作品（2022年度）. Hidenori Watanave Lab. Retrieved May 27, 2026 from https://labo.wtnv.jp/2022/05/arcgis-online2022.html
-- 国土交通省 Project PLATEAU. 2023. 大学生が挑戦。GISを使って過去の災害データを可視化・継承する. PLATEAU Journal. Retrieved May 27, 2026 from https://www.mlit.go.jp/plateau/journal/j033/
-- 東京大学大学院情報学環・学際情報学府. 2025. 東京大学情報学環渡邉英徳研究室と日本テレビホールディングス、「先端技術を活用した報道手法のアップデート」を目的に共同研究を開始. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/news/2025020321925
-- 渡邉英徳. n.d. 戦災・災害のOSINT. note. Retrieved May 27, 2026 from https://note.com/hwtnv/m/m04416eca695b
 - wtnv-lab. 2026. gee-sentinel2-osi. GitHub repository. Retrieved May 27, 2026 from https://github.com/wtnv-lab/gee-sentinel2-osi
+- 国土交通省 Project PLATEAU. 2023. 大学生が挑戦。GISを使って過去の災害データを可視化・継承する. PLATEAU Journal. Retrieved May 27, 2026 from https://www.mlit.go.jp/plateau/journal/j033/
 - 日テレNEWS NNN. 2026. 【独自分析】カーグ島で大規模石油流出か…広い海域に拡散 イランの石油輸出拠点. Retrieved May 27, 2026 from https://news.ntv.co.jp/category/society/615836a23a684a0f9a880625bbfc7f6c
 - 日テレNEWS. 2026. 【独自分析】カーグ島で大規模石油流出か…広い海域に拡散 イランの石油輸出拠点. YouTube. Retrieved May 28, 2026 from https://www.youtube.com/watch?v=ulJRQ8TvkW4
+- 東京大学. n.d. 情報メディア基礎論. 東京大学授業カタログ. Retrieved May 27, 2026 from https://catalog.he.u-tokyo.ac.jp/detail?code=30259
+- 東京大学大学院情報学環・学際情報学府. 2025. 東京大学情報学環渡邉英徳研究室と日本テレビホールディングス、「先端技術を活用した報道手法のアップデート」を目的に共同研究を開始. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/news/2025020321925
+- 渡邉英徳. n.d. 戦災・災害のOSINT. note. Retrieved May 27, 2026 from https://note.com/hwtnv/m/m04416eca695b
 
 ## メタデータ
 

@@ -4,9 +4,9 @@
 
 *図1. 長崎のMinecraftワールド*
 
-「AI×教育」におけるMinecraft実践のレポート
+Minecraftを用いた記憶継承・創造・AIリテラシーのレポート
 
-「AI×教育」において，Minecraftは単なるゲームではなく，子どもや若者が世界を構築し，過去を再現し，未来を構想するための学習環境として注目されている。ブロックを積み上げる直感的な操作は，専門的なプログラミング経験の有無にかかわらず参加者を創作に導く。そこにAIが加わることで，歴史資料の読み解き，画像のカラー化，仮想空間内のエージェント操作，生成AIを用いたストーリーテリングなど，多層的な学びが可能になる。
+Minecraftは単なるゲームではなく，子どもや若者が世界を構築し，過去を再現し，未来を構想するための学習環境として注目されている。ブロックを積み上げる直感的な操作は，専門的なプログラミング経験の有無にかかわらず参加者を創作に導く。そこにAIが加わることで，歴史資料の読み解き，画像のカラー化，仮想空間内のエージェント操作，生成AIを用いたストーリーテリングなど，多層的な学びが可能になる。
 
 国内の代表的な実践が，戦災・災害の記憶継承を目的としたPeacecraft系のワークショップである。広島，長崎，東京，長岡などで展開された取り組みでは，戦前の街並みや失われた日常を，子どもたちがMinecraft上で再構築する。事前学習では，白黒写真をAIでカラー化した資料や証言を用い，当時の人びとの暮らしを具体的に想像する。カラー化は過去を単に「見やすくする」技術ではない。いまを生きる参加者と，写真のなかの過去の生活とを再接続し，歴史を自分ごととして考える契機となる。
 
@@ -20,22 +20,22 @@
 
 海外では，Minecraftを用いたAIリテラシー教育が制度的に展開されている。Microsoftと4-HによるAI Foundationsは，農村部の青少年にAIの基礎と責任ある利用を学ばせるプログラムとして広がっている。BBCとMinecraft EducationによるDay of AIも，AIの仕組みや安全な利用を小学生向けに伝える教材群を提供している。またCode.orgのHour of AI with Minecraftでは，AIエージェントに指示を与えながら課題を解く活動を通じて，AIは自律的に「何でもできる」存在ではなく，人間の目的設定，指示，検証を必要とする存在であることを学ぶ。
 
-これらの事例に共通するのは，AIを単なる効率化ツールとして扱わない点である。Minecraft内で何をつくるか，どの資料を参照するか，AIの出力をどのように検証するか，完成した世界を誰に向けてどう説明するかは，いずれも人間の判断に委ねられる。AI時代のMinecraft教育は，プログラミング，歴史，平和，地域，デジタル・シティズンシップを横断する総合的な学びである。子どもたちはブロックを置きながら，過去と現在を結び，未来を構想し，AIとともに考える。その意味でMinecraftは，遊びの空間であると同時に，記憶を継承し，社会を想像し，AIを批判的に使う力を育てる教育メディアなのである。
+これらの事例に共通するのは，AIを単なる効率化ツールとして扱わない点である。Minecraft内で何をつくるか，どの資料を参照するか，AIの出力をどのように検証するか，完成した世界を誰に向けてどう説明するかは，いずれも人間の判断に委ねられる。AI時代のMinecraft教育は，プログラミング，歴史，平和，地域，デジタル・シティズンシップを横断する総合的な学びである。子どもたちはブロックを置きながら，資料を読み，過去と現在を結び，未来を構想する。その意味でMinecraftは，遊びの空間であると同時に，記憶を継承し，社会を想像し，AIを批判的に使う力を育てる教育メディアなのである。
 
 ## 参考文献・関連資料
 
+- Code.org. n.d. Hour of AI with Minecraft. Retrieved May 29, 2026 from https://code.org/en-US/minecraft
+- Mahajan, J. et al. 2023. MineObserver 2.0: A Deep Learning & In-Game Framework for Assessing Natural Language Descriptions of Minecraft Imagery. arXiv:2301.08167. Retrieved May 29, 2026 from https://arxiv.org/abs/2301.08167
+- Microsoft Japan. 2019. Minecraft Hour of Code: AI for Good 日本語版提供開始. Retrieved May 29, 2026 from https://news.microsoft.com/ja-jp/2019/12/09/191209-information/
+- Minecraft Education. n.d. AI Foundations. Retrieved May 29, 2026 from https://education.minecraft.net/en-us/lessons/ai-foundations
+- Minecraft Education. n.d. BBC Day of AI. Retrieved May 29, 2026 from https://education.minecraft.net/en-us/resources/bbc-day-of-ai
+- National 4-H Council and Microsoft. 2025. National 4-H Council and Microsoft Extend $10M Partnership to Expand AI Education for Rural Youth and Educators. Retrieved May 29, 2026 from https://4-h.org/about/blog/national-4-h-council-and-microsoft-extend-10m-partnership-to-expand-ai-education-for-rural-youth-and-educators/
+- Tadimalla, S. Y. and Maher, M. L. 2024. AI Literacy for All: Adjustable Interdisciplinary Socio-technical Curriculum. arXiv:2403.04824. Retrieved May 29, 2026 from https://arxiv.org/abs/2403.04824
+- UNESCO. 2023. Guidance for generative AI in education and research. UNESCO. Retrieved May 29, 2026 from https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research
+- UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 29, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students
 - きのこぐものしたにあったまち. n.d. きのこぐものしたにあったまち｜ブロッククラフトで学ぶ広島・長崎歴史探訪ワークショップ. Retrieved May 29, 2026 from https://peacecraft.info/
 - マイクラカップ. 2026. 石川県輪島市門前町にて、マイクラ×ARワークショップ「門前の記憶と未来」を開催しました. Retrieved May 29, 2026 from https://mccup.jp/eventreports/26671/
 - 内外教育ウェブ. 2026. 「マイクラ」で北方領土啓発＝北海道標津町. Retrieved May 29, 2026 from https://edu-naigai.jiji.com/timeline/3411
-- Minecraft Education. n.d. BBC Day of AI. Retrieved May 29, 2026 from https://education.minecraft.net/en-us/resources/bbc-day-of-ai
-- Code.org. n.d. Hour of AI with Minecraft. Retrieved May 29, 2026 from https://code.org/en-US/minecraft
-- National 4-H Council and Microsoft. 2025. National 4-H Council and Microsoft Extend $10M Partnership to Expand AI Education for Rural Youth and Educators. Retrieved May 29, 2026 from https://4-h.org/about/blog/national-4-h-council-and-microsoft-extend-10m-partnership-to-expand-ai-education-for-rural-youth-and-educators/
-- Microsoft Japan. 2019. Minecraft Hour of Code: AI for Good 日本語版提供開始. Retrieved May 29, 2026 from https://news.microsoft.com/ja-jp/2019/12/09/191209-information/
-- Minecraft Education. n.d. AI Foundations. Retrieved May 29, 2026 from https://education.minecraft.net/en-us/lessons/ai-foundations
-- Tadimalla, S. Y. and Maher, M. L. 2024. AI Literacy for All: Adjustable Interdisciplinary Socio-technical Curriculum. arXiv:2403.04824. Retrieved May 29, 2026 from https://arxiv.org/abs/2403.04824
-- Mahajan, J. et al. 2023. MineObserver 2.0: A Deep Learning & In-Game Framework for Assessing Natural Language Descriptions of Minecraft Imagery. arXiv:2301.08167. Retrieved May 29, 2026 from https://arxiv.org/abs/2301.08167
-- UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 29, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students
-- UNESCO. 2023. Guidance for generative AI in education and research. UNESCO. Retrieved May 29, 2026 from https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research
 
 ## メタデータ
 

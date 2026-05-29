@@ -705,6 +705,26 @@ def write_figures_metadata() -> None:
             "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
             "related_sections": ["デジタルアーカイブとAIを活かした教育実践"],
         },
+        {
+            "id": "07-nagasaki-minecraft-world",
+            "report_id": "07-minecraft-ai-education",
+            "path": "assets/07-minecraft-ai-education/nagasaki-minecraft-world.jpg",
+            "alt": "長崎のMinecraftワールドの俯瞰図",
+            "caption": "長崎のMinecraftワールド",
+            "source": "ユーザー提供画像 長崎のマインクラフトワールド.png から変換",
+            "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+            "related_sections": ["AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ"],
+        },
+        {
+            "id": "07-children-work",
+            "report_id": "07-minecraft-ai-education",
+            "path": "assets/07-minecraft-ai-education/children-work.jpg",
+            "alt": "子どもたちがMinecraftを用いたワークに取り組む様子",
+            "caption": "子どもたちによるMinecraftワークの様子",
+            "source": "ユーザー提供画像 子どもたちのワーク.jpg から変換",
+            "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+            "related_sections": ["AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ"],
+        },
     ]
     (ROOT / "metadata" / "figures.json").write_text(json.dumps(figures, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 

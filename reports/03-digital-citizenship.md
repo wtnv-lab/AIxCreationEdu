@@ -14,17 +14,17 @@ AIを活かしたデジタルシティズンシップ教育の中核は，第一
 
 第二に，AIと対話しながら思考を深める力である。AIに答えを出させるのではなく，問いを立て，複数の仮説を比較し，出典を確認し，誤りや偏りを発見する。たとえばレポート作成にAIを使う場合でも，プロンプト，出力，修正過程，利用後の感想を記録させることで，学習者はAI利用を不可視の補助ではなく，検証可能な思考過程として扱うことができる。これは，不正利用の防止にとどまらず，AI時代の学習過程そのものを可視化する方法である。
 
-第三に，成果を社会へ表出する力である。文章，動画，地図，可視化，プレゼンテーションなどを通じて，自分の考えを公共的に発信し，他者からの応答を受けて再編集する経験が重要になる。AIを用いた学習環境では，「自己」「他者」「コンテンツ」が相互作用し，獲得・享受・再編集・共有・表出の循環を通じて知識を構成していく設計が重要になる。RAG，マイクロコンテンツ化，階層的要約，読書プラン生成，文末コラム生成といった実装は，AIを単なる自動生成装置ではなく，知識の信頼性を確認しながら，学習者の再編集と共有を支える環境として位置づけられる。
+第三に，成果を社会へ表出する力である。文章，動画，地図，可視化，プレゼンテーションなどを通じて，自分の考えを公共的に発信し，他者からの応答を受けて再編集する経験が重要になる。AIを用いた学習環境では，「自己」「他者」「コンテンツ」が相互作用し，獲得・享受・再編集・共有・表出の循環を通じて知識を構成していく設計が重要になる。RAG，マイクロコンテンツ化，階層的要約，読書プラン生成，文末コラム生成といった実装も，学習者が根拠を確認し，自分の判断として再編集できる環境として位置づけられる。
 
-したがって，AIを活かしたデジタルシティズンシップ教育とは，「AIを使ってよいか，悪いか」を問う教育ではない。それは，AIを使うことで，自分の判断がどのように変わるのか，他者や社会にどのような影響を与えるのかを考える教育である。AI時代に必要なのは，技術を正しく恐れる力と，同時に，技術を公共的価値の創出に結びつける力である。デジタルシティズンシップ教育は，情報モラルの内向きの規範教育を超え，AIとともに考え，表現し，社会に参加する市民を育てる教育へと発展していくべきである。
+したがって，AIを活かしたデジタルシティズンシップ教育とは，「AIを使ってよいか，悪いか」を問う教育ではない。それは，AIを使うことで，自分の判断がどのように変わるのか，他者や社会にどのような影響を与えるのかを考える教育である。AI時代に必要なのは，技術を正しく恐れる力と，同時に，技術を公共的価値の創出に結びつける力である。デジタルシティズンシップ教育は，禁止や管理の内側に閉じず，AIとともに考え，根拠を確かめ，責任ある形で社会に参加する市民を育てる教育へと発展していくべきである。
 
 ## 参考文献・関連資料
 
 - Atsushi Yoshino. 2023. 日本のデジタル・シティズンシップ教育の受容状況における情報モラル教育・道徳科の位置づけについての一考察. 早稲田大学大学院教育学研究科紀要：別冊 31, 1 (2023), 45–55. Retrieved May 27, 2026 from https://waseda.repo.nii.ac.jp/records/2000538
-- UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students
-- UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum
 - ISTE. n.d. ISTE Standards: For Students. ISTE. Retrieved May 27, 2026 from https://iste.org/standards/students
 - OECD. 2026. OECD Digital Education Outlook 2026: Exploring Effective Uses of Generative AI in Education. OECD Publishing. https://doi.org/10.1787/062a7394-en
+- UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students
+- UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum
 
 ## メタデータ
 
