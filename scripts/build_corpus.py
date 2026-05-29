@@ -643,6 +643,12 @@ def write_glossary() -> None:
             "definition": "検索で取得した資料を根拠にAIが回答する仕組み。このリポジトリではmetadata/chunks.jsonlを主な検索単位として想定する。",
             "related_reports": ["00-overview"],
         },
+        {
+            "term": "Minecraft Education",
+            "reading": "まいんくらふとえでゅけーしょん",
+            "definition": "Minecraftを教育用途に活用する環境。各レポートでは、記憶継承、地域学習、AIリテラシー、創造的な世界構築を結ぶ学習メディアとして扱う。",
+            "related_reports": ["07-minecraft-ai-education", "02-photo-colorization-peace-education", "05-digital-archive-ai"],
+        },
     ]
     (ROOT / "metadata" / "glossary.json").write_text(json.dumps(glossary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 

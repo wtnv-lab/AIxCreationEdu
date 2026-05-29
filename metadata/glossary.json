@@ -87,5 +87,15 @@
     "related_reports": [
       "00-overview"
     ]
+  },
+  {
+    "term": "Minecraft Education",
+    "reading": "まいんくらふとえでゅけーしょん",
+    "definition": "Minecraftを教育用途に活用する環境。各レポートでは、記憶継承、地域学習、AIリテラシー、創造的な世界構築を結ぶ学習メディアとして扱う。",
+    "related_reports": [
+      "07-minecraft-ai-education",
+      "02-photo-colorization-peace-education",
+      "05-digital-archive-ai"
+    ]
   }
 ]
