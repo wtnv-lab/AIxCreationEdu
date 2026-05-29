@@ -16,7 +16,9 @@
 
 ## 参考文献・関連資料
 
-- 提供資料. 2026. Minecraft × AI 実践事例 総覧 – 国内と海外の展開. Provided May 29, 2026.
+- きのこぐものしたにあったまち. n.d. きのこぐものしたにあったまち｜ブロッククラフトで学ぶ広島・長崎歴史探訪ワークショップ. Retrieved May 29, 2026 from https://peacecraft.info/
+- マイクラカップ. 2026. 石川県輪島市門前町にて、マイクラ×ARワークショップ「門前の記憶と未来」を開催しました. Retrieved May 29, 2026 from https://mccup.jp/eventreports/26671/
+- 内外教育ウェブ. 2026. 「マイクラ」で北方領土啓発＝北海道標津町. Retrieved May 29, 2026 from https://edu-naigai.jiji.com/timeline/3411
 - Minecraft Education. n.d. BBC Day of AI. Retrieved May 29, 2026 from https://education.minecraft.net/en-us/resources/bbc-day-of-ai
 - Code.org. n.d. Hour of AI with Minecraft. Retrieved May 29, 2026 from https://code.org/en-US/minecraft
 - National 4-H Council and Microsoft. 2025. National 4-H Council and Microsoft Extend $10M Partnership to Expand AI Education for Rural Youth and Educators. Retrieved May 29, 2026 from https://4-h.org/about/blog/national-4-h-council-and-microsoft-extend-10m-partnership-to-expand-ai-education-for-rural-youth-and-educators/
@@ -37,7 +39,7 @@
 | バージョン | 1.0.0 |
 | 種別 | report |
 | 概要 | Minecraftを，子どもや若者が世界を構築し，過去を再現し，未来を構想する学習環境として捉える。Peacecraft系ワークショップ，災害復興や地域学習，Microsoft・4-H・BBC・Code.orgによるAIリテラシー教材を横断し，AIを用いた記憶継承，創造，批判的リテラシーの学びを整理する。 |
-| 著者 | 渡邉英徳 |
+| 著者 | 片山実咲<br>渡邉英徳 |
 | 想定読者 | Minecraft Educationやゲームベース学習を授業に取り入れたい小中高・大学教員<br>平和教育・地域学習・災害復興学習で仮想空間制作を活用したい教育実践者<br>AIリテラシー，プログラミング，デジタルシティズンシップを横断する教材設計者<br>Minecraftや生成AIを活用した学習サービス・ワークショップの企画担当者 |
 | 主要示唆 | Minecraftは単なるゲームではなく，過去を再現し，地域や未来を構想する共有可能な学習空間になる。<br>AIカラー化，AIエージェント，生成AIによる物語化は，Minecraft内の制作を支える一方で，資料批判と人間の判断を必要とする。<br>国内のPeacecraft系実践と海外のAIリテラシー教材は，平和教育，地域学習，プログラミング，デジタルシティズンシップを横断するモデルを示している。 |
 | 活用場面 | Minecraftを用いた平和教育・災害復興学習・地域学習の設計<br>AIエージェントや生成AIを使う小中高向けAIリテラシー授業<br>教育機関・自治体・企業が連携するゲームベース学習ワークショップ<br>過去の資料や証言をもとに仮想空間を制作する探究学習 |

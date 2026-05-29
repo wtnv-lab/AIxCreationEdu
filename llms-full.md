@@ -140,7 +140,7 @@
 ### AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ
 
 - ファイル: [`reports/07-minecraft-ai-education.md`](reports/07-minecraft-ai-education.md)
-- 著者: 渡邉英徳
+- 著者: 片山実咲, 渡邉英徳
 - 想定読者: Minecraft Educationやゲームベース学習を授業に取り入れたい小中高・大学教員, 平和教育・地域学習・災害復興学習で仮想空間制作を活用したい教育実践者, AIリテラシー，プログラミング，デジタルシティズンシップを横断する教材設計者, Minecraftや生成AIを活用した学習サービス・ワークショップの企画担当者
 - テーマ: 生成AI, Minecraft, ゲームベース学習, AIリテラシー, 記憶継承
 - キーワード: Minecraft Education, Peacecraft, AIリテラシー, ゲームベース学習, 地域学習
