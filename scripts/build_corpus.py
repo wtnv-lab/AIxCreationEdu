@@ -314,7 +314,7 @@ def paragraph_to_markdown(blocks: list[Paragraph | str], report: dict, project: 
         if in_references:
             if not has_reference_overrides:
                 references.append(stripped)
-                lines.extend([f"- {stripped}", ""])
+                lines.extend([f"{len(references)}. {stripped}", ""])
             continue
 
         heading_level = None
@@ -340,7 +340,7 @@ def paragraph_to_markdown(blocks: list[Paragraph | str], report: dict, project: 
 
     if has_reference_overrides:
         lines.extend(["## 参考文献・関連資料", ""])
-        lines.extend([f"- {ref}" for ref in references])
+        lines.extend([f"{idx}. {ref}" for idx, ref in enumerate(references, 1)])
         lines.append("")
 
     abstract = clean_text(report.get("abstract") or " ".join(abstract_parts))
@@ -518,11 +518,11 @@ def write_references(config: dict, references: dict[str, list[str]]) -> None:
         refs = references.get(report["id"], [])
         lines.extend([f"## {report['title']}", ""])
         if not refs:
-            lines.extend(["- 参考文献・関連資料は未抽出です。", ""])
+            lines.extend(["1. 参考文献・関連資料は未抽出です。", ""])
             continue
         for idx, ref in enumerate(refs, 1):
             ref_id = f"{report['id']}-ref-{idx:02d}"
-            lines.append(f"- [{ref_id}] {ref}")
+            lines.append(f"{idx}. [{ref_id}] {ref}")
             bib_lines.extend(
                 [
                     f"@misc{{{ref_id},",
@@ -545,11 +545,11 @@ def write_references(config: dict, references: dict[str, list[str]]) -> None:
 
         for section in supplemental.get("sections", []):
             lines.extend([f"## {section['title']}", ""])
-            for item in section.get("items", []):
+            for idx, item in enumerate(section.get("items", []), 1):
                 citation = supplemental_citation(item)
-                lines.append(f"- [{item['id']}] {citation}")
+                lines.append(f"{idx}. [{item['id']}] {citation}")
                 if item.get("note"):
-                    lines.append(f"  - 用途: {item['note']}")
+                    lines.append(f"   - 用途: {item['note']}")
                 bib_lines.extend(
                     [
                         f"@misc{{{item['id']},",
