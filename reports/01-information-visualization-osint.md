@@ -49,7 +49,7 @@
 | 活用場面 | 高校・大学のGIS、データ可視化、OSINT授業<br>報道機関や自治体と連携した公開情報検証ワークショップ<br>災害、地域課題、都市分析を扱う探究学習<br>情報可視化教材や調査支援サービスの企画 |
 | 学習活動案 | 地域の公開データを地図化し、分布や偏りについてAIと対話しながら仮説を作る。<br>ニュースやSNS投稿の位置情報・時系列・出典を検証し、確実に言えることと推測を分ける。<br>地図、グラフ、テキストを組み合わせ、第三者に説明可能な調査レポートを作成する。 |
 | 実装アイデア | GIS作品例を使った導入ワークショップを設計し、地図表現の読み解きから始める。<br>OSINT検証ラボとして、公開情報の収集、照合、説明文作成、AIによる推論チェックを行う。<br>報道機関や自治体と連携し、地域課題を扱うデータストーリーテリング課題を実施する。 |
-| 概念図との対応 | 問いを立てる: 公開情報から検証可能な問いと仮説を作る。<br>資料の吟味: GIS、OSINT、報道資料を照合し、観察と推論を分ける。<br>人間の検証・社会へ発信: AIの整理を点検し、説明可能な可視化として公開する。 |
+| concept_alignment | {"schema":"aice.concept_alignment.v1","primary_stage_ids":["question_framing","source_evaluation","human_verification","public_communication"],"supporting_stage_ids":["prototyping"],"literacy_ids":["ai_competency_citizenship","design_editing_critical_thinking","publicness_social_responsibility"],"ai_role_ids":["observation_verbalization","hypothesis_comparison","inference_check","editorial_support"],"human_responsibility_ids":["source_verification","observation_inference_separation","evidence_transparency","explanatory_accountability"],"domain_tags":["osint","gis","data_visualization","public_information","media_literacy"]} |
 | 関連レポート | 00-overview<br>03-digital-citizenship<br>05-digital-archive-ai |
 | 引用メモ | GIS・情報可視化・OSINTを組み合わせた情報メディア教育モデル。 |
 | テーマ | 生成AI<br>情報可視化<br>OSINT<br>探究学習 |

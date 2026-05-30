@@ -48,7 +48,7 @@
 | 活用場面 | 生成AI時代の教育方針や校内研修の導入資料<br>AI・創造性・情報リテラシーを横断するカリキュラム設計<br>EdTechサービスや教材企画の論点整理<br>複数レポートを比較するRAG・AIエージェントの入口 |
 | 学習活動案 | 各レポートの共通概念をマッピングし、AI活用教育の全体像を整理する。<br>AIに任せる作業と人間が判断する作業を分類し、授業設計原則を作る。<br>レポート群を比較し、学校・地域・企業研修に応用できる実践案を提案する。 |
 | 実装アイデア | 90分の教員研修で、レポート群をもとに自校のAI活用方針を検討する。<br>教育委員会や学校向けに、生成AI活用のカリキュラム横断マップを作成する。<br>AIエージェントに読み込ませる基礎資料として、授業案・研修案・サービス案の生成に使う。 |
-| 概念図との対応 | 全体像: 制作技能の習熟から構想・編集・社会的責任への重心移動を示す。<br>プロセス: 問いを立てる、資料の吟味、プロトタイピング、人間の検証、社会へ発信を横断する。<br>基盤: AIコンピテンシー・市民性、構想・編集・批判的思考、公共性と社会的責任を束ねる。 |
+| concept_alignment | {"schema":"aice.concept_alignment.v1","primary_stage_ids":["question_framing","source_evaluation","prototyping","human_verification","public_communication"],"supporting_stage_ids":[],"literacy_ids":["ai_competency_citizenship","design_editing_critical_thinking","publicness_social_responsibility"],"ai_role_ids":["co_inquiry","idea_expansion","drafting","critique","prototyping_support"],"human_responsibility_ids":["question_design","source_selection","output_verification","ethical_editing","public_accountability"],"domain_tags":["overview","concept_map","creativity_education","production_to_conception_shift"]} |
 | 関連レポート | 01-information-visualization-osint<br>02-photo-colorization-peace-education<br>03-digital-citizenship<br>04-student-hackathon<br>05-digital-archive-ai<br>06-sf-prototyping<br>07-minecraft-ai-education |
 | 引用メモ | 生成AI時代の創造性教育を横断的に整理する総括レポート。 |
 | テーマ | 生成AI<br>創造性<br>教育実践<br>総括 |

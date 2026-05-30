@@ -44,7 +44,7 @@
 | 活用場面 | 大学・高専・高校のハッカソンやPBL設計<br>AIプロトタイピング研修やメンター育成<br>地域課題解決、学生起業、産学連携プログラム<br>AI時代の創造性評価や成果発表の設計 |
 | 学習活動案 | AIを用いて複数のプロトタイプ案を作り、利用者価値とリスクで比較する。<br>生成されたコードやUIを検証し、発想、実装、説明のどこに人間の判断が必要かを振り返る。<br>発表資料を作る際に、課題、ユーザー、価値、検証結果を明確にする。 |
 | 実装アイデア | 短時間のAIプロトタイピング演習を導入し、実装より課題定義と検証を重視する。<br>審査基準に、社会的価値、利用者理解、AI利用の透明性、検証プロセスを加える。<br>メンター向けに、AI出力を鵜呑みにしないレビュー観点を共有する。 |
-| 概念図との対応 | 問いを立てる: 課題設定、利用者理解、社会的価値をハッカソンの起点にする。<br>プロトタイピング: AIで実装を速め、複数案を試作して比較する。<br>人間の検証・社会へ発信: 生成物を検証し、体験と価値を説明する。 |
+| concept_alignment | {"schema":"aice.concept_alignment.v1","primary_stage_ids":["question_framing","prototyping","human_verification","public_communication"],"supporting_stage_ids":["source_evaluation"],"literacy_ids":["ai_competency_citizenship","design_editing_critical_thinking","publicness_social_responsibility"],"ai_role_ids":["code_generation","ui_drafting","debugging_support","pitch_support"],"human_responsibility_ids":["problem_selection","user_value_judgment","prototype_review","transparent_ai_use"],"domain_tags":["hackathon","prototyping","implementation_democratization","student_projects"]} |
 | 関連レポート | 00-overview<br>03-digital-citizenship<br>06-sf-prototyping |
 | 引用メモ | 生成AIによる実装支援を前提に、学生ハッカソンの教育的価値を再定義するレポート。 |
 | テーマ | 生成AI<br>ハッカソン<br>プロトタイピング<br>実装教育 |

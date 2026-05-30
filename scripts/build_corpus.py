@@ -88,12 +88,20 @@ AI_REPORT_LIST_FIELDS = [
 ]
 
 
+def compact_json(value) -> str:
+    return json.dumps(value, ensure_ascii=False, separators=(",", ":"))
+
+
 def report_metadata_markdown(report: dict, project: dict) -> str:
-    def cell(value: str | list[str]) -> str:
-        if isinstance(value, list):
+    def cell(value) -> str:
+        if isinstance(value, dict):
+            text = compact_json(value)
+        elif isinstance(value, list) and any(isinstance(item, (dict, list)) for item in value):
+            text = compact_json(value)
+        elif isinstance(value, list):
             text = "<br>".join(value)
         else:
-            text = value
+            text = str(value)
         return text.replace("|", "\\|").replace("\n", "<br>")
 
     metadata_labels = {
@@ -101,7 +109,7 @@ def report_metadata_markdown(report: dict, project: dict) -> str:
         "use_cases": "活用場面",
         "learning_activities": "学習活動案",
         "implementation_ideas": "実装アイデア",
-        "concept_alignment": "概念図との対応",
+        "concept_alignment": "concept_alignment",
         "related_reports": "関連レポート",
     }
     rows: list[tuple[str, str | list[str]]] = [
@@ -137,8 +145,8 @@ def report_metadata_markdown(report: dict, project: dict) -> str:
     return "\n".join(lines)
 
 
-def report_ai_fields(report: dict) -> dict[str, list[str] | str]:
-    fields: dict[str, list[str] | str] = {}
+def report_ai_fields(report: dict) -> dict:
+    fields: dict = {}
     for field in AI_REPORT_LIST_FIELDS:
         fields[field] = report.get(field, [])
     fields["citation_note"] = report.get("citation_note", "")
@@ -505,10 +513,11 @@ def write_readme(config: dict, abstracts: dict[str, str]) -> None:
 
 ## AIに読ませる場合
 
-- 概念整理には [`assets/00-overview/project-concept-map.svg`](assets/00-overview/project-concept-map.svg) と、各レポートの `concept_alignment` を参照してください。
+- 概念整理には [`assets/00-overview/project-concept-map.svg`](assets/00-overview/project-concept-map.svg) と、各レポートの構造化メタデータ `concept_alignment` を参照してください。
 - まず [`llms.txt`](llms.txt) を読ませると、資料群の全体像と重要ファイルを短く把握できます。
 - 続いて [`llms-full.md`](llms-full.md) を読ませると、各レポートの要約、テーマ、参照先をまとめて利用できます。
 - 検索・RAG用途では [`metadata/chunks.jsonl`](metadata/chunks.jsonl) を使うと、見出し単位の分割済みテキストとして扱えます。
+- `concept_alignment` の固定語彙は [`metadata/concept-schema.json`](metadata/concept-schema.json) で確認できます。
 - 用語の揺れを抑えるには [`metadata/glossary.json`](metadata/glossary.json) を、図版を根拠付きで扱うには [`metadata/figures.json`](metadata/figures.json) を併用してください。
 - 授業案、ワークショップ、サービス企画、根拠付き回答には [`prompts/`](prompts/) のプロンプトを利用できます。
 
@@ -681,6 +690,36 @@ def write_glossary() -> None:
     (ROOT / "metadata" / "glossary.json").write_text(json.dumps(glossary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def write_concept_schema() -> None:
+    schema = {
+        "schema": "aice.concept_schema.v1",
+        "process_stages": [
+            {"id": "question_framing", "order": 1, "label": "問いを立てる"},
+            {"id": "source_evaluation", "order": 2, "label": "資料の吟味"},
+            {"id": "prototyping", "order": 3, "label": "プロトタイピング"},
+            {"id": "human_verification", "order": 4, "label": "人間の検証"},
+            {"id": "public_communication", "order": 5, "label": "社会へ発信"},
+        ],
+        "literacies": [
+            {"id": "ai_competency_citizenship", "label": "AIコンピテンシー・市民性"},
+            {"id": "design_editing_critical_thinking", "label": "構想・編集・批判的思考"},
+            {"id": "publicness_social_responsibility", "label": "公共性と社会的責任"},
+        ],
+        "concept_alignment_fields": [
+            "schema",
+            "primary_stage_ids",
+            "supporting_stage_ids",
+            "literacy_ids",
+            "ai_role_ids",
+            "human_responsibility_ids",
+            "domain_tags",
+        ],
+    }
+    (ROOT / "metadata" / "concept-schema.json").write_text(
+        json.dumps(schema, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+
+
 def write_figures_metadata() -> None:
     figures = [
         {
@@ -795,8 +834,10 @@ def write_llms(config: dict, abstracts: dict[str, str]) -> None:
         "## 概念図",
         "",
         "- 図: [AIとクリエイティブと教育の概念図](assets/00-overview/project-concept-map.svg)",
-        "- 軸: 問いを立てる、資料の吟味、プロトタイピング、人間の検証、社会へ発信",
-        "- 基盤: AIコンピテンシー・市民性、構想・編集・批判的思考、公共性と社会的責任",
+        "- stage_ids: question_framing, source_evaluation, prototyping, human_verification, public_communication",
+        "- literacy_ids: ai_competency_citizenship, design_editing_critical_thinking, publicness_social_responsibility",
+        "- concept_alignment_schema: {schema, primary_stage_ids, supporting_stage_ids, literacy_ids, ai_role_ids, human_responsibility_ids, domain_tags}",
+        "- schema_file: metadata/concept-schema.json",
         "",
         "## レポート概要",
         "",
@@ -819,7 +860,7 @@ def write_llms(config: dict, abstracts: dict[str, str]) -> None:
                 f"- 活用場面: {' / '.join(report.get('use_cases', []))}",
                 f"- 学習活動案: {' / '.join(report.get('learning_activities', []))}",
                 f"- 実装アイデア: {' / '.join(report.get('implementation_ideas', []))}",
-                f"- 概念図との対応: {' / '.join(report.get('concept_alignment', []))}",
+                f"- concept_alignment: {compact_json(report.get('concept_alignment', {}))}",
                 f"- 関連レポート: {', '.join(report.get('related_reports', []))}",
                 f"- 引用メモ: {report.get('citation_note', '')}",
                 "",
@@ -850,6 +891,7 @@ This repository publishes Markdown reports and AI-readable metadata for planning
 - [Full AI context](llms-full.md): Consolidated overview of all reports.
 - [Report metadata](metadata/reports.json): Machine-readable report index.
 - [Chunked corpus](metadata/chunks.jsonl): Section-level JSONL for retrieval and analysis.
+- [Concept schema](metadata/concept-schema.json): Controlled IDs for process stages, literacies, and concept alignment fields.
 - [Glossary](metadata/glossary.json): Terms and short definitions for AI/RAG grounding.
 - [Figure metadata](metadata/figures.json): Captions, alt text, and source notes for visual assets.
 - [References](references/references.md): Extracted references and related cases.
@@ -871,7 +913,7 @@ def write_prompts() -> None:
 
             あなたは教育実践と教育ソリューション設計の専門家です。このリポジトリの `llms.txt`、`llms-full.md`、`reports/`、`metadata/chunks.jsonl`、`metadata/reports.json` を読み、次の観点で新しい企画案を提案してください。
 
-            提案は、概念図の「問いを立てる → 資料の吟味 → プロトタイピング → 人間の検証 → 社会へ発信」と「基盤となるリテラシー」に沿って整理してください。
+            提案は、各レポートの `concept_alignment.primary_stage_ids`、`supporting_stage_ids`、`literacy_ids` に沿って整理してください。
 
             ## 入力条件
 
@@ -884,7 +926,7 @@ def write_prompts() -> None:
             1. 企画名
             2. 背景となる課題
             3. 参照したレポートと示唆
-            4. 概念図との対応
+            4. concept_alignment
             5. 学習活動またはサービス体験
             6. AIの役割
             7. 人間の判断が必要な点
@@ -900,7 +942,7 @@ def write_prompts() -> None:
 
             ## 参照するレポート
 
-            ## 概念図との対応
+            ## concept_alignment
 
             ## 教育的価値
 
@@ -923,7 +965,7 @@ def write_prompts() -> None:
 
             `metadata/reports.json` と `metadata/chunks.jsonl` を根拠に、指定された学年・教科・時間数に合わせた授業案を作成してください。出典として利用したレポートID、チャンクID、図表IDを明記し、AIの利用場面と人間が判断する場面を分けてください。
 
-            授業の流れは、概念図の「問いを立てる → 資料の吟味 → プロトタイピング → 人間の検証 → 社会へ発信」と、各レポートの `concept_alignment` を参照して組み立ててください。
+            授業の流れは、各レポートの `concept_alignment.primary_stage_ids`、`supporting_stage_ids`、`human_responsibility_ids` を参照して組み立ててください。
 
             ## 出力形式
 
@@ -931,7 +973,7 @@ def write_prompts() -> None:
             2. 対象学年・教科
             3. 到達目標
             4. 参照レポートと根拠チャンク
-            5. 概念図との対応
+            5. concept_alignment
             6. 時間配分
             7. 学習活動
             8. AI利用の役割
@@ -943,7 +985,7 @@ def write_prompts() -> None:
 
             `use_cases`、`learning_activities`、`implementation_ideas`、`concept_alignment` を参照し、学校・自治体・企業研修のいずれかに向けた半日または1日のワークショップを設計してください。参加者の前提知識、必要な資料、ファシリテーション上の注意を含めてください。
 
-            タイムテーブルは、問い、資料の吟味、プロトタイピング、人間の検証、社会へ発信のどこに対応するかが分かるようにしてください。
+            タイムテーブルは、`stage_id` 単位で対応が分かるようにしてください。
 
             ## 出力形式
 
@@ -951,7 +993,7 @@ def write_prompts() -> None:
             2. 対象者
             3. ねらい
             4. 使用するレポート
-            5. 概念図との対応
+            5. concept_alignment
             6. タイムテーブル
             7. 個人活動・グループ活動
             8. 成果物
@@ -962,7 +1004,7 @@ def write_prompts() -> None:
 
             あなたはEdTechサービスの企画担当者です。`metadata/reports.json` の想定読者、活用場面、実装アイデア、`concept_alignment` をもとに、生成AI時代の教育サービス案を作成してください。機能の羅列ではなく、利用者の課題、学習体験、導入条件を中心に整理してください。
 
-            サービス体験は、AIが全プロセスに伴走し、人間が問い・資料・検証・発信の責任を持つ構造として示してください。
+            サービス体験は、`ai_role_ids` と `human_responsibility_ids` の分担が分かる構造として示してください。
 
             ## 出力形式
 
@@ -970,7 +1012,7 @@ def write_prompts() -> None:
             2. 対象ユーザー
             3. 解決する課題
             4. 根拠にしたレポート
-            5. 概念図との対応
+            5. concept_alignment
             6. 主要機能
             7. 学習者・教員・管理者の体験
             8. 導入に必要なデータ・パートナー
@@ -982,7 +1024,7 @@ def write_prompts() -> None:
 
             `metadata/reports.json` と `metadata/chunks.jsonl` を使い、指定テーマについて複数レポートを比較してください。共通点、相違点、相互補完関係、未検討の論点を分け、必ずレポートIDとチャンクIDを添えてください。
 
-            比較の軸には、各レポートの `concept_alignment` と、概念図の5段階プロセス・基盤リテラシーを含めてください。
+            比較の軸には、各レポートの `concept_alignment` に含まれる `primary_stage_ids`、`literacy_ids`、`domain_tags` を含めてください。
 
             ## 出力形式
 
@@ -990,7 +1032,7 @@ def write_prompts() -> None:
             2. 対象レポート
             3. 共通する示唆
             4. レポートごとの差異
-            5. 概念図での位置づけ
+            5. concept_alignment_comparison
             6. 教育実践への応用
             7. 追加調査が必要な点
             """,
@@ -999,13 +1041,13 @@ def write_prompts() -> None:
 
             利用者の質問に対し、`metadata/chunks.jsonl`、`metadata/reports.json`、`metadata/figures.json`、`references/references.md` を根拠に回答してください。本文にないことは推測として明示し、出典としてレポートID、チャンクID、必要に応じて図表IDを示してください。
 
-            回答の整理に迷う場合は、概念図の5段階プロセスと基盤リテラシーを補助線として使ってください。
+            回答の整理に迷う場合は、`concept_alignment.primary_stage_ids`、`supporting_stage_ids`、`literacy_ids` を補助線として使ってください。
 
             ## 出力形式
 
             1. 回答
             2. 根拠
-            3. 概念図との関係
+            3. concept_alignment_relation
             4. 関連図表・参考文献
             5. 推測または未確認事項
             """,
@@ -1014,13 +1056,13 @@ def write_prompts() -> None:
 
             指定された組織や授業テーマに対して、関連レポートの `implementation_ideas`、`learning_activities`、`concept_alignment` を参照し、30日・90日・180日の実装ロードマップを作成してください。小さく始める検証、関係者の巻き込み、評価、公開・発信まで含めてください。
 
-            ロードマップは、問いの設定から社会への発信までの流れと、AIに任せる部分・人間が責任を持つ部分を分けてください。
+            ロードマップは、`primary_stage_ids` と `human_responsibility_ids` を明示し、AIに任せる部分・人間が責任を持つ部分を分けてください。
 
             ## 出力形式
 
             1. 実装目的
             2. 関連レポート
-            3. 概念図との対応
+            3. concept_alignment
             4. 30日計画
             5. 90日計画
             6. 180日計画
@@ -1074,6 +1116,7 @@ def build(config_path: Path) -> None:
     write_references(config, references)
     write_metadata(config, abstracts, all_chunks)
     write_glossary()
+    write_concept_schema()
     write_figures_metadata()
     write_llms(config, abstracts)
     write_prompts()

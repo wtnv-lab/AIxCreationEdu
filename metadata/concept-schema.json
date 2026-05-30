@@ -1,0 +1,53 @@
+{
+  "schema": "aice.concept_schema.v1",
+  "process_stages": [
+    {
+      "id": "question_framing",
+      "order": 1,
+      "label": "問いを立てる"
+    },
+    {
+      "id": "source_evaluation",
+      "order": 2,
+      "label": "資料の吟味"
+    },
+    {
+      "id": "prototyping",
+      "order": 3,
+      "label": "プロトタイピング"
+    },
+    {
+      "id": "human_verification",
+      "order": 4,
+      "label": "人間の検証"
+    },
+    {
+      "id": "public_communication",
+      "order": 5,
+      "label": "社会へ発信"
+    }
+  ],
+  "literacies": [
+    {
+      "id": "ai_competency_citizenship",
+      "label": "AIコンピテンシー・市民性"
+    },
+    {
+      "id": "design_editing_critical_thinking",
+      "label": "構想・編集・批判的思考"
+    },
+    {
+      "id": "publicness_social_responsibility",
+      "label": "公共性と社会的責任"
+    }
+  ],
+  "concept_alignment_fields": [
+    "schema",
+    "primary_stage_ids",
+    "supporting_stage_ids",
+    "literacy_ids",
+    "ai_role_ids",
+    "human_responsibility_ids",
+    "domain_tags"
+  ]
+}

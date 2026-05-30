@@ -48,7 +48,7 @@
 | 活用場面 | 中学・高校の平和教育、歴史教育、地域学習<br>博物館・資料館と学校が連携する写真資料活用授業<br>AIカラー化をめぐる資料批判と倫理の教材化<br>生徒による展示、発表、写真集制作プロジェクト |
 | 学習活動案 | 白黒写真を観察し、AIカラー化前後で印象や解釈がどう変わるかを記録する。<br>証言や専門資料を参照し、AIが生成した色の妥当性と限界を検討する。<br>写真に添えるキャプションや発表原稿を作り、記憶継承の表現として公開する。 |
 | 実装アイデア | 地域資料館と連携し、写真選定、カラー化、検証、展示までを一連の探究にする。<br>発表風景や制作物の図版を含め、学習成果を外部に説明できるポートフォリオにまとめる。<br>AI利用の透明性、資料出典、証言者への配慮を評価項目に入れたルーブリックを作る。 |
-| 概念図との対応 | 資料の吟味: 写真、証言、専門知を照合し、AIカラー化の妥当性を検討する。<br>人間の検証: 生成結果を復元ではなく仮説として扱い、責任ある表現へ編集する。<br>社会へ発信: 写真集や発表を通じて記憶継承と対話へ接続する。 |
+| concept_alignment | {"schema":"aice.concept_alignment.v1","primary_stage_ids":["source_evaluation","human_verification","public_communication"],"supporting_stage_ids":["question_framing","prototyping"],"literacy_ids":["ai_competency_citizenship","design_editing_critical_thinking","publicness_social_responsibility"],"ai_role_ids":["colorization_probe","interpretation_prompt","dialogue_support"],"human_responsibility_ids":["testimony_crosscheck","uncertainty_disclosure","responsible_representation","memory_ethics"],"domain_tags":["photo_colorization","peace_education","memory_inheritance","historical_photos"]} |
 | 関連レポート | 00-overview<br>03-digital-citizenship<br>05-digital-archive-ai |
 | 引用メモ | AIカラー化を平和教育、資料批判、社会発信に結びつけた高校生の実践事例。 |
 | テーマ | 生成AI<br>写真カラー化<br>平和教育<br>歴史学習 |

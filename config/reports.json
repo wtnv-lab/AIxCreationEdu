@@ -111,11 +111,42 @@
         "07-minecraft-ai-education"
       ],
       "citation_note": "生成AI時代の創造性教育を横断的に整理する総括レポート。",
-      "concept_alignment": [
-        "全体像: 制作技能の習熟から構想・編集・社会的責任への重心移動を示す。",
-        "プロセス: 問いを立てる、資料の吟味、プロトタイピング、人間の検証、社会へ発信を横断する。",
-        "基盤: AIコンピテンシー・市民性、構想・編集・批判的思考、公共性と社会的責任を束ねる。"
-      ]
+      "concept_alignment": {
+        "schema": "aice.concept_alignment.v1",
+        "primary_stage_ids": [
+          "question_framing",
+          "source_evaluation",
+          "prototyping",
+          "human_verification",
+          "public_communication"
+        ],
+        "supporting_stage_ids": [],
+        "literacy_ids": [
+          "ai_competency_citizenship",
+          "design_editing_critical_thinking",
+          "publicness_social_responsibility"
+        ],
+        "ai_role_ids": [
+          "co_inquiry",
+          "idea_expansion",
+          "drafting",
+          "critique",
+          "prototyping_support"
+        ],
+        "human_responsibility_ids": [
+          "question_design",
+          "source_selection",
+          "output_verification",
+          "ethical_editing",
+          "public_accountability"
+        ],
+        "domain_tags": [
+          "overview",
+          "concept_map",
+          "creativity_education",
+          "production_to_conception_shift"
+        ]
+      }
     },
     {
       "id": "01-information-visualization-osint",
@@ -171,11 +202,42 @@
         "05-digital-archive-ai"
       ],
       "citation_note": "GIS・情報可視化・OSINTを組み合わせた情報メディア教育モデル。",
-      "concept_alignment": [
-        "問いを立てる: 公開情報から検証可能な問いと仮説を作る。",
-        "資料の吟味: GIS、OSINT、報道資料を照合し、観察と推論を分ける。",
-        "人間の検証・社会へ発信: AIの整理を点検し、説明可能な可視化として公開する。"
-      ]
+      "concept_alignment": {
+        "schema": "aice.concept_alignment.v1",
+        "primary_stage_ids": [
+          "question_framing",
+          "source_evaluation",
+          "human_verification",
+          "public_communication"
+        ],
+        "supporting_stage_ids": [
+          "prototyping"
+        ],
+        "literacy_ids": [
+          "ai_competency_citizenship",
+          "design_editing_critical_thinking",
+          "publicness_social_responsibility"
+        ],
+        "ai_role_ids": [
+          "observation_verbalization",
+          "hypothesis_comparison",
+          "inference_check",
+          "editorial_support"
+        ],
+        "human_responsibility_ids": [
+          "source_verification",
+          "observation_inference_separation",
+          "evidence_transparency",
+          "explanatory_accountability"
+        ],
+        "domain_tags": [
+          "osint",
+          "gis",
+          "data_visualization",
+          "public_information",
+          "media_literacy"
+        ]
+      }
     },
     {
       "id": "02-photo-colorization-peace-education",
@@ -232,11 +294,40 @@
         "05-digital-archive-ai"
       ],
       "citation_note": "AIカラー化を平和教育、資料批判、社会発信に結びつけた高校生の実践事例。",
-      "concept_alignment": [
-        "資料の吟味: 写真、証言、専門知を照合し、AIカラー化の妥当性を検討する。",
-        "人間の検証: 生成結果を復元ではなく仮説として扱い、責任ある表現へ編集する。",
-        "社会へ発信: 写真集や発表を通じて記憶継承と対話へ接続する。"
-      ]
+      "concept_alignment": {
+        "schema": "aice.concept_alignment.v1",
+        "primary_stage_ids": [
+          "source_evaluation",
+          "human_verification",
+          "public_communication"
+        ],
+        "supporting_stage_ids": [
+          "question_framing",
+          "prototyping"
+        ],
+        "literacy_ids": [
+          "ai_competency_citizenship",
+          "design_editing_critical_thinking",
+          "publicness_social_responsibility"
+        ],
+        "ai_role_ids": [
+          "colorization_probe",
+          "interpretation_prompt",
+          "dialogue_support"
+        ],
+        "human_responsibility_ids": [
+          "testimony_crosscheck",
+          "uncertainty_disclosure",
+          "responsible_representation",
+          "memory_ethics"
+        ],
+        "domain_tags": [
+          "photo_colorization",
+          "peace_education",
+          "memory_inheritance",
+          "historical_photos"
+        ]
+      }
     },
     {
       "id": "03-digital-citizenship",
@@ -292,11 +383,39 @@
         "04-student-hackathon"
       ],
       "citation_note": "AI利用を判断・参加・公共性の学習として捉えるデジタルシティズンシップ教育レポート。",
-      "concept_alignment": [
-        "基盤リテラシー: AIコンピテンシー・市民性、公共性と社会的責任を扱う。",
-        "人間の検証: AI出力の根拠、偏り、権利、影響を点検する。",
-        "社会へ発信: 表現前のレビューとガイドラインづくりを学習活動に組み込む。"
-      ]
+      "concept_alignment": {
+        "schema": "aice.concept_alignment.v1",
+        "primary_stage_ids": [
+          "human_verification",
+          "public_communication"
+        ],
+        "supporting_stage_ids": [
+          "question_framing",
+          "source_evaluation"
+        ],
+        "literacy_ids": [
+          "ai_competency_citizenship",
+          "design_editing_critical_thinking",
+          "publicness_social_responsibility"
+        ],
+        "ai_role_ids": [
+          "case_material",
+          "risk_prompt",
+          "reflection_partner"
+        ],
+        "human_responsibility_ids": [
+          "bias_check",
+          "rights_privacy_review",
+          "impact_assessment",
+          "guideline_design"
+        ],
+        "domain_tags": [
+          "digital_citizenship",
+          "ai_literacy",
+          "media_literacy",
+          "publicness"
+        ]
+      }
     },
     {
       "id": "04-student-hackathon",
@@ -353,11 +472,41 @@
         "06-sf-prototyping"
       ],
       "citation_note": "生成AIによる実装支援を前提に、学生ハッカソンの教育的価値を再定義するレポート。",
-      "concept_alignment": [
-        "問いを立てる: 課題設定、利用者理解、社会的価値をハッカソンの起点にする。",
-        "プロトタイピング: AIで実装を速め、複数案を試作して比較する。",
-        "人間の検証・社会へ発信: 生成物を検証し、体験と価値を説明する。"
-      ]
+      "concept_alignment": {
+        "schema": "aice.concept_alignment.v1",
+        "primary_stage_ids": [
+          "question_framing",
+          "prototyping",
+          "human_verification",
+          "public_communication"
+        ],
+        "supporting_stage_ids": [
+          "source_evaluation"
+        ],
+        "literacy_ids": [
+          "ai_competency_citizenship",
+          "design_editing_critical_thinking",
+          "publicness_social_responsibility"
+        ],
+        "ai_role_ids": [
+          "code_generation",
+          "ui_drafting",
+          "debugging_support",
+          "pitch_support"
+        ],
+        "human_responsibility_ids": [
+          "problem_selection",
+          "user_value_judgment",
+          "prototype_review",
+          "transparent_ai_use"
+        ],
+        "domain_tags": [
+          "hackathon",
+          "prototyping",
+          "implementation_democratization",
+          "student_projects"
+        ]
+      }
     },
     {
       "id": "05-digital-archive-ai",
@@ -413,11 +562,41 @@
         "02-photo-colorization-peace-education"
       ],
       "citation_note": "デジタルアーカイブと生成AIを組み合わせ、一次資料を用いた探究学習を設計するレポート。",
-      "concept_alignment": [
-        "資料の吟味: デジタルアーカイブの一次資料性、出典、文脈を確認する。",
-        "プロトタイピング: AIの検索、要約、比較を使い、教材や展示案を試作する。",
-        "社会へ発信: 資料を教材、展示、地域ストーリーとして再編集する。"
-      ]
+      "concept_alignment": {
+        "schema": "aice.concept_alignment.v1",
+        "primary_stage_ids": [
+          "source_evaluation",
+          "prototyping",
+          "public_communication"
+        ],
+        "supporting_stage_ids": [
+          "question_framing",
+          "human_verification"
+        ],
+        "literacy_ids": [
+          "ai_competency_citizenship",
+          "design_editing_critical_thinking",
+          "publicness_social_responsibility"
+        ],
+        "ai_role_ids": [
+          "search_support",
+          "summarization",
+          "comparison",
+          "material_recomposition"
+        ],
+        "human_responsibility_ids": [
+          "source_context_check",
+          "primary_source_verification",
+          "curation_judgment",
+          "public_reframing"
+        ],
+        "domain_tags": [
+          "digital_archive",
+          "primary_sources",
+          "sukilam",
+          "educational_materials"
+        ]
+      }
     },
     {
       "id": "06-sf-prototyping",
@@ -474,11 +653,40 @@
         "04-student-hackathon"
       ],
       "citation_note": "生成AIを用いて未来構想を民主化し、教育・産学協創・事業開発に応用するSFプロトタイピングのレポート。",
-      "concept_alignment": [
-        "問いを立てる: 未来を予測ではなく現在の選択を問い直す題材として設定する。",
-        "プロトタイピング: 生成AIで複数の未来シナリオや物語を試作する。",
-        "人間の検証: 参加者がAI生成の未来像を批判、修正、再構成する。"
-      ]
+      "concept_alignment": {
+        "schema": "aice.concept_alignment.v1",
+        "primary_stage_ids": [
+          "question_framing",
+          "prototyping",
+          "human_verification"
+        ],
+        "supporting_stage_ids": [
+          "public_communication"
+        ],
+        "literacy_ids": [
+          "ai_competency_citizenship",
+          "design_editing_critical_thinking",
+          "publicness_social_responsibility"
+        ],
+        "ai_role_ids": [
+          "scenario_generation",
+          "worldbuilding",
+          "alternative_generation",
+          "ideation_support"
+        ],
+        "human_responsibility_ids": [
+          "future_assumption_critique",
+          "value_judgment",
+          "scenario_revision",
+          "consensus_building"
+        ],
+        "domain_tags": [
+          "sf_prototyping",
+          "future_scenarios",
+          "workshop",
+          "backcasting"
+        ]
+      }
     },
     {
       "id": "07-minecraft-ai-education",
@@ -539,11 +747,42 @@
         "06-sf-prototyping"
       ],
       "citation_note": "MinecraftとAIを，記憶継承，地域学習，創造，AIリテラシーを横断する教育メディアとして整理するレポート。",
-      "concept_alignment": [
-        "プロトタイピング: Minecraftで過去の再現や未来の地域像を共有可能な空間として試作する。",
-        "資料の吟味・人間の検証: 写真、証言、AI生成物を照合し、再現の根拠と不確実性を扱う。",
-        "社会へ発信: 完成した仮想空間を展示、発表、対話へ接続する。"
-      ]
+      "concept_alignment": {
+        "schema": "aice.concept_alignment.v1",
+        "primary_stage_ids": [
+          "source_evaluation",
+          "prototyping",
+          "human_verification",
+          "public_communication"
+        ],
+        "supporting_stage_ids": [
+          "question_framing"
+        ],
+        "literacy_ids": [
+          "ai_competency_citizenship",
+          "design_editing_critical_thinking",
+          "publicness_social_responsibility"
+        ],
+        "ai_role_ids": [
+          "worldbuilding_support",
+          "agent_assistance",
+          "story_generation",
+          "colorization_probe"
+        ],
+        "human_responsibility_ids": [
+          "evidence_uncertainty_handling",
+          "reconstruction_judgment",
+          "community_dialogue",
+          "ai_output_review"
+        ],
+        "domain_tags": [
+          "minecraft_education",
+          "game_based_learning",
+          "memory_inheritance",
+          "regional_learning",
+          "ai_literacy"
+        ]
+      }
     }
   ]
 }

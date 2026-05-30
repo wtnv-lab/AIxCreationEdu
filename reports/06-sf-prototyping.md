@@ -40,7 +40,7 @@ SFプロトタイピングは，サイエンス・フィクションの発想を
 | 活用場面 | 高校・大学の未来構想、探究学習、創造性教育<br>企業研修、産学協創、新規事業開発ワークショップ<br>地域や組織のビジョン策定<br>生成AIを用いた物語生成・アイデア創出教材 |
 | 学習活動案 | AIに未来シナリオを複数生成させ、前提、価値観、リスクを読み解く。<br>参加者が未来像を修正し、望ましい技術利用や社会制度を提案する。<br>SFプロトタイプを短編、新聞記事、サービス広告、政策提案などの形式で表現する。 |
 | 実装アイデア | 90分から半日のSFプロトタイピングワークショップを設計し、AI生成と人間の批評を交互に行う。<br>新規事業や研究テーマ検討で、未来シナリオ、ステークホルダー、倫理的論点を可視化する。<br>成果物をハッカソンやPBLの課題設定に接続し、プロトタイプ制作へ展開する。 |
-| 概念図との対応 | 問いを立てる: 未来を予測ではなく現在の選択を問い直す題材として設定する。<br>プロトタイピング: 生成AIで複数の未来シナリオや物語を試作する。<br>人間の検証: 参加者がAI生成の未来像を批判、修正、再構成する。 |
+| concept_alignment | {"schema":"aice.concept_alignment.v1","primary_stage_ids":["question_framing","prototyping","human_verification"],"supporting_stage_ids":["public_communication"],"literacy_ids":["ai_competency_citizenship","design_editing_critical_thinking","publicness_social_responsibility"],"ai_role_ids":["scenario_generation","worldbuilding","alternative_generation","ideation_support"],"human_responsibility_ids":["future_assumption_critique","value_judgment","scenario_revision","consensus_building"],"domain_tags":["sf_prototyping","future_scenarios","workshop","backcasting"]} |
 | 関連レポート | 00-overview<br>03-digital-citizenship<br>04-student-hackathon |
 | 引用メモ | 生成AIを用いて未来構想を民主化し、教育・産学協創・事業開発に応用するSFプロトタイピングのレポート。 |
 | テーマ | 生成AI<br>SFプロトタイピング<br>未来構想<br>創造性教育 |

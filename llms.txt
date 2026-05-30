@@ -43,6 +43,7 @@ This repository publishes Markdown reports and AI-readable metadata for planning
 - [Full AI context](llms-full.md): Consolidated overview of all reports.
 - [Report metadata](metadata/reports.json): Machine-readable report index.
 - [Chunked corpus](metadata/chunks.jsonl): Section-level JSONL for retrieval and analysis.
+- [Concept schema](metadata/concept-schema.json): Controlled IDs for process stages, literacies, and concept alignment fields.
 - [Glossary](metadata/glossary.json): Terms and short definitions for AI/RAG grounding.
 - [Figure metadata](metadata/figures.json): Captions, alt text, and source notes for visual assets.
 - [References](references/references.md): Extracted references and related cases.

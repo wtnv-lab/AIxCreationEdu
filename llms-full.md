@@ -33,8 +33,10 @@
 ## 概念図
 
 - 図: [AIとクリエイティブと教育の概念図](assets/00-overview/project-concept-map.svg)
-- 軸: 問いを立てる、資料の吟味、プロトタイピング、人間の検証、社会へ発信
-- 基盤: AIコンピテンシー・市民性、構想・編集・批判的思考、公共性と社会的責任
+- stage_ids: question_framing, source_evaluation, prototyping, human_verification, public_communication
+- literacy_ids: ai_competency_citizenship, design_editing_critical_thinking, publicness_social_responsibility
+- concept_alignment_schema: {schema, primary_stage_ids, supporting_stage_ids, literacy_ids, ai_role_ids, human_responsibility_ids, domain_tags}
+- schema_file: metadata/concept-schema.json
 
 ## レポート概要
 
@@ -50,7 +52,7 @@
 - 活用場面: 生成AI時代の教育方針や校内研修の導入資料 / AI・創造性・情報リテラシーを横断するカリキュラム設計 / EdTechサービスや教材企画の論点整理 / 複数レポートを比較するRAG・AIエージェントの入口
 - 学習活動案: 各レポートの共通概念をマッピングし、AI活用教育の全体像を整理する。 / AIに任せる作業と人間が判断する作業を分類し、授業設計原則を作る。 / レポート群を比較し、学校・地域・企業研修に応用できる実践案を提案する。
 - 実装アイデア: 90分の教員研修で、レポート群をもとに自校のAI活用方針を検討する。 / 教育委員会や学校向けに、生成AI活用のカリキュラム横断マップを作成する。 / AIエージェントに読み込ませる基礎資料として、授業案・研修案・サービス案の生成に使う。
-- 概念図との対応: 全体像: 制作技能の習熟から構想・編集・社会的責任への重心移動を示す。 / プロセス: 問いを立てる、資料の吟味、プロトタイピング、人間の検証、社会へ発信を横断する。 / 基盤: AIコンピテンシー・市民性、構想・編集・批判的思考、公共性と社会的責任を束ねる。
+- concept_alignment: {"schema":"aice.concept_alignment.v1","primary_stage_ids":["question_framing","source_evaluation","prototyping","human_verification","public_communication"],"supporting_stage_ids":[],"literacy_ids":["ai_competency_citizenship","design_editing_critical_thinking","publicness_social_responsibility"],"ai_role_ids":["co_inquiry","idea_expansion","drafting","critique","prototyping_support"],"human_responsibility_ids":["question_design","source_selection","output_verification","ethical_editing","public_accountability"],"domain_tags":["overview","concept_map","creativity_education","production_to_conception_shift"]}
 - 関連レポート: 01-information-visualization-osint, 02-photo-colorization-peace-education, 03-digital-citizenship, 04-student-hackathon, 05-digital-archive-ai, 06-sf-prototyping, 07-minecraft-ai-education
 - 引用メモ: 生成AI時代の創造性教育を横断的に整理する総括レポート。
 
@@ -66,7 +68,7 @@
 - 活用場面: 高校・大学のGIS、データ可視化、OSINT授業 / 報道機関や自治体と連携した公開情報検証ワークショップ / 災害、地域課題、都市分析を扱う探究学習 / 情報可視化教材や調査支援サービスの企画
 - 学習活動案: 地域の公開データを地図化し、分布や偏りについてAIと対話しながら仮説を作る。 / ニュースやSNS投稿の位置情報・時系列・出典を検証し、確実に言えることと推測を分ける。 / 地図、グラフ、テキストを組み合わせ、第三者に説明可能な調査レポートを作成する。
 - 実装アイデア: GIS作品例を使った導入ワークショップを設計し、地図表現の読み解きから始める。 / OSINT検証ラボとして、公開情報の収集、照合、説明文作成、AIによる推論チェックを行う。 / 報道機関や自治体と連携し、地域課題を扱うデータストーリーテリング課題を実施する。
-- 概念図との対応: 問いを立てる: 公開情報から検証可能な問いと仮説を作る。 / 資料の吟味: GIS、OSINT、報道資料を照合し、観察と推論を分ける。 / 人間の検証・社会へ発信: AIの整理を点検し、説明可能な可視化として公開する。
+- concept_alignment: {"schema":"aice.concept_alignment.v1","primary_stage_ids":["question_framing","source_evaluation","human_verification","public_communication"],"supporting_stage_ids":["prototyping"],"literacy_ids":["ai_competency_citizenship","design_editing_critical_thinking","publicness_social_responsibility"],"ai_role_ids":["observation_verbalization","hypothesis_comparison","inference_check","editorial_support"],"human_responsibility_ids":["source_verification","observation_inference_separation","evidence_transparency","explanatory_accountability"],"domain_tags":["osint","gis","data_visualization","public_information","media_literacy"]}
 - 関連レポート: 00-overview, 03-digital-citizenship, 05-digital-archive-ai
 - 引用メモ: GIS・情報可視化・OSINTを組み合わせた情報メディア教育モデル。
 
@@ -82,7 +84,7 @@
 - 活用場面: 中学・高校の平和教育、歴史教育、地域学習 / 博物館・資料館と学校が連携する写真資料活用授業 / AIカラー化をめぐる資料批判と倫理の教材化 / 生徒による展示、発表、写真集制作プロジェクト
 - 学習活動案: 白黒写真を観察し、AIカラー化前後で印象や解釈がどう変わるかを記録する。 / 証言や専門資料を参照し、AIが生成した色の妥当性と限界を検討する。 / 写真に添えるキャプションや発表原稿を作り、記憶継承の表現として公開する。
 - 実装アイデア: 地域資料館と連携し、写真選定、カラー化、検証、展示までを一連の探究にする。 / 発表風景や制作物の図版を含め、学習成果を外部に説明できるポートフォリオにまとめる。 / AI利用の透明性、資料出典、証言者への配慮を評価項目に入れたルーブリックを作る。
-- 概念図との対応: 資料の吟味: 写真、証言、専門知を照合し、AIカラー化の妥当性を検討する。 / 人間の検証: 生成結果を復元ではなく仮説として扱い、責任ある表現へ編集する。 / 社会へ発信: 写真集や発表を通じて記憶継承と対話へ接続する。
+- concept_alignment: {"schema":"aice.concept_alignment.v1","primary_stage_ids":["source_evaluation","human_verification","public_communication"],"supporting_stage_ids":["question_framing","prototyping"],"literacy_ids":["ai_competency_citizenship","design_editing_critical_thinking","publicness_social_responsibility"],"ai_role_ids":["colorization_probe","interpretation_prompt","dialogue_support"],"human_responsibility_ids":["testimony_crosscheck","uncertainty_disclosure","responsible_representation","memory_ethics"],"domain_tags":["photo_colorization","peace_education","memory_inheritance","historical_photos"]}
 - 関連レポート: 00-overview, 03-digital-citizenship, 05-digital-archive-ai
 - 引用メモ: AIカラー化を平和教育、資料批判、社会発信に結びつけた高校生の実践事例。
 
@@ -98,7 +100,7 @@
 - 活用場面: 小中高の情報モラル、ICT活用、AIリテラシー授業 / 学校の生成AI利用ルールや校内研修の設計 / 安全な学習環境を備えた教育サービスの企画 / 生徒の表現活動における倫理・著作権・プライバシー指導
 - 学習活動案: AIの回答について、根拠、偏り、未確認情報をチェックするワークを行う。 / 生成物を公開する前に、影響を受ける他者、著作権、個人情報を点検する。 / 学校やクラスで使うAI利用ガイドラインを生徒自身が議論して作る。
 - 実装アイデア: 各教科で使えるAI利用チェックリストを作り、授業ごとに更新する。 / 校内研修で、禁止事項だけでなく判断プロセスを共有するケーススタディを行う。 / AI教材に、根拠確認、出典表示、公開前レビューの流れを組み込む。
-- 概念図との対応: 基盤リテラシー: AIコンピテンシー・市民性、公共性と社会的責任を扱う。 / 人間の検証: AI出力の根拠、偏り、権利、影響を点検する。 / 社会へ発信: 表現前のレビューとガイドラインづくりを学習活動に組み込む。
+- concept_alignment: {"schema":"aice.concept_alignment.v1","primary_stage_ids":["human_verification","public_communication"],"supporting_stage_ids":["question_framing","source_evaluation"],"literacy_ids":["ai_competency_citizenship","design_editing_critical_thinking","publicness_social_responsibility"],"ai_role_ids":["case_material","risk_prompt","reflection_partner"],"human_responsibility_ids":["bias_check","rights_privacy_review","impact_assessment","guideline_design"],"domain_tags":["digital_citizenship","ai_literacy","media_literacy","publicness"]}
 - 関連レポート: 00-overview, 01-information-visualization-osint, 04-student-hackathon
 - 引用メモ: AI利用を判断・参加・公共性の学習として捉えるデジタルシティズンシップ教育レポート。
 
@@ -114,7 +116,7 @@
 - 活用場面: 大学・高専・高校のハッカソンやPBL設計 / AIプロトタイピング研修やメンター育成 / 地域課題解決、学生起業、産学連携プログラム / AI時代の創造性評価や成果発表の設計
 - 学習活動案: AIを用いて複数のプロトタイプ案を作り、利用者価値とリスクで比較する。 / 生成されたコードやUIを検証し、発想、実装、説明のどこに人間の判断が必要かを振り返る。 / 発表資料を作る際に、課題、ユーザー、価値、検証結果を明確にする。
 - 実装アイデア: 短時間のAIプロトタイピング演習を導入し、実装より課題定義と検証を重視する。 / 審査基準に、社会的価値、利用者理解、AI利用の透明性、検証プロセスを加える。 / メンター向けに、AI出力を鵜呑みにしないレビュー観点を共有する。
-- 概念図との対応: 問いを立てる: 課題設定、利用者理解、社会的価値をハッカソンの起点にする。 / プロトタイピング: AIで実装を速め、複数案を試作して比較する。 / 人間の検証・社会へ発信: 生成物を検証し、体験と価値を説明する。
+- concept_alignment: {"schema":"aice.concept_alignment.v1","primary_stage_ids":["question_framing","prototyping","human_verification","public_communication"],"supporting_stage_ids":["source_evaluation"],"literacy_ids":["ai_competency_citizenship","design_editing_critical_thinking","publicness_social_responsibility"],"ai_role_ids":["code_generation","ui_drafting","debugging_support","pitch_support"],"human_responsibility_ids":["problem_selection","user_value_judgment","prototype_review","transparent_ai_use"],"domain_tags":["hackathon","prototyping","implementation_democratization","student_projects"]}
 - 関連レポート: 00-overview, 03-digital-citizenship, 06-sf-prototyping
 - 引用メモ: 生成AIによる実装支援を前提に、学生ハッカソンの教育的価値を再定義するレポート。
 
@@ -130,7 +132,7 @@
 - 活用場面: 一次資料や地域資料を活用した探究学習 / 図書館・博物館・自治体の教育連携プログラム / デジタルアーカイブを使う教材・検索支援サービスの企画 / AIによる資料要約、比較、再編集を扱う授業
 - 学習活動案: ジャパンサーチ等で資料を探し、出典、作成時期、文脈を確認して問いを立てる。 / AIに資料の要約や比較をさせ、その妥当性を原資料に戻って検証する。 / 複数資料を組み合わせ、展示案、教材、地域ストーリーとして再構成する。
 - 実装アイデア: 学校と図書館・博物館が連携し、地域資料を使う探究単元を設計する。 / AI検索・要約機能に、出典確認と一次資料へのリンクを必ず表示する設計にする。 / 学習成果をデジタル展示や教材アーカイブとして蓄積し、次年度の学習資源にする。
-- 概念図との対応: 資料の吟味: デジタルアーカイブの一次資料性、出典、文脈を確認する。 / プロトタイピング: AIの検索、要約、比較を使い、教材や展示案を試作する。 / 社会へ発信: 資料を教材、展示、地域ストーリーとして再編集する。
+- concept_alignment: {"schema":"aice.concept_alignment.v1","primary_stage_ids":["source_evaluation","prototyping","public_communication"],"supporting_stage_ids":["question_framing","human_verification"],"literacy_ids":["ai_competency_citizenship","design_editing_critical_thinking","publicness_social_responsibility"],"ai_role_ids":["search_support","summarization","comparison","material_recomposition"],"human_responsibility_ids":["source_context_check","primary_source_verification","curation_judgment","public_reframing"],"domain_tags":["digital_archive","primary_sources","sukilam","educational_materials"]}
 - 関連レポート: 00-overview, 01-information-visualization-osint, 02-photo-colorization-peace-education
 - 引用メモ: デジタルアーカイブと生成AIを組み合わせ、一次資料を用いた探究学習を設計するレポート。
 
@@ -146,7 +148,7 @@
 - 活用場面: 高校・大学の未来構想、探究学習、創造性教育 / 企業研修、産学協創、新規事業開発ワークショップ / 地域や組織のビジョン策定 / 生成AIを用いた物語生成・アイデア創出教材
 - 学習活動案: AIに未来シナリオを複数生成させ、前提、価値観、リスクを読み解く。 / 参加者が未来像を修正し、望ましい技術利用や社会制度を提案する。 / SFプロトタイプを短編、新聞記事、サービス広告、政策提案などの形式で表現する。
 - 実装アイデア: 90分から半日のSFプロトタイピングワークショップを設計し、AI生成と人間の批評を交互に行う。 / 新規事業や研究テーマ検討で、未来シナリオ、ステークホルダー、倫理的論点を可視化する。 / 成果物をハッカソンやPBLの課題設定に接続し、プロトタイプ制作へ展開する。
-- 概念図との対応: 問いを立てる: 未来を予測ではなく現在の選択を問い直す題材として設定する。 / プロトタイピング: 生成AIで複数の未来シナリオや物語を試作する。 / 人間の検証: 参加者がAI生成の未来像を批判、修正、再構成する。
+- concept_alignment: {"schema":"aice.concept_alignment.v1","primary_stage_ids":["question_framing","prototyping","human_verification"],"supporting_stage_ids":["public_communication"],"literacy_ids":["ai_competency_citizenship","design_editing_critical_thinking","publicness_social_responsibility"],"ai_role_ids":["scenario_generation","worldbuilding","alternative_generation","ideation_support"],"human_responsibility_ids":["future_assumption_critique","value_judgment","scenario_revision","consensus_building"],"domain_tags":["sf_prototyping","future_scenarios","workshop","backcasting"]}
 - 関連レポート: 00-overview, 03-digital-citizenship, 04-student-hackathon
 - 引用メモ: 生成AIを用いて未来構想を民主化し、教育・産学協創・事業開発に応用するSFプロトタイピングのレポート。
 
@@ -162,6 +164,6 @@
 - 活用場面: Minecraftを用いた平和教育・災害復興学習・地域学習の設計 / AIエージェントや生成AIを使う小中高向けAIリテラシー授業 / 教育機関・自治体・企業が連携するゲームベース学習ワークショップ / 過去の資料や証言をもとに仮想空間を制作する探究学習
 - 学習活動案: 白黒写真や証言をもとに，失われた街並みや地域の記憶をMinecraft内で再構築する。 / AIが生成した色，説明，建築案を資料や証言と照合し，どこまで信頼できるかを検討する。 / AIエージェントに指示を出し，目的設定，プロンプト，検証，修正の過程を振り返る。
 - 実装アイデア: 地域資料館や自治体と連携し，写真・地図・証言を使うMinecraft制作ワークショップを実施する。 / Minecraft Educationの既存AI教材を導入し，デジタルシティズンシップや情報モラルの授業と接続する。 / 完成した仮想空間を展示・発表し，地域住民や専門家との対話を通じて学習成果を検証する。
-- 概念図との対応: プロトタイピング: Minecraftで過去の再現や未来の地域像を共有可能な空間として試作する。 / 資料の吟味・人間の検証: 写真、証言、AI生成物を照合し、再現の根拠と不確実性を扱う。 / 社会へ発信: 完成した仮想空間を展示、発表、対話へ接続する。
+- concept_alignment: {"schema":"aice.concept_alignment.v1","primary_stage_ids":["source_evaluation","prototyping","human_verification","public_communication"],"supporting_stage_ids":["question_framing"],"literacy_ids":["ai_competency_citizenship","design_editing_critical_thinking","publicness_social_responsibility"],"ai_role_ids":["worldbuilding_support","agent_assistance","story_generation","colorization_probe"],"human_responsibility_ids":["evidence_uncertainty_handling","reconstruction_judgment","community_dialogue","ai_output_review"],"domain_tags":["minecraft_education","game_based_learning","memory_inheritance","regional_learning","ai_literacy"]}
 - 関連レポート: 00-overview, 02-photo-colorization-peace-education, 03-digital-citizenship, 05-digital-archive-ai, 06-sf-prototyping
 - 引用メモ: MinecraftとAIを，記憶継承，地域学習，創造，AIリテラシーを横断する教育メディアとして整理するレポート。
