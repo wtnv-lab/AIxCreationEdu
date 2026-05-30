@@ -39,6 +39,7 @@ This repository publishes Markdown reports and AI-readable metadata for planning
 
 ## AI Metadata
 
+- [Concept map](assets/00-overview/project-concept-map.svg): Visual summary of the shift from production skills to conception, editing, and social responsibility.
 - [Full AI context](llms-full.md): Consolidated overview of all reports.
 - [Report metadata](metadata/reports.json): Machine-readable report index.
 - [Chunked corpus](metadata/chunks.jsonl): Section-level JSONL for retrieval and analysis.

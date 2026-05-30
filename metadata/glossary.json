@@ -11,6 +11,30 @@
     ]
   },
   {
+    "term": "AIと伴走する探究・制作プロセス",
+    "reading": "えーあいとばんそうするたんきゅう・せいさくぷろせす",
+    "definition": "問いを立てる、資料を吟味する、プロトタイピングする、人間が検証する、社会へ発信するという五段階を、AIが全体に伴走する学習プロセスとして整理した概念。",
+    "related_reports": [
+      "00-overview",
+      "01-information-visualization-osint",
+      "02-photo-colorization-peace-education",
+      "04-student-hackathon",
+      "05-digital-archive-ai",
+      "06-sf-prototyping",
+      "07-minecraft-ai-education"
+    ]
+  },
+  {
+    "term": "基盤となるリテラシー",
+    "reading": "きばんとなるりてらしー",
+    "definition": "AIコンピテンシー・市民性、構想・編集・批判的思考、公共性と社会的責任を組み合わせ、AI時代の探究・制作を支える力。",
+    "related_reports": [
+      "00-overview",
+      "03-digital-citizenship",
+      "05-digital-archive-ai"
+    ]
+  },
+  {
     "term": "情報可視化",
     "reading": "じょうほうかしか",
     "definition": "データや公開情報を地図、図表、タイムラインなどに変換し、関係性や偏りを読み解けるようにする方法。",

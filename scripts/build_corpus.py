@@ -83,6 +83,7 @@ AI_REPORT_LIST_FIELDS = [
     "use_cases",
     "learning_activities",
     "implementation_ideas",
+    "concept_alignment",
     "related_reports",
 ]
 
@@ -100,6 +101,7 @@ def report_metadata_markdown(report: dict, project: dict) -> str:
         "use_cases": "活用場面",
         "learning_activities": "学習活動案",
         "implementation_ideas": "実装アイデア",
+        "concept_alignment": "概念図との対応",
         "related_reports": "関連レポート",
     }
     rows: list[tuple[str, str | list[str]]] = [
@@ -391,6 +393,7 @@ def chunk_markdown(report: dict, markdown: str, max_chars: int = 1200) -> list[d
                     "summary": chunk_summary(current_heading, text),
                     "themes": report["themes"],
                     "keywords": report["keywords"],
+                    "concept_alignment": report.get("concept_alignment", []),
                     "text": text,
                     "source": report["output_md"],
                 }
@@ -484,6 +487,10 @@ def write_readme(config: dict, abstracts: dict[str, str]) -> None:
 
 このリポジトリは、教育関係者および教育ソリューション提供企業が、生成AI時代の教育実践を検討するための公開資料集です。人間が読みやすいMarkdown本文と、AIエージェントやRAGで扱いやすいメタデータを併置しています。
 
+![AIとクリエイティブと教育の概念図](assets/00-overview/project-concept-map.svg)
+
+*AIとクリエイティブと教育の概念図*
+
 ## 著者
 
 {author_markdown(project)}
@@ -498,6 +505,7 @@ def write_readme(config: dict, abstracts: dict[str, str]) -> None:
 
 ## AIに読ませる場合
 
+- 概念整理には [`assets/00-overview/project-concept-map.svg`](assets/00-overview/project-concept-map.svg) と、各レポートの `concept_alignment` を参照してください。
 - まず [`llms.txt`](llms.txt) を読ませると、資料群の全体像と重要ファイルを短く把握できます。
 - 続いて [`llms-full.md`](llms-full.md) を読ませると、各レポートの要約、テーマ、参照先をまとめて利用できます。
 - 検索・RAG用途では [`metadata/chunks.jsonl`](metadata/chunks.jsonl) を使うと、見出し単位の分割済みテキストとして扱えます。
@@ -590,6 +598,26 @@ def write_glossary() -> None:
             "related_reports": ["00-overview", "03-digital-citizenship", "04-student-hackathon", "06-sf-prototyping"],
         },
         {
+            "term": "AIと伴走する探究・制作プロセス",
+            "reading": "えーあいとばんそうするたんきゅう・せいさくぷろせす",
+            "definition": "問いを立てる、資料を吟味する、プロトタイピングする、人間が検証する、社会へ発信するという五段階を、AIが全体に伴走する学習プロセスとして整理した概念。",
+            "related_reports": [
+                "00-overview",
+                "01-information-visualization-osint",
+                "02-photo-colorization-peace-education",
+                "04-student-hackathon",
+                "05-digital-archive-ai",
+                "06-sf-prototyping",
+                "07-minecraft-ai-education",
+            ],
+        },
+        {
+            "term": "基盤となるリテラシー",
+            "reading": "きばんとなるりてらしー",
+            "definition": "AIコンピテンシー・市民性、構想・編集・批判的思考、公共性と社会的責任を組み合わせ、AI時代の探究・制作を支える力。",
+            "related_reports": ["00-overview", "03-digital-citizenship", "05-digital-archive-ai"],
+        },
+        {
             "term": "情報可視化",
             "reading": "じょうほうかしか",
             "definition": "データや公開情報を地図、図表、タイムラインなどに変換し、関係性や偏りを読み解けるようにする方法。",
@@ -655,6 +683,16 @@ def write_glossary() -> None:
 
 def write_figures_metadata() -> None:
     figures = [
+        {
+            "id": "00-project-concept-map",
+            "report_id": "00-overview",
+            "path": "assets/00-overview/project-concept-map.svg",
+            "alt": "制作技能の習熟から構想・編集・社会的責任へ教育の焦点が移り、AIと伴走する探究・制作プロセスと基盤リテラシーによって支えられる構造を示す概念図",
+            "caption": "AIとクリエイティブと教育の概念図",
+            "source": "ユーザー提供SVG gemini-svg (1).svg",
+            "license_note": "CC BY 4.0",
+            "related_sections": ["AIとクリエイティブと教育 総括レポート"],
+        },
         {
             "id": "01-gis-education-examples",
             "report_id": "01-information-visualization-osint",
@@ -754,6 +792,12 @@ def write_llms(config: dict, abstracts: dict[str, str]) -> None:
         "",
         *[f"- {aud}" for aud in project["audience"]],
         "",
+        "## 概念図",
+        "",
+        "- 図: [AIとクリエイティブと教育の概念図](assets/00-overview/project-concept-map.svg)",
+        "- 軸: 問いを立てる、資料の吟味、プロトタイピング、人間の検証、社会へ発信",
+        "- 基盤: AIコンピテンシー・市民性、構想・編集・批判的思考、公共性と社会的責任",
+        "",
         "## レポート概要",
         "",
     ]
@@ -775,6 +819,7 @@ def write_llms(config: dict, abstracts: dict[str, str]) -> None:
                 f"- 活用場面: {' / '.join(report.get('use_cases', []))}",
                 f"- 学習活動案: {' / '.join(report.get('learning_activities', []))}",
                 f"- 実装アイデア: {' / '.join(report.get('implementation_ideas', []))}",
+                f"- 概念図との対応: {' / '.join(report.get('concept_alignment', []))}",
                 f"- 関連レポート: {', '.join(report.get('related_reports', []))}",
                 f"- 引用メモ: {report.get('citation_note', '')}",
                 "",
@@ -801,6 +846,7 @@ This repository publishes Markdown reports and AI-readable metadata for planning
 
 ## AI Metadata
 
+- [Concept map](assets/00-overview/project-concept-map.svg): Visual summary of the shift from production skills to conception, editing, and social responsibility.
 - [Full AI context](llms-full.md): Consolidated overview of all reports.
 - [Report metadata](metadata/reports.json): Machine-readable report index.
 - [Chunked corpus](metadata/chunks.jsonl): Section-level JSONL for retrieval and analysis.
@@ -823,7 +869,9 @@ def write_prompts() -> None:
         "idea-generation.md": """\
             # アイデア創出プロンプト
 
-            あなたは教育実践と教育ソリューション設計の専門家です。このリポジトリの `llms.txt`、`llms-full.md`、`reports/`、`metadata/chunks.jsonl` を読み、次の観点で新しい企画案を提案してください。
+            あなたは教育実践と教育ソリューション設計の専門家です。このリポジトリの `llms.txt`、`llms-full.md`、`reports/`、`metadata/chunks.jsonl`、`metadata/reports.json` を読み、次の観点で新しい企画案を提案してください。
+
+            提案は、概念図の「問いを立てる → 資料の吟味 → プロトタイピング → 人間の検証 → 社会へ発信」と「基盤となるリテラシー」に沿って整理してください。
 
             ## 入力条件
 
@@ -836,11 +884,12 @@ def write_prompts() -> None:
             1. 企画名
             2. 背景となる課題
             3. 参照したレポートと示唆
-            4. 学習活動またはサービス体験
-            5. AIの役割
-            6. 人間の判断が必要な点
-            7. 実施上のリスクと対策
-            8. 90日間の実装計画
+            4. 概念図との対応
+            5. 学習活動またはサービス体験
+            6. AIの役割
+            7. 人間の判断が必要な点
+            8. 実施上のリスクと対策
+            9. 90日間の実装計画
             """,
         "planning-template.md": """\
             # 計画立案テンプレート
@@ -851,9 +900,13 @@ def write_prompts() -> None:
 
             ## 参照するレポート
 
+            ## 概念図との対応
+
             ## 教育的価値
 
             ## 使用するAI・デジタル技術
+
+            ## 探究・制作プロセス
 
             ## 実践またはサービスの流れ
 
@@ -870,22 +923,27 @@ def write_prompts() -> None:
 
             `metadata/reports.json` と `metadata/chunks.jsonl` を根拠に、指定された学年・教科・時間数に合わせた授業案を作成してください。出典として利用したレポートID、チャンクID、図表IDを明記し、AIの利用場面と人間が判断する場面を分けてください。
 
+            授業の流れは、概念図の「問いを立てる → 資料の吟味 → プロトタイピング → 人間の検証 → 社会へ発信」と、各レポートの `concept_alignment` を参照して組み立ててください。
+
             ## 出力形式
 
             1. 授業名
             2. 対象学年・教科
             3. 到達目標
             4. 参照レポートと根拠チャンク
-            5. 時間配分
-            6. 学習活動
-            7. AI利用の役割
-            8. 評価観点
-            9. 倫理・著作権・安全上の配慮
+            5. 概念図との対応
+            6. 時間配分
+            7. 学習活動
+            8. AI利用の役割
+            9. 評価観点
+            10. 倫理・著作権・安全上の配慮
             """,
         "workshop-design.md": """\
             # ワークショップ設計プロンプト
 
-            `use_cases`、`learning_activities`、`implementation_ideas` を参照し、学校・自治体・企業研修のいずれかに向けた半日または1日のワークショップを設計してください。参加者の前提知識、必要な資料、ファシリテーション上の注意を含めてください。
+            `use_cases`、`learning_activities`、`implementation_ideas`、`concept_alignment` を参照し、学校・自治体・企業研修のいずれかに向けた半日または1日のワークショップを設計してください。参加者の前提知識、必要な資料、ファシリテーション上の注意を含めてください。
+
+            タイムテーブルは、問い、資料の吟味、プロトタイピング、人間の検証、社会へ発信のどこに対応するかが分かるようにしてください。
 
             ## 出力形式
 
@@ -893,15 +951,18 @@ def write_prompts() -> None:
             2. 対象者
             3. ねらい
             4. 使用するレポート
-            5. タイムテーブル
-            6. 個人活動・グループ活動
-            7. 成果物
-            8. リスクと対策
+            5. 概念図との対応
+            6. タイムテーブル
+            7. 個人活動・グループ活動
+            8. 成果物
+            9. リスクと対策
             """,
         "service-planning.md": """\
             # 教育サービス企画プロンプト
 
-            あなたはEdTechサービスの企画担当者です。`metadata/reports.json` の想定読者、活用場面、実装アイデアをもとに、生成AI時代の教育サービス案を作成してください。機能の羅列ではなく、利用者の課題、学習体験、導入条件を中心に整理してください。
+            あなたはEdTechサービスの企画担当者です。`metadata/reports.json` の想定読者、活用場面、実装アイデア、`concept_alignment` をもとに、生成AI時代の教育サービス案を作成してください。機能の羅列ではなく、利用者の課題、学習体験、導入条件を中心に整理してください。
+
+            サービス体験は、AIが全プロセスに伴走し、人間が問い・資料・検証・発信の責任を持つ構造として示してください。
 
             ## 出力形式
 
@@ -909,16 +970,19 @@ def write_prompts() -> None:
             2. 対象ユーザー
             3. 解決する課題
             4. 根拠にしたレポート
-            5. 主要機能
-            6. 学習者・教員・管理者の体験
-            7. 導入に必要なデータ・パートナー
-            8. 評価指標
-            9. 3か月の検証計画
+            5. 概念図との対応
+            6. 主要機能
+            7. 学習者・教員・管理者の体験
+            8. 導入に必要なデータ・パートナー
+            9. 評価指標
+            10. 3か月の検証計画
             """,
         "cross-report-comparison.md": """\
             # レポート横断比較プロンプト
 
             `metadata/reports.json` と `metadata/chunks.jsonl` を使い、指定テーマについて複数レポートを比較してください。共通点、相違点、相互補完関係、未検討の論点を分け、必ずレポートIDとチャンクIDを添えてください。
+
+            比較の軸には、各レポートの `concept_alignment` と、概念図の5段階プロセス・基盤リテラシーを含めてください。
 
             ## 出力形式
 
@@ -926,36 +990,43 @@ def write_prompts() -> None:
             2. 対象レポート
             3. 共通する示唆
             4. レポートごとの差異
-            5. 教育実践への応用
-            6. 追加調査が必要な点
+            5. 概念図での位置づけ
+            6. 教育実践への応用
+            7. 追加調査が必要な点
             """,
         "citation-answering.md": """\
             # 根拠付き回答プロンプト
 
             利用者の質問に対し、`metadata/chunks.jsonl`、`metadata/reports.json`、`metadata/figures.json`、`references/references.md` を根拠に回答してください。本文にないことは推測として明示し、出典としてレポートID、チャンクID、必要に応じて図表IDを示してください。
 
+            回答の整理に迷う場合は、概念図の5段階プロセスと基盤リテラシーを補助線として使ってください。
+
             ## 出力形式
 
             1. 回答
             2. 根拠
-            3. 関連図表・参考文献
-            4. 推測または未確認事項
+            3. 概念図との関係
+            4. 関連図表・参考文献
+            5. 推測または未確認事項
             """,
         "implementation-roadmap.md": """\
             # 実装ロードマップ生成プロンプト
 
-            指定された組織や授業テーマに対して、関連レポートの `implementation_ideas` と `learning_activities` を参照し、30日・90日・180日の実装ロードマップを作成してください。小さく始める検証、関係者の巻き込み、評価、公開・発信まで含めてください。
+            指定された組織や授業テーマに対して、関連レポートの `implementation_ideas`、`learning_activities`、`concept_alignment` を参照し、30日・90日・180日の実装ロードマップを作成してください。小さく始める検証、関係者の巻き込み、評価、公開・発信まで含めてください。
+
+            ロードマップは、問いの設定から社会への発信までの流れと、AIに任せる部分・人間が責任を持つ部分を分けてください。
 
             ## 出力形式
 
             1. 実装目的
             2. 関連レポート
-            3. 30日計画
-            4. 90日計画
-            5. 180日計画
-            6. 必要な体制
-            7. 評価指標
-            8. リスクと対策
+            3. 概念図との対応
+            4. 30日計画
+            5. 90日計画
+            6. 180日計画
+            7. 必要な体制
+            8. 評価指標
+            9. リスクと対策
             """,
     }
     for filename, body in prompts.items():
