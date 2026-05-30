@@ -41,15 +41,33 @@
 - [生成AIを用いたSFプロトタイピング](reports/06-sf-prototyping.md): 生成AIを用いて未来社会の物語や世界観を短時間で立ち上げ、参加者がそれを批判・修正・再構成するSFプロトタイピング手法を示す。専門家不在でも未来構想を民主化し、教育、産学協創、業務改革において人間の想像力、批判力、合意形成力を拡張する方法として位置づける。
 - [AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ](reports/07-minecraft-ai-education.md): Minecraftを，子どもや若者が世界を構築し，過去を再現し，未来を構想する学習環境として捉える。Peacecraft系ワークショップ，災害復興や地域学習，Microsoft・4-H・BBC・Code.orgによるAIリテラシー教材を横断し，AIを用いた記憶継承，創造，批判的リテラシーの学びを整理する。
 
+各レポートの一次ソースは [`reports/`](reports/) 配下のMarkdownファイルです。今後の本文更新は、対応する `.md` ファイルを直接編集してください。
+
 ## AIに読ませる場合
 
 - 概念整理には [`assets/00-overview/project-concept-map.svg`](assets/00-overview/project-concept-map.svg) と、各レポートの構造化メタデータ `concept_alignment` を参照してください。
 - まず [`llms.txt`](llms.txt) を読ませると、資料群の全体像と重要ファイルを短く把握できます。
 - 続いて [`llms-full.md`](llms-full.md) を読ませると、各レポートの要約、テーマ、参照先をまとめて利用できます。
+- NotebookLMなどにプロジェクト全体をまとめて読み込ませる場合は、[`notebooklm-source.txt`](notebooklm-source.txt) を使ってください。このファイルは `files-to-prompt` で README、レポート、メタデータ、設定、スクリプトなどのテキストファイルを単一ファイルにまとめたものです。
 - 検索・RAG用途では [`metadata/chunks.jsonl`](metadata/chunks.jsonl) を使うと、見出し単位の分割済みテキストとして扱えます。
 - `concept_alignment` の固定語彙は [`metadata/concept-schema.json`](metadata/concept-schema.json) で確認できます。
 - 用語の揺れを抑えるには [`metadata/glossary.json`](metadata/glossary.json) を、図版を根拠付きで扱うには [`metadata/figures.json`](metadata/figures.json) を併用してください。
 - 授業案、ワークショップ、サービス企画、エクスカーション法による発想、根拠付き回答には [`prompts/`](prompts/) のプロンプトを利用できます。
+
+### NotebookLM向け単一テキストの更新
+
+`notebooklm-source.txt` は画像、`.git`、生成ファイル自身を除外し、プロジェクト内のテキスト資産をまとめます。
+
+```sh
+python3 -m pip install --user -r requirements-ai.txt
+scripts/update_notebooklm_source.sh
+```
+
+このリポジトリでは Git フックを `.githooks/` に置いています。次のコマンドを一度実行すると、コミット前、マージ後、ブランチ切り替え後に `notebooklm-source.txt` が自動更新されます。
+
+```sh
+scripts/setup_git_hooks.sh
+```
 
 ## ライセンス
 
