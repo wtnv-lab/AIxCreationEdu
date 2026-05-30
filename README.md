@@ -10,21 +10,6 @@
 
 *AIとクリエイティブと教育の概念図*
 
-## レポート一覧
-
-各レポートの一次ソースは [`reports/`](reports/) 配下のMarkdownファイルです。
-
-| レポート | 主なテーマ | 使いどころ |
-| --- | --- | --- |
-| [AIとクリエイティブと教育 総括レポート](reports/00-overview.md) | 生成AI、創造性、教育実践、総括 | 全体方針、研修導入、横断的な論点整理 |
-| [AIと情報可視化・OSINT教育](reports/01-information-visualization-osint.md) | 情報可視化、OSINT、探究学習、メディアリテラシー | 公開情報検証、データ可視化、調査型授業 |
-| [AIによるモノクロ写真カラー化を活かした高校生の平和教育実践](reports/02-photo-colorization-peace-education.md) | 写真カラー化、平和教育、歴史学習、記憶継承 | 平和学習、資料批判、社会発信型プロジェクト |
-| [AIを活かしたデジタルシティズンシップ教育](reports/03-digital-citizenship.md) | デジタルシティズンシップ、AIリテラシー、公共性 | AI利用ルール、情報倫理、市民性教育 |
-| [AI時代の学生ハッカソン：実装の民主化と発想力への転換](reports/04-student-hackathon.md) | ハッカソン、プロトタイピング、発想力、実装支援 | 学生開発、PBL、アイデア実装型教育 |
-| [デジタルアーカイブとAIを活かした教育実践](reports/05-digital-archive-ai.md) | デジタルアーカイブ、一次資料、教材共創 | アーカイブ活用、地域学習、教材開発 |
-| [生成AIを用いたSFプロトタイピング](reports/06-sf-prototyping.md) | 未来構想、SFプロトタイピング、合意形成 | 未来ワークショップ、企業研修、政策構想 |
-| [AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ](reports/07-minecraft-ai-education.md) | Minecraft、記憶継承、創造、AIリテラシー | 仮想空間学習、地域再現、防災・平和教育 |
-
 ## まず使うファイル
 
 | 目的 | 使うファイル | 内容 |
@@ -60,6 +45,21 @@
 - NotebookLMやChatGPTに読み込ませ、レポートに根拠を置いた授業案、企画案、比較表、ロードマップを作る。
 - `metadata/chunks.jsonl`、`metadata/reports.json`、`metadata/concept-schema.json` を使って、検索、RAG、AIエージェント向けの知識ベースを組む。
 - `prompts/` のプロンプトをそのまま使い、出典付き回答、授業案、サービス企画、アイデア発想を行う。
+
+## レポート一覧
+
+各レポートの一次ソースは [`reports/`](reports/) 配下のMarkdownファイルです。
+
+| レポート | 主なテーマ | 使いどころ |
+| --- | --- | --- |
+| [AIとクリエイティブと教育 総括レポート](reports/00-overview.md) | 生成AI、創造性、教育実践、総括 | 全体方針、研修導入、横断的な論点整理 |
+| [AIと情報可視化・OSINT教育](reports/01-information-visualization-osint.md) | 情報可視化、OSINT、探究学習、メディアリテラシー | 公開情報検証、データ可視化、調査型授業 |
+| [AIによるモノクロ写真カラー化を活かした高校生の平和教育実践](reports/02-photo-colorization-peace-education.md) | 写真カラー化、平和教育、歴史学習、記憶継承 | 平和学習、資料批判、社会発信型プロジェクト |
+| [AIを活かしたデジタルシティズンシップ教育](reports/03-digital-citizenship.md) | デジタルシティズンシップ、AIリテラシー、公共性 | AI利用ルール、情報倫理、市民性教育 |
+| [AI時代の学生ハッカソン：実装の民主化と発想力への転換](reports/04-student-hackathon.md) | ハッカソン、プロトタイピング、発想力、実装支援 | 学生開発、PBL、アイデア実装型教育 |
+| [デジタルアーカイブとAIを活かした教育実践](reports/05-digital-archive-ai.md) | デジタルアーカイブ、一次資料、教材共創 | アーカイブ活用、地域学習、教材開発 |
+| [生成AIを用いたSFプロトタイピング](reports/06-sf-prototyping.md) | 未来構想、SFプロトタイピング、合意形成 | 未来ワークショップ、企業研修、政策構想 |
+| [AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ](reports/07-minecraft-ai-education.md) | Minecraft、記憶継承、創造、AIリテラシー | 仮想空間学習、地域再現、防災・平和教育 |
 
 ## プロンプト例
 
