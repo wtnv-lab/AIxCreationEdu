@@ -24,7 +24,7 @@
 - `prompts/*.md`: 授業案、ワークショップ、サービス企画、比較、根拠付き回答などの具体的なプロンプト
 - `metadata/*.json` と `metadata/chunks.jsonl`: レポート索引、概念スキーマ、検索用チャンク、図版メタデータ、用語集
 - `references/*`: 参考文献・関連資料
-- `README.md`、`llms.txt`、`llms-full.md`: プロジェクト概要とAI向け概説
+- `README.md`、`ai/llms.txt`、`ai/llms-full.md`: プロジェクト概要とAI向け概説
 - `config/*`: レポート定義や参照情報
 - `scripts/*` と `.githooks/*`: この単一テキストの自動生成ルール
 
@@ -562,7 +562,7 @@ prompts/excursion-ideation.md
 
 あなたは，AI時代の教育実践と教育ソリューション設計を支援するファシリテーターです。利用者の固定観念をゆるめ，遠い世界の特徴を借りて，新しい授業，教材，ワークショップ，サービス，表現活動のアイデアを広げてください。
 
-このリポジトリの `llms.txt`，`llms-full.md`，`metadata/reports.json`，`metadata/chunks.jsonl`，`metadata/concept-schema.json` を参照できる場合は，関連するレポートIDや `concept_alignment` を使って整理してください。本文にないことは推測として扱い，断定しないでください。
+このリポジトリの `ai/llms.txt`，`ai/llms-full.md`，`metadata/reports.json`，`metadata/chunks.jsonl`，`metadata/concept-schema.json` を参照できる場合は，関連するレポートIDや `concept_alignment` を使って整理してください。本文にないことは推測として扱い，断定しないでください。
 
 ## 入力条件
 
@@ -668,7 +668,7 @@ prompts/idea-generation.md
 ---
 # アイデア創出プロンプト
 
-あなたは教育実践と教育ソリューション設計の専門家です。このリポジトリの `llms.txt`、`llms-full.md`、`reports/`、`metadata/chunks.jsonl`、`metadata/reports.json` を読み、次の観点で新しい企画案を提案してください。
+あなたは教育実践と教育ソリューション設計の専門家です。このリポジトリの `ai/llms.txt`、`ai/llms-full.md`、`reports/`、`metadata/chunks.jsonl`、`metadata/reports.json` を読み、次の観点で新しい企画案を提案してください。
 
 提案は、各レポートの `concept_alignment.primary_stage_ids`、`supporting_stage_ids`、`literacy_ids` に沿って整理してください。
 
@@ -2568,13 +2568,149 @@ README.md
 
 > 生成AI時代の創造性、表現、情報リテラシー、教育実践を横断的に検討する公開レポート集。
 
-このリポジトリは、教育関係者および教育ソリューション提供企業が、生成AI時代の教育実践を検討するための公開資料集です。人間が読みやすいMarkdown本文と、AIエージェントやRAGで扱いやすいメタデータを併置しています。
+このリポジトリは、教育関係者、研究者、自治体、教育ソリューション提供企業が、生成AI時代の教育実践を検討・設計・説明するための資料集です。人間が読みやすいレポート本文と、AIエージェント、NotebookLM、RAGで扱いやすいメタデータ、チャンク、プロンプトを併置しています。
+
+このREADMEは、リポジトリ内のファイルを利用する人が目的に合うリソースを見つけやすくし、リポジトリごと読み込んだAIが構造、内容、利用法を理解しやすくするための入口です。
 
 ![AIとクリエイティブと教育の概念図](assets/00-overview/project-concept-map.svg)
 
 *AIとクリエイティブと教育の概念図*
 
-## 著者
+## まず使うファイル
+
+| 目的 | 使うファイル | 内容 |
+| --- | --- | --- |
+| 人間が全体像を把握する | [`README.md`](README.md) | このリポジトリの構造、利用法、主要リソースの案内 |
+| AIに短く全体像を渡す | [`ai/llms.txt`](ai/llms.txt) | AI向けの短い索引と重要ファイル一覧 |
+| AIにレポート群の要約を渡す | [`ai/llms-full.md`](ai/llms-full.md) | 各レポートの要約、テーマ、利用想定、メタデータの統合版 |
+| NotebookLMなどに丸ごと読ませる | [`ai/notebooklm-source.txt`](ai/notebooklm-source.txt) | レポート本文、プロンプト、メタデータ、参考文献をまとめた単一テキスト |
+| レポート本文を読む、編集する | [`reports/`](reports/) | 各レポートの一次ソース。今後の本文更新はここを直接編集 |
+| 授業案や企画案を生成する | [`prompts/`](prompts/) | 利用目的別のプロンプト例 |
+| RAGや検索に使う | [`metadata/chunks.jsonl`](metadata/chunks.jsonl) | 見出し単位に分割した検索用チャンク |
+
+## ディレクトリ構成
+
+| パス | 役割 |
+| --- | --- |
+| [`ai/`](ai/) | AIやNotebookLMに渡す入口ファイル、統合テキスト、AI向け概説 |
+| [`reports/`](reports/) | レポート本文の一次ソース |
+| [`prompts/`](prompts/) | 授業案、企画案、比較、根拠付き回答などのプロンプト例 |
+| [`metadata/`](metadata/) | 検索、RAG、AIエージェント向けの構造化データ |
+| [`references/`](references/) | 参考文献・関連資料 |
+| [`assets/`](assets/) | 図版・画像などの視覚資料 |
+| [`config/`](config/) | レポート定義、参照情報、補助設定 |
+| [`templates/`](templates/) | レポート作成時のテンプレート |
+| [`scripts/`](scripts/) | NotebookLM向け単一テキストなどの更新スクリプト |
+| [`.githooks/`](.githooks/) | 自動更新用のGitフック |
+| [`requirements/`](requirements/) | AI向け生成処理に必要な依存関係 |
+
+## このリポジトリでできること
+
+- 生成AIが教育、創造性、平和学習、情報リテラシー、デジタルアーカイブ、未来構想に与える影響を横断的に理解する。
+- 授業、探究学習、ワークショップ、教員研修、教育サービス企画の材料として使う。
+- NotebookLMやChatGPTに読み込ませ、レポートに根拠を置いた授業案、企画案、比較表、ロードマップを作る。
+- `metadata/chunks.jsonl`、`metadata/reports.json`、`metadata/concept-schema.json` を使って、検索、RAG、AIエージェント向けの知識ベースを組む。
+- `prompts/` のプロンプトをそのまま使い、出典付き回答、授業案、サービス企画、アイデア発想を行う。
+
+## レポート一覧
+
+各レポートの一次ソースは [`reports/`](reports/) 配下のMarkdownファイルです。
+
+| レポート | 主なテーマ | 使いどころ |
+| --- | --- | --- |
+| [AIとクリエイティブと教育 総括レポート](reports/00-overview.md) | 生成AI、創造性、教育実践、総括 | 全体方針、研修導入、横断的な論点整理 |
+| [AIと情報可視化・OSINT教育](reports/01-information-visualization-osint.md) | 情報可視化、OSINT、探究学習、メディアリテラシー | 公開情報検証、データ可視化、調査型授業 |
+| [AIによるモノクロ写真カラー化を活かした高校生の平和教育実践](reports/02-photo-colorization-peace-education.md) | 写真カラー化、平和教育、歴史学習、記憶継承 | 平和学習、資料批判、社会発信型プロジェクト |
+| [AIを活かしたデジタルシティズンシップ教育](reports/03-digital-citizenship.md) | デジタルシティズンシップ、AIリテラシー、公共性 | AI利用ルール、情報倫理、市民性教育 |
+| [AI時代の学生ハッカソン：実装の民主化と発想力への転換](reports/04-student-hackathon.md) | ハッカソン、プロトタイピング、発想力、実装支援 | 学生開発、PBL、アイデア実装型教育 |
+| [デジタルアーカイブとAIを活かした教育実践](reports/05-digital-archive-ai.md) | デジタルアーカイブ、一次資料、教材共創 | アーカイブ活用、地域学習、教材開発 |
+| [生成AIを用いたSFプロトタイピング](reports/06-sf-prototyping.md) | 未来構想、SFプロトタイピング、合意形成 | 未来ワークショップ、企業研修、政策構想 |
+| [AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ](reports/07-minecraft-ai-education.md) | Minecraft、記憶継承、創造、AIリテラシー | 仮想空間学習、地域再現、防災・平和教育 |
+
+## プロンプト例
+
+各プロンプトは [`prompts/`](prompts/) にあります。NotebookLMやChatGPTなどに `ai/notebooklm-source.txt`、`ai/llms.txt`、`metadata/`、`reports/` を読み込ませたうえで、目的に近いプロンプトを貼り付けて使ってください。
+
+| プロンプト | 用途 |
+| --- | --- |
+| [授業案生成プロンプト](prompts/lesson-plan-generation.md) | 学年、教科、時間数に合わせた授業案を作成する |
+| [ワークショップ設計プロンプト](prompts/workshop-design.md) | 学校、自治体、企業研修向けの半日または1日のワークショップを設計する |
+| [教育サービス企画プロンプト](prompts/service-planning.md) | EdTechや教育ソリューションのサービス案を整理する |
+| [アイデア創出プロンプト](prompts/idea-generation.md) | レポート群をもとに新しい授業、教材、サービス、活動案を発想する |
+| [エクスカーション法アイデア創出プロンプト](prompts/excursion-ideation.md) | 遠い領域の特徴を借りて発想を広げる |
+| [実装ロードマップ生成プロンプト](prompts/implementation-roadmap.md) | 30日、90日、180日の導入計画を作る |
+| [レポート横断比較プロンプト](prompts/cross-report-comparison.md) | 複数レポートの共通点、差異、補完関係を比較する |
+| [根拠付き回答プロンプト](prompts/citation-answering.md) | `metadata/chunks.jsonl` などを根拠に、出典付きで回答する |
+| [計画立案テンプレート](prompts/planning-template.md) | 授業、研修、企画を手早く構造化するための空欄テンプレート |
+
+## AIに読ませる場合
+
+AIにリポジトリを読ませるときは、用途に応じて次の順で渡すと扱いやすくなります。
+
+1. 全体像だけ必要な場合: [`ai/llms.txt`](ai/llms.txt)
+2. レポート群の要約とテーマも必要な場合: [`ai/llms-full.md`](ai/llms-full.md)
+3. NotebookLMなどで全文検索・質問応答をしたい場合: [`ai/notebooklm-source.txt`](ai/notebooklm-source.txt)
+4. RAGや検索システムに組み込む場合: [`metadata/chunks.jsonl`](metadata/chunks.jsonl)
+5. 出典や図版も扱う場合: [`references/references.md`](references/references.md)、[`metadata/figures.json`](metadata/figures.json)
+
+AIには、たとえば次のように指示してください。
+
+```text
+この資料群は「AIとクリエイティブと教育」に関するレポート集です。
+回答では reports/ の本文、metadata/chunks.jsonl、references/ を根拠にし、本文にないことは推測として明示してください。
+授業案や企画案を作る場合は prompts/ の該当プロンプトの形式に従ってください。
+```
+
+## メタデータと検索用データ
+
+| ファイル | 役割 |
+| --- | --- |
+| [`metadata/reports.json`](metadata/reports.json) | レポートID、タイトル、概要、著者、想定読者、テーマ、活用場面などの機械可読索引 |
+| [`metadata/chunks.jsonl`](metadata/chunks.jsonl) | レポート本文を見出し単位に分割した検索・RAG用データ |
+| [`metadata/concept-schema.json`](metadata/concept-schema.json) | `concept_alignment` の固定語彙と分類軸 |
+| [`metadata/glossary.json`](metadata/glossary.json) | 用語の揺れを抑えるための用語集 |
+| [`metadata/figures.json`](metadata/figures.json) | 図版のキャプション、代替テキスト、出典メモ |
+| [`references/references.md`](references/references.md) | レポート別の参考文献・関連資料 |
+| [`references/references.bib`](references/references.bib) | BibTeX形式の参考文献 |
+
+## NotebookLM向け単一テキスト
+
+[`ai/notebooklm-source.txt`](ai/notebooklm-source.txt) は、NotebookLMなどにリポジトリ全体を読み込ませるための単一テキストです。画像、動画、PDF、`.git`、生成ファイル自身を除外し、レポート本文、プロンプト、メタデータ、参考文献をまとめています。
+
+NotebookLMが内容を見つけやすいよう、生成時には次のルールを維持します。
+
+- 冒頭に、このファイルの目的と読み方を説明する。
+- `reports/` のレポート本文を前方に配置する。
+- `prompts/` の具体的なプロンプト本文を前方に配置する。
+- `files-to-prompt` の標準形式で、ファイルパス、区切り線、本文の順に出力する。
+- ファイル構成だけの一覧にならないよう、各ファイル本文を必ず含める。
+
+更新する場合は次を実行します。
+
+```sh
+python3 -m pip install --user -r requirements/ai.txt
+scripts/update_notebooklm_source.sh
+```
+
+このリポジトリでは Git フックを `.githooks/` に置いています。次のコマンドを一度実行すると、コミット前、マージ後、ブランチ切り替え後に `ai/notebooklm-source.txt` が自動更新されます。
+
+```sh
+scripts/setup_git_hooks.sh
+```
+
+## 編集と更新のルール
+
+- レポート本文は [`reports/`](reports/) 配下の `.md` を直接編集します。
+- プロンプト例は [`prompts/`](prompts/) 配下の `.md` を直接編集します。
+- Wordファイルからレポートを再生成する仕組みは使いません。
+- READMEを更新したら、必要に応じて `scripts/update_notebooklm_source.sh` を実行し、`ai/notebooklm-source.txt` に反映してください。
+- 図版やメタデータを追加した場合は、`metadata/figures.json`、`metadata/reports.json`、`metadata/chunks.jsonl` との整合を確認してください。
+
+## ライセンス
+
+本文とメタデータは、特記がない限り `CC BY 4.0` で公開します。利用時は著者・出典を表示してください。
+
+## 著者・クレジット
 
 ### 東京大学 大学院情報学環・学際情報学府
 
@@ -2589,66 +2725,16 @@ README.md
 
 - 准教授 [大井将生](https://researchmap.jp/m-oi)
 
-## AI協働ツール
+### AI協働ツール
 
 - ChatGPT（OpenAI）: GPT-5.5
 - Gemini（Google）: Gemini 3.1 Pro
 - Codex（OpenAI）: GPT-5.5
 - GitHub Copilot（GitHub）: GPT-5.5
 
-## レポート一覧
-
-- [AIとクリエイティブと教育 総括レポート](reports/00-overview.md): 生成AIによって創作・開発・調査・表現のハードルが下がるなか、教育の焦点が個別技能の習熟から、問いの設定、資料の読解、倫理的判断、社会的価値への接続へ移ることを総括する。七篇の実践を通じて、AIを効率化ツールではなく、学習者の構想力・編集力・批判的思考を拡張する伴走者として位置づける。
-- [AIと情報可視化・OSINT教育](reports/01-information-visualization-osint.md): 東京大学の情報メディア教育を軸に、データ可視化、デジタルアーカイブ、OSINTを組み合わせ、公開情報を検証可能な形で読み解き社会へ伝える学習モデルを示す。生成AIは結論を代行するのではなく、観察結果の言語化、仮説比較、推論の飛躍の点検を支える対話的な編集者として位置づけられる。
-- [AIによるモノクロ写真カラー化を活かした高校生の平和教育実践](reports/02-photo-colorization-peace-education.md): 長崎東高校の写真集制作を事例に、AIによる白黒写真カラー化を、過去を正確に復元する処理ではなく、証言・専門知・地域の記憶と照合しながら歴史を自分ごと化する探究として捉える。AIリテラシー、資料批判、平和教育、社会発信を結び、若い世代が記憶を継承し対話を生む実践モデルを示す。
-- [AIを活かしたデジタルシティズンシップ教育](reports/03-digital-citizenship.md): 生成AI時代のデジタルシティズンシップ教育を，禁止や管理ではなく，AIがある社会でどう判断し参加するかを学ぶ教育として再定義する。AI出力の検証，情報環境の読解，知識の再編集と共有を通じて，公共的価値を生み出す市民性を整理する。
-- [AI時代の学生ハッカソン：実装の民主化と発想力への転換](reports/04-student-hackathon.md): 生成AIによってコード生成、UI設計、デバッグ、発表資料作成まで支援されることで、学生ハッカソンの重心が実装技能から課題設定、体験設計、社会的価値の構想へ移ることを論じる。Hack-1グランプリやメディアハッカソンを事例に、AIを伴走者として使いながら発想を形にし、人間が検証・編集する開発教育の姿を示す。
-- [デジタルアーカイブとAIを活かした教育実践](reports/05-digital-archive-ai.md): デジタルアーカイブを資料保存の基盤にとどめず、学習者が問いを立て、資料を選び、AIの支援も用いて意味を構成し社会へ伝える探究環境として捉える。ジャパンサーチ、AIカラー化教材、S×UKILAM連携を通じて、一次資料性と生成AIの利便性を組み合わせた教育実践の可能性を整理する。
-- [生成AIを用いたSFプロトタイピング](reports/06-sf-prototyping.md): 生成AIを用いて未来社会の物語や世界観を短時間で立ち上げ、参加者がそれを批判・修正・再構成するSFプロトタイピング手法を示す。専門家不在でも未来構想を民主化し、教育、産学協創、業務改革において人間の想像力、批判力、合意形成力を拡張する方法として位置づける。
-- [AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ](reports/07-minecraft-ai-education.md): Minecraftを，子どもや若者が世界を構築し，過去を再現し，未来を構想する学習環境として捉える。Peacecraft系ワークショップ，災害復興や地域学習，Microsoft・4-H・BBC・Code.orgによるAIリテラシー教材を横断し，AIを用いた記憶継承，創造，批判的リテラシーの学びを整理する。
-
-各レポートの一次ソースは [`reports/`](reports/) 配下のMarkdownファイルです。今後の本文更新は、対応する `.md` ファイルを直接編集してください。
-
-## AIに読ませる場合
-
-- 概念整理には [`assets/00-overview/project-concept-map.svg`](assets/00-overview/project-concept-map.svg) と、各レポートの構造化メタデータ `concept_alignment` を参照してください。
-- まず [`llms.txt`](llms.txt) を読ませると、資料群の全体像と重要ファイルを短く把握できます。
-- 続いて [`llms-full.md`](llms-full.md) を読ませると、各レポートの要約、テーマ、参照先をまとめて利用できます。
-- NotebookLMなどにプロジェクト全体をまとめて読み込ませる場合は、[`notebooklm-source.txt`](notebooklm-source.txt) を使ってください。このファイルは `files-to-prompt` で README、レポート、メタデータ、設定、スクリプトなどのテキストファイルを単一ファイルにまとめたものです。
-- 検索・RAG用途では [`metadata/chunks.jsonl`](metadata/chunks.jsonl) を使うと、見出し単位の分割済みテキストとして扱えます。
-- `concept_alignment` の固定語彙は [`metadata/concept-schema.json`](metadata/concept-schema.json) で確認できます。
-- 用語の揺れを抑えるには [`metadata/glossary.json`](metadata/glossary.json) を、図版を根拠付きで扱うには [`metadata/figures.json`](metadata/figures.json) を併用してください。
-- 授業案、ワークショップ、サービス企画、エクスカーション法による発想、根拠付き回答には [`prompts/`](prompts/) のプロンプトを利用できます。
-
-### NotebookLM向け単一テキストの更新
-
-`notebooklm-source.txt` は画像、動画、PDF、`.git`、生成ファイル自身を除外し、プロジェクト内のテキスト資産をまとめます。NotebookLMが内容を見つけやすいよう、冒頭に読み方の説明を入れ、`reports/` と `prompts/` の具体的な本文を前方に配置します。
-
-```sh
-python3 -m pip install --user -r requirements-ai.txt
-scripts/update_notebooklm_source.sh
-```
-
-このリポジトリでは Git フックを `.githooks/` に置いています。次のコマンドを一度実行すると、コミット前、マージ後、ブランチ切り替え後に `notebooklm-source.txt` が自動更新されます。
-
-```sh
-scripts/setup_git_hooks.sh
-```
-
-自動生成では、次のルールを維持します。
-
-- `reports/` 配下のMarkdownをレポート本文の一次ソースとして含める。
-- `prompts/` 配下のMarkdownをプロンプト本文の一次ソースとして含める。
-- `files-to-prompt` の標準形式で、ファイルパス、区切り線、本文の順に出力する。
-- ファイル構成だけの一覧にならないよう、NotebookLM向けの説明と各ファイル本文を必ず含める。
-
-## ライセンス
-
-本文とメタデータは、特記がない限り `CC BY 4.0` で公開します。利用時は著者・出典を表示してください。
-
 
 ---
-llms.txt
+ai/llms.txt
 ---
 # AIとクリエイティブと教育
 
@@ -2680,37 +2766,37 @@ This repository publishes Markdown reports and AI-readable metadata for planning
 
 ## Core Reports
 
-- [AIとクリエイティブと教育 総括レポート](reports/00-overview.md)（著者: 渡邉英徳）: 生成AIによって創作・開発・調査・表現のハードルが下がるなか、教育の焦点が個別技能の習熟から、問いの設定、資料の読解、倫理的判断、社会的価値への接続へ移ることを総括する。七篇の実践を通じて、AIを効率化ツールではなく、学習者の構想力・編集力・批判的思考を拡張する伴走者として位置づける。
-- [AIと情報可視化・OSINT教育](reports/01-information-visualization-osint.md)（著者: 渡邉英徳）: 東京大学の情報メディア教育を軸に、データ可視化、デジタルアーカイブ、OSINTを組み合わせ、公開情報を検証可能な形で読み解き社会へ伝える学習モデルを示す。生成AIは結論を代行するのではなく、観察結果の言語化、仮説比較、推論の飛躍の点検を支える対話的な編集者として位置づけられる。
-- [AIによるモノクロ写真カラー化を活かした高校生の平和教育実践](reports/02-photo-colorization-peace-education.md)（著者: 森吉蓉子, 渡邉英徳）: 長崎東高校の写真集制作を事例に、AIによる白黒写真カラー化を、過去を正確に復元する処理ではなく、証言・専門知・地域の記憶と照合しながら歴史を自分ごと化する探究として捉える。AIリテラシー、資料批判、平和教育、社会発信を結び、若い世代が記憶を継承し対話を生む実践モデルを示す。
-- [AIを活かしたデジタルシティズンシップ教育](reports/03-digital-citizenship.md)（著者: 原田真喜子）: 生成AI時代のデジタルシティズンシップ教育を，禁止や管理ではなく，AIがある社会でどう判断し参加するかを学ぶ教育として再定義する。AI出力の検証，情報環境の読解，知識の再編集と共有を通じて，公共的価値を生み出す市民性を整理する。
-- [AI時代の学生ハッカソン：実装の民主化と発想力への転換](reports/04-student-hackathon.md)（著者: 小松尚平, 渡邉英徳）: 生成AIによってコード生成、UI設計、デバッグ、発表資料作成まで支援されることで、学生ハッカソンの重心が実装技能から課題設定、体験設計、社会的価値の構想へ移ることを論じる。Hack-1グランプリやメディアハッカソンを事例に、AIを伴走者として使いながら発想を形にし、人間が検証・編集する開発教育の姿を示す。
-- [デジタルアーカイブとAIを活かした教育実践](reports/05-digital-archive-ai.md)（著者: 大井将生）: デジタルアーカイブを資料保存の基盤にとどめず、学習者が問いを立て、資料を選び、AIの支援も用いて意味を構成し社会へ伝える探究環境として捉える。ジャパンサーチ、AIカラー化教材、S×UKILAM連携を通じて、一次資料性と生成AIの利便性を組み合わせた教育実践の可能性を整理する。
-- [生成AIを用いたSFプロトタイピング](reports/06-sf-prototyping.md)（著者: 楊欽, 渡邉英徳）: 生成AIを用いて未来社会の物語や世界観を短時間で立ち上げ、参加者がそれを批判・修正・再構成するSFプロトタイピング手法を示す。専門家不在でも未来構想を民主化し、教育、産学協創、業務改革において人間の想像力、批判力、合意形成力を拡張する方法として位置づける。
-- [AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ](reports/07-minecraft-ai-education.md)（著者: 片山実咲, 渡邉英徳）: Minecraftを，子どもや若者が世界を構築し，過去を再現し，未来を構想する学習環境として捉える。Peacecraft系ワークショップ，災害復興や地域学習，Microsoft・4-H・BBC・Code.orgによるAIリテラシー教材を横断し，AIを用いた記憶継承，創造，批判的リテラシーの学びを整理する。
+- [AIとクリエイティブと教育 総括レポート](../reports/00-overview.md)（著者: 渡邉英徳）: 生成AIによって創作・開発・調査・表現のハードルが下がるなか、教育の焦点が個別技能の習熟から、問いの設定、資料の読解、倫理的判断、社会的価値への接続へ移ることを総括する。七篇の実践を通じて、AIを効率化ツールではなく、学習者の構想力・編集力・批判的思考を拡張する伴走者として位置づける。
+- [AIと情報可視化・OSINT教育](../reports/01-information-visualization-osint.md)（著者: 渡邉英徳）: 東京大学の情報メディア教育を軸に、データ可視化、デジタルアーカイブ、OSINTを組み合わせ、公開情報を検証可能な形で読み解き社会へ伝える学習モデルを示す。生成AIは結論を代行するのではなく、観察結果の言語化、仮説比較、推論の飛躍の点検を支える対話的な編集者として位置づけられる。
+- [AIによるモノクロ写真カラー化を活かした高校生の平和教育実践](../reports/02-photo-colorization-peace-education.md)（著者: 森吉蓉子, 渡邉英徳）: 長崎東高校の写真集制作を事例に、AIによる白黒写真カラー化を、過去を正確に復元する処理ではなく、証言・専門知・地域の記憶と照合しながら歴史を自分ごと化する探究として捉える。AIリテラシー、資料批判、平和教育、社会発信を結び、若い世代が記憶を継承し対話を生む実践モデルを示す。
+- [AIを活かしたデジタルシティズンシップ教育](../reports/03-digital-citizenship.md)（著者: 原田真喜子）: 生成AI時代のデジタルシティズンシップ教育を，禁止や管理ではなく，AIがある社会でどう判断し参加するかを学ぶ教育として再定義する。AI出力の検証，情報環境の読解，知識の再編集と共有を通じて，公共的価値を生み出す市民性を整理する。
+- [AI時代の学生ハッカソン：実装の民主化と発想力への転換](../reports/04-student-hackathon.md)（著者: 小松尚平, 渡邉英徳）: 生成AIによってコード生成、UI設計、デバッグ、発表資料作成まで支援されることで、学生ハッカソンの重心が実装技能から課題設定、体験設計、社会的価値の構想へ移ることを論じる。Hack-1グランプリやメディアハッカソンを事例に、AIを伴走者として使いながら発想を形にし、人間が検証・編集する開発教育の姿を示す。
+- [デジタルアーカイブとAIを活かした教育実践](../reports/05-digital-archive-ai.md)（著者: 大井将生）: デジタルアーカイブを資料保存の基盤にとどめず、学習者が問いを立て、資料を選び、AIの支援も用いて意味を構成し社会へ伝える探究環境として捉える。ジャパンサーチ、AIカラー化教材、S×UKILAM連携を通じて、一次資料性と生成AIの利便性を組み合わせた教育実践の可能性を整理する。
+- [生成AIを用いたSFプロトタイピング](../reports/06-sf-prototyping.md)（著者: 楊欽, 渡邉英徳）: 生成AIを用いて未来社会の物語や世界観を短時間で立ち上げ、参加者がそれを批判・修正・再構成するSFプロトタイピング手法を示す。専門家不在でも未来構想を民主化し、教育、産学協創、業務改革において人間の想像力、批判力、合意形成力を拡張する方法として位置づける。
+- [AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ](../reports/07-minecraft-ai-education.md)（著者: 片山実咲, 渡邉英徳）: Minecraftを，子どもや若者が世界を構築し，過去を再現し，未来を構想する学習環境として捉える。Peacecraft系ワークショップ，災害復興や地域学習，Microsoft・4-H・BBC・Code.orgによるAIリテラシー教材を横断し，AIを用いた記憶継承，創造，批判的リテラシーの学びを整理する。
 
-The Markdown files in `reports/` are the source of truth for report text.
+The Markdown files in `../reports/` are the source of truth for report text.
 
 ## AI Metadata
 
-- [Concept map](assets/00-overview/project-concept-map.svg): Visual summary of the shift from production skills to conception, editing, and social responsibility.
+- [Concept map](../assets/00-overview/project-concept-map.svg): Visual summary of the shift from production skills to conception, editing, and social responsibility.
 - [Full AI context](llms-full.md): Consolidated overview of all reports.
 - [NotebookLM source](notebooklm-source.txt): Single text file generated by files-to-prompt from README, reports, metadata, config, prompts, and scripts.
-- [Report metadata](metadata/reports.json): Machine-readable report index.
-- [Chunked corpus](metadata/chunks.jsonl): Section-level JSONL for retrieval and analysis.
-- [Concept schema](metadata/concept-schema.json): Controlled IDs for process stages, literacies, and concept alignment fields.
-- [Glossary](metadata/glossary.json): Terms and short definitions for AI/RAG grounding.
-- [Figure metadata](metadata/figures.json): Captions, alt text, and source notes for visual assets.
-- [References](references/references.md): Extracted references and related cases.
-- [Supplemental references](references/references.md#追加推奨リファレンス): Curated references from web research covering 政策・ガイドライン, 創造性・学習理論, AIリテラシー・教育実践事例, AI社会動向・実証研究, AI協働ツールの最新版確認.
+- [Report metadata](../metadata/reports.json): Machine-readable report index.
+- [Chunked corpus](../metadata/chunks.jsonl): Section-level JSONL for retrieval and analysis.
+- [Concept schema](../metadata/concept-schema.json): Controlled IDs for process stages, literacies, and concept alignment fields.
+- [Glossary](../metadata/glossary.json): Terms and short definitions for AI/RAG grounding.
+- [Figure metadata](../metadata/figures.json): Captions, alt text, and source notes for visual assets.
+- [References](../references/references.md): Extracted references and related cases.
+- [Supplemental references](../references/references.md#追加推奨リファレンス): Curated references from web research covering 政策・ガイドライン, 創造性・学習理論, AIリテラシー・教育実践事例, AI社会動向・実証研究, AI協働ツールの最新版確認.
 
 ## Optional
 
-- [Prompts](prompts/): Reusable prompts for lesson planning, service design, excursion ideation, comparison, citation-aware answering, and implementation roadmaps.
+- [Prompts](../prompts/): Reusable prompts for lesson planning, service design, excursion ideation, comparison, citation-aware answering, and implementation roadmaps.
 
 
 ---
-llms-full.md
+ai/llms-full.md
 ---
 # AIとクリエイティブと教育
 
@@ -2746,17 +2832,17 @@ llms-full.md
 
 ## 概念図
 
-- 図: [AIとクリエイティブと教育の概念図](assets/00-overview/project-concept-map.svg)
+- 図: [AIとクリエイティブと教育の概念図](../assets/00-overview/project-concept-map.svg)
 - stage_ids: question_framing, source_evaluation, prototyping, human_verification, public_communication
 - literacy_ids: ai_competency_citizenship, design_editing_critical_thinking, publicness_social_responsibility
 - concept_alignment_schema: {schema, primary_stage_ids, supporting_stage_ids, literacy_ids, ai_role_ids, human_responsibility_ids, domain_tags}
-- schema_file: metadata/concept-schema.json
+- schema_file: ../metadata/concept-schema.json
 
 ## レポート概要
 
 ### AIとクリエイティブと教育 総括レポート
 
-- ファイル: [`reports/00-overview.md`](reports/00-overview.md)
+- ファイル: [`../reports/00-overview.md`](../reports/00-overview.md)
 - 著者: 渡邉英徳
 - 想定読者: 生成AI時代の教育方針を検討する学校管理職・教育委員会担当者, AI・創造性・情報リテラシーを横断するカリキュラム設計者, 教育ソリューションやEdTechサービスの企画担当者, AIと教育実践の全体像を把握したい研究者・実践者
 - テーマ: 生成AI, 創造性, 教育実践, 総括
@@ -2772,7 +2858,7 @@ llms-full.md
 
 ### AIと情報可視化・OSINT教育
 
-- ファイル: [`reports/01-information-visualization-osint.md`](reports/01-information-visualization-osint.md)
+- ファイル: [`../reports/01-information-visualization-osint.md`](../reports/01-information-visualization-osint.md)
 - 著者: 渡邉英徳
 - 想定読者: 情報・メディア・探究学習を担当する高校・大学教員, データ可視化、GIS、デジタルアーカイブを授業に取り入れたい教育者, OSINTや調査報道の基礎を教育・研修化したい報道関係者, 公開情報の検証と社会的説明を扱う教材・サービス企画者
 - テーマ: 生成AI, 情報可視化, OSINT, 探究学習
@@ -2788,7 +2874,7 @@ llms-full.md
 
 ### AIによるモノクロ写真カラー化を活かした高校生の平和教育実践
 
-- ファイル: [`reports/02-photo-colorization-peace-education.md`](reports/02-photo-colorization-peace-education.md)
+- ファイル: [`../reports/02-photo-colorization-peace-education.md`](../reports/02-photo-colorization-peace-education.md)
 - 著者: 森吉蓉子, 渡邉英徳
 - 想定読者: 平和教育・歴史教育・地域学習を担当する中学・高校教員, 写真資料や証言を活用する博物館・資料館・地域アーカイブ担当者, AIカラー化を探究学習や記憶継承に活かしたい教育実践者, 生徒の成果発信や社会連携型プロジェクトを支援する担当者
 - テーマ: 生成AI, 写真カラー化, 平和教育, 歴史学習
@@ -2804,7 +2890,7 @@ llms-full.md
 
 ### AIを活かしたデジタルシティズンシップ教育
 
-- ファイル: [`reports/03-digital-citizenship.md`](reports/03-digital-citizenship.md)
+- ファイル: [`../reports/03-digital-citizenship.md`](../reports/03-digital-citizenship.md)
 - 著者: 原田真喜子
 - 想定読者: 小中高の情報活用能力・情報モラル・ICT活用を担当する教員, デジタルシティズンシップ教育のカリキュラム設計者, 生成AI利用ルールや校内研修を設計する学校管理職・ICT担当者, AIリテラシー教材や安全な学習環境を開発する教育サービス担当者
 - テーマ: 生成AI, デジタルシティズンシップ, AIリテラシー, 情報モラル
@@ -2820,7 +2906,7 @@ llms-full.md
 
 ### AI時代の学生ハッカソン：実装の民主化と発想力への転換
 
-- ファイル: [`reports/04-student-hackathon.md`](reports/04-student-hackathon.md)
+- ファイル: [`../reports/04-student-hackathon.md`](../reports/04-student-hackathon.md)
 - 著者: 小松尚平, 渡邉英徳
 - 想定読者: 大学・高専・高校でハッカソンやPBLを運営する教職員, AIを用いたプロトタイピング教育を設計するメンター・ファシリテーター, 学生起業、地域課題解決、産学連携プログラムの企画担当者, 生成AI時代の開発教育や創造性評価に関心を持つ実践者
 - テーマ: 生成AI, ハッカソン, プロトタイピング, 実装教育
@@ -2836,7 +2922,7 @@ llms-full.md
 
 ### デジタルアーカイブとAIを活かした教育実践
 
-- ファイル: [`reports/05-digital-archive-ai.md`](reports/05-digital-archive-ai.md)
+- ファイル: [`../reports/05-digital-archive-ai.md`](../reports/05-digital-archive-ai.md)
 - 著者: 大井将生
 - 想定読者: 学校教育で一次資料や地域資料を活用したい教員, デジタルアーカイブの教育利用を進める図書館・博物館・自治体担当者, 探究学習、キュレーション授業、教材アーカイブを設計する教育者, AIと資料検索・要約・再編集を組み合わせた学習サービス企画者
 - テーマ: 生成AI, デジタルアーカイブ, 教育実践, 資料活用
@@ -2852,7 +2938,7 @@ llms-full.md
 
 ### 生成AIを用いたSFプロトタイピング
 
-- ファイル: [`reports/06-sf-prototyping.md`](reports/06-sf-prototyping.md)
+- ファイル: [`../reports/06-sf-prototyping.md`](../reports/06-sf-prototyping.md)
 - 著者: 楊欽, 渡邉英徳
 - 想定読者: 未来構想・探究学習・創造性教育を担当する大学・高校教員, 産学協創、企業研修、ワークショップを設計するファシリテーター, 新規事業開発やビジョン策定にSFプロトタイピングを使いたい企画担当者, 生成AIを用いた物語生成・合意形成・アイデア創出に関心を持つ実践者
 - テーマ: 生成AI, SFプロトタイピング, 未来構想, 創造性教育
@@ -2868,7 +2954,7 @@ llms-full.md
 
 ### AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ
 
-- ファイル: [`reports/07-minecraft-ai-education.md`](reports/07-minecraft-ai-education.md)
+- ファイル: [`../reports/07-minecraft-ai-education.md`](../reports/07-minecraft-ai-education.md)
 - 著者: 片山実咲, 渡邉英徳
 - 想定読者: Minecraft Educationやゲームベース学習を授業に取り入れたい小中高・大学教員, 平和教育・地域学習・災害復興学習で仮想空間制作を活用したい教育実践者, AIリテラシー，プログラミング，デジタルシティズンシップを横断する教材設計者, Minecraftや生成AIを活用した学習サービス・ワークショップの企画担当者
 - テーマ: 生成AI, Minecraft, ゲームベース学習, AIリテラシー, 記憶継承
@@ -4237,9 +4323,10 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 
-OUTPUT="notebooklm-source.txt"
+OUTPUT="ai/notebooklm-source.txt"
 TMP_OUTPUT="$(mktemp)"
 trap 'rm -f "$TMP_OUTPUT"' EXIT
+mkdir -p "$(dirname "$OUTPUT")"
 
 python3 - <<'PY'
 import importlib.util
@@ -4248,7 +4335,7 @@ import sys
 if importlib.util.find_spec("files_to_prompt") is None:
     sys.stderr.write(
         "files-to-prompt is not installed.\n"
-        "Install it with: python3 -m pip install --user -r requirements-ai.txt\n"
+        "Install it with: python3 -m pip install --user -r requirements/ai.txt\n"
     )
     sys.exit(1)
 PY
@@ -4280,7 +4367,7 @@ cat > "$TMP_OUTPUT" <<'HEADER'
 - `prompts/*.md`: 授業案、ワークショップ、サービス企画、比較、根拠付き回答などの具体的なプロンプト
 - `metadata/*.json` と `metadata/chunks.jsonl`: レポート索引、概念スキーマ、検索用チャンク、図版メタデータ、用語集
 - `references/*`: 参考文献・関連資料
-- `README.md`、`llms.txt`、`llms-full.md`: プロジェクト概要とAI向け概説
+- `README.md`、`ai/llms.txt`、`ai/llms-full.md`: プロジェクト概要とAI向け概説
 - `config/*`: レポート定義や参照情報
 - `scripts/*` と `.githooks/*`: この単一テキストの自動生成ルール
 
@@ -4303,8 +4390,8 @@ python3 -m files_to_prompt \
   metadata \
   references \
   README.md \
-  llms.txt \
-  llms-full.md \
+  ai/llms.txt \
+  ai/llms-full.md \
   config \
   templates \
   assets/00-overview/project-concept-map.svg \
@@ -4313,13 +4400,13 @@ python3 -m files_to_prompt \
   .gitignore \
   CITATION.cff \
   LICENSE \
-  requirements-ai.txt \
+  requirements/ai.txt \
   --include-hidden \
   --ignore ".git" \
   --ignore ".DS_Store" \
   --ignore "__pycache__" \
   --ignore "*.pyc" \
-  --ignore "notebooklm-source.txt" \
+  --ignore "ai/notebooklm-source.txt" \
   --ignore "*.jpg" \
   --ignore "*.jpeg" \
   --ignore "*.png" \
@@ -4368,7 +4455,7 @@ ROOT="$(git rev-parse --show-toplevel)"
 cd "$ROOT"
 
 scripts/update_notebooklm_source.sh
-git add notebooklm-source.txt
+git add ai/notebooklm-source.txt
 
 
 ---
@@ -4423,7 +4510,7 @@ changes are indicated.
 
 
 ---
-requirements-ai.txt
+requirements/ai.txt
 ---
 files-to-prompt>=0.6
 

@@ -5,4 +5,4 @@ ROOT="$(git rev-parse --show-toplevel)"
 cd "$ROOT"
 
 scripts/update_notebooklm_source.sh
-git add notebooklm-source.txt
+git add ai/notebooklm-source.txt

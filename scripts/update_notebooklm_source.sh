@@ -4,9 +4,10 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 
-OUTPUT="notebooklm-source.txt"
+OUTPUT="ai/notebooklm-source.txt"
 TMP_OUTPUT="$(mktemp)"
 trap 'rm -f "$TMP_OUTPUT"' EXIT
+mkdir -p "$(dirname "$OUTPUT")"
 
 python3 - <<'PY'
 import importlib.util
@@ -15,7 +16,7 @@ import sys
 if importlib.util.find_spec("files_to_prompt") is None:
     sys.stderr.write(
         "files-to-prompt is not installed.\n"
-        "Install it with: python3 -m pip install --user -r requirements-ai.txt\n"
+        "Install it with: python3 -m pip install --user -r requirements/ai.txt\n"
     )
     sys.exit(1)
 PY
@@ -47,7 +48,7 @@ cat > "$TMP_OUTPUT" <<'HEADER'
 - `prompts/*.md`: 授業案、ワークショップ、サービス企画、比較、根拠付き回答などの具体的なプロンプト
 - `metadata/*.json` と `metadata/chunks.jsonl`: レポート索引、概念スキーマ、検索用チャンク、図版メタデータ、用語集
 - `references/*`: 参考文献・関連資料
-- `README.md`、`llms.txt`、`llms-full.md`: プロジェクト概要とAI向け概説
+- `README.md`、`ai/llms.txt`、`ai/llms-full.md`: プロジェクト概要とAI向け概説
 - `config/*`: レポート定義や参照情報
 - `scripts/*` と `.githooks/*`: この単一テキストの自動生成ルール
 
@@ -70,8 +71,8 @@ python3 -m files_to_prompt \
   metadata \
   references \
   README.md \
-  llms.txt \
-  llms-full.md \
+  ai/llms.txt \
+  ai/llms-full.md \
   config \
   templates \
   assets/00-overview/project-concept-map.svg \
@@ -80,13 +81,13 @@ python3 -m files_to_prompt \
   .gitignore \
   CITATION.cff \
   LICENSE \
-  requirements-ai.txt \
+  requirements/ai.txt \
   --include-hidden \
   --ignore ".git" \
   --ignore ".DS_Store" \
   --ignore "__pycache__" \
   --ignore "*.pyc" \
-  --ignore "notebooklm-source.txt" \
+  --ignore "ai/notebooklm-source.txt" \
   --ignore "*.jpg" \
   --ignore "*.jpeg" \
   --ignore "*.png" \
