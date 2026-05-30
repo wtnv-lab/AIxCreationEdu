@@ -1,5 +1,17 @@
 [
   {
+    "id": "00-project-concept-map",
+    "report_id": "00-overview",
+    "path": "assets/00-overview/project-concept-map.svg",
+    "alt": "制作技能の習熟から構想・編集・社会的責任へ教育の焦点が移り、AIと伴走する探究・制作プロセスと基盤リテラシーによって支えられる構造を示す概念図",
+    "caption": "AIとクリエイティブと教育の概念図",
+    "source": "ユーザー提供SVG gemini-svg (1).svg",
+    "license_note": "CC BY 4.0",
+    "related_sections": [
+      "AIとクリエイティブと教育 総括レポート"
+    ]
+  },
+  {
     "id": "01-gis-education-examples",
     "report_id": "01-information-visualization-osint",
     "path": "assets/01-information-visualization-osint/gis-education-examples.jpg",

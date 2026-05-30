@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#70757a" />
+    </marker>
+    <marker id="arrow-return" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa0a6" />
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#fafafa"/>
+
+  <text x="480" y="40" font-family="sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#202124">AIとクリエイティブと教育 総括レポート</text>
+  <text x="480" y="65" font-family="sans-serif" font-size="14" text-anchor="middle" fill="#5f6368">生成AIと伴走する教育の構想 <tspan font-size="10" fill="#9aa0a6"></tspan></text>
+
+  <rect x="50" y="90" width="360" height="75" rx="8" fill="#ffffff" stroke="#7f8c8d" stroke-width="2" filter="url(#shadow)"/>
+  <text x="230" y="115" font-family="sans-serif" font-size="15" font-weight="bold" text-anchor="middle" fill="#5f6368">【これまで】 制作技能の習熟</text>
+  <text x="230" y="138" font-family="sans-serif" font-size="13" text-anchor="middle" fill="#3c4043">文章・映像・コード・データ分析などの実装</text>
+  <text x="230" y="156" font-family="sans-serif" font-size="12" text-anchor="middle" fill="#5f6368">焦点：「作れるか・実装できるか」 <tspan font-size="10" fill="#bdc1c6"></tspan></text>
+
+  <line x1="430" y1="127" x2="530" y2="127" stroke="#70757a" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="550" y="90" width="360" height="75" rx="8" fill="#ffffff" stroke="#2c3e50" stroke-width="2" filter="url(#shadow)"/>
+  <text x="730" y="115" font-family="sans-serif" font-size="15" font-weight="bold" text-anchor="middle" fill="#2c3e50">【これから】 構想・編集・社会的責任</text>
+  <text x="730" y="138" font-family="sans-serif" font-size="13" text-anchor="middle" fill="#3c4043">問いを立て、資料を読み解き、責任ある表現へ</text>
+  <text x="730" y="156" font-family="sans-serif" font-size="12" text-anchor="middle" fill="#5f6368">焦点：「何を問うか」「どんな価値があるか」 <tspan font-size="10" fill="#bdc1c6"></tspan></text>
+
+
+  <text x="480" y="210" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#5f6368">AIと伴走する探究・制作プロセス</text>
+
+  <line x1="110" y1="260" x2="850" y2="260" stroke="#e8eaed" stroke-width="3"/>
+
+  <rect x="50" y="230" width="156" height="60" rx="8" fill="#ffffff" stroke="#1a73e8" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="128" y="256" font-family="sans-serif" font-size="15" font-weight="bold" fill="#1a73e8" text-anchor="middle">1. 問いを立てる</text>
+  <text x="128" y="276" font-family="sans-serif" font-size="12" fill="#3c4043" text-anchor="middle">観察と仮説の設定</text>
+  <text x="128" y="282" font-family="sans-serif" font-size="9" fill="#bdc1c6" text-anchor="middle"></text>
+
+  <rect x="226" y="230" width="156" height="60" rx="8" fill="#ffffff" stroke="#00897b" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="304" y="256" font-family="sans-serif" font-size="15" font-weight="bold" fill="#00897b" text-anchor="middle">2. 資料の吟味</text>
+  <text x="304" y="276" font-family="sans-serif" font-size="12" fill="#3c4043" text-anchor="middle">読解と複数資料の比較</text>
+  <text x="304" y="282" font-family="sans-serif" font-size="9" fill="#bdc1c6" text-anchor="middle"></text>
+
+  <rect x="402" y="230" width="156" height="60" rx="8" fill="#ffffff" stroke="#f57c00" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="480" y="256" font-family="sans-serif" font-size="15" font-weight="bold" fill="#f57c00" text-anchor="middle">3. AIと試作</text>
+  <text x="480" y="276" font-family="sans-serif" font-size="12" fill="#3c4043" text-anchor="middle">シナリオ展開と対話</text>
+  <text x="480" y="282" font-family="sans-serif" font-size="9" fill="#bdc1c6" text-anchor="middle"></text>
+
+  <rect x="578" y="230" width="156" height="60" rx="8" fill="#ffffff" stroke="#8e24aa" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="656" y="256" font-family="sans-serif" font-size="15" font-weight="bold" fill="#8e24aa" text-anchor="middle">4. 人間の検証</text>
+  <text x="656" y="276" font-family="sans-serif" font-size="12" fill="#3c4043" text-anchor="middle">推論の点検と意思決定</text>
+  <text x="656" y="282" font-family="sans-serif" font-size="9" fill="#bdc1c6" text-anchor="middle"></text>
+
+  <rect x="754" y="230" width="156" height="60" rx="8" fill="#ffffff" stroke="#e53935" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="832" y="256" font-family="sans-serif" font-size="15" font-weight="bold" fill="#e53935" text-anchor="middle">5. 社会へ発信</text>
+  <text x="832" y="276" font-family="sans-serif" font-size="12" fill="#3c4043" text-anchor="middle">責任ある価値の提供</text>
+  <text x="832" y="282" font-family="sans-serif" font-size="9" fill="#bdc1c6" text-anchor="middle"></text>
+
+  <path d="M 206 260 L 220 260" stroke="#70757a" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M 382 260 L 396 260" stroke="#70757a" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M 558 260 L 572 260" stroke="#70757a" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M 734 260 L 748 260" stroke="#70757a" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <path d="M 832 300 Q 480 370 128 300" fill="none" stroke="#9aa0a6" stroke-width="2" marker-end="url(#arrow-return)"/>
+  
+  <rect x="420" y="325" width="120" height="20" fill="#fafafa"/>
+  <text x="480" y="339" font-family="sans-serif" font-size="12" fill="#5f6368" text-anchor="middle">観察と表現の往復 <tspan font-size="9" fill="#bdc1c6"></tspan></text>
+
+
+  <rect x="30" y="385" width="900" height="95" rx="12" fill="#f1f3f4" stroke="#e8eaed" stroke-width="1"/>
+  <text x="480" y="410" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#3c4043">基盤となるリテラシー</text>
+
+  <rect x="49" y="420" width="274" height="50" rx="6" fill="#ffffff" filter="url(#shadow)"/>
+  <text x="186" y="442" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#202124">AIコンピテンシー・市民性</text>
+  <text x="186" y="460" font-family="sans-serif" font-size="11" text-anchor="middle" fill="#5f6368">受動的利用者から責任ある共同設計者へ <tspan font-size="9" fill="#bdc1c6"></tspan></text>
+
+  <rect x="343" y="420" width="274" height="50" rx="6" fill="#ffffff" filter="url(#shadow)"/>
+  <text x="480" y="442" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#202124">構想・編集・批判的思考</text>
+  <text x="480" y="460" font-family="sans-serif" font-size="11" text-anchor="middle" fill="#5f6368">問いの設定と検証可能な説明の構築 <tspan font-size="9" fill="#bdc1c6"></tspan></text>
+
+  <rect x="637" y="420" width="274" height="50" rx="6" fill="#ffffff" filter="url(#shadow)"/>
+  <text x="774" y="442" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#202124">公共性と社会的責任</text>
+  <text x="774" y="460" font-family="sans-serif" font-size="11" text-anchor="middle" fill="#5f6368">資料批判と社会的な文脈への接続 <tspan font-size="9" fill="#bdc1c6"></tspan></text>
+
+</svg>
