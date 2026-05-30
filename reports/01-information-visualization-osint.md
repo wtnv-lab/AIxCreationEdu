@@ -14,7 +14,7 @@
 
 また，本実践はメディア・情報リテラシー教育の拡張としても位置づけられる。UNESCOは，偽情報，ヘイトスピーチ，メディア不信，AIを含むデジタル技術の進展に対応するため，メディア・情報リテラシーを21世紀の基礎的能力として整理している[9]。OSINT教育において重要なのは，データを「見つける」ことだけではない。情報源の性質を見極め，複数のデータを照合し，確度の異なる推論を区別し，社会に伝える際の表現責任を自覚することである。これは，データ可視化を単なる表現技術ではなく，社会の中で意味を生み出す批判的実践として捉えるデータ・ビジュアライゼーション研究とも重なる[10,11]。
 
-本実践は，東京大学の授業，あるいはマスメディアとの学術指導・共同研究を横断する「教育×AI×OSINT」の試みである。日本テレビとの共同研究では，衛星画像等を用いた調査報道の事例も公開されている[12,13,14]。学生や記者は，AIを用いながら，データを集め，疑い，照合し，仮説を組み立て，社会に向けて説明するプロセスを学ぶ。重要なのは，AIに判断を委ねることではなく，AIとの対話を通じて，人間の観察力，批判的思考，表現力を拡張することである。公開情報を扱う教育は，結論の速さよりも，根拠の透明性と説明責任を学ぶ場として設計される必要がある。
+本実践は，東京大学の授業，あるいはマスメディアとの学術指導・共同研究を横断する「教育×AI×OSINT」の試みである。読売新聞への学術指導では，能登半島地震の発生後，記者が撮影した写真の手がかりやGPS情報をもとにArcGIS StoryMapsで被災状況を地図化し，当日夜から公開・更新する実践へつながった[12]。日本テレビとの共同研究では，衛星画像等を用いた調査報道の事例も公開されている[13,14]。学生や記者は，AIを用いながら，データを集め，疑い，照合し，仮説を組み立て，社会に向けて説明するプロセスを学ぶ。重要なのは，AIに判断を委ねることではなく，AIとの対話を通じて，人間の観察力，批判的思考，表現力を拡張することである。公開情報を扱う教育は，結論の速さよりも，根拠の透明性と説明責任を学ぶ場として設計される必要がある。
 
 ## 参考文献・関連資料
 
@@ -29,7 +29,7 @@
 9. UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum
 10. Alberto Cairo. 2016. The Truthful Art: Data, Charts, and Maps for Communication. New Riders. Retrieved May 27, 2026 from https://www.peachpit.com/store/truthful-art-data-charts-and-maps-for-communication-9780321934079
 11. Jonathan Gray, Liliana Bounegru, Stefania Milan, and Paolo Ciuccarelli. 2016. Ways of Seeing Data: Toward a Critical Literacy for Data Visualizations as Research Objects and Research Devices. In Innovative Methods in Media and Communication Research. Retrieved May 27, 2026 from https://www.researchgate.net/publication/312284929_Ways_of_Seeing_Data_Toward_a_Critical_Literacy_for_Data_Visualizations_as_Research_Objects_and_Research_Devices
-12. 日テレNEWS NNN. 2026. 【独自分析】カーグ島で大規模石油流出か…広い海域に拡散 イランの石油輸出拠点. Retrieved May 27, 2026 from https://news.ntv.co.jp/category/society/615836a23a684a0f9a880625bbfc7f6c
+12. よみうりノート. 2024. 記者たちで作る能登地震被災状況マップ（記者の現場＃７）. note. Retrieved May 30, 2026 from https://note.com/yomi_tokyo_saiyo/n/n8cf9838e1a3a
 13. 日テレNEWS. 2026. 【独自分析】カーグ島で大規模石油流出か…広い海域に拡散 イランの石油輸出拠点. YouTube. Retrieved May 28, 2026 from https://www.youtube.com/watch?v=ulJRQ8TvkW4
 14. 東京大学大学院情報学環・学際情報学府. 2025. 東京大学情報学環渡邉英徳研究室と日本テレビホールディングス、「先端技術を活用した報道手法のアップデート」を目的に共同研究を開始. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/news/2025020321925
 
@@ -45,7 +45,7 @@
 | 概要 | 東京大学の情報メディア教育を軸に、データ可視化、デジタルアーカイブ、OSINTを組み合わせ、公開情報を検証可能な形で読み解き社会へ伝える学習モデルを示す。生成AIは結論を代行するのではなく、観察結果の言語化、仮説比較、推論の飛躍の点検を支える対話的な編集者として位置づけられる。 |
 | 著者 | 渡邉英徳 |
 | 想定読者 | 情報・メディア・探究学習を担当する高校・大学教員<br>データ可視化、GIS、デジタルアーカイブを授業に取り入れたい教育者<br>OSINTや調査報道の基礎を教育・研修化したい報道関係者<br>公開情報の検証と社会的説明を扱う教材・サービス企画者 |
-| 主要示唆 | GIS、データ可視化、OSINTは、公開情報を検証可能な形で読み解く情報メディア教育の中核になる。<br>AIは結論を代行するのではなく、観察、仮説比較、説明の点検を支援する対話的編集者として使う。<br>日本テレビや読売新聞との共同研究事例は、教育・報道・社会課題を接続する実践モデルになる。 |
+| 主要示唆 | GIS、データ可視化、OSINTは、公開情報を検証可能な形で読み解く情報メディア教育の中核になる。<br>AIは結論を代行するのではなく、観察、仮説比較、説明の点検を支援する対話的編集者として使う。<br>読売新聞への学術指導や日本テレビとの共同研究事例は、教育・報道・社会課題を接続する実践モデルになる。 |
 | 活用場面 | 高校・大学のGIS、データ可視化、OSINT授業<br>報道機関や自治体と連携した公開情報検証ワークショップ<br>災害、地域課題、都市分析を扱う探究学習<br>情報可視化教材や調査支援サービスの企画 |
 | 学習活動案 | 地域の公開データを地図化し、分布や偏りについてAIと対話しながら仮説を作る。<br>ニュースやSNS投稿の位置情報・時系列・出典を検証し、確実に言えることと推測を分ける。<br>地図、グラフ、テキストを組み合わせ、第三者に説明可能な調査レポートを作成する。 |
 | 実装アイデア | GIS作品例を使った導入ワークショップを設計し、地図表現の読み解きから始める。<br>OSINT検証ラボとして、公開情報の収集、照合、説明文作成、AIによる推論チェックを行う。<br>報道機関や自治体と連携し、地域課題を扱うデータストーリーテリング課題を実施する。 |

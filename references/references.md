@@ -23,7 +23,7 @@
 9. [01-information-visualization-osint-ref-09] UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum
 10. [01-information-visualization-osint-ref-10] Alberto Cairo. 2016. The Truthful Art: Data, Charts, and Maps for Communication. New Riders. Retrieved May 27, 2026 from https://www.peachpit.com/store/truthful-art-data-charts-and-maps-for-communication-9780321934079
 11. [01-information-visualization-osint-ref-11] Jonathan Gray, Liliana Bounegru, Stefania Milan, and Paolo Ciuccarelli. 2016. Ways of Seeing Data: Toward a Critical Literacy for Data Visualizations as Research Objects and Research Devices. In Innovative Methods in Media and Communication Research. Retrieved May 27, 2026 from https://www.researchgate.net/publication/312284929_Ways_of_Seeing_Data_Toward_a_Critical_Literacy_for_Data_Visualizations_as_Research_Objects_and_Research_Devices
-12. [01-information-visualization-osint-ref-12] 日テレNEWS NNN. 2026. 【独自分析】カーグ島で大規模石油流出か…広い海域に拡散 イランの石油輸出拠点. Retrieved May 27, 2026 from https://news.ntv.co.jp/category/society/615836a23a684a0f9a880625bbfc7f6c
+12. [01-information-visualization-osint-ref-12] よみうりノート. 2024. 記者たちで作る能登地震被災状況マップ（記者の現場＃７）. note. Retrieved May 30, 2026 from https://note.com/yomi_tokyo_saiyo/n/n8cf9838e1a3a
 13. [01-information-visualization-osint-ref-13] 日テレNEWS. 2026. 【独自分析】カーグ島で大規模石油流出か…広い海域に拡散 イランの石油輸出拠点. YouTube. Retrieved May 28, 2026 from https://www.youtube.com/watch?v=ulJRQ8TvkW4
 14. [01-information-visualization-osint-ref-14] 東京大学大学院情報学環・学際情報学府. 2025. 東京大学情報学環渡邉英徳研究室と日本テレビホールディングス、「先端技術を活用した報道手法のアップデート」を目的に共同研究を開始. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/news/2025020321925
 

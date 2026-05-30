@@ -657,6 +657,12 @@ def write_glossary() -> None:
             "related_reports": ["03-digital-citizenship"],
         },
         {
+            "term": "知識体験",
+            "reading": "ちしきたいけん",
+            "definition": "知識を固定的な情報ではなく、獲得、享受、再編集、共有、表出の循環で構築される経験として捉える考え方。AIは問いや視点を整理するナビゲーターとして関わる。",
+            "related_reports": ["03-digital-citizenship", "05-digital-archive-ai", "00-overview"],
+        },
+        {
             "term": "デジタルアーカイブ",
             "reading": "でじたるあーかいぶ",
             "definition": "資料をデジタル化して保存・公開・活用する仕組み。各レポートでは探究学習や資料再編集の基盤として扱う。",
@@ -761,6 +767,16 @@ def write_figures_metadata() -> None:
             "source": "ユーザー提供Wordファイルから抽出",
             "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
             "related_sections": ["AI時代の平和教育に向けて"],
+        },
+        {
+            "id": "03-ai-digital-citizenship-participation",
+            "report_id": "03-digital-citizenship",
+            "path": "assets/03-digital-citizenship/ai-digital-citizenship-participation.jpg",
+            "alt": "AI時代のデジタルシティズンシップ教育における禁止から主体的な参加への転換、AIとの協働、知識循環を示す図",
+            "caption": "AI時代のデジタルシティズンシップ教育：禁止・管理から主体的な参加へ",
+            "source": "ユーザー提供画像 AI時代のデジタルシティズンシップ教育.png から変換",
+            "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+            "related_sections": ["AIを活かしたデジタルシティズンシップ教育"],
         },
         {
             "id": "05-sukilam-workshop",
