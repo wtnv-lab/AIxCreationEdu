@@ -56,7 +56,7 @@
 
 ### NotebookLM向け単一テキストの更新
 
-`notebooklm-source.txt` は画像、`.git`、生成ファイル自身を除外し、プロジェクト内のテキスト資産をまとめます。
+`notebooklm-source.txt` は画像、動画、PDF、`.git`、生成ファイル自身を除外し、プロジェクト内のテキスト資産をまとめます。NotebookLMが内容を見つけやすいよう、冒頭に読み方の説明を入れ、`reports/` と `prompts/` の具体的な本文を前方に配置します。
 
 ```sh
 python3 -m pip install --user -r requirements-ai.txt
@@ -68,6 +68,13 @@ scripts/update_notebooklm_source.sh
 ```sh
 scripts/setup_git_hooks.sh
 ```
+
+自動生成では、次のルールを維持します。
+
+- `reports/` 配下のMarkdownをレポート本文の一次ソースとして含める。
+- `prompts/` 配下のMarkdownをプロンプト本文の一次ソースとして含める。
+- `files-to-prompt` の標準形式で、ファイルパス、区切り線、本文の順に出力する。
+- ファイル構成だけの一覧にならないよう、NotebookLM向けの説明と各ファイル本文を必ず含める。
 
 ## ライセンス
 
