@@ -49,7 +49,7 @@
 - 検索・RAG用途では [`metadata/chunks.jsonl`](metadata/chunks.jsonl) を使うと、見出し単位の分割済みテキストとして扱えます。
 - `concept_alignment` の固定語彙は [`metadata/concept-schema.json`](metadata/concept-schema.json) で確認できます。
 - 用語の揺れを抑えるには [`metadata/glossary.json`](metadata/glossary.json) を、図版を根拠付きで扱うには [`metadata/figures.json`](metadata/figures.json) を併用してください。
-- 授業案、ワークショップ、サービス企画、根拠付き回答には [`prompts/`](prompts/) のプロンプトを利用できます。
+- 授業案、ワークショップ、サービス企画、エクスカーション法による発想、根拠付き回答には [`prompts/`](prompts/) のプロンプトを利用できます。
 
 ## ライセンス
 

@@ -52,4 +52,4 @@ This repository publishes Markdown reports and AI-readable metadata for planning
 ## Optional
 
 - [Build script](scripts/build_corpus.py): Converts local DOCX sources into Markdown and metadata.
-- [Prompts](prompts/): Reusable prompts for lesson planning, service design, comparison, citation-aware answering, and implementation roadmaps.
+- [Prompts](prompts/): Reusable prompts for lesson planning, service design, excursion ideation, comparison, citation-aware answering, and implementation roadmaps.

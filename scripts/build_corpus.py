@@ -519,7 +519,7 @@ def write_readme(config: dict, abstracts: dict[str, str]) -> None:
 - 検索・RAG用途では [`metadata/chunks.jsonl`](metadata/chunks.jsonl) を使うと、見出し単位の分割済みテキストとして扱えます。
 - `concept_alignment` の固定語彙は [`metadata/concept-schema.json`](metadata/concept-schema.json) で確認できます。
 - 用語の揺れを抑えるには [`metadata/glossary.json`](metadata/glossary.json) を、図版を根拠付きで扱うには [`metadata/figures.json`](metadata/figures.json) を併用してください。
-- 授業案、ワークショップ、サービス企画、根拠付き回答には [`prompts/`](prompts/) のプロンプトを利用できます。
+- 授業案、ワークショップ、サービス企画、エクスカーション法による発想、根拠付き回答には [`prompts/`](prompts/) のプロンプトを利用できます。
 
 ## ライセンス
 
@@ -916,7 +916,7 @@ This repository publishes Markdown reports and AI-readable metadata for planning
 ## Optional
 
 - [Build script](scripts/build_corpus.py): Converts local DOCX sources into Markdown and metadata.
-- [Prompts](prompts/): Reusable prompts for lesson planning, service design, comparison, citation-aware answering, and implementation roadmaps.
+- [Prompts](prompts/): Reusable prompts for lesson planning, service design, excursion ideation, comparison, citation-aware answering, and implementation roadmaps.
 """
     (ROOT / "llms.txt").write_text(llms, encoding="utf-8")
     (ROOT / "llms-full.md").write_text("\n".join(full_sections), encoding="utf-8")
@@ -948,6 +948,111 @@ def write_prompts() -> None:
             7. 人間の判断が必要な点
             8. 実施上のリスクと対策
             9. 90日間の実装計画
+            """,
+        "excursion-ideation.md": """\
+            # エクスカーション法アイデア創出プロンプト
+
+            あなたは，AI時代の教育実践と教育ソリューション設計を支援するファシリテーターです。利用者の固定観念をゆるめ，遠い世界の特徴を借りて，新しい授業，教材，ワークショップ，サービス，表現活動のアイデアを広げてください。
+
+            このリポジトリの `llms.txt`，`llms-full.md`，`metadata/reports.json`，`metadata/chunks.jsonl`，`metadata/concept-schema.json` を参照できる場合は，関連するレポートIDや `concept_alignment` を使って整理してください。本文にないことは推測として扱い，断定しないでください。
+
+            ## 入力条件
+
+            - 解決したい課題: [ここに課題，考えたい商品・サービス，授業テーマ，ワークショップテーマを記入]
+            - 対象者: [小学生，中高生，大学生，教員，社会人，自治体，企業など]
+            - 活用場面: [授業，探究学習，校内研修，地域連携，EdTech企画，展示，発表など]
+            - 重視するテーマ: [創造性，情報リテラシー，デジタルシティズンシップ，平和教育，未来構想，地域課題など]
+            - 制約条件: [時間，人数，使用できるAI，公開範囲，倫理・著作権上の注意など]
+
+            ## 進め方
+
+            ### 1. 課題の捉え直し
+
+            - 入力された課題を一文で言い換えてください。
+            - その課題に含まれる思い込みを3つ挙げてください。
+            - `concept_alignment` の五段階から，特に関係する段階を選んでください。
+              - `question_framing`
+              - `source_evaluation`
+              - `prototyping`
+              - `human_verification`
+              - `public_communication`
+
+            ### 2. 無関係な世界の選定
+
+            課題からできるだけ遠い世界を3つ選んでください。カテゴリは，次の例から重ならないように選びます。
+
+            - 自然現象
+            - 歴史上の出来事
+            - 職業
+            - 伝統文化
+            - スポーツ
+            - 料理
+            - 交通
+            - 建築
+            - 宇宙の現象
+            - エンタメ
+
+            各対象について，なぜ課題から遠いのか，どの点が発想の刺激になりそうかを短く添えてください。
+
+            ### 3. 特徴・本質の抽出
+
+            選んだ3つの対象について，課題のことはいったん忘れ，それぞれの特徴を3つずつ抽出してください。
+
+            - 構造
+            - 動き
+            - ルール
+            - 関係性
+            - 失敗のしかた
+            - 変化のきっかけ
+
+            ### 4. 強制結びつけ
+
+            各対象について，「もしこの課題が，その世界の特徴を持っていたら？」という問いから，アイデアの種を3つずつ出してください。
+
+            各アイデアの種には，次を含めてください。
+
+            - アイデア名
+            - 着想元の特徴
+            - 何が新しいか
+            - AIの役割
+            - 人間が判断する点
+            - 30分で試せる小さなプロトタイプ
+
+            ### 5. 教育・実践への翻訳
+
+            出てきたアイデアの種から，有望なものを3つ選び，このプロジェクト向けに整理してください。
+
+            - 参照できる関連レポートID
+            - 学習活動またはサービス体験
+            - 必要な資料・データ
+            - 成果物
+            - 評価観点
+            - 倫理・著作権・プライバシー上の注意
+
+            ### 6. リフレクション
+
+            利用者の常識を揺さぶる問いを5つ投げかけてください。
+
+            - もし，この課題の「正解」を決めないとしたら，何を評価しますか。
+            - もし，AIが最初の答えではなく反論だけを返すとしたら，活動はどう変わりますか。
+            - もし，成果物よりも修正履歴を公開するとしたら，何が学びになりますか。
+            - もし，利用者ではなく影響を受ける第三者から設計を始めるとしたら，何が変わりますか。
+            - もし，このアイデアを地域や社会に返す必要があるとしたら，誰と対話しますか。
+
+            ## 出力形式
+
+            1. 課題の捉え直し
+            2. 無関係な世界の選定
+            3. 特徴・本質の抽出
+            4. 強制結びつけによるアイデアの種
+            5. 有望案トップ3
+            6. concept_alignment
+            7. AIの役割と人間の責任
+            8. 小さく試すプロトタイプ案
+            9. リスクと配慮
+            10. リフレクションの問い
+
+            専門用語を使いすぎず，直感的で試したくなる表現にしてください。ただし，実施時の安全性，根拠確認，公開時の責任は省略しないでください。
             """,
         "planning-template.md": """\
             # 計画立案テンプレート
