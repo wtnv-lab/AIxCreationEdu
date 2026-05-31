@@ -13,6 +13,7 @@ const state = {
 };
 
 const els = {
+  menu: document.querySelector("#content-menu"),
   list: document.querySelector("#content-list"),
   kicker: document.querySelector("#document-kicker"),
   title: document.querySelector("#document-title"),
@@ -206,9 +207,10 @@ function selectFirstItem(section) {
   setActiveMenuSection(section);
   const item = getItemsBySection(section)[0];
   if (item) {
-    selectItem(item.path);
+    selectItem(item.path, { resetMenuScroll: true });
   } else {
     renderNavigation();
+    resetMenuScroll();
   }
 }
 
@@ -268,6 +270,7 @@ async function selectItem(path, options = {}) {
   setActiveSection(item.section);
   setActiveMenuSection(item.section);
   renderNavigation();
+  if (options.resetMenuScroll) resetMenuScroll();
   setDocumentLoading(item);
   resetScrollPosition();
 
@@ -378,6 +381,13 @@ function showHome(options = {}) {
 function resetScrollPosition() {
   window.requestAnimationFrame(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  });
+}
+
+function resetMenuScroll() {
+  window.requestAnimationFrame(() => {
+    els.menu.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    els.list.scrollTo({ top: 0, left: 0, behavior: "auto" });
   });
 }
 
