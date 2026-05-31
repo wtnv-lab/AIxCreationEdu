@@ -402,7 +402,7 @@ function renderHome() {
   return `
     <section class="home-intro">
       <blockquote class="lead"><p>${escapeHtml(homeSubtitle)}</p></blockquote>
-      <p class="purpose-text">本サイトは、東京大学大学院 渡邉英徳研究室と関係者が蓄積してきた、AI・クリエイティブ・教育に関する実践・研究データをもとにした公開レポート集です。研究資料、実践記録、参考文献を生成AIが処理し、著者との対話を通じて構成した内容を、人間が確認・編集し、読みやすい形で公開しています。AIが構造と内容を理解しやすいMarkdown本文・メタデータ・プロンプト一式は、GitHubで公開しています。</p>
+      <p class="purpose-text">本サイトは、東京大学大学院 渡邉英徳研究室と関係者が蓄積してきた、AI・クリエイティブ・教育に関する実践・研究データをもとにした公開レポート集です。研究資料、実践記録、参考文献を生成AIが処理し、著者との対話を通じて構成した内容を、人間が確認・編集し、読みやすい形で公開しています。AIが構造と内容を理解しやすいMarkdown本文・メタデータ・プロンプト一式は、<a href="${githubUrl}" target="_blank" rel="noopener">GitHubで公開しています</a>。</p>
     </section>
     <figure class="home-figure">
       <img src="assets/00-overview/project-concept-map.svg" alt="AIとクリエイティブと教育の概念図">
