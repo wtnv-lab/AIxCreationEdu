@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AIとクリエイティブと教育 | 公開レポート集</title>
+    <meta name="description" content="各著者の研究リソースをもとに生成AIとの対話で編んだ、AIとクリエイティブと教育の公開レポート集">
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="web/styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <a class="brand" href="#home" aria-label="AIとクリエイティブと教育">
+          <span>
+            <span class="brand-title">AIとクリエイティブと教育</span>
+            <span class="brand-subtitle">公開レポート集</span>
+          </span>
+        </a>
+        <nav class="header-links" aria-label="関連ファイル">
+          <a href="#reports/00-overview.md">レポート</a>
+          <a href="#prompts/lesson-plan-generation.md">プロンプト</a>
+          <a href="https://github.com/wtnv-lab/AIxCreationEdu" target="_blank" rel="noopener">ソースコード</a>
+        </nav>
+      </header>
+
+      <main class="reader-layout">
+        <aside id="content-menu" class="sidebar" aria-label="文書一覧">
+          <div class="mobile-menu-heading">
+            <p class="mobile-menu-title">資料メニュー</p>
+            <p class="mobile-menu-summary">レポートとプロンプトを選べます。</p>
+          </div>
+          <div id="content-list" class="content-list" aria-live="polite"></div>
+        </aside>
+
+        <section class="document-panel" aria-label="本文">
+          <div class="document-toolbar">
+            <div class="document-heading">
+              <p id="document-kicker" class="document-kicker">読み込み中</p>
+              <h1 id="document-title">文書を読み込んでいます</h1>
+              <div id="document-meta" class="document-meta"></div>
+            </div>
+            <div class="document-actions">
+              <a class="menu-link" href="#content-menu">資料メニュー</a>
+            </div>
+          </div>
+          <article id="document-body" class="markdown-body" aria-live="polite"></article>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="web/app.js"></script>
+  </body>
+</html>

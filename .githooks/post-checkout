@@ -4,4 +4,5 @@ set -euo pipefail
 ROOT="$(git rev-parse --show-toplevel)"
 cd "$ROOT"
 
+scripts/update_web_manifest.sh
 scripts/update_notebooklm_source.sh

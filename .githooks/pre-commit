@@ -4,5 +4,6 @@ set -euo pipefail
 ROOT="$(git rev-parse --show-toplevel)"
 cd "$ROOT"
 
+scripts/update_web_manifest.sh
 scripts/update_notebooklm_source.sh
-git add ai/notebooklm-source.txt
+git add config/web_content.json ai/notebooklm-source.txt
