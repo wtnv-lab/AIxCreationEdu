@@ -1,8 +1,8 @@
 # AIとクリエイティブと教育
 
-> 生成AI時代の創造性、表現、情報リテラシー、教育実践を横断的に検討する公開レポート集。
+> 東京大学大学院 渡邉英徳研究室と関係者の実践・研究リソースをもとに、生成AI時代の創造性教育を読み解く公開レポート集。
 
-This repository publishes Markdown reports and AI-readable metadata for planning education practices and solutions around AI, creativity, information literacy, archives, prototyping, and digital citizenship.
+This repository publishes Markdown reports, prompts, and AI-readable metadata for planning education practices and solutions around AI, creativity, information literacy, archives, prototyping, and digital citizenship.
 
 ## Authors
 
@@ -28,7 +28,7 @@ This repository publishes Markdown reports and AI-readable metadata for planning
 
 ## Core Reports
 
-- [AIとクリエイティブと教育 総括レポート](../reports/00-overview.md)（著者: 渡邉英徳）: 生成AI時代の教育を、問い・資料読解・倫理・社会的価値へ重心移動する創造性教育として整理。
+- [AIとクリエイティブと教育 総括レポート](../reports/00-overview.md)（著者: 渡邉英徳）: 生成AI時代の教育を、問い・資料読解・制作・検証・社会発信をつなぐ創造性教育として整理。
 - [AIと情報可視化・OSINT教育](../reports/01-information-visualization-osint.md)（著者: 渡邉英徳）: GIS・データ可視化・OSINTを通じて、公開情報を検証し社会へ伝える情報メディア教育モデル。
 - [AIによるモノクロ写真カラー化を活かした高校生の平和教育実践](../reports/02-photo-colorization-peace-education.md)（著者: 森吉蓉子, 渡邉英徳）: AIカラー化を、写真資料・証言・地域の記憶をつなぐ平和教育と記憶継承の探究へ展開。
 - [AIを活かしたデジタルシティズンシップ教育](../reports/03-digital-citizenship.md)（著者: 原田真喜子）: AIの禁止・管理を超え、判断・参加・公共性を育てるデジタルシティズンシップ教育。

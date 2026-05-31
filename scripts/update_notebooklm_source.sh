@@ -50,7 +50,7 @@ cat > "$TMP_OUTPUT" <<'HEADER'
 - `references/*`: 参考文献・関連資料
 - `index.html` と `web/*`: 人間向け閲覧アプリのHTML、CSS、JavaScript
 - `README.md`、`ai/llms.txt`、`ai/llms-full.md`: プロジェクト概要とAI向け概説
-- `config/*`: レポート定義や参照情報
+- `config/*`: レポート定義や参照情報。過去の置換ログなど、読解用資料として紛らわしい補助ファイルは除外する。
 - `scripts/*` と `.githooks/*`: この単一テキストの自動生成ルール
 
 ## 自動生成ルール
@@ -91,6 +91,8 @@ python3 -m files_to_prompt \
   --ignore "__pycache__" \
   --ignore "*.pyc" \
   --ignore "ai/notebooklm-source.txt" \
+  --ignore "config/report_replacements.json" \
+  --ignore "report_replacements.json" \
   --ignore "*.jpg" \
   --ignore "*.jpeg" \
   --ignore "*.png" \

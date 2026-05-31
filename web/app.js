@@ -394,7 +394,7 @@ function resetMenuScroll() {
 function renderHome() {
   const description =
     state.project.description ||
-    "生成AI時代の創造性、表現、情報リテラシー、教育実践を横断的に検討する公開レポート集。";
+    "生成AI時代の創造性教育を、問い・資料読解・制作・検証・社会発信の流れから読み解く公開レポート集。";
   const homeSubtitle = description.replace(/。$/, "");
   const reportCount = state.items.filter((item) => item.section === "reports").length;
   const promptCount = state.items.filter((item) => item.section === "prompts").length;
@@ -402,20 +402,20 @@ function renderHome() {
   return `
     <section class="home-intro">
       <blockquote class="lead"><p>${escapeHtml(homeSubtitle)}</p></blockquote>
-      <p class="purpose-text">本サイトは、東京大学大学院 渡邉英徳研究室と関係者が蓄積してきた、AI・クリエイティブ・教育に関する実践・研究データをもとにした公開レポート集です。研究資料、実践記録、参考文献を生成AIが処理し、著者との対話を通じて構成した内容を、人間が確認・編集し、読みやすい形で公開しています。AIが構造と内容を理解しやすいMarkdown本文・メタデータ・プロンプト一式は、<a href="${githubUrl}" target="_blank" rel="noopener">GitHubで公開しています</a>。</p>
+      <p class="purpose-text">このサイトは、東京大学大学院 渡邉英徳研究室と関係者の実践・研究リソースから生まれたレポートとプロンプトを、人間の読者がたどりやすい形でまとめたものです。各レポートは、研究資料や実践記録を生成AIが整理し、著者が根拠・文脈・表現を確認しながら編集しています。AIに資料として渡すためのMarkdown本文、メタデータ、プロンプト、単一テキストは、<a href="${githubUrl}" target="_blank" rel="noopener">GitHubで公開しています</a>。</p>
     </section>
     <figure class="home-figure">
       <img src="assets/00-overview/project-concept-map.svg" alt="AIとクリエイティブと教育の概念図">
       <figcaption>AIとクリエイティブと教育の概念図</figcaption>
     </figure>
     <section class="corner-grid" aria-label="資料の入口">
-      ${renderCornerCard("レポート", `${reportCount}件`, "著者の研究リソースをもとに、生成AIとの対話で編んだ本文を読みやすく整理しています。", "reports")}
-      ${renderCornerCard("プロンプト", `${promptCount}件`, "リポジトリ全体や単一テキストをAIに渡したあと、授業案や企画づくりに使えます。", "prompts")}
-      ${renderExternalCornerCard("ソースコード", "AIが構造と内容を理解しやすいMarkdown、メタデータ、プロンプト一式をGitHubで公開しています。", githubUrl)}
+      ${renderCornerCard("レポート", `${reportCount}件`, "実践と研究の資料をもとに、AI時代の教育を読み解く本文を整理しています。", "reports")}
+      ${renderCornerCard("プロンプト", `${promptCount}件`, "資料一式をAIに渡したあと、授業案、研修案、企画づくりに使えます。", "prompts")}
+      ${renderExternalCornerCard("ソースコード", "AIに読み込ませやすいMarkdown本文、メタデータ、プロンプト、生成スクリプトを公開しています。", githubUrl)}
     </section>
     <section>
       <h2>まず読むなら</h2>
-      <p>全体像をつかむ場合は「AIとクリエイティブと教育 総括レポート」から読み始めると、各レポートの位置づけが分かりやすくなります。授業や研修を作りたい場合は、レポートを読んだあと、AIに資料一式を読み込ませてからプロンプトを使ってください。</p>
+      <p>全体像をつかむ場合は「AIとクリエイティブと教育 総括レポート」から読むと、各レポートの位置づけが分かりやすくなります。授業や研修を作る場合は、関心に近いレポートを確認し、AIに資料一式を読み込ませてからプロンプトを使ってください。</p>
     </section>
     ${renderProjectAuthors()}
   `;
@@ -610,7 +610,14 @@ function renderMarkdown(markdown, sourcePath, options = {}) {
       continue;
     }
 
-    if (/^\*図.+\*$/.test(line.trim())) {
+    const youtubeEmbedUrl = getYouTubeEmbedUrl(line.trim());
+    if (youtubeEmbedUrl) {
+      html += renderYouTubeEmbed(youtubeEmbedUrl);
+      i += 1;
+      continue;
+    }
+
+    if (/^\*(図|動画).+\*$/.test(line.trim())) {
       html += `<p class="figure-caption">${renderInline(line.trim().replace(/^\*|\*$/g, ""), sourcePath, options)}</p>`;
       i += 1;
       continue;
@@ -635,8 +642,32 @@ function isBlockStart(lines, index) {
     /^>\s?/.test(line) ||
     /^\s*[-*+]\s+/.test(line) ||
     /^\s*\d+\.\s+/.test(line) ||
+    Boolean(getYouTubeEmbedUrl(line.trim())) ||
     isTableStart(lines, index)
   );
+}
+
+function getYouTubeEmbedUrl(url) {
+  const match = url.match(
+    /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtube\.com\/embed\/|youtu\.be\/)([A-Za-z0-9_-]{11})(?:[&?].*)?$/
+  );
+  if (!match) return "";
+  return `https://www.youtube-nocookie.com/embed/${match[1]}`;
+}
+
+function renderYouTubeEmbed(embedUrl) {
+  return `
+    <div class="video-embed">
+      <iframe
+        src="${escapeAttr(embedUrl)}"
+        title="YouTube video player"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+    </div>
+  `;
 }
 
 function isTableStart(lines, index) {
