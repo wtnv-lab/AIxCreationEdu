@@ -1,4 +1,4 @@
-const manifestPath = "config/web_content.json?v=20260531-hito-ai-copy";
+const manifestPath = "config/web_content.json?v=20260531-home-subtitle";
 const homeHash = "home";
 const githubUrl = "https://github.com/wtnv-lab/AIxCreationEdu";
 
@@ -401,7 +401,7 @@ function resetMenuScroll() {
 function renderHome() {
   const description =
     state.project.description ||
-    "生成AI時代の創造性教育を、ヒトとAIに扱いやすいかたちで提供する公開レポート集。";
+    "ヒトとAIに扱いやすい公開レポート集";
   const homeSubtitle = description.replace(/。$/, "");
   const reportCount = state.items.filter((item) => item.section === "reports").length;
   const promptCount = state.items.filter((item) => item.section === "prompts").length;

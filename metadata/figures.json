@@ -84,6 +84,30 @@
     ]
   },
   {
+    "id": "06-workshop-hero",
+    "report_id": "06-sf-prototyping",
+    "path": "assets/06-sf-prototyping/workshop-hero.jpg",
+    "alt": "生成AIを用いたSFプロトタイピング・ワークショップのイメージ",
+    "caption": "生成AIを用いたSFプロトタイピング・ワークショップのイメージ",
+    "source": "GitHub user attachment c14ef5d1-48fa-40f0-ab21-a040edf064f7 から変換",
+    "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+    "related_sections": [
+      "生成AIを用いたSFプロトタイピング"
+    ]
+  },
+  {
+    "id": "06-workshop-process",
+    "report_id": "06-sf-prototyping",
+    "path": "assets/06-sf-prototyping/workshop-process.jpg",
+    "alt": "生成AI支援SFプロトタイピングのプロセス",
+    "caption": "生成AI支援SFプロトタイピングのプロセス",
+    "source": "GitHub user attachment 2e3ebe3e-2625-42fd-8116-8b1d9930142f から変換",
+    "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+    "related_sections": [
+      "生成AIを用いたSFプロトタイピング"
+    ]
+  },
+  {
     "id": "07-nagasaki-minecraft-world",
     "report_id": "07-minecraft-ai-education",
     "path": "assets/07-minecraft-ai-education/nagasaki-minecraft-world.jpg",
