@@ -422,7 +422,7 @@ function renderHome() {
     </section>
     <section>
       <h2>まず読むなら</h2>
-      <p>全体像をつかむ場合は「AIとクリエイティブと教育 総括レポート」から読むと、各レポートの位置づけが分かりやすくなります。授業や研修を作る場合は、関心に近いレポートを確認し、AIに資料一式を読み込ませてからプロンプトを使ってください。</p>
+      <p>全体像をつかむ場合は<a href="#reports%2F00-overview.md">「AIとクリエイティブと教育 総括レポート」</a>から読むと、各レポートの位置づけが分かりやすくなります。授業や研修を作る場合は、関心に近いレポートを確認し、AIに<a href="ai/notebooklm-source.txt" target="_blank" rel="noopener">資料一式</a>を読み込ませてから<a href="#prompts%2Flesson-plan-generation.md">プロンプト</a>を使ってください。</p>
     </section>
     ${renderProjectAuthors()}
   `;
