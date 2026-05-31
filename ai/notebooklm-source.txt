@@ -836,24 +836,24 @@ index.html
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AIとクリエイティブと教育 | 人間にもAIにも扱いやすい公開レポート集</title>
-    <meta name="description" content="東京大学大学院 渡邉英徳研究室と関係者の実践・研究リソースをもとに、生成AI時代の創造性教育を人間にもAIにも扱いやすいかたちで提供する公開レポート集">
+    <title>AIとクリエイティブと教育 | ヒトとAIに扱いやすい公開レポート集</title>
+    <meta name="description" content="東京大学大学院 渡邉英徳研究室と関係者の実践・研究リソースをもとに、生成AI時代の創造性教育をヒトとAIに扱いやすいかたちで提供する公開レポート集">
     <meta name="keywords" content="生成AI,教育,創造性,情報リテラシー,平和教育,デジタルアーカイブ,プロンプト">
     <meta name="author" content="渡邉英徳研究室">
     <link rel="canonical" href="https://wtnv-lab.github.io/AIxCreationEdu/">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="ja_JP">
     <meta property="og:site_name" content="AIとクリエイティブと教育">
-    <meta property="og:title" content="AIとクリエイティブと教育 | 人間にもAIにも扱いやすい公開レポート集">
-    <meta property="og:description" content="東京大学大学院 渡邉英徳研究室と関係者の実践・研究リソースをもとに、生成AI時代の創造性教育を人間にもAIにも扱いやすいかたちで提供する公開レポート集">
+    <meta property="og:title" content="AIとクリエイティブと教育 | ヒトとAIに扱いやすい公開レポート集">
+    <meta property="og:description" content="東京大学大学院 渡邉英徳研究室と関係者の実践・研究リソースをもとに、生成AI時代の創造性教育をヒトとAIに扱いやすいかたちで提供する公開レポート集">
     <meta property="og:url" content="https://wtnv-lab.github.io/AIxCreationEdu/">
     <meta property="og:image" content="https://wtnv-lab.github.io/AIxCreationEdu/assets/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="AIとクリエイティブと教育の概念図">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="AIとクリエイティブと教育 | 人間にもAIにも扱いやすい公開レポート集">
-    <meta name="twitter:description" content="東京大学大学院 渡邉英徳研究室と関係者の実践・研究リソースをもとに、生成AI時代の創造性教育を人間にもAIにも扱いやすいかたちで提供する公開レポート集">
+    <meta name="twitter:title" content="AIとクリエイティブと教育 | ヒトとAIに扱いやすい公開レポート集">
+    <meta name="twitter:description" content="東京大学大学院 渡邉英徳研究室と関係者の実践・研究リソースをもとに、生成AI時代の創造性教育をヒトとAIに扱いやすいかたちで提供する公開レポート集">
     <meta name="twitter:image" content="https://wtnv-lab.github.io/AIxCreationEdu/assets/og-image.png">
     <meta name="twitter:image:alt" content="AIとクリエイティブと教育の概念図">
     <meta name="theme-color" content="#f7f4ec">
@@ -866,7 +866,7 @@ index.html
         <a class="brand" href="#home" aria-label="AIとクリエイティブと教育">
           <span>
             <span class="brand-title">AIとクリエイティブと教育</span>
-            <span class="brand-subtitle">人間にもAIにも扱いやすい公開レポート集</span>
+            <span class="brand-subtitle">ヒトとAIに扱いやすい公開レポート集</span>
           </span>
         </a>
         <nav class="header-links" aria-label="関連ファイル">
@@ -901,7 +901,7 @@ index.html
       </main>
     </div>
 
-    <script type="module" src="web/app.js?v=20260531-audience-copy"></script>
+    <script type="module" src="web/app.js?v=20260531-hito-ai-copy"></script>
   </body>
 </html>
 
@@ -909,7 +909,7 @@ index.html
 ---
 web/app.js
 ---
-const manifestPath = "config/web_content.json?v=20260531-audience-copy";
+const manifestPath = "config/web_content.json?v=20260531-hito-ai-copy";
 const homeHash = "home";
 const githubUrl = "https://github.com/wtnv-lab/AIxCreationEdu";
 
@@ -1312,7 +1312,7 @@ function resetMenuScroll() {
 function renderHome() {
   const description =
     state.project.description ||
-    "生成AI時代の創造性教育を、人間にもAIにも扱いやすいかたちで提供する公開レポート集。";
+    "生成AI時代の創造性教育を、ヒトとAIに扱いやすいかたちで提供する公開レポート集。";
   const homeSubtitle = description.replace(/。$/, "");
   const reportCount = state.items.filter((item) => item.section === "reports").length;
   const promptCount = state.items.filter((item) => item.section === "prompts").length;
@@ -1320,7 +1320,7 @@ function renderHome() {
   return `
     <section class="home-intro">
       <blockquote class="lead"><p>${escapeHtml(homeSubtitle)}</p></blockquote>
-      <p class="purpose-text">このサイトは、東京大学大学院 渡邉英徳研究室と関係者の実践・研究リソースから生まれたレポートとプロンプトを、人間にもAIにも扱いやすいかたちで提供する公開レポート集です。各レポートは、研究資料や実践記録を生成AIが整理し、著者が根拠・文脈・表現を確認しながら編集しています。読みやすく整えた本文に加え、AIに資料として渡しやすいMarkdown本文、メタデータ、プロンプト、単一テキストを、<a href="${githubUrl}" target="_blank" rel="noopener">GitHubで公開しています</a>。</p>
+      <p class="purpose-text">このサイトは、東京大学大学院 渡邉英徳研究室と関係者の実践・研究リソースから生まれたレポートとプロンプトを、ヒトとAIに扱いやすいかたちで提供する公開レポート集です。各レポートは、研究資料や実践記録を生成AIが整理し、著者が根拠・文脈・表現を確認しながら編集しています。読みやすく整えた本文に加え、AIに資料として渡しやすいMarkdown本文、メタデータ、プロンプト、単一テキストを、<a href="${githubUrl}" target="_blank" rel="noopener">GitHubで公開しています</a>。</p>
     </section>
     <figure class="home-figure">
       <img src="assets/00-overview/project-concept-map.svg" alt="AIとクリエイティブと教育の概念図">
@@ -4531,7 +4531,7 @@ README.md
 ---
 # AIとクリエイティブと教育
 
-> 東京大学大学院 渡邉英徳研究室と関係者の実践・研究リソースをもとに、生成AI時代の創造性教育を読み解く公開レポート集。
+> 東京大学大学院 渡邉英徳研究室と関係者の実践・研究リソースをもとに、生成AI時代の創造性教育をヒトとAIに扱いやすいかたちで提供する公開レポート集。
 
 本リポジトリは、東京大学大学院 渡邉英徳研究室と関係者が蓄積してきた、AI・クリエイティブ・教育に関する研究資料、実践記録、参考文献をもとにした公開レポート集です。生成AIが資料群を整理し、著者との対話を通じて論点を編み直し、人間が根拠、文脈、表現を確認しながらMarkdown本文として編集しています。
 
@@ -5116,7 +5116,7 @@ config/reports.json
 {
   "project": {
     "title": "AIとクリエイティブと教育",
-    "description": "生成AI時代の創造性教育を、人間にもAIにも扱いやすいかたちで提供する公開レポート集。",
+    "description": "生成AI時代の創造性教育を、ヒトとAIに扱いやすいかたちで提供する公開レポート集。",
     "version": "1.0.0",
     "date": "2026-05-27",
     "license": "CC BY 4.0",
@@ -6131,7 +6131,7 @@ config/web_content.json
   "schema": "aice.web_content.v1",
   "project": {
     "title": "AIとクリエイティブと教育",
-    "description": "生成AI時代の創造性教育を、人間にもAIにも扱いやすいかたちで提供する公開レポート集。",
+    "description": "生成AI時代の創造性教育を、ヒトとAIに扱いやすいかたちで提供する公開レポート集。",
     "version": "1.0.0",
     "date": "2026-05-27",
     "license": "CC BY 4.0",

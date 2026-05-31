@@ -1,4 +1,4 @@
-const manifestPath = "config/web_content.json?v=20260531-audience-copy";
+const manifestPath = "config/web_content.json?v=20260531-hito-ai-copy";
 const homeHash = "home";
 const githubUrl = "https://github.com/wtnv-lab/AIxCreationEdu";
 
@@ -401,7 +401,7 @@ function resetMenuScroll() {
 function renderHome() {
   const description =
     state.project.description ||
-    "生成AI時代の創造性教育を、人間にもAIにも扱いやすいかたちで提供する公開レポート集。";
+    "生成AI時代の創造性教育を、ヒトとAIに扱いやすいかたちで提供する公開レポート集。";
   const homeSubtitle = description.replace(/。$/, "");
   const reportCount = state.items.filter((item) => item.section === "reports").length;
   const promptCount = state.items.filter((item) => item.section === "prompts").length;
@@ -409,7 +409,7 @@ function renderHome() {
   return `
     <section class="home-intro">
       <blockquote class="lead"><p>${escapeHtml(homeSubtitle)}</p></blockquote>
-      <p class="purpose-text">このサイトは、東京大学大学院 渡邉英徳研究室と関係者の実践・研究リソースから生まれたレポートとプロンプトを、人間にもAIにも扱いやすいかたちで提供する公開レポート集です。各レポートは、研究資料や実践記録を生成AIが整理し、著者が根拠・文脈・表現を確認しながら編集しています。読みやすく整えた本文に加え、AIに資料として渡しやすいMarkdown本文、メタデータ、プロンプト、単一テキストを、<a href="${githubUrl}" target="_blank" rel="noopener">GitHubで公開しています</a>。</p>
+      <p class="purpose-text">このサイトは、東京大学大学院 渡邉英徳研究室と関係者の実践・研究リソースから生まれたレポートとプロンプトを、ヒトとAIに扱いやすいかたちで提供する公開レポート集です。各レポートは、研究資料や実践記録を生成AIが整理し、著者が根拠・文脈・表現を確認しながら編集しています。読みやすく整えた本文に加え、AIに資料として渡しやすいMarkdown本文、メタデータ、プロンプト、単一テキストを、<a href="${githubUrl}" target="_blank" rel="noopener">GitHubで公開しています</a>。</p>
     </section>
     <figure class="home-figure">
       <img src="assets/00-overview/project-concept-map.svg" alt="AIとクリエイティブと教育の概念図">
