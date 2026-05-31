@@ -858,7 +858,7 @@ index.html
     <meta name="twitter:image:alt" content="AIとクリエイティブと教育の概念図">
     <meta name="theme-color" content="#f7f4ec">
     <link rel="icon" href="data:,">
-    <link rel="stylesheet" href="web/styles.css">
+    <link rel="stylesheet" href="web/styles.css?v=20260531-embed">
   </head>
   <body>
     <div class="app-shell">
@@ -901,7 +901,7 @@ index.html
       </main>
     </div>
 
-    <script type="module" src="web/app.js"></script>
+    <script type="module" src="web/app.js?v=20260531-embed"></script>
   </body>
 </html>
 
