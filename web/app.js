@@ -315,6 +315,13 @@ function renderMeta(item) {
     els.meta.append(pill);
   });
 
+  if (item.last_updated) {
+    const updated = document.createElement("span");
+    updated.className = "meta-pill";
+    updated.textContent = `最終更新日: ${item.last_updated}`;
+    els.meta.append(updated);
+  }
+
   const source = document.createElement("a");
   source.className = "meta-pill meta-link";
   source.href = getGithubFileUrl(item.path);

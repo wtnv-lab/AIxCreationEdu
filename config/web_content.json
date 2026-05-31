@@ -65,6 +65,7 @@
       "title": "AIとクリエイティブと教育 総括レポート",
       "path": "reports/00-overview.md",
       "summary": "生成AI時代の教育を、問い・資料読解・制作・検証・社会発信をつなぐ創造性教育として整理。",
+      "last_updated": "2026-05-31",
       "authors": [
         "渡邉英徳"
       ],
@@ -88,6 +89,7 @@
       "title": "AIと情報可視化・OSINT教育",
       "path": "reports/01-information-visualization-osint.md",
       "summary": "GIS・データ可視化・OSINTを通じて、公開情報を検証し社会へ伝える情報メディア教育モデル。",
+      "last_updated": "2026-05-31",
       "authors": [
         "渡邉英徳"
       ],
@@ -111,6 +113,7 @@
       "title": "AIによるモノクロ写真カラー化を活かした高校生の平和教育実践",
       "path": "reports/02-photo-colorization-peace-education.md",
       "summary": "AIカラー化を、写真資料・証言・地域の記憶をつなぐ平和教育と記憶継承の探究へ展開。",
+      "last_updated": "2026-05-31",
       "authors": [
         "森吉蓉子",
         "渡邉英徳"
@@ -135,6 +138,7 @@
       "title": "AIを活かしたデジタルシティズンシップ教育",
       "path": "reports/03-digital-citizenship.md",
       "summary": "AIの禁止・管理を超え、判断・参加・公共性を育てるデジタルシティズンシップ教育。",
+      "last_updated": "2026-05-31",
       "authors": [
         "原田真喜子"
       ],
@@ -158,6 +162,7 @@
       "title": "AI時代の学生ハッカソン：実装の民主化と発想力への転換",
       "path": "reports/04-student-hackathon.md",
       "summary": "生成AIで実装負荷が下がる時代の学生ハッカソンを、課題設定と発想力の学びとして再定義。",
+      "last_updated": "2026-05-31",
       "authors": [
         "小松尚平",
         "渡邉英徳"
@@ -182,6 +187,7 @@
       "title": "デジタルアーカイブとAIを活かした教育実践",
       "path": "reports/05-digital-archive-ai.md",
       "summary": "デジタルアーカイブと生成AIを組み合わせ、一次資料を用いた探究と社会発信を支える教育実践。",
+      "last_updated": "2026-05-31",
       "authors": [
         "大井将生"
       ],
@@ -205,6 +211,7 @@
       "title": "生成AIを用いたSFプロトタイピング",
       "path": "reports/06-sf-prototyping.md",
       "summary": "生成AIで未来シナリオを素早く仮設し、人間が批判・修正するSFプロトタイピングの教育活用。",
+      "last_updated": "2026-05-31",
       "authors": [
         "楊欽",
         "渡邉英徳"
@@ -229,6 +236,7 @@
       "title": "AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ",
       "path": "reports/07-minecraft-ai-education.md",
       "summary": "MinecraftとAIを、記憶継承・地域学習・創造・AIリテラシーを横断する学習空間として整理。",
+      "last_updated": "2026-05-31",
       "authors": [
         "片山実咲",
         "渡邉英徳"
@@ -256,6 +264,7 @@
       "path": "prompts/lesson-plan-generation.md",
       "summary": "指定した学年・教科・時間数に合わせ、レポートの根拠を示しながら授業案を組み立てるための授業設計支援",
       "purpose": "指定した学年・教科・時間数に合わせ、レポートの根拠を示しながら授業案を組み立てるための授業設計支援",
+      "last_updated": "2026-05-30",
       "authors": [],
       "themes": [
         "プロンプト"
@@ -270,6 +279,7 @@
       "path": "prompts/workshop-design.md",
       "summary": "学校・自治体・企業研修向けに、半日または1日のワークショップをタイムテーブルや成果物まで整理するための設計支援",
       "purpose": "学校・自治体・企業研修向けに、半日または1日のワークショップをタイムテーブルや成果物まで整理するための設計支援",
+      "last_updated": "2026-05-30",
       "authors": [],
       "themes": [
         "プロンプト"
@@ -284,6 +294,7 @@
       "path": "prompts/service-planning.md",
       "summary": "レポートの示唆をもとに、生成AI時代の教育サービス案を利用者課題・体験・検証計画まで具体化するためのサービス企画支援",
       "purpose": "レポートの示唆をもとに、生成AI時代の教育サービス案を利用者課題・体験・検証計画まで具体化するためのサービス企画支援",
+      "last_updated": "2026-05-30",
       "authors": [],
       "themes": [
         "プロンプト"
@@ -298,6 +309,7 @@
       "path": "prompts/idea-generation.md",
       "summary": "対象者やテーマに応じて、リポジトリ内の知見を横断し、新しい授業・研修・サービス企画の種を提案するためのアイデア創出支援",
       "purpose": "対象者やテーマに応じて、リポジトリ内の知見を横断し、新しい授業・研修・サービス企画の種を提案するためのアイデア創出支援",
+      "last_updated": "2026-05-31",
       "authors": [],
       "themes": [
         "プロンプト"
@@ -312,6 +324,7 @@
       "path": "prompts/excursion-ideation.md",
       "summary": "固定観念をゆるめ、遠い領域の特徴を借りて、教育実践やサービスのアイデアを広げるための発想支援",
       "purpose": "固定観念をゆるめ、遠い領域の特徴を借りて、教育実践やサービスのアイデアを広げるための発想支援",
+      "last_updated": "2026-05-31",
       "authors": [],
       "themes": [
         "プロンプト"
@@ -326,6 +339,7 @@
       "path": "prompts/implementation-roadmap.md",
       "summary": "授業・研修・企画を実行へ移すために、30日・90日・180日のロードマップと体制・評価・リスクを整理する実装計画支援",
       "purpose": "授業・研修・企画を実行へ移すために、30日・90日・180日のロードマップと体制・評価・リスクを整理する実装計画支援",
+      "last_updated": "2026-05-30",
       "authors": [],
       "themes": [
         "プロンプト"
@@ -340,6 +354,7 @@
       "path": "prompts/cross-report-comparison.md",
       "summary": "指定テーマについて複数レポートを比較し、共通点・差異・相互補完関係・教育実践への示唆を根拠付きで整理する横断比較支援",
       "purpose": "指定テーマについて複数レポートを比較し、共通点・差異・相互補完関係・教育実践への示唆を根拠付きで整理する横断比較支援",
+      "last_updated": "2026-05-30",
       "authors": [],
       "themes": [
         "プロンプト"
@@ -354,6 +369,7 @@
       "path": "prompts/citation-answering.md",
       "summary": "利用者の質問に対して、レポート本文・メタデータ・図表・参考文献を根拠に、出典付きで回答するための根拠確認支援",
       "purpose": "利用者の質問に対して、レポート本文・メタデータ・図表・参考文献を根拠に、出典付きで回答するための根拠確認支援",
+      "last_updated": "2026-05-30",
       "authors": [],
       "themes": [
         "プロンプト"
@@ -368,6 +384,7 @@
       "path": "prompts/planning-template.md",
       "summary": "授業・研修・企画を始める前に、目的・対象者・AI活用・評価・ロードマップを空欄形式で整理するための計画立案テンプレート",
       "purpose": "授業・研修・企画を始める前に、目的・対象者・AI活用・評価・ロードマップを空欄形式で整理するための計画立案テンプレート",
+      "last_updated": "2026-05-30",
       "authors": [],
       "themes": [
         "プロンプト"

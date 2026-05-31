@@ -13,6 +13,8 @@ python3 - <<'PY' > "$TMP_OUTPUT"
 import json
 import pathlib
 import re
+import subprocess
+from datetime import date
 
 root = pathlib.Path(".")
 reports_config_path = root / "config" / "reports.json"
@@ -25,6 +27,35 @@ with prompts_config_path.open(encoding="utf-8") as fp:
     prompts_config = json.load(fp)
 
 content = []
+
+
+def run_git(args):
+    try:
+        result = subprocess.run(
+            ["git", *args],
+            check=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.DEVNULL,
+            text=True,
+        )
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return ""
+    return result.stdout.strip()
+
+
+def last_updated(path_value):
+    path = root / path_value
+    if run_git(["status", "--porcelain", "--", path_value]):
+        return date.today().isoformat()
+
+    updated = run_git(["log", "-1", "--format=%cs", "--", path_value])
+    if updated:
+        return updated
+
+    if path.exists():
+        return date.fromtimestamp(path.stat().st_mtime).isoformat()
+
+    return ""
 
 for index, report in enumerate(reports_config.get("reports", []), start=1):
     path = report.get("output_md")
@@ -39,6 +70,7 @@ for index, report in enumerate(reports_config.get("reports", []), start=1):
             "title": report.get("title") or pathlib.Path(path).stem,
             "path": path,
             "summary": report.get("abstract", ""),
+            "last_updated": last_updated(path),
             "authors": report.get("authors", []),
             "themes": report.get("themes", []),
             "keywords": report.get("keywords", []),
@@ -70,6 +102,7 @@ for index, prompt in enumerate(prompts_config.get("prompts", []), start=1):
             "path": path_value,
             "summary": purpose,
             "purpose": purpose,
+            "last_updated": last_updated(path_value),
             "authors": [],
             "themes": ["プロンプト"],
             "keywords": [],
