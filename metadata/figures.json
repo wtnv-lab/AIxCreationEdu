@@ -60,6 +60,30 @@
     ]
   },
   {
+    "id": "04-hackathon-shift",
+    "report_id": "04-student-hackathon",
+    "path": "assets/04-student-hackathon/fig_hackathon_shift.svg",
+    "alt": "生成AI時代のハッカソン教育における重心の移動を示す概念図",
+    "caption": "生成AI時代のハッカソン教育における重心の移動",
+    "source": "ユーザー提供画像 fig_hackathon_shift.svg",
+    "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+    "related_sections": [
+      "AI時代の学生ハッカソン：実装の民主化と発想力への転換"
+    ]
+  },
+  {
+    "id": "04-hack1-2026-demoday",
+    "report_id": "04-student-hackathon",
+    "path": "assets/04-student-hackathon/hack1-2026-demoday.png",
+    "alt": "Hack-1グランプリ2026最終発表会のピッチ、ブース展示、プロトタイプ展示の様子",
+    "caption": "Hack-1グランプリ2026 最終発表会の様子",
+    "source": "ユーザー提供画像 hack1-2026-demoday.png",
+    "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+    "related_sections": [
+      "AI時代の学生ハッカソン：実装の民主化と発想力への転換"
+    ]
+  },
+  {
     "id": "05-sukilam-workshop",
     "report_id": "05-digital-archive-ai",
     "path": "assets/05-digital-archive-ai/sukilam-workshop.png",

@@ -50,7 +50,7 @@
 3. [04-student-hackathon-ref-03] 東京大学大学院情報学環・学際情報学府. 2025. Hack-1グランプリ2025 開催レポート. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/research/20250725report
 4. [04-student-hackathon-ref-04] 東京大学大学院情報学環・学際情報学府. 2026. Hack-1グランプリ2026 告知. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/event/20260404event
 5. [04-student-hackathon-ref-05] GMO Developers. 2026. 【前編】Hack-1グランプリ2026 デモデーレポート｜AI時代の学生ハッカソンに圧倒される2日間。「小さくなる日本」をどう表現する？ Retrieved May 28, 2026 from https://developers.gmo.jp/events/83407/
-6. [04-student-hackathon-ref-06] GMO Developers. n.d. Events. GMO Developers. Retrieved May 27, 2026 from https://developers.gmo.jp/events/
+6. [04-student-hackathon-ref-06] GMO Developers. 2026. 【Hack-1グランプリ2026 キックオフレポート】約150名の学生がハイブリッド形式で集結. Retrieved May 31, 2026 from https://developers.gmo.jp/events/83078/
 7. [04-student-hackathon-ref-07] 日テレ共創ラボ. 2026. 日テレ クリエイティブメディアハッカソン開催レポート. Retrieved May 27, 2026 from https://lab.ntvhd.co.jp/topics/2026/04/post-24.html
 8. [04-student-hackathon-ref-08] UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students
 9. [04-student-hackathon-ref-09] OECD. 2023. AI and the Future of Skills, Volume 2. OECD Publishing. https://doi.org/10.1787/a9fe53cb-en

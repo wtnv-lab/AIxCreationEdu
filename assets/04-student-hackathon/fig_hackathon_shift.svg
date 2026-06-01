@@ -1,0 +1,62 @@
+<svg viewBox="0 0 1040 660" xmlns="http://www.w3.org/2000/svg" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Yu Gothic',Meiryo,sans-serif">
+  <rect x="0" y="0" width="1040" height="660" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="520" y="44" text-anchor="middle" font-size="24" font-weight="700" fill="#0f172a">生成AI時代のハッカソン教育における「重心の移動」</text>
+  <text x="520" y="74" text-anchor="middle" font-size="15" fill="#64748b">実装のハードルが下がり，評価と価値の重心が「発想・設計・検証」へ移る</text>
+
+  <!-- Column headers -->
+  <text x="220" y="116" text-anchor="middle" font-size="16" font-weight="700" fill="#334155">従来のハッカソン</text>
+  <text x="820" y="116" text-anchor="middle" font-size="16" font-weight="700" fill="#0f766e">生成AI時代のハッカソン</text>
+
+  <!-- ===================== LEFT COLUMN ===================== -->
+  <rect x="95" y="130" width="250" height="158" rx="6" fill="#0e7490"/>
+  <text x="220" y="170" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">構想・設計・検証</text>
+  <text x="220" y="196" text-anchor="middle" font-size="12" fill="#cffafe">課題設定／体験設計／価値検証</text>
+  <text x="220" y="220" text-anchor="middle" font-size="11.5" fill="#a5f3fc">実装力に制約され、幅が狭い</text>
+
+  <rect x="95" y="288" width="250" height="257" rx="6" fill="#64748b"/>
+  <text x="220" y="400" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">実装</text>
+  <text x="220" y="429" text-anchor="middle" font-size="13" fill="#e2e8f0">コード・UI・API・デバッグ</text>
+  <text x="220" y="455" text-anchor="middle" font-size="12" fill="#cbd5e1">経験・習熟度に依存＝ボトルネック</text>
+
+  <text x="220" y="582" text-anchor="middle" font-size="13.5" font-weight="600" fill="#475569">実装能力がボトルネック</text>
+
+  <!-- ===================== RIGHT COLUMN ===================== -->
+  <rect x="695" y="130" width="250" height="290" rx="6" fill="#0e7490"/>
+  <text x="820" y="176" text-anchor="middle" font-size="19" font-weight="700" fill="#ffffff">構想・設計・検証</text>
+  <line x1="735" y1="192" x2="905" y2="192" stroke="#22d3ee" stroke-width="1" opacity="0.5"/>
+  <text x="820" y="232" text-anchor="middle" font-size="13.5" fill="#ecfeff">・課題設定／仮説立案</text>
+  <text x="820" y="272" text-anchor="middle" font-size="13.5" fill="#ecfeff">・体験設計／物語化</text>
+  <text x="820" y="312" text-anchor="middle" font-size="13.5" fill="#ecfeff">・価値検証／批判的評価</text>
+  <text x="820" y="358" text-anchor="middle" font-size="11.5" fill="#a5f3fc">発想の質と批判的判断が前景化</text>
+
+  <rect x="695" y="420" width="250" height="125" rx="6" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="820" y="470" text-anchor="middle" font-size="16" font-weight="700" fill="#475569">実装（AIが支援）</text>
+  <text x="820" y="496" text-anchor="middle" font-size="12" fill="#64748b">コード生成・UI・デバッグを大幅に支援</text>
+  <text x="820" y="519" text-anchor="middle" font-size="11.5" fill="#64748b">初期実装のハードルが低下</text>
+
+  <text x="820" y="582" text-anchor="middle" font-size="13.5" font-weight="600" fill="#0f766e">発想・検証・批判的判断が前景化</text>
+
+  <!-- ===================== TRANSITION ===================== -->
+  <text x="510" y="246" text-anchor="middle" font-size="16" font-weight="700" fill="#c2410c">生成AIの導入により</text>
+  <text x="510" y="270" text-anchor="middle" font-size="16" font-weight="700" fill="#c2410c">重心が上方へ移動</text>
+
+  <!-- curved rising arrow (low-left -> high-right) -->
+  <path d="M412,412 Q520,338 628,272" stroke="#ea580c" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <polygon points="631,270 614,272 621,286" fill="#ea580c"/>
+
+  <!-- left centroid marker (low) -->
+  <polygon points="345,412 358,405 358,419" fill="#ea580c"/>
+  <rect x="358" y="398" width="56" height="28" rx="14" fill="#ea580c"/>
+  <text x="386" y="417" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">重心</text>
+
+  <!-- right centroid marker (high) -->
+  <polygon points="695,272 682,265 682,279" fill="#ea580c"/>
+  <rect x="626" y="258" width="56" height="28" rx="14" fill="#ea580c"/>
+  <text x="654" y="277" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">重心</text>
+
+  <!-- footnotes -->
+  <text x="520" y="620" text-anchor="middle" font-size="11" fill="#94a3b8">※ 各ブロックの高さは、その活動がプロセス全体で占める比重を表す。「重心」はその比重の中心。</text>
+  <text x="520" y="638" text-anchor="middle" font-size="11" fill="#94a3b8">※ 実装支援の例：GitHub Copilot 利用で特定タスクを約55.8%高速に完了との報告（[1]）。</text>
+</svg>
