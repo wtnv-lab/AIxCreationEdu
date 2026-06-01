@@ -1,6 +1,11 @@
-const manifestPath = "config/web_content.json?v=20260531-home-subtitle";
+const manifestPath = "config/web_content.json?v=20260601-dynamic-meta";
 const homeHash = "home";
 const githubUrl = "https://github.com/wtnv-lab/AIxCreationEdu";
+const siteUrl = "https://wtnv-lab.github.io/AIxCreationEdu/";
+const defaultOgImage = `${siteUrl}assets/og-image.png`;
+const defaultOgImageAlt = "AIとクリエイティブと教育の概念図";
+const fallbackDescription =
+  "東京大学大学院 渡邉英徳研究室と関係者の実践・研究リソースをもとに、生成AI時代の創造性教育をヒトとAIに扱いやすいかたちで提供する公開レポート集";
 
 const state = {
   items: [],
@@ -296,6 +301,7 @@ function setDocumentLoading(item = null, message = "本文を読み込んでい�
 }
 
 function renderDocument(item, text) {
+  updatePageMetadata(item);
   els.kicker.textContent = getKindLabel(item);
   els.title.textContent = item.title;
   renderMeta(item);
@@ -332,6 +338,7 @@ function renderMeta(item) {
 }
 
 function renderEmptyDocument() {
+  updatePageMetadata();
   els.kicker.textContent = "文書なし";
   els.title.textContent = "表示できる文書がありません";
   els.meta.textContent = "";
@@ -340,6 +347,7 @@ function renderEmptyDocument() {
 }
 
 function renderDocumentError(item, error) {
+  updatePageMetadata(item);
   els.kicker.textContent = getKindLabel(item);
   els.title.textContent = item.title;
   els.meta.textContent = "";
@@ -348,6 +356,7 @@ function renderDocumentError(item, error) {
 }
 
 function renderFatalError(error) {
+  updatePageMetadata();
   els.list.innerHTML = `<div class="error-state">${escapeHtml(error.message)}</div>`;
   els.kicker.textContent = "読み込み失敗";
   els.title.textContent = "文書一覧を読み込めません";
@@ -375,6 +384,7 @@ function showHome(options = {}) {
   state.activePath = "";
   setActiveSection("home");
   setActiveMenuSection("reports");
+  updatePageMetadata();
   renderNavigation();
   if (options.updateHash !== false) setHash(homeHash);
   els.kicker.textContent = "トップ";
@@ -396,6 +406,124 @@ function resetMenuScroll() {
     els.menu.scrollTo({ top: 0, left: 0, behavior: "auto" });
     els.list.scrollTo({ top: 0, left: 0, behavior: "auto" });
   });
+}
+
+function updatePageMetadata(item = null) {
+  const projectTitle = state.project.title || "AIとクリエイティブと教育";
+  const projectDescription = state.project.description || "ヒトとAIに扱いやすい公開レポート集";
+  const isItemPage = Boolean(item);
+  const title = isItemPage ? `${item.title} | ${projectTitle}` : `${projectTitle} | ${projectDescription}`;
+  const description = trimMetaDescription(isItemPage ? item.summary || item.purpose || fallbackDescription : fallbackDescription);
+  const url = isItemPage ? getShareUrl(item.path) : siteUrl;
+  const author = getMetaAuthor(item);
+  const keywords = getMetaKeywords(item, projectTitle);
+  const typeLabel = isItemPage ? getKindLabel(item) : "公開レポート集";
+
+  document.title = title;
+  setMeta("name", "description", description);
+  setMeta("name", "keywords", keywords.join(","));
+  setMeta("name", "author", author);
+  setCanonical(url);
+
+  setMeta("property", "og:type", isItemPage ? "article" : "website");
+  setMeta("property", "og:locale", "ja_JP");
+  setMeta("property", "og:site_name", projectTitle);
+  setMeta("property", "og:title", title);
+  setMeta("property", "og:description", description);
+  setMeta("property", "og:url", url);
+  setMeta("property", "og:image", defaultOgImage);
+  setMeta("property", "og:image:alt", defaultOgImageAlt);
+
+  setMeta("name", "twitter:card", "summary_large_image");
+  setMeta("name", "twitter:title", title);
+  setMeta("name", "twitter:description", description);
+  setMeta("name", "twitter:image", defaultOgImage);
+  setMeta("name", "twitter:image:alt", defaultOgImageAlt);
+
+  setOptionalMeta("property", "article:modified_time", isItemPage ? item.last_updated : "");
+  setOptionalMeta("property", "article:section", isItemPage ? typeLabel : "");
+  setOptionalMeta("property", "article:author", isItemPage ? author : "");
+  setRepeatedMeta("property", "article:tag", isItemPage ? getArticleTags(item) : []);
+}
+
+function getMetaAuthor(item) {
+  const authors = item?.authors || [];
+  if (authors.length > 0) {
+    return authors.join(", ");
+  }
+  return "渡邉英徳研究室";
+}
+
+function getMetaKeywords(item, projectTitle) {
+  const base = item
+    ? [item.title, getKindLabel(item), ...(item.themes || []), ...(item.keywords || [])]
+    : [projectTitle, "生成AI", "教育", "創造性", "情報リテラシー", "プロンプト"];
+  return uniqueStrings(base).slice(0, 16);
+}
+
+function getArticleTags(item) {
+  return uniqueStrings([...(item.themes || []), ...(item.keywords || [])]).slice(0, 12);
+}
+
+function getShareUrl(path) {
+  return new URL(`#${encodeURIComponent(path)}`, siteUrl).href;
+}
+
+function trimMetaDescription(text) {
+  const normalized = String(text || fallbackDescription).replace(/\s+/g, " ").trim();
+  if (normalized.length <= 160) return normalized;
+  return `${normalized.slice(0, 157)}...`;
+}
+
+function uniqueStrings(values) {
+  const seen = new Set();
+  const result = [];
+  values.forEach((value) => {
+    const normalized = String(value || "").trim();
+    if (!normalized || seen.has(normalized)) return;
+    seen.add(normalized);
+    result.push(normalized);
+  });
+  return result;
+}
+
+function setMeta(attribute, key, content) {
+  let meta = document.head.querySelector(`meta[${attribute}="${key}"]`);
+  if (!meta) {
+    meta = document.createElement("meta");
+    meta.setAttribute(attribute, key);
+    document.head.append(meta);
+  }
+  meta.setAttribute("content", content);
+}
+
+function setOptionalMeta(attribute, key, content) {
+  const meta = document.head.querySelector(`meta[${attribute}="${key}"]`);
+  if (!content) {
+    meta?.remove();
+    return;
+  }
+  setMeta(attribute, key, content);
+}
+
+function setRepeatedMeta(attribute, key, values) {
+  document.head.querySelectorAll(`meta[${attribute}="${key}"]`).forEach((meta) => meta.remove());
+  values.forEach((value) => {
+    const meta = document.createElement("meta");
+    meta.setAttribute(attribute, key);
+    meta.setAttribute("content", value);
+    document.head.append(meta);
+  });
+}
+
+function setCanonical(url) {
+  let link = document.head.querySelector('link[rel="canonical"]');
+  if (!link) {
+    link = document.createElement("link");
+    link.rel = "canonical";
+    document.head.append(link);
+  }
+  link.href = url;
 }
 
 function renderHome() {
