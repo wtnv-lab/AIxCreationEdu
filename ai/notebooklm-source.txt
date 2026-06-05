@@ -15,14 +15,18 @@
 4. 区切り線 `---`
 
 質問に答えるときは、ファイルパスだけで判断せず、区切り線の間にある本文を根拠として読んでください。
-特に教育内容、平和学習、AI活用、授業案、ワークショップ案、サービス企画について答える場合は、`reports/*.md`、`prompts/*.md`、`metadata/*.json`、`references/*` の本文を優先してください。
+特に教育内容、平和学習、AI活用、授業案、ワークショップ案、サービス企画について答える場合は、`ai/system-instructions.md`、`ai/rag/chunks.jsonl`、`metadata/report-sidecars/*.json`、`reports/*.md`、`prompts/*.md`、`references/*` の本文を優先してください。
 本文にないことは推測として扱い、根拠にしたファイルパスやレポート名を回答に含めてください。
 
 ## 含まれる主な内容
 
 - `reports/*.md`: 各レポートの本文、参考文献、メタデータ
 - `prompts/*.md`: 授業案、ワークショップ、サービス企画、比較、根拠付き回答などの具体的なプロンプト
-- `metadata/*.json` と `metadata/chunks.jsonl`: レポート索引、概念スキーマ、検索用チャンク、図版メタデータ、用語集
+- `ai/manifest.json`: AI向けパッケージ全体の索引
+- `ai/system-instructions.md`: AIが読む順序、回答ルール、引用・推測の扱い
+- `ai/context-brief.md` と `ai/context-full.md`: AI向けの短い概要と詳しい概要
+- `ai/citations.json` と `ai/rag/chunks.jsonl`: 引用索引、根拠付きRAGチャンク
+- `metadata/*.json`、`metadata/chunks.jsonl`、`metadata/report-sidecars/*.json`: レポート索引、概念スキーマ、検索用チャンク、図版メタデータ、用語集、レポート別sidecar
 - `references/*`: 参考文献・関連資料
 - `index.html` と `web/*`: ヒト向け閲覧アプリのHTML、CSS、JavaScript
 - `README.md`、`ai/llms.txt`、`ai/llms-full.md`: プロジェクト概要とAI向け概説
@@ -37,6 +41,7 @@
 - 画像、動画、PDF、`.git`、生成ファイル自身は含めない。
 - `reports/` 配下のMarkdownファイルをレポート本文の一次ソースとして扱う。
 - `prompts/` 配下のMarkdownファイルをプロンプト本文の一次ソースとして扱う。
+- `metadata/report-sidecars/` と `ai/rag/chunks.jsonl` はAI用の構造化補助として扱い、正本本文の代替にしない。
 
 ## ここから統合本文
 
@@ -4112,6 +4117,1790 @@ metadata/reports.json
 
 
 ---
+metadata/report-sidecars/00-overview.json
+---
+{
+  "schema": "aice.report_sidecar.v1",
+  "report_id": "00-overview",
+  "title": "AIとクリエイティブと教育 総括レポート",
+  "source_md": "reports/00-overview.md",
+  "source_of_truth": true,
+  "html_source_note": "HTML版はこのMarkdown本文とconfig/metadataから生成・表示する。",
+  "ai_contract": {
+    "read_order": [
+      "abstract",
+      "key_takeaways",
+      "sections",
+      "references",
+      "figures",
+      "risk_notes"
+    ],
+    "must_cite": true,
+    "do_not_infer_beyond_sources": true,
+    "human_verification_required": true
+  },
+  "authors": [
+    "渡邉英徳"
+  ],
+  "audience": [
+    "生成AI時代の教育方針を検討する学校管理職・教育委員会担当者",
+    "AI・創造性・情報リテラシーを横断するカリキュラム設計者",
+    "教育ソリューションやEdTechサービスの企画担当者",
+    "AIと教育実践の全体像を把握したい研究者・実践者"
+  ],
+  "themes": [
+    "生成AI",
+    "創造性",
+    "教育実践",
+    "総括"
+  ],
+  "keywords": [
+    "AIと教育",
+    "クリエイティブ",
+    "学習設計",
+    "教育実践"
+  ],
+  "abstract": "生成AI時代の教育を、問い・資料読解・制作・検証・社会発信をつなぐ創造性教育として整理。",
+  "key_takeaways": [
+    "生成AIにより制作や調査のハードルが下がるほど、問いの設定と社会的価値への接続が重要になる。",
+    "AIは効率化ツールだけでなく、構想・検証・編集を支える伴走者として設計する必要がある。",
+    "七つの実践は、創造性教育を技能習得から判断・編集・発信の学習へ広げる視点を共有している。"
+  ],
+  "use_cases": [
+    "生成AI時代の教育方針や校内研修の導入資料",
+    "AI・創造性・情報リテラシーを横断するカリキュラム設計",
+    "EdTechサービスや教材企画の論点整理",
+    "複数レポートを比較するRAG・AIエージェントの入口"
+  ],
+  "learning_activities": [
+    "各レポートの共通概念をマッピングし、AI活用教育の全体像を整理する。",
+    "AIに任せる作業と人間が判断する作業を分類し、授業設計原則を作る。",
+    "レポート群を比較し、学校・地域・企業研修に応用できる実践案を提案する。"
+  ],
+  "implementation_ideas": [
+    "90分の教員研修で、レポート群をもとに自校のAI活用方針を検討する。",
+    "教育委員会や学校向けに、生成AI活用のカリキュラム横断マップを作成する。",
+    "AIエージェントに読み込ませる基礎資料として、授業案・研修案・サービス案の生成に使う。"
+  ],
+  "related_reports": [
+    "01-information-visualization-osint",
+    "02-photo-colorization-peace-education",
+    "03-digital-citizenship",
+    "04-student-hackathon",
+    "05-digital-archive-ai",
+    "06-sf-prototyping",
+    "07-minecraft-ai-education"
+  ],
+  "concept_alignment": {
+    "schema": "aice.concept_alignment.v1",
+    "primary_stage_ids": [
+      "question_framing",
+      "source_evaluation",
+      "prototyping",
+      "human_verification",
+      "public_communication"
+    ],
+    "supporting_stage_ids": [],
+    "literacy_ids": [
+      "ai_competency_citizenship",
+      "design_editing_critical_thinking",
+      "publicness_social_responsibility"
+    ],
+    "ai_role_ids": [
+      "co_inquiry",
+      "idea_expansion",
+      "drafting",
+      "critique",
+      "prototyping_support"
+    ],
+    "human_responsibility_ids": [
+      "question_design",
+      "source_selection",
+      "output_verification",
+      "ethical_editing",
+      "public_accountability"
+    ],
+    "domain_tags": [
+      "overview",
+      "concept_map",
+      "creativity_education",
+      "production_to_conception_shift"
+    ]
+  },
+  "figures": [
+    {
+      "id": "00-project-concept-map",
+      "path": "assets/00-overview/project-concept-map.svg",
+      "caption": "AIとクリエイティブと教育の概念図",
+      "alt": "制作技能の習熟から構想・編集・社会的責任へ教育の焦点が移り、AIと伴走する探究・制作プロセスと基盤リテラシーによって支えられる構造を示す概念図",
+      "license_note": "CC BY 4.0"
+    },
+    {
+      "id": "00-data-package-flow",
+      "path": "assets/00-overview/data-package-flow.svg",
+      "caption": "ヒト向けの文章とAI向けデータパッケージの使い方",
+      "alt": "ヒト向けの文章とAI向けデータパッケージを分け、AIに読み込ませた後にプロンプトで計画化し、ヒトが検証・編集する流れを示す図",
+      "license_note": "CC BY 4.0"
+    }
+  ],
+  "references": [
+    {
+      "id": "00-overview-ref-01",
+      "number": 1,
+      "citation": "Bellingcat. n.d. Online Open Source Investigation Toolkit. Bellingcat. Retrieved May 27, 2026 from https://bellingcat.gitbook.io/toolkit"
+    },
+    {
+      "id": "00-overview-ref-02",
+      "number": 2,
+      "citation": "UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students"
+    },
+    {
+      "id": "00-overview-ref-03",
+      "number": 3,
+      "citation": "UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum"
+    },
+    {
+      "id": "00-overview-ref-04",
+      "number": 4,
+      "citation": "UNESCO. n.d. Media and Information Literacy. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/media-information-literacy"
+    },
+    {
+      "id": "00-overview-ref-05",
+      "number": 5,
+      "citation": "東京大学大学院情報学環・学際情報学府. 2025. Hack-1グランプリ2025 開催レポート. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/research/20250725report"
+    },
+    {
+      "id": "00-overview-ref-06",
+      "number": 6,
+      "citation": "日テレ共創ラボ. 2026. 日テレ クリエイティブメディアハッカソン開催レポート. Retrieved May 27, 2026 from https://lab.ntvhd.co.jp/topics/2026/04/post-24.html"
+    }
+  ],
+  "sections": [
+    {
+      "id": "00-overview#ai",
+      "heading": "AIとクリエイティブと教育 総括レポート",
+      "level": 1,
+      "citation_numbers": [],
+      "evidence_refs": [],
+      "figure_ids": [
+        "00-project-concept-map"
+      ],
+      "text_preview": "> 問いを立て，資料を読み解き，社会へ接続する生成AI時代の創造性教育 本レポートは，東京大学大学院 渡邉英徳研究室と関係者によるAI・クリエイティブ・教育の実践・研究リソースを横断し，生成AI時代の教育設計に必要な視点を整理するものである。各レポートは，研究資料，実践記録，参考文献を生成AIが整理し，著者が根拠，文脈，表現を確認しながら編集した。 生成AIの普及は，教育における「クリエイティブ」の意味を，制作技能の獲得から，問いを立て，資料を読み解き，社会に届く表現へ編集する力へと移しつつある。文章，映像，コード，地図，データ分析，発表資料といった制作のハードルは下がった。しかし，それは人間の役割が小さくなることを意味しない。むし"
+    },
+    {
+      "id": "00-overview#section",
+      "heading": "七つの実践から見えること",
+      "level": 2,
+      "citation_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "evidence_refs": [
+        "00-overview-ref-01",
+        "00-overview-ref-02",
+        "00-overview-ref-03",
+        "00-overview-ref-04",
+        "00-overview-ref-05",
+        "00-overview-ref-06"
+      ],
+      "figure_ids": [],
+      "text_preview": "七つの実践レポートに共通するのは，AIを単なる効率化ツールではなく，学習者の構想力，編集力，批判的思考を拡張する伴走者として位置づけている点である。AIは制作や調査を速めるが，問いを立て，根拠を選び，出力を検証し，誰に何を届けるのかを決めるのは人間である。 [AIと情報可視化・OSINT教育](01-information-visualization-osint.md)は，この責任ある利用を，公開情報の検証と社会的説明の実践へ広げる。学生はAIS，衛星画像，公開報道，SNS上の専門的知見などを組み合わせ，不確実な情報を検証する過程を学ぶ。ここで生成AIは，結論を代行する存在ではなく，観察結果を言語化し，複数の解釈可能性を比較し，推論"
+    },
+    {
+      "id": "00-overview#section",
+      "heading": "教育設計への示唆",
+      "level": 2,
+      "citation_numbers": [],
+      "evidence_refs": [],
+      "figure_ids": [],
+      "text_preview": "以上を総括すれば，「AIとクリエイティブと教育」の核心は，人間の創造性が不要になることではなく，創造性の重心が上流へ移ることにある。実装や表現のハードルが下がるほど，問いの設定，資料の読解，倫理的判断，ユーザー理解，社会的価値への接続が重要になる。AI時代の教育は，AIに任せる教育ではない。AIとともに素早く形にし，人間が根拠と文脈を確かめ，責任ある表現として社会に差し出す教育である。 人間の読者にとって，本レポート集は，生成AIを導入するかどうかを判断するための資料にとどまらない。AIをどの学習活動に置き，どの判断を人間が担い，どの成果を社会へ接続するのかを設計するための視点集である。AIに読み込ませる資料として使う場合も，単なる"
+    },
+    {
+      "id": "00-overview#section",
+      "heading": "参考文献・関連資料",
+      "level": 2,
+      "citation_numbers": [],
+      "evidence_refs": [],
+      "figure_ids": [],
+      "text_preview": "1. Bellingcat. n.d. Online Open Source Investigation Toolkit. Bellingcat. Retrieved May 27, 2026 from https://bellingcat.gitbook.io/toolkit 2. UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students 3. UNESCO. n.d. Media"
+    },
+    {
+      "id": "00-overview#section",
+      "heading": "メタデータ",
+      "level": 2,
+      "citation_numbers": [],
+      "evidence_refs": [],
+      "figure_ids": [],
+      "text_preview": "| 項目 | 内容 | | --- | --- | | ID | `00-overview` | | プロジェクト | AIとクリエイティブと教育 | | 日付 | 2026-05-27 | | バージョン | 1.0.0 | | 種別 | overview | | 概要 | 生成AI時代の教育を、問い・資料読解・制作・検証・社会発信をつなぐ創造性教育として整理。 | | 著者 | 渡邉英徳 | | 想定読者 | 生成AI時代の教育方針を検討する学校管理職・教育委員会担当者<br>AI・創造性・情報リテラシーを横断するカリキュラム設計者<br>教育ソリューションやEdTechサービスの企画担当者<br>AIと教育実践の全体像を把握し"
+    }
+  ],
+  "risk_notes": [
+    "このsidecarはAI用の構造化補助であり、本文の正本はsource_mdにある。",
+    "引用番号はsource_md内の参考文献登場順に対応する。",
+    "図版を説明するときはfigures.pathだけでなくalt/caption/license_noteも確認する。"
+  ]
+}
+
+
+---
+metadata/report-sidecars/01-information-visualization-osint.json
+---
+{
+  "schema": "aice.report_sidecar.v1",
+  "report_id": "01-information-visualization-osint",
+  "title": "AIと情報可視化・OSINT教育",
+  "source_md": "reports/01-information-visualization-osint.md",
+  "source_of_truth": true,
+  "html_source_note": "HTML版はこのMarkdown本文とconfig/metadataから生成・表示する。",
+  "ai_contract": {
+    "read_order": [
+      "abstract",
+      "key_takeaways",
+      "sections",
+      "references",
+      "figures",
+      "risk_notes"
+    ],
+    "must_cite": true,
+    "do_not_infer_beyond_sources": true,
+    "human_verification_required": true
+  },
+  "authors": [
+    "渡邉英徳"
+  ],
+  "audience": [
+    "情報・メディア・探究学習を担当する高校・大学教員",
+    "データ可視化、GIS、デジタルアーカイブを授業に取り入れたい教育者",
+    "OSINTや調査報道の基礎を教育・研修化したい報道関係者",
+    "公開情報の検証と社会的説明を扱う教材・サービス企画者"
+  ],
+  "themes": [
+    "生成AI",
+    "情報可視化",
+    "OSINT",
+    "探究学習"
+  ],
+  "keywords": [
+    "情報可視化",
+    "OSINT",
+    "メディアリテラシー",
+    "探究学習"
+  ],
+  "abstract": "GIS・データ可視化・OSINTを通じて、公開情報を検証し社会へ伝える情報メディア教育モデル。",
+  "key_takeaways": [
+    "GIS、データ可視化、OSINTは、公開情報を検証可能な形で読み解く情報メディア教育の中核になる。",
+    "AIは結論を代行するのではなく、観察、仮説比較、説明の点検を支援する対話的編集者として使う。",
+    "読売新聞への学術指導や日本テレビとの共同研究事例は、教育・報道・社会課題を接続する実践モデルになる。"
+  ],
+  "use_cases": [
+    "高校・大学のGIS、データ可視化、OSINT授業",
+    "報道機関や自治体と連携した公開情報検証ワークショップ",
+    "災害、地域課題、都市分析を扱う探究学習",
+    "情報可視化教材や調査支援サービスの企画"
+  ],
+  "learning_activities": [
+    "地域の公開データを地図化し、分布や偏りについてAIと対話しながら仮説を作る。",
+    "ニュースやSNS投稿の位置情報・時系列・出典を検証し、確実に言えることと推測を分ける。",
+    "地図、グラフ、テキストを組み合わせ、第三者に説明可能な調査レポートを作成する。"
+  ],
+  "implementation_ideas": [
+    "GIS作品例を使った導入ワークショップを設計し、地図表現の読み解きから始める。",
+    "OSINT検証ラボとして、公開情報の収集、照合、説明文作成、AIによる推論チェックを行う。",
+    "報道機関や自治体と連携し、地域課題を扱うデータストーリーテリング課題を実施する。"
+  ],
+  "related_reports": [
+    "00-overview",
+    "03-digital-citizenship",
+    "05-digital-archive-ai"
+  ],
+  "concept_alignment": {
+    "schema": "aice.concept_alignment.v1",
+    "primary_stage_ids": [
+      "question_framing",
+      "source_evaluation",
+      "human_verification",
+      "public_communication"
+    ],
+    "supporting_stage_ids": [
+      "prototyping"
+    ],
+    "literacy_ids": [
+      "ai_competency_citizenship",
+      "design_editing_critical_thinking",
+      "publicness_social_responsibility"
+    ],
+    "ai_role_ids": [
+      "observation_verbalization",
+      "hypothesis_comparison",
+      "inference_check",
+      "editorial_support"
+    ],
+    "human_responsibility_ids": [
+      "source_verification",
+      "observation_inference_separation",
+      "evidence_transparency",
+      "explanatory_accountability"
+    ],
+    "domain_tags": [
+      "osint",
+      "gis",
+      "data_visualization",
+      "public_information",
+      "media_literacy"
+    ]
+  },
+  "figures": [
+    {
+      "id": "01-gis-education-examples",
+      "path": "assets/01-information-visualization-osint/gis-education-examples.jpg",
+      "caption": "GIS・データ可視化を用いた学生作品例",
+      "alt": "GIS・データ可視化を用いた学生作品例のコラージュ",
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+    }
+  ],
+  "references": [
+    {
+      "id": "01-information-visualization-osint-ref-01",
+      "number": 1,
+      "citation": "東京大学. n.d. 情報メディア基礎論. 東京大学授業カタログ. Retrieved May 27, 2026 from https://catalog.he.u-tokyo.ac.jp/detail?code=30259"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-02",
+      "number": 2,
+      "citation": "Hidenori Watanave. 2022. ArcGIS Onlineを用いたオープンデータの可視化・学生作品（2022年度）. Hidenori Watanave Lab. Retrieved May 27, 2026 from https://labo.wtnv.jp/2022/05/arcgis-online2022.html"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-03",
+      "number": 3,
+      "citation": "国土交通省 Project PLATEAU. 2023. 大学生が挑戦。GISを使って過去の災害データを可視化・継承する. PLATEAU Journal. Retrieved May 27, 2026 from https://www.mlit.go.jp/plateau/journal/j033/"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-04",
+      "number": 4,
+      "citation": "UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-05",
+      "number": 5,
+      "citation": "wtnv-lab. 2026. gee-sentinel2-osi. GitHub repository. Retrieved May 27, 2026 from https://github.com/wtnv-lab/gee-sentinel2-osi"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-06",
+      "number": 6,
+      "citation": "Bellingcat. 2021. First Steps to Getting Started in Open Source Research. Bellingcat. Retrieved May 27, 2026 from https://www.bellingcat.com/resources/2021/11/09/first-steps-to-getting-started-in-open-source-research/"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-07",
+      "number": 7,
+      "citation": "Bellingcat. n.d. Online Open Source Investigation Toolkit. Bellingcat. Retrieved May 27, 2026 from https://bellingcat.gitbook.io/toolkit"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-08",
+      "number": 8,
+      "citation": "渡邉英徳. n.d. 戦災・災害のOSINT. note. Retrieved May 27, 2026 from https://note.com/hwtnv/m/m04416eca695b"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-09",
+      "number": 9,
+      "citation": "UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-10",
+      "number": 10,
+      "citation": "Alberto Cairo. 2016. The Truthful Art: Data, Charts, and Maps for Communication. New Riders. Retrieved May 27, 2026 from https://www.peachpit.com/store/truthful-art-data-charts-and-maps-for-communication-9780321934079"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-11",
+      "number": 11,
+      "citation": "Jonathan Gray, Liliana Bounegru, Stefania Milan, and Paolo Ciuccarelli. 2016. Ways of Seeing Data: Toward a Critical Literacy for Data Visualizations as Research Objects and Research Devices. In Innovative Methods in Media and Communication Research. Retrieved May 27, 2026 from https://www.researchgate.net/publication/312284929_Ways_of_Seeing_Data_Toward_a_Critical_Literacy_for_Data_Visualizations_as_Research_Objects_and_Research_Devices"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-12",
+      "number": 12,
+      "citation": "よみうりノート. 2024. 記者たちで作る能登地震被災状況マップ（記者の現場＃７）. note. Retrieved May 30, 2026 from https://note.com/yomi_tokyo_saiyo/n/n8cf9838e1a3a"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-13",
+      "number": 13,
+      "citation": "日テレNEWS. 2026. 【独自分析】カーグ島で大規模石油流出か…広い海域に拡散 イランの石油輸出拠点. YouTube. Retrieved May 28, 2026 from https://www.youtube.com/watch?v=ulJRQ8TvkW4"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-14",
+      "number": 14,
+      "citation": "東京大学大学院情報学環・学際情報学府. 2025. 東京大学情報学環渡邉英徳研究室と日本テレビホールディングス、「先端技術を活用した報道手法のアップデート」を目的に共同研究を開始. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/news/2025020321925"
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-information-visualization-osint#ai-osint",
+      "heading": "AIと情報可視化・OSINT教育",
+      "level": 1,
+      "citation_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "evidence_refs": [
+        "01-information-visualization-osint-ref-01",
+        "01-information-visualization-osint-ref-02",
+        "01-information-visualization-osint-ref-03",
+        "01-information-visualization-osint-ref-04",
+        "01-information-visualization-osint-ref-05",
+        "01-information-visualization-osint-ref-06",
+        "01-information-visualization-osint-ref-07",
+        "01-information-visualization-osint-ref-08",
+        "01-information-visualization-osint-ref-09",
+        "01-information-visualization-osint-ref-10",
+        "01-information-visualization-osint-ref-11",
+        "01-information-visualization-osint-ref-12",
+        "01-information-visualization-osint-ref-13",
+        "01-information-visualization-osint-ref-14"
+      ],
+      "figure_ids": [
+        "01-gis-education-examples"
+      ],
+      "text_preview": "> 公開情報を検証し，根拠ある説明として社会へ届ける情報メディア教育モデル 本レポートが示すのは，公開情報を集める技術そのものではなく，公開情報を検証可能な知識へと組み替え，社会に伝える力を育てる教育モデルである。東京大学前期課程「情報メディア基礎論」では，情報を“ストック”し，データビジュアライゼーションやデジタルアーカイブによって“フロー”化するメディア実践を通じて，情報・メディア・社会の関係を学ぶ[1]。授業では，学生が自ら問いを設定し，データを収集・整理したうえで，ArcGISやRe:Earthを用いて2D／3D地図上に可視化し，成果物をウェブ公開する。2022年度のArcGIS Onlineを用いた学生作品，2023年度の"
+    },
+    {
+      "id": "01-information-visualization-osint#section",
+      "heading": "参考文献・関連資料",
+      "level": 2,
+      "citation_numbers": [],
+      "evidence_refs": [],
+      "figure_ids": [],
+      "text_preview": "1. 東京大学. n.d. 情報メディア基礎論. 東京大学授業カタログ. Retrieved May 27, 2026 from https://catalog.he.u-tokyo.ac.jp/detail?code=30259 2. Hidenori Watanave. 2022. ArcGIS Onlineを用いたオープンデータの可視化・学生作品（2022年度）. Hidenori Watanave Lab. Retrieved May 27, 2026 from https://labo.wtnv.jp/2022/05/arcgis-online2022.html 3. 国土交通省 Project PLATEAU. 2023"
+    },
+    {
+      "id": "01-information-visualization-osint#section",
+      "heading": "メタデータ",
+      "level": 2,
+      "citation_numbers": [],
+      "evidence_refs": [],
+      "figure_ids": [],
+      "text_preview": "| 項目 | 内容 | | --- | --- | | ID | `01-information-visualization-osint` | | プロジェクト | AIとクリエイティブと教育 | | 日付 | 2026-05-27 | | バージョン | 1.0.0 | | 種別 | report | | 概要 | GIS・データ可視化・OSINTを通じて、公開情報を検証し社会へ伝える情報メディア教育モデル。 | | 著者 | 渡邉英徳 | | 想定読者 | 情報・メディア・探究学習を担当する高校・大学教員<br>データ可視化、GIS、デジタルアーカイブを授業に取り入れたい教育者<br>OSINTや調査報道の基礎を教育・研修化した"
+    }
+  ],
+  "risk_notes": [
+    "このsidecarはAI用の構造化補助であり、本文の正本はsource_mdにある。",
+    "引用番号はsource_md内の参考文献登場順に対応する。",
+    "図版を説明するときはfigures.pathだけでなくalt/caption/license_noteも確認する。"
+  ]
+}
+
+
+---
+metadata/report-sidecars/02-photo-colorization-peace-education.json
+---
+{
+  "schema": "aice.report_sidecar.v1",
+  "report_id": "02-photo-colorization-peace-education",
+  "title": "AIによるモノクロ写真カラー化を活かした高校生の平和教育実践",
+  "source_md": "reports/02-photo-colorization-peace-education.md",
+  "source_of_truth": true,
+  "html_source_note": "HTML版はこのMarkdown本文とconfig/metadataから生成・表示する。",
+  "ai_contract": {
+    "read_order": [
+      "abstract",
+      "key_takeaways",
+      "sections",
+      "references",
+      "figures",
+      "risk_notes"
+    ],
+    "must_cite": true,
+    "do_not_infer_beyond_sources": true,
+    "human_verification_required": true
+  },
+  "authors": [
+    "森吉蓉子",
+    "渡邉英徳"
+  ],
+  "audience": [
+    "平和教育・歴史教育・地域学習を担当する中学・高校教員",
+    "写真資料や証言を活用する博物館・資料館・地域アーカイブ担当者",
+    "AIカラー化を探究学習や記憶継承に活かしたい教育実践者",
+    "生徒の成果発信や社会連携型プロジェクトを支援する担当者"
+  ],
+  "themes": [
+    "生成AI",
+    "写真カラー化",
+    "平和教育",
+    "歴史学習"
+  ],
+  "keywords": [
+    "写真カラー化",
+    "平和教育",
+    "高校教育",
+    "歴史資料"
+  ],
+  "abstract": "AIカラー化を、写真資料・証言・地域の記憶をつなぐ平和教育と記憶継承の探究へ展開。",
+  "key_takeaways": [
+    "AIカラー化は過去を正確に復元する処理ではなく、資料批判と対話を促す探究の入口になる。",
+    "高校生が写真、証言、地域の記憶を照合することで、平和教育を受け身の学習から社会発信へ広げられる。",
+    "AIリテラシーと歴史資料の扱いを結び、記憶継承を若い世代の表現活動として設計できる。"
+  ],
+  "use_cases": [
+    "中学・高校の平和教育、歴史教育、地域学習",
+    "博物館・資料館と学校が連携する写真資料活用授業",
+    "AIカラー化をめぐる資料批判と倫理の教材化",
+    "生徒による展示、発表、写真集制作プロジェクト"
+  ],
+  "learning_activities": [
+    "白黒写真を観察し、AIカラー化前後で印象や解釈がどう変わるかを記録する。",
+    "証言や専門資料を参照し、AIが生成した色の妥当性と限界を検討する。",
+    "写真に添えるキャプションや発表原稿を作り、記憶継承の表現として公開する。"
+  ],
+  "implementation_ideas": [
+    "地域資料館と連携し、写真選定、カラー化、検証、展示までを一連の探究にする。",
+    "発表風景や制作物の図版を含め、学習成果を外部に説明できるポートフォリオにまとめる。",
+    "AI利用の透明性、資料出典、証言者への配慮を評価項目に入れたルーブリックを作る。"
+  ],
+  "related_reports": [
+    "00-overview",
+    "03-digital-citizenship",
+    "05-digital-archive-ai"
+  ],
+  "concept_alignment": {
+    "schema": "aice.concept_alignment.v1",
+    "primary_stage_ids": [
+      "source_evaluation",
+      "human_verification",
+      "public_communication"
+    ],
+    "supporting_stage_ids": [
+      "question_framing",
+      "prototyping"
+    ],
+    "literacy_ids": [
+      "ai_competency_citizenship",
+      "design_editing_critical_thinking",
+      "publicness_social_responsibility"
+    ],
+    "ai_role_ids": [
+      "colorization_probe",
+      "interpretation_prompt",
+      "dialogue_support"
+    ],
+    "human_responsibility_ids": [
+      "testimony_crosscheck",
+      "uncertainty_disclosure",
+      "responsible_representation",
+      "memory_ethics"
+    ],
+    "domain_tags": [
+      "photo_colorization",
+      "peace_education",
+      "memory_inheritance",
+      "historical_photos"
+    ]
+  },
+  "figures": [
+    {
+      "id": "02-the-day-color-returned",
+      "path": "assets/02-photo-colorization-peace-education/the-day-color-returned.png",
+      "caption": "写真集「あの日に色がさすとき」表紙",
+      "alt": "写真集「あの日に色がさすとき」の表紙",
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+    },
+    {
+      "id": "02-presentation-scene",
+      "path": "assets/02-photo-colorization-peace-education/presentation-scene.jpg",
+      "caption": "長崎東高校の生徒による発表風景",
+      "alt": "長崎東高校の生徒による発表風景",
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+    }
+  ],
+  "references": [
+    {
+      "id": "02-photo-colorization-peace-education-ref-01",
+      "number": 1,
+      "citation": "長崎県立長崎東中学校・高等学校. 2026. あの日に色がさすとき: 高校生がAIとカラー化した長崎の戦前・戦後. Retrieved May 27, 2026 from https://www.news.ed.jp/higashi-h/img/file13.pdf"
+    },
+    {
+      "id": "02-photo-colorization-peace-education-ref-02",
+      "number": 2,
+      "citation": "長崎県立長崎東中学校・高等学校. n.d. WWL・DX: あの日に色がさすとき. Retrieved May 27, 2026 from https://www.news.ed.jp/higashi-h/wwldx.html"
+    },
+    {
+      "id": "02-photo-colorization-peace-education-ref-03",
+      "number": 3,
+      "citation": "NCC長崎文化放送. 2026. AIでよみがえる戦前の長崎 高校生が写真集制作. Retrieved May 27, 2026 from https://www.ncctv.co.jp/news/article/16463000"
+    },
+    {
+      "id": "02-photo-colorization-peace-education-ref-04",
+      "number": 4,
+      "citation": "日テレNEWS NNN. 2025. 次世代への継承「原爆投下前の長崎の白黒写真をカラー化」高校生が最新技術を活用し挑戦《長崎》. Retrieved May 27, 2026 from https://news.ntv.co.jp/category/society/ni48845778ff4347bbaedd512c7cdeeece"
+    },
+    {
+      "id": "02-photo-colorization-peace-education-ref-05",
+      "number": 5,
+      "citation": "Hidenori Watanave and Anju Niwata. 2019. 「記憶の解凍」：カラー化写真をもとにした“フロー”の生成と記憶の継承. デジタルアーカイブ学会誌 3, 3 (2019), 317–323. https://doi.org/10.24506/jsda.3.3_317"
+    }
+  ],
+  "sections": [
+    {
+      "id": "02-photo-colorization-peace-education#ai",
+      "heading": "AIによるモノクロ写真カラー化を活かした高校生の平和教育実践",
+      "level": 1,
+      "citation_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "evidence_refs": [
+        "02-photo-colorization-peace-education-ref-01",
+        "02-photo-colorization-peace-education-ref-02",
+        "02-photo-colorization-peace-education-ref-03",
+        "02-photo-colorization-peace-education-ref-04",
+        "02-photo-colorization-peace-education-ref-05"
+      ],
+      "figure_ids": [
+        "02-the-day-color-returned",
+        "02-presentation-scene"
+      ],
+      "text_preview": "> AIカラー化を入口に，記憶を読み解き社会へ継承する平和教育モデル ![写真集「あの日に色がさすとき」表紙](../assets/02-photo-colorization-peace-education/the-day-color-returned.png) *図1. 写真集「あの日に色がさすとき」表紙* 長崎県立長崎東高校の生徒による「あの日に色がさすとき」は，AIによるモノクロ写真のカラー化を起点に，戦前・戦後の長崎の記憶を次世代へ継承する探究型学習の実践である[1,2]。生徒たちは，戦前・戦後の長崎を写した白黒写真20点を題材に，AIで自動カラー化したうえで，被爆者や専門家への聞き取りを通じて色味を補正し，写真集としてまと"
+    },
+    {
+      "id": "02-photo-colorization-peace-education#section",
+      "heading": "参考文献・関連資料",
+      "level": 2,
+      "citation_numbers": [],
+      "evidence_refs": [],
+      "figure_ids": [],
+      "text_preview": "1. 長崎県立長崎東中学校・高等学校. 2026. あの日に色がさすとき: 高校生がAIとカラー化した長崎の戦前・戦後. Retrieved May 27, 2026 from https://www.news.ed.jp/higashi-h/img/file13.pdf 2. 長崎県立長崎東中学校・高等学校. n.d. WWL・DX: あの日に色がさすとき. Retrieved May 27, 2026 from https://www.news.ed.jp/higashi-h/wwldx.html 3. NCC長崎文化放送. 2026. AIでよみがえる戦前の長崎 高校生が写真集制作. Retrieved May 27, 202"
+    },
+    {
+      "id": "02-photo-colorization-peace-education#section",
+      "heading": "メタデータ",
+      "level": 2,
+      "citation_numbers": [],
+      "evidence_refs": [],
+      "figure_ids": [],
+      "text_preview": "| 項目 | 内容 | | --- | --- | | ID | `02-photo-colorization-peace-education` | | プロジェクト | AIとクリエイティブと教育 | | 日付 | 2026-05-27 | | バージョン | 1.0.0 | | 種別 | report | | 概要 | AIカラー化を、写真資料・証言・地域の記憶をつなぐ平和教育と記憶継承の探究へ展開。 | | 著者 | 森吉蓉子<br>渡邉英徳 | | 想定読者 | 平和教育・歴史教育・地域学習を担当する中学・高校教員<br>写真資料や証言を活用する博物館・資料館・地域アーカイブ担当者<br>AIカラー化を探究学習や記憶継承に活"
+    }
+  ],
+  "risk_notes": [
+    "このsidecarはAI用の構造化補助であり、本文の正本はsource_mdにある。",
+    "引用番号はsource_md内の参考文献登場順に対応する。",
+    "図版を説明するときはfigures.pathだけでなくalt/caption/license_noteも確認する。"
+  ]
+}
+
+
+---
+metadata/report-sidecars/03-digital-citizenship.json
+---
+{
+  "schema": "aice.report_sidecar.v1",
+  "report_id": "03-digital-citizenship",
+  "title": "AIを活かしたデジタルシティズンシップ教育",
+  "source_md": "reports/03-digital-citizenship.md",
+  "source_of_truth": true,
+  "html_source_note": "HTML版はこのMarkdown本文とconfig/metadataから生成・表示する。",
+  "ai_contract": {
+    "read_order": [
+      "abstract",
+      "key_takeaways",
+      "sections",
+      "references",
+      "figures",
+      "risk_notes"
+    ],
+    "must_cite": true,
+    "do_not_infer_beyond_sources": true,
+    "human_verification_required": true
+  },
+  "authors": [
+    "原田真喜子"
+  ],
+  "audience": [
+    "小中高の情報活用能力・情報モラル・ICT活用を担当する教員",
+    "デジタルシティズンシップ教育のカリキュラム設計者",
+    "生成AI利用ルールや校内研修を設計する学校管理職・ICT担当者",
+    "AIリテラシー教材や安全な学習環境を開発する教育サービス担当者"
+  ],
+  "themes": [
+    "生成AI",
+    "デジタルシティズンシップ",
+    "AIリテラシー",
+    "情報モラル"
+  ],
+  "keywords": [
+    "デジタルシティズンシップ",
+    "AIリテラシー",
+    "情報モラル",
+    "教育実践"
+  ],
+  "abstract": "AIの禁止・管理を超え、判断・参加・公共性を育てるデジタルシティズンシップ教育。",
+  "key_takeaways": [
+    "生成AI時代のデジタルシティズンシップは，禁止や管理ではなく，技術社会への判断と参加を学ぶ教育である。",
+    "AI出力を疑い，根拠を確認し，自分の判断として再構成する経験が中核になる。",
+    "知識を獲得・再編集・共有・表出する過程を，公共的価値へ接続する設計が重要になる。"
+  ],
+  "use_cases": [
+    "小中高の情報モラル、ICT活用、AIリテラシー授業",
+    "学校の生成AI利用ルールや校内研修の設計",
+    "安全な学習環境を備えた教育サービスの企画",
+    "生徒の表現活動における倫理・著作権・プライバシー指導"
+  ],
+  "learning_activities": [
+    "AIの回答について，根拠，偏り，未確認情報をチェックするワークを行う。",
+    "プロンプト，出力，修正過程，利用後の判断を記録し，AI利用を検証可能な学習過程として振り返る。",
+    "生成物を公開する前に，影響を受ける他者，著作権，個人情報を点検する。"
+  ],
+  "implementation_ideas": [
+    "各教科で使えるAI利用チェックリストを作り，授業ごとに更新する。",
+    "校内研修で，禁止事項だけでなく判断プロセスを共有するケーススタディを行う。",
+    "AI教材に，根拠確認，出典表示，公開前レビュー，振り返り記録の流れを組み込む。"
+  ],
+  "related_reports": [
+    "00-overview",
+    "01-information-visualization-osint",
+    "04-student-hackathon"
+  ],
+  "concept_alignment": {
+    "schema": "aice.concept_alignment.v1",
+    "primary_stage_ids": [
+      "human_verification",
+      "public_communication"
+    ],
+    "supporting_stage_ids": [
+      "question_framing",
+      "source_evaluation"
+    ],
+    "literacy_ids": [
+      "ai_competency_citizenship",
+      "design_editing_critical_thinking",
+      "publicness_social_responsibility"
+    ],
+    "ai_role_ids": [
+      "case_material",
+      "risk_prompt",
+      "reflection_partner",
+      "knowledge_navigator"
+    ],
+    "human_responsibility_ids": [
+      "bias_check",
+      "rights_privacy_review",
+      "impact_assessment",
+      "guideline_design",
+      "knowledge_reediting"
+    ],
+    "domain_tags": [
+      "digital_citizenship",
+      "ai_literacy",
+      "media_literacy",
+      "publicness",
+      "knowledge_experience"
+    ]
+  },
+  "figures": [
+    {
+      "id": "03-ai-digital-citizenship-participation",
+      "path": "assets/03-digital-citizenship/ai-digital-citizenship-participation.jpg",
+      "caption": "AI時代のデジタルシティズンシップ教育：禁止・管理から主体的な参加へ",
+      "alt": "AI時代のデジタルシティズンシップ教育における禁止から主体的な参加への転換、AIとの協働、知識循環を示す図",
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+    }
+  ],
+  "references": [
+    {
+      "id": "03-digital-citizenship-ref-01",
+      "number": 1,
+      "citation": "Atsushi Yoshino. 2023. 日本のデジタル・シティズンシップ教育の受容状況における情報モラル教育・道徳科の位置づけについての一考察. 早稲田大学大学院教育学研究科紀要：別冊 31, 1 (2023), 45–55. Retrieved May 27, 2026 from https://waseda.repo.nii.ac.jp/records/2000538"
+    },
+    {
+      "id": "03-digital-citizenship-ref-02",
+      "number": 2,
+      "citation": "UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum"
+    },
+    {
+      "id": "03-digital-citizenship-ref-03",
+      "number": 3,
+      "citation": "UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students"
+    },
+    {
+      "id": "03-digital-citizenship-ref-04",
+      "number": 4,
+      "citation": "ISTE. n.d. ISTE Standards: For Students. ISTE. Retrieved May 27, 2026 from https://iste.org/standards/students"
+    },
+    {
+      "id": "03-digital-citizenship-ref-05",
+      "number": 5,
+      "citation": "OECD. 2026. OECD Digital Education Outlook 2026: Exploring Effective Uses of Generative AI in Education. OECD Publishing. https://doi.org/10.1787/062a7394-en"
+    }
+  ],
+  "sections": [
+    {
+      "id": "03-digital-citizenship#ai",
+      "heading": "AIを活かしたデジタルシティズンシップ教育",
+      "level": 1,
+      "citation_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "evidence_refs": [
+        "03-digital-citizenship-ref-01",
+        "03-digital-citizenship-ref-02",
+        "03-digital-citizenship-ref-03",
+        "03-digital-citizenship-ref-04",
+        "03-digital-citizenship-ref-05"
+      ],
+      "figure_ids": [
+        "03-ai-digital-citizenship-participation"
+      ],
+      "text_preview": "> 禁止から参加へ，AI時代の判断と公共性を育てる学び 生成AIの急速な普及によって，学校教育は「AIを使わせるべきか，禁止すべきか」という問いに直面している。しかし本当に問われているのは，AIそのものの可否ではない。AIが存在する社会のなかで，私たちがどのように判断し，他者と関わり，公共的な価値を生み出していくのかである。デジタルシティズンシップ教育は，ICT機器の操作や情報モラルの指導にとどまらず，デジタル社会における権利と責任を理解し，情報を収集・判断・発信しながら主体的に参加する力を育てる教育である[1,2]。 ![AI時代のデジタルシティズンシップ教育](../assets/03-digital-citizenship/a"
+    },
+    {
+      "id": "03-digital-citizenship#section",
+      "heading": "参考文献・関連資料",
+      "level": 2,
+      "citation_numbers": [],
+      "evidence_refs": [],
+      "figure_ids": [],
+      "text_preview": "1. Atsushi Yoshino. 2023. 日本のデジタル・シティズンシップ教育の受容状況における情報モラル教育・道徳科の位置づけについての一考察. 早稲田大学大学院教育学研究科紀要：別冊 31, 1 (2023), 45–55. Retrieved May 27, 2026 from https://waseda.repo.nii.ac.jp/records/2000538 2. UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https"
+    },
+    {
+      "id": "03-digital-citizenship#section",
+      "heading": "メタデータ",
+      "level": 2,
+      "citation_numbers": [],
+      "evidence_refs": [],
+      "figure_ids": [],
+      "text_preview": "| 項目 | 内容 | | --- | --- | | ID | `03-digital-citizenship` | | プロジェクト | AIとクリエイティブと教育 | | 日付 | 2026-05-27 | | バージョン | 1.0.0 | | 種別 | report | | 概要 | AIの禁止・管理を超え、判断・参加・公共性を育てるデジタルシティズンシップ教育。 | | 著者 | 原田真喜子 | | 想定読者 | 小中高の情報活用能力・情報モラル・ICT活用を担当する教員<br>デジタルシティズンシップ教育のカリキュラム設計者<br>生成AI利用ルールや校内研修を設計する学校管理職・ICT担当者<br>AIリテラシー教材"
+    }
+  ],
+  "risk_notes": [
+    "このsidecarはAI用の構造化補助であり、本文の正本はsource_mdにある。",
+    "引用番号はsource_md内の参考文献登場順に対応する。",
+    "図版を説明するときはfigures.pathだけでなくalt/caption/license_noteも確認する。"
+  ]
+}
+
+
+---
+metadata/report-sidecars/04-student-hackathon.json
+---
+{
+  "schema": "aice.report_sidecar.v1",
+  "report_id": "04-student-hackathon",
+  "title": "AI時代の学生ハッカソン：実装の民主化と発想力への転換",
+  "source_md": "reports/04-student-hackathon.md",
+  "source_of_truth": true,
+  "html_source_note": "HTML版はこのMarkdown本文とconfig/metadataから生成・表示する。",
+  "ai_contract": {
+    "read_order": [
+      "abstract",
+      "key_takeaways",
+      "sections",
+      "references",
+      "figures",
+      "risk_notes"
+    ],
+    "must_cite": true,
+    "do_not_infer_beyond_sources": true,
+    "human_verification_required": true
+  },
+  "authors": [
+    "小松尚平",
+    "渡邉英徳"
+  ],
+  "audience": [
+    "大学・高専・高校でハッカソンやPBLを運営する教職員",
+    "AIを用いたプロトタイピング教育を設計するメンター・ファシリテーター",
+    "学生起業、地域課題解決、産学連携プログラムの企画担当者",
+    "生成AI時代の開発教育や創造性評価に関心を持つ実践者"
+  ],
+  "themes": [
+    "生成AI",
+    "ハッカソン",
+    "プロトタイピング",
+    "実装教育"
+  ],
+  "keywords": [
+    "学生ハッカソン",
+    "プロダクト開発",
+    "実装の民主化",
+    "創造性"
+  ],
+  "abstract": "生成AIで実装負荷が下がる時代の学生ハッカソンを、課題設定と発想力の学びとして再定義。",
+  "key_takeaways": [
+    "生成AIにより実装のハードルが下がると、ハッカソンの評価軸は課題設定、体験設計、社会的価値へ移る。",
+    "AIはコード生成やデバッグを支援するが、何を作るか、誰に価値があるかの判断は人間が担う。",
+    "学生ハッカソンは、技術競争だけでなく、発想を検証し社会に説明する教育機会として再設計できる。"
+  ],
+  "use_cases": [
+    "大学・高専・高校のハッカソンやPBL設計",
+    "AIプロトタイピング研修やメンター育成",
+    "地域課題解決、学生起業、産学連携プログラム",
+    "AI時代の創造性評価や成果発表の設計"
+  ],
+  "learning_activities": [
+    "AIを用いて複数のプロトタイプ案を作り、利用者価値とリスクで比較する。",
+    "生成されたコードやUIを検証し、発想、実装、説明のどこに人間の判断が必要かを振り返る。",
+    "発表資料を作る際に、課題、ユーザー、価値、検証結果を明確にする。"
+  ],
+  "implementation_ideas": [
+    "短時間のAIプロトタイピング演習を導入し、実装より課題定義と検証を重視する。",
+    "審査基準に、社会的価値、利用者理解、AI利用の透明性、検証プロセスを加える。",
+    "メンター向けに、AI出力を鵜呑みにしないレビュー観点を共有する。"
+  ],
+  "related_reports": [
+    "00-overview",
+    "03-digital-citizenship",
+    "06-sf-prototyping"
+  ],
+  "concept_alignment": {
+    "schema": "aice.concept_alignment.v1",
+    "primary_stage_ids": [
+      "question_framing",
+      "prototyping",
+      "human_verification",
+      "public_communication"
+    ],
+    "supporting_stage_ids": [
+      "source_evaluation"
+    ],
+    "literacy_ids": [
+      "ai_competency_citizenship",
+      "design_editing_critical_thinking",
+      "publicness_social_responsibility"
+    ],
+    "ai_role_ids": [
+      "code_generation",
+      "ui_drafting",
+      "debugging_support",
+      "pitch_support"
+    ],
+    "human_responsibility_ids": [
+      "problem_selection",
+      "user_value_judgment",
+      "prototype_review",
+      "transparent_ai_use"
+    ],
+    "domain_tags": [
+      "hackathon",
+      "prototyping",
+      "implementation_democratization",
+      "student_projects"
+    ]
+  },
+  "figures": [
+    {
+      "id": "04-hackathon-shift",
+      "path": "assets/04-student-hackathon/fig_hackathon_shift.svg",
+      "caption": "生成AI時代のハッカソン教育における重心の移動",
+      "alt": "生成AI時代のハッカソン教育における重心の移動を示す概念図",
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+    },
+    {
+      "id": "04-hack1-2026-demoday",
+      "path": "assets/04-student-hackathon/hack1-2026-demoday.png",
+      "caption": "Hack-1グランプリ2026 最終発表会の様子",
+      "alt": "Hack-1グランプリ2026最終発表会のピッチ、ブース展示、プロトタイプ展示の様子",
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+    }
+  ],
+  "references": [
+    {
+      "id": "04-student-hackathon-ref-01",
+      "number": 1,
+      "citation": "Sidney Peng, Eirini Kalliamvakou, Peter Cihon, and Mert Demirer. 2023. The Impact of AI on Developer Productivity: Evidence from GitHub Copilot. arXiv:2302.06590. Retrieved May 27, 2026 from https://arxiv.org/abs/2302.06590"
+    },
+    {
+      "id": "04-student-hackathon-ref-02",
+      "number": 2,
+      "citation": "Jeannette M. Wing. 2006. Computational Thinking. Communications of the ACM 49, 3 (March 2006), 33–35. https://doi.org/10.1145/1118178.1118215"
+    },
+    {
+      "id": "04-student-hackathon-ref-03",
+      "number": 3,
+      "citation": "東京大学大学院情報学環・学際情報学府. 2025. Hack-1グランプリ2025 開催レポート. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/research/20250725report"
+    },
+    {
+      "id": "04-student-hackathon-ref-04",
+      "number": 4,
+      "citation": "東京大学大学院情報学環・学際情報学府. 2026. Hack-1グランプリ2026 告知. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/event/20260404event"
+    },
+    {
+      "id": "04-student-hackathon-ref-05",
+      "number": 5,
+      "citation": "GMO Developers. 2026. 【前編】Hack-1グランプリ2026 デモデーレポート｜AI時代の学生ハッカソンに圧倒される2日間。「小さくなる日本」をどう表現する？ Retrieved May 28, 2026 from https://developers.gmo.jp/events/83407/"
+    },
+    {
+      "id": "04-student-hackathon-ref-06",
+      "number": 6,
+      "citation": "GMO Developers. 2026. 【Hack-1グランプリ2026 キックオフレポート】約150名の学生がハイブリッド形式で集結. Retrieved May 31, 2026 from https://developers.gmo.jp/events/83078/"
+    },
+    {
+      "id": "04-student-hackathon-ref-07",
+      "number": 7,
+      "citation": "日テレ共創ラボ. 2026. 日テレ クリエイティブメディアハッカソン開催レポート. Retrieved May 27, 2026 from https://lab.ntvhd.co.jp/topics/2026/04/post-24.html"
+    },
+    {
+      "id": "04-student-hackathon-ref-08",
+      "number": 8,
+      "citation": "UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students"
+    },
+    {
+      "id": "04-student-hackathon-ref-09",
+      "number": 9,
+      "citation": "OECD. 2023. AI and the Future of Skills, Volume 2. OECD Publishing. https://doi.org/10.1787/a9fe53cb-en"
+    }
+  ],
+  "sections": [
+    {
+      "id": "04-student-hackathon#ai",
+      "heading": "AI時代の学生ハッカソン：実装の民主化と発想力への転換",
+      "level": 1,
+      "citation_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "evidence_refs": [
+        "04-student-hackathon-ref-01",
+        "04-student-hackathon-ref-02",
+        "04-student-hackathon-ref-03",
+        "04-student-hackathon-ref-04",
+        "04-student-hackathon-ref-05",
+        "04-student-hackathon-ref-06",
+        "04-student-hackathon-ref-07",
+        "04-student-hackathon-ref-08",
+        "04-student-hackathon-ref-09"
+      ],
+      "figure_ids": [
+        "04-hackathon-shift",
+        "04-hack1-2026-demoday"
+      ],
+      "text_preview": "> 実装支援から課題設定・価値検証へ移る開発教育モデル 学生ハッカソンにおける生成AIの導入は，「開発」教育の重心を大きく変えつつある。従来のハッカソンでは，限られた時間内にアイデアを実装できるかどうかが，参加者のプログラミング経験やフレームワーク習熟度に強く左右されていた。しかし現在は，生成AIがコード生成，UI設計，API連携，デバッグ，スライドや動画の作成まで支援することで，初期実装のハードルは大幅に下がっている。GitHub Copilotに関する実験研究でも，AIペアプログラマを利用した開発者は特定課題を約55.8％速く完了したと報告されており，AIが実装工程の生産性を押し上げる可能性は実証的にも示されている[1]。 この"
+    },
+    {
+      "id": "04-student-hackathon#section",
+      "heading": "参考文献・関連資料",
+      "level": 2,
+      "citation_numbers": [],
+      "evidence_refs": [],
+      "figure_ids": [],
+      "text_preview": "1. Sidney Peng, Eirini Kalliamvakou, Peter Cihon, and Mert Demirer. 2023. The Impact of AI on Developer Productivity: Evidence from GitHub Copilot. arXiv:2302.06590. Retrieved May 27, 2026 from https://arxiv.org/abs/2302.06590 2. Jeannette M. Wing. 2006. Computational Thinking. Communications of the ACM 49, 3 (March 20"
+    },
+    {
+      "id": "04-student-hackathon#section",
+      "heading": "メタデータ",
+      "level": 2,
+      "citation_numbers": [],
+      "evidence_refs": [],
+      "figure_ids": [],
+      "text_preview": "| 項目 | 内容 | | --- | --- | | ID | `04-student-hackathon` | | プロジェクト | AIとクリエイティブと教育 | | 日付 | 2026-05-27 | | バージョン | 1.0.0 | | 種別 | report | | 概要 | 生成AIで実装負荷が下がる時代の学生ハッカソンを、課題設定と発想力の学びとして再定義。 | | 著者 | 小松尚平<br>渡邉英徳 | | 想定読者 | 大学・高専・高校でハッカソンやPBLを運営する教職員<br>AIを用いたプロトタイピング教育を設計するメンター・ファシリテーター<br>学生起業、地域課題解決、産学連携プログラムの企画担当者<b"
+    }
+  ],
+  "risk_notes": [
+    "このsidecarはAI用の構造化補助であり、本文の正本はsource_mdにある。",
+    "引用番号はsource_md内の参考文献登場順に対応する。",
+    "図版を説明するときはfigures.pathだけでなくalt/caption/license_noteも確認する。"
+  ]
+}
+
+
+---
+metadata/report-sidecars/05-digital-archive-ai.json
+---
+{
+  "schema": "aice.report_sidecar.v1",
+  "report_id": "05-digital-archive-ai",
+  "title": "デジタルアーカイブとAIを活かした教育実践",
+  "source_md": "reports/05-digital-archive-ai.md",
+  "source_of_truth": true,
+  "html_source_note": "HTML版はこのMarkdown本文とconfig/metadataから生成・表示する。",
+  "ai_contract": {
+    "read_order": [
+      "abstract",
+      "key_takeaways",
+      "sections",
+      "references",
+      "figures",
+      "risk_notes"
+    ],
+    "must_cite": true,
+    "do_not_infer_beyond_sources": true,
+    "human_verification_required": true
+  },
+  "authors": [
+    "大井将生"
+  ],
+  "audience": [
+    "学校教育で一次資料や地域資料を活用したい教員",
+    "デジタルアーカイブの教育利用を進める図書館・博物館・自治体担当者",
+    "探究学習、キュレーション授業、教材アーカイブを設計する教育者",
+    "AIと資料検索・要約・再編集を組み合わせた学習サービス企画者"
+  ],
+  "themes": [
+    "生成AI",
+    "デジタルアーカイブ",
+    "教育実践",
+    "資料活用"
+  ],
+  "keywords": [
+    "デジタルアーカイブ",
+    "資料活用",
+    "探究学習",
+    "AI教育"
+  ],
+  "abstract": "デジタルアーカイブと生成AIを組み合わせ、一次資料を用いた探究と社会発信を支える教育実践。",
+  "key_takeaways": [
+    "デジタルアーカイブは保存基盤にとどまらず、学習者が問いを立て資料を再編集する探究環境になる。",
+    "AIは検索、要約、比較、表現を支援するが、一次資料性と出典確認を学習活動に組み込む必要がある。",
+    "資料活用、AIカラー化、S×UKILAM連携は、学校と文化資源を結ぶ教育実践の基盤になる。"
+  ],
+  "use_cases": [
+    "一次資料や地域資料を活用した探究学習",
+    "図書館・博物館・自治体の教育連携プログラム",
+    "デジタルアーカイブを使う教材・検索支援サービスの企画",
+    "AIによる資料要約、比較、再編集を扱う授業"
+  ],
+  "learning_activities": [
+    "ジャパンサーチ等で資料を探し、出典、作成時期、文脈を確認して問いを立てる。",
+    "AIに資料の要約や比較をさせ、その妥当性を原資料に戻って検証する。",
+    "複数資料を組み合わせ、展示案、教材、地域ストーリーとして再構成する。"
+  ],
+  "implementation_ideas": [
+    "学校と図書館・博物館が連携し、地域資料を使う探究単元を設計する。",
+    "AI検索・要約機能に、出典確認と一次資料へのリンクを必ず表示する設計にする。",
+    "学習成果をデジタル展示や教材アーカイブとして蓄積し、次年度の学習資源にする。"
+  ],
+  "related_reports": [
+    "00-overview",
+    "01-information-visualization-osint",
+    "02-photo-colorization-peace-education"
+  ],
+  "concept_alignment": {
+    "schema": "aice.concept_alignment.v1",
+    "primary_stage_ids": [
+      "source_evaluation",
+      "prototyping",
+      "public_communication"
+    ],
+    "supporting_stage_ids": [
+      "question_framing",
+      "human_verification"
+    ],
+    "literacy_ids": [
+      "ai_competency_citizenship",
+      "design_editing_critical_thinking",
+      "publicness_social_responsibility"
+    ],
+    "ai_role_ids": [
+      "search_support",
+      "summarization",
+      "comparison",
+      "material_recomposition"
+    ],
+    "human_responsibility_ids": [
+      "source_context_check",
+      "primary_source_verification",
+      "curation_judgment",
+      "public_reframing"
+    ],
+    "domain_tags": [
+      "digital_archive",
+      "primary_sources",
+      "sukilam",
+      "educational_materials"
+    ]
+  },
+  "figures": [
+    {
+      "id": "05-sukilam-workshop",
+      "path": "assets/05-digital-archive-ai/sukilam-workshop.png",
+      "caption": "S×UKILAMワークショップのコンセプト：多様な資料から教材を共創する",
+      "alt": "S×UKILAMワークショップのコンセプトを示す教室写真ベースの図版",
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+    },
+    {
+      "id": "05-sukilam-network",
+      "path": "assets/05-digital-archive-ai/sukilam-network.png",
+      "caption": "S×UKILAM連携における「人」と「データ」のネットワーク",
+      "alt": "S×UKILAM連携における人とデータのネットワーク構造を示す図",
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+    }
+  ],
+  "references": [
+    {
+      "id": "05-digital-archive-ai-ref-01",
+      "number": 1,
+      "citation": "Masao Oi and Hidenori Watanave. 2020. ジャパンサーチを活用した小中高でのキュレーション授業デザイン：デジタルアーカイブの教育活用意義と可能性. デジタルアーカイブ学会誌 4, 4 (2020), 352–359. https://doi.org/10.24506/jsda.4.4_352"
+    },
+    {
+      "id": "05-digital-archive-ai-ref-02",
+      "number": 2,
+      "citation": "ADEAC. n.d. S×UKILAM：Primary Source Sets／スキラム連携：多様な資料を活用した教材アーカイブ. Retrieved May 27, 2026 from https://adeac.jp/adeac-lab/top/sxukilam/index.html"
+    },
+    {
+      "id": "05-digital-archive-ai-ref-03",
+      "number": 3,
+      "citation": "Masao Oi and Hidenori Watanave. 2022. S×UKILAM連携：多様な資料を学校教育で活用するための「人」と「データ」のネットワーク構築. デジタルアーカイブ学会誌 6, s3 (2022), s214–s217. https://doi.org/10.24506/jsda.6.s3_s214"
+    },
+    {
+      "id": "05-digital-archive-ai-ref-04",
+      "number": 4,
+      "citation": "UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students"
+    },
+    {
+      "id": "05-digital-archive-ai-ref-05",
+      "number": 5,
+      "citation": "UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum"
+    }
+  ],
+  "sections": [
+    {
+      "id": "05-digital-archive-ai#ai",
+      "heading": "デジタルアーカイブとAIを活かした教育実践",
+      "level": 1,
+      "citation_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "evidence_refs": [
+        "05-digital-archive-ai-ref-01",
+        "05-digital-archive-ai-ref-02",
+        "05-digital-archive-ai-ref-03",
+        "05-digital-archive-ai-ref-04",
+        "05-digital-archive-ai-ref-05"
+      ],
+      "figure_ids": [
+        "05-sukilam-workshop",
+        "05-sukilam-network"
+      ],
+      "text_preview": "> 資料を保存から探究へひらき，出典と文脈を確かめる学び デジタルアーカイブとAIを組み合わせた教育実践は，資料を単に保存・閲覧する段階から，学習者が問いを立て，資料を読み解き，他者へ伝える探究的な学びへと発展させる可能性を持つ。デジタルアーカイブは，写真，文書，地図，映像，文化財などを体系的に蓄積する基盤である。しかし，資料が「そこにある」だけでは，学習者の関心や授業実践には直結しにくい。重要なのは，ストックされた資料を，学習者の問い，対話，表現を通じてフロー化する設計である。 ![S×UKILAMワークショップのコンセプト](../assets/05-digital-archive-ai/sukilam-workshop.png"
+    },
+    {
+      "id": "05-digital-archive-ai#section",
+      "heading": "参考文献・関連資料",
+      "level": 2,
+      "citation_numbers": [],
+      "evidence_refs": [],
+      "figure_ids": [],
+      "text_preview": "1. Masao Oi and Hidenori Watanave. 2020. ジャパンサーチを活用した小中高でのキュレーション授業デザイン：デジタルアーカイブの教育活用意義と可能性. デジタルアーカイブ学会誌 4, 4 (2020), 352–359. https://doi.org/10.24506/jsda.4.4_352 2. ADEAC. n.d. S×UKILAM：Primary Source Sets／スキラム連携：多様な資料を活用した教材アーカイブ. Retrieved May 27, 2026 from https://adeac.jp/adeac-lab/top/sxukilam/index.html 3. M"
+    },
+    {
+      "id": "05-digital-archive-ai#section",
+      "heading": "メタデータ",
+      "level": 2,
+      "citation_numbers": [],
+      "evidence_refs": [],
+      "figure_ids": [],
+      "text_preview": "| 項目 | 内容 | | --- | --- | | ID | `05-digital-archive-ai` | | プロジェクト | AIとクリエイティブと教育 | | 日付 | 2026-05-27 | | バージョン | 1.0.0 | | 種別 | report | | 概要 | デジタルアーカイブと生成AIを組み合わせ、一次資料を用いた探究と社会発信を支える教育実践。 | | 著者 | 大井将生 | | 想定読者 | 学校教育で一次資料や地域資料を活用したい教員<br>デジタルアーカイブの教育利用を進める図書館・博物館・自治体担当者<br>探究学習、キュレーション授業、教材アーカイブを設計する教育者<br>AIと資料検"
+    }
+  ],
+  "risk_notes": [
+    "このsidecarはAI用の構造化補助であり、本文の正本はsource_mdにある。",
+    "引用番号はsource_md内の参考文献登場順に対応する。",
+    "図版を説明するときはfigures.pathだけでなくalt/caption/license_noteも確認する。"
+  ]
+}
+
+
+---
+metadata/report-sidecars/06-sf-prototyping.json
+---
+{
+  "schema": "aice.report_sidecar.v1",
+  "report_id": "06-sf-prototyping",
+  "title": "生成AIを用いたSFプロトタイピング",
+  "source_md": "reports/06-sf-prototyping.md",
+  "source_of_truth": true,
+  "html_source_note": "HTML版はこのMarkdown本文とconfig/metadataから生成・表示する。",
+  "ai_contract": {
+    "read_order": [
+      "abstract",
+      "key_takeaways",
+      "sections",
+      "references",
+      "figures",
+      "risk_notes"
+    ],
+    "must_cite": true,
+    "do_not_infer_beyond_sources": true,
+    "human_verification_required": true
+  },
+  "authors": [
+    "楊欽",
+    "渡邉英徳"
+  ],
+  "audience": [
+    "未来構想・探究学習・創造性教育を担当する大学・高校教員",
+    "産学協創、企業研修、ワークショップを設計するファシリテーター",
+    "新規事業開発やビジョン策定にSFプロトタイピングを使いたい企画担当者",
+    "生成AIを用いた物語生成・合意形成・アイデア創出に関心を持つ実践者"
+  ],
+  "themes": [
+    "生成AI",
+    "SFプロトタイピング",
+    "未来構想",
+    "創造性教育"
+  ],
+  "keywords": [
+    "SFプロトタイピング",
+    "未来洞察",
+    "創造性",
+    "ワークショップ"
+  ],
+  "abstract": "生成AIで未来シナリオを素早く仮設し、人間が批判・修正するSFプロトタイピングの教育活用。",
+  "key_takeaways": [
+    "生成AIは未来社会の物語や世界観を短時間で立ち上げ、SFプロトタイピングの参加ハードルを下げる。",
+    "重要なのはAIが出した未来像を批判、修正、再構成し、望ましい未来と避けたい未来を議論することである。",
+    "SFプロトタイピングは教育、産学協創、事業開発における想像力と合意形成を支援する。"
+  ],
+  "use_cases": [
+    "高校・大学の未来構想、探究学習、創造性教育",
+    "企業研修、産学協創、新規事業開発ワークショップ",
+    "地域や組織のビジョン策定",
+    "生成AIを用いた物語生成・アイデア創出教材"
+  ],
+  "learning_activities": [
+    "AIに未来シナリオを複数生成させ、前提、価値観、リスクを読み解く。",
+    "参加者が未来像を修正し、望ましい技術利用や社会制度を提案する。",
+    "SFプロトタイプを短編、新聞記事、サービス広告、政策提案などの形式で表現する。"
+  ],
+  "implementation_ideas": [
+    "90分から半日のSFプロトタイピングワークショップを設計し、AI生成と人間の批評を交互に行う。",
+    "新規事業や研究テーマ検討で、未来シナリオ、ステークホルダー、倫理的論点を可視化する。",
+    "成果物をハッカソンやPBLの課題設定に接続し、プロトタイプ制作へ展開する。"
+  ],
+  "related_reports": [
+    "00-overview",
+    "03-digital-citizenship",
+    "04-student-hackathon"
+  ],
+  "concept_alignment": {
+    "schema": "aice.concept_alignment.v1",
+    "primary_stage_ids": [
+      "question_framing",
+      "prototyping",
+      "human_verification"
+    ],
+    "supporting_stage_ids": [
+      "public_communication"
+    ],
+    "literacy_ids": [
+      "ai_competency_citizenship",
+      "design_editing_critical_thinking",
+      "publicness_social_responsibility"
+    ],
+    "ai_role_ids": [
+      "scenario_generation",
+      "worldbuilding",
+      "alternative_generation",
+      "ideation_support"
+    ],
+    "human_responsibility_ids": [
+      "future_assumption_critique",
+      "value_judgment",
+      "scenario_revision",
+      "consensus_building"
+    ],
+    "domain_tags": [
+      "sf_prototyping",
+      "future_scenarios",
+      "workshop",
+      "backcasting"
+    ]
+  },
+  "figures": [
+    {
+      "id": "06-workshop-hero",
+      "path": "assets/06-sf-prototyping/workshop-hero.jpg",
+      "caption": "生成AIを用いたSFプロトタイピング・ワークショップのイメージ",
+      "alt": "生成AIを用いたSFプロトタイピング・ワークショップのイメージ",
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+    },
+    {
+      "id": "06-workshop-process",
+      "path": "assets/06-sf-prototyping/workshop-process.jpg",
+      "caption": "生成AI支援SFプロトタイピングのプロセス",
+      "alt": "生成AI支援SFプロトタイピングのプロセス",
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+    }
+  ],
+  "references": [
+    {
+      "id": "06-sf-prototyping-ref-01",
+      "number": 1,
+      "citation": "Brian David Johnson. 2011. Science Fiction Prototyping: Designing the Future with Science Fiction. Morgan & Claypool. https://doi.org/10.2200/S00336ED1V01Y201102CSL003"
+    },
+    {
+      "id": "06-sf-prototyping-ref-02",
+      "number": 2,
+      "citation": "宮本道人, 難波優輝, and 大澤博隆. 2021. SFプロトタイピング：SFからイノベーションを生み出す新戦略. 早川書房."
+    },
+    {
+      "id": "06-sf-prototyping-ref-03",
+      "number": 3,
+      "citation": "Qin Yang and Hidenori Watanave. 2024. 小説家不要のSFプロトタイピングワークショップ手法の提案：生成AIとの共同作業によるストーリーテリング支援. In 2024年度人工知能学会全国大会（第38回）. https://doi.org/10.11517/pjsai.JSAI2024.0_2A4GS1004"
+    },
+    {
+      "id": "06-sf-prototyping-ref-04",
+      "number": 4,
+      "citation": "Haoran Chu and Sixiao Liu. 2024. Can AI tell good stories? Narrative transportation and persuasion with ChatGPT. Journal of Communication 74, 5 (October 2024), 347–358. https://doi.org/10.1093/joc/jqae029"
+    },
+    {
+      "id": "06-sf-prototyping-ref-05",
+      "number": 5,
+      "citation": "Jakob Tholander and Martin Jonsson. 2023. Design Ideation with AI. In Proceedings of the 2023 ACM Designing Interactive Systems Conference (DIS '23). ACM, 1934–1946. https://doi.org/10.1145/3563657.3596014"
+    },
+    {
+      "id": "06-sf-prototyping-ref-06",
+      "number": 6,
+      "citation": "東京大学. n.d. グローバルインターンシッププログラム・企業協創プログラム. Retrieved May 27, 2026 from https://www.u-tokyo.ac.jp/ja/students/special-activities/ugip.html"
+    },
+    {
+      "id": "06-sf-prototyping-ref-07",
+      "number": 7,
+      "citation": "ダイキン工業. 2018. 東京大学とダイキン工業「空気の価値化」を目指す産学協創協定を締結. Retrieved May 27, 2026 from https://www.daikin.co.jp/press/2018/20181217"
+    }
+  ],
+  "sections": [
+    {
+      "id": "06-sf-prototyping#ai-sf",
+      "heading": "生成AIを用いたSFプロトタイピング",
+      "level": 1,
+      "citation_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "evidence_refs": [
+        "06-sf-prototyping-ref-01",
+        "06-sf-prototyping-ref-02",
+        "06-sf-prototyping-ref-03",
+        "06-sf-prototyping-ref-04",
+        "06-sf-prototyping-ref-05",
+        "06-sf-prototyping-ref-06",
+        "06-sf-prototyping-ref-07"
+      ],
+      "figure_ids": [
+        "06-workshop-hero",
+        "06-workshop-process"
+      ],
+      "text_preview": "> AIが仮設した未来を，人間が批判し再構成する創造ワークショップ ![生成AIを用いたSFプロトタイピング・ワークショップのイメージ](../assets/06-sf-prototyping/workshop-hero.jpg) *図1. 生成AIを用いたSFプロトタイピング・ワークショップのイメージ* SFプロトタイピングは，サイエンス・フィクションの発想を用いて，まだ存在しない技術・制度・生活様式を物語として描き，他者と未来像を議論する方法である。Brian David Johnsonは，SFを単なる空想ではなく，未来の技術や製品の含意を検討するための実践的な道具として位置づけた[1]。日本でも，企業や行政，大学において，未来"
+    },
+    {
+      "id": "06-sf-prototyping#section",
+      "heading": "参考文献・関連資料",
+      "level": 2,
+      "citation_numbers": [],
+      "evidence_refs": [],
+      "figure_ids": [],
+      "text_preview": "1. Brian David Johnson. 2011. Science Fiction Prototyping: Designing the Future with Science Fiction. Morgan & Claypool. https://doi.org/10.2200/S00336ED1V01Y201102CSL003 2. 宮本道人, 難波優輝, and 大澤博隆. 2021. SFプロトタイピング：SFからイノベーションを生み出す新戦略. 早川書房. 3. Qin Yang and Hidenori Watanave. 2024. 小説家不要のSFプロトタイピングワークショップ手法の提案：生成AIとの共同作業"
+    },
+    {
+      "id": "06-sf-prototyping#section",
+      "heading": "メタデータ",
+      "level": 2,
+      "citation_numbers": [],
+      "evidence_refs": [],
+      "figure_ids": [],
+      "text_preview": "| 項目 | 内容 | | --- | --- | | ID | `06-sf-prototyping` | | プロジェクト | AIとクリエイティブと教育 | | 日付 | 2026-05-27 | | バージョン | 1.0.0 | | 種別 | report | | 概要 | 生成AIで未来シナリオを素早く仮設し、人間が批判・修正するSFプロトタイピングの教育活用。 | | 著者 | 楊欽<br>渡邉英徳 | | 想定読者 | 未来構想・探究学習・創造性教育を担当する大学・高校教員<br>産学協創、企業研修、ワークショップを設計するファシリテーター<br>新規事業開発やビジョン策定にSFプロトタイピングを使いたい企画担当者<"
+    }
+  ],
+  "risk_notes": [
+    "このsidecarはAI用の構造化補助であり、本文の正本はsource_mdにある。",
+    "引用番号はsource_md内の参考文献登場順に対応する。",
+    "図版を説明するときはfigures.pathだけでなくalt/caption/license_noteも確認する。"
+  ]
+}
+
+
+---
+metadata/report-sidecars/07-minecraft-ai-education.json
+---
+{
+  "schema": "aice.report_sidecar.v1",
+  "report_id": "07-minecraft-ai-education",
+  "title": "AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ",
+  "source_md": "reports/07-minecraft-ai-education.md",
+  "source_of_truth": true,
+  "html_source_note": "HTML版はこのMarkdown本文とconfig/metadataから生成・表示する。",
+  "ai_contract": {
+    "read_order": [
+      "abstract",
+      "key_takeaways",
+      "sections",
+      "references",
+      "figures",
+      "risk_notes"
+    ],
+    "must_cite": true,
+    "do_not_infer_beyond_sources": true,
+    "human_verification_required": true
+  },
+  "authors": [
+    "片山実咲",
+    "渡邉英徳"
+  ],
+  "audience": [
+    "Minecraft Educationやゲームベース学習を授業に取り入れたい小中高・大学教員",
+    "平和教育・地域学習・災害復興学習で仮想空間制作を活用したい教育実践者",
+    "AIリテラシー，プログラミング，デジタルシティズンシップを横断する教材設計者",
+    "Minecraftや生成AIを活用した学習サービス・ワークショップの企画担当者"
+  ],
+  "themes": [
+    "生成AI",
+    "Minecraft",
+    "ゲームベース学習",
+    "AIリテラシー",
+    "記憶継承"
+  ],
+  "keywords": [
+    "Minecraft Education",
+    "Peacecraft",
+    "AIリテラシー",
+    "ゲームベース学習",
+    "地域学習"
+  ],
+  "abstract": "MinecraftとAIを、記憶継承・地域学習・創造・AIリテラシーを横断する学習空間として整理。",
+  "key_takeaways": [
+    "Minecraftは単なるゲームではなく，過去を再現し，地域や未来を構想する共有可能な学習空間になる。",
+    "AIカラー化，AIエージェント，生成AIによる物語化は，Minecraft内の制作を支える一方で，資料批判と人間の判断を必要とする。",
+    "国内のPeacecraft系実践と海外のAIリテラシー教材は，平和教育，地域学習，プログラミング，デジタルシティズンシップを横断するモデルを示している。"
+  ],
+  "use_cases": [
+    "Minecraftを用いた平和教育・災害復興学習・地域学習の設計",
+    "AIエージェントや生成AIを使う小中高向けAIリテラシー授業",
+    "教育機関・自治体・企業が連携するゲームベース学習ワークショップ",
+    "過去の資料や証言をもとに仮想空間を制作する探究学習"
+  ],
+  "learning_activities": [
+    "白黒写真や証言をもとに，失われた街並みや地域の記憶をMinecraft内で再構築する。",
+    "AIが生成した色，説明，建築案を資料や証言と照合し，どこまで信頼できるかを検討する。",
+    "AIエージェントに指示を出し，目的設定，プロンプト，検証，修正の過程を振り返る。"
+  ],
+  "implementation_ideas": [
+    "地域資料館や自治体と連携し，写真・地図・証言を使うMinecraft制作ワークショップを実施する。",
+    "Minecraft Educationの既存AI教材を導入し，デジタルシティズンシップや情報モラルの授業と接続する。",
+    "完成した仮想空間を展示・発表し，地域住民や専門家との対話を通じて学習成果を検証する。"
+  ],
+  "related_reports": [
+    "00-overview",
+    "02-photo-colorization-peace-education",
+    "03-digital-citizenship",
+    "05-digital-archive-ai",
+    "06-sf-prototyping"
+  ],
+  "concept_alignment": {
+    "schema": "aice.concept_alignment.v1",
+    "primary_stage_ids": [
+      "source_evaluation",
+      "prototyping",
+      "human_verification",
+      "public_communication"
+    ],
+    "supporting_stage_ids": [
+      "question_framing"
+    ],
+    "literacy_ids": [
+      "ai_competency_citizenship",
+      "design_editing_critical_thinking",
+      "publicness_social_responsibility"
+    ],
+    "ai_role_ids": [
+      "worldbuilding_support",
+      "agent_assistance",
+      "story_generation",
+      "colorization_probe"
+    ],
+    "human_responsibility_ids": [
+      "evidence_uncertainty_handling",
+      "reconstruction_judgment",
+      "community_dialogue",
+      "ai_output_review"
+    ],
+    "domain_tags": [
+      "minecraft_education",
+      "game_based_learning",
+      "memory_inheritance",
+      "regional_learning",
+      "ai_literacy"
+    ]
+  },
+  "figures": [
+    {
+      "id": "07-nagasaki-minecraft-world",
+      "path": "assets/07-minecraft-ai-education/nagasaki-minecraft-world.jpg",
+      "caption": "長崎のMinecraftワールド",
+      "alt": "長崎のMinecraftワールドの俯瞰図",
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+    },
+    {
+      "id": "07-children-work",
+      "path": "assets/07-minecraft-ai-education/children-work.jpg",
+      "caption": "子どもたちによるMinecraftワークの様子",
+      "alt": "子どもたちがMinecraftを用いたワークに取り組む様子",
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+    }
+  ],
+  "references": [
+    {
+      "id": "07-minecraft-ai-education-ref-01",
+      "number": 1,
+      "citation": "UNESCO. 2023. Guidance for generative AI in education and research. UNESCO. Retrieved May 29, 2026 from https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-02",
+      "number": 2,
+      "citation": "UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 29, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-03",
+      "number": 3,
+      "citation": "きのこぐものしたにあったまち. n.d. きのこぐものしたにあったまち｜ブロッククラフトで学ぶ広島・長崎歴史探訪ワークショップ. Retrieved May 29, 2026 from https://peacecraft.info/"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-04",
+      "number": 4,
+      "citation": "マイクラカップ. 2026. 石川県輪島市門前町にて、マイクラ×ARワークショップ「門前の記憶と未来」を開催しました. Retrieved May 29, 2026 from https://mccup.jp/eventreports/26671/"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-05",
+      "number": 5,
+      "citation": "内外教育ウェブ. 2026. 「マイクラ」で北方領土啓発＝北海道標津町. Retrieved May 29, 2026 from https://edu-naigai.jiji.com/timeline/3411"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-06",
+      "number": 6,
+      "citation": "Minecraft Education. n.d. AI Foundations. Retrieved May 29, 2026 from https://education.minecraft.net/en-us/lessons/ai-foundations"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-07",
+      "number": 7,
+      "citation": "National 4-H Council and Microsoft. 2025. National 4-H Council and Microsoft Extend $10M Partnership to Expand AI Education for Rural Youth and Educators. Retrieved May 29, 2026 from https://4-h.org/about/blog/national-4-h-council-and-microsoft-extend-10m-partnership-to-expand-ai-education-for-rural-youth-and-educators/"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-08",
+      "number": 8,
+      "citation": "Minecraft Education. n.d. BBC Day of AI. Retrieved May 29, 2026 from https://education.minecraft.net/en-us/resources/bbc-day-of-ai"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-09",
+      "number": 9,
+      "citation": "Code.org. n.d. Hour of AI with Minecraft. Retrieved May 29, 2026 from https://code.org/en-US/minecraft"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-10",
+      "number": 10,
+      "citation": "Microsoft Japan. 2019. Minecraft Hour of Code: AI for Good 日本語版提供開始. Retrieved May 29, 2026 from https://news.microsoft.com/ja-jp/2019/12/09/191209-information/"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-11",
+      "number": 11,
+      "citation": "Mahajan, J. et al. 2023. MineObserver 2.0: A Deep Learning & In-Game Framework for Assessing Natural Language Descriptions of Minecraft Imagery. arXiv:2301.08167. Retrieved May 29, 2026 from https://arxiv.org/abs/2301.08167"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-12",
+      "number": 12,
+      "citation": "Tadimalla, S. Y. and Maher, M. L. 2024. AI Literacy for All: Adjustable Interdisciplinary Socio-technical Curriculum. arXiv:2403.04824. Retrieved May 29, 2026 from https://arxiv.org/abs/2403.04824"
+    }
+  ],
+  "sections": [
+    {
+      "id": "07-minecraft-ai-education#ai-minecraft-ai",
+      "heading": "AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ",
+      "level": 1,
+      "citation_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "evidence_refs": [
+        "07-minecraft-ai-education-ref-01",
+        "07-minecraft-ai-education-ref-02",
+        "07-minecraft-ai-education-ref-03",
+        "07-minecraft-ai-education-ref-04",
+        "07-minecraft-ai-education-ref-05",
+        "07-minecraft-ai-education-ref-06",
+        "07-minecraft-ai-education-ref-07",
+        "07-minecraft-ai-education-ref-08",
+        "07-minecraft-ai-education-ref-09",
+        "07-minecraft-ai-education-ref-10",
+        "07-minecraft-ai-education-ref-11",
+        "07-minecraft-ai-education-ref-12"
+      ],
+      "figure_ids": [
+        "07-nagasaki-minecraft-world",
+        "07-children-work"
+      ],
+      "text_preview": "> 仮想空間で記憶を再構成し，創造とAIリテラシーを育てる学び ![長崎のMinecraftワールド](../assets/07-minecraft-ai-education/nagasaki-minecraft-world.jpg) *図1. 長崎のMinecraftワールド* Minecraftは単なるゲームではなく，子どもや若者が世界を構築し，過去を再現し，未来を構想するための学習環境として注目されている。ブロックを積み上げる直感的な操作は，専門的なプログラミング経験の有無にかかわらず参加者を創作に導く。そこにAIが加わることで，歴史資料の読み解き，画像のカラー化，仮想空間内のエージェント操作，生成AIを用いたストーリーテリン"
+    },
+    {
+      "id": "07-minecraft-ai-education#section",
+      "heading": "参考文献・関連資料",
+      "level": 2,
+      "citation_numbers": [],
+      "evidence_refs": [],
+      "figure_ids": [],
+      "text_preview": "1. UNESCO. 2023. Guidance for generative AI in education and research. UNESCO. Retrieved May 29, 2026 from https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research 2. UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 29, 2026 from https://www.unesco.org/en/articles/ai-com"
+    },
+    {
+      "id": "07-minecraft-ai-education#section",
+      "heading": "メタデータ",
+      "level": 2,
+      "citation_numbers": [],
+      "evidence_refs": [],
+      "figure_ids": [],
+      "text_preview": "| 項目 | 内容 | | --- | --- | | ID | `07-minecraft-ai-education` | | プロジェクト | AIとクリエイティブと教育 | | 日付 | 2026-05-27 | | バージョン | 1.0.0 | | 種別 | report | | 概要 | MinecraftとAIを、記憶継承・地域学習・創造・AIリテラシーを横断する学習空間として整理。 | | 著者 | 片山実咲<br>渡邉英徳 | | 想定読者 | Minecraft Educationやゲームベース学習を授業に取り入れたい小中高・大学教員<br>平和教育・地域学習・災害復興学習で仮想空間制作を活用したい教育実践者<b"
+    }
+  ],
+  "risk_notes": [
+    "このsidecarはAI用の構造化補助であり、本文の正本はsource_mdにある。",
+    "引用番号はsource_md内の参考文献登場順に対応する。",
+    "図版を説明するときはfigures.pathだけでなくalt/caption/license_noteも確認する。"
+  ]
+}
+
+
+---
 references/references.bib
 ---
 % References for AIとクリエイティブと教育
@@ -4752,7 +6541,7 @@ README.md
 
 本リポジトリは、東京大学大学院 渡邉英徳研究室と関係者が蓄積してきた、AI・クリエイティブ・教育に関する研究資料、実践記録、参考文献をもとにした公開レポート集です。生成AIが資料群を整理し、著者との対話を通じて論点を編み直し、ヒトが根拠、文脈、表現を確認しながらMarkdown本文として編集しています。
 
-このリポジトリには、二つの入口があります。一つは、ヒトが読むための文章です。`index.html`、`README.md`、`reports/` は、生成AI時代の授業、探究学習、ワークショップ、教育サービス企画を考えるために読みやすく整えています。もう一つは、AIに読み込ませるためのデータパッケージです。`ai/notebooklm-source.txt`、`ai/llms.txt`、`metadata/`、`references/` は、AIエージェント、AI読解ツール、RAGが本文、メタデータ、検索用チャンク、出典をたどれるようにまとめています。
+このリポジトリには、二つの入口があります。一つは、ヒトが読むための文章です。`index.html`、`README.md`、`reports/` は、生成AI時代の授業、探究学習、ワークショップ、教育サービス企画を考えるために読みやすく整えています。もう一つは、AIに読み込ませるためのデータパッケージです。`ai/manifest.json`、`ai/system-instructions.md`、`ai/rag/chunks.jsonl`、`metadata/report-sidecars/`、`references/` は、AIエージェント、AI読解ツール、RAGが本文、メタデータ、検索用チャンク、出典をたどれるようにまとめています。
 
 基本的な使い方は、先にヒトが全体像を読み、次にAIへデータパッケージを読み込ませ、そのあと `prompts/` のプロンプトで授業案、研修案、サービス企画、ロードマップを作る流れです。AIの出力は完成品ではなく、本文と参考文献に照らしてヒトが検証し、目的に合わせて編集するためのたたき台として扱います。
 
@@ -4764,7 +6553,7 @@ README.md
 
 1. `index.html` または `README.md` で全体像を読む。
 2. 必要に応じて `reports/` の個別レポートを読み、使いたいテーマを決める。
-3. AI読解ツールや対話型生成AIに `ai/notebooklm-source.txt` を読み込ませる。軽く試す場合は `ai/llms.txt` や `ai/llms-full.md` から始める。
+3. AI読解ツールや対話型生成AIに `ai/system-instructions.md` と `ai/context-brief.md` を渡す。全文をまとめて読み込ませる場合は `ai/notebooklm-source.txt` を使う。
 4. 目的に近い `prompts/` のプロンプトを貼り付け、学年、教科、対象者、時間数、成果物などの条件を加える。
 5. 出力された授業案、研修案、企画案、ロードマップを、レポート本文、メタデータ、参考文献に照らして確認し、ヒトが編集する。
 
@@ -4782,25 +6571,30 @@ README.md
 | ヒトが全体像を把握する | [`README.md`](README.md) | このリポジトリの目的、構造、利用法、主要リソースの案内 |
 | AIに最初の案内を渡す | [`ai/llms.txt`](ai/llms.txt) | AI向けの短い索引と重要ファイル一覧 |
 | AIにレポート群の要約を渡す | [`ai/llms-full.md`](ai/llms-full.md) | 各レポートの要約、テーマ、利用想定、メタデータの統合版 |
+| AIに読解ルールを渡す | [`ai/system-instructions.md`](ai/system-instructions.md) | 読む順序、回答ルール、推測や引用の扱い |
+| AIにパッケージ全体を知らせる | [`ai/manifest.json`](ai/manifest.json) | 正本、派生ファイル、sidecar、RAGチャンクの索引 |
+| AIに短い全体像を渡す | [`ai/context-brief.md`](ai/context-brief.md) | 最初に読むプロジェクト概要とレポート一覧 |
+| AIに詳しい全体像を渡す | [`ai/context-full.md`](ai/context-full.md) | レポート別の要旨、示唆、活用場面、実装案 |
 | AI読解ツールに全文を渡す | [`ai/notebooklm-source.txt`](ai/notebooklm-source.txt) | レポート本文、プロンプト、メタデータ、参考文献をまとめた単一テキスト |
 | レポート本文を読む、編集する | [`reports/`](reports/) | 各レポートの一次ソース。今後の本文更新はここを直接編集 |
 | 授業案や企画案を生成する | [`prompts/`](prompts/) | 利用目的別のプロンプト例 |
-| RAGや検索に使う | [`metadata/chunks.jsonl`](metadata/chunks.jsonl) | 見出し単位に分割した検索用チャンク |
+| RAGや検索に使う | [`ai/rag/chunks.jsonl`](ai/rag/chunks.jsonl) | 根拠、用途、リスク注記を付けたAI向けチャンク |
+| レポート単位で構造化する | [`metadata/report-sidecars/`](metadata/report-sidecars/) | 本文正本、図版、文献、節構造を結ぶsidecar |
 
 ## ディレクトリ構成
 
 | パス | 役割 |
 | --- | --- |
-| [`ai/`](ai/) | AIに渡す入口ファイル、統合テキスト、AI向け概説 |
+| [`ai/`](ai/) | AIに渡す入口ファイル、統合テキスト、AI向け概説、引用索引、RAGチャンク |
 | [`reports/`](reports/) | レポート本文の一次ソース |
 | [`prompts/`](prompts/) | 授業案、企画案、比較、根拠付き回答などのプロンプト例 |
 | [`web/`](web/) | レポート・プロンプト閲覧アプリのCSSとJavaScript |
-| [`metadata/`](metadata/) | 検索、RAG、AIエージェント向けの構造化データ |
+| [`metadata/`](metadata/) | 検索、RAG、AIエージェント向けの構造化データとレポート別sidecar |
 | [`references/`](references/) | 参考文献・関連資料 |
 | [`assets/`](assets/) | 図版・画像などの視覚資料 |
 | [`config/`](config/) | レポート定義、参照情報、補助設定 |
 | [`templates/`](templates/) | レポート作成時のテンプレート |
-| [`scripts/`](scripts/) | AI読解ツール向け単一テキストなどの更新スクリプト |
+| [`scripts/`](scripts/) | AI向け構造化パッケージ、単一テキスト、閲覧アプリ索引の更新スクリプト |
 | [`.githooks/`](.githooks/) | 自動更新用のGitフック |
 | [`requirements/`](requirements/) | AI向け生成処理に必要な依存関係 |
 
@@ -4816,7 +6610,7 @@ README.md
 AIやRAGでは、次の用途で使えます。
 
 - AI読解ツールや対話型生成AIに読み込ませ、レポートに根拠を置いた授業案、企画案、比較表、ロードマップを作る。
-- `metadata/chunks.jsonl`、`metadata/reports.json`、`metadata/concept-schema.json` を使って、検索、RAG、AIエージェント向けの知識ベースを組む。
+- `ai/rag/chunks.jsonl`、`metadata/report-sidecars/`、`metadata/reports.json`、`metadata/concept-schema.json` を使って、検索、RAG、AIエージェント向けの知識ベースを組む。
 - `prompts/` のプロンプトを使い、出典付き回答、授業案、サービス企画、アイデア発想を行う。
 - 回答時に、本文、メタデータ、参考文献のどこに根拠があるかを確認する。
 
@@ -4837,7 +6631,7 @@ AIやRAGでは、次の用途で使えます。
 
 ## プロンプト例
 
-各プロンプトは [`prompts/`](prompts/) にあります。AI読解ツールや対話型生成AIに `ai/notebooklm-source.txt`、`ai/llms.txt`、`metadata/`、`reports/` を読み込ませたうえで、目的に近いプロンプトを貼り付けて使ってください。
+各プロンプトは [`prompts/`](prompts/) にあります。AI読解ツールや対話型生成AIに `ai/system-instructions.md`、`ai/context-brief.md`、`ai/rag/chunks.jsonl`、`metadata/report-sidecars/`、`reports/` を読み込ませたうえで、目的に近いプロンプトを貼り付けて使ってください。単一ファイルで渡したい場合は、互換パッケージとして `ai/notebooklm-source.txt` を使えます。
 
 | プロンプト | 用途 |
 | --- | --- |
@@ -4848,7 +6642,7 @@ AIやRAGでは、次の用途で使えます。
 | [エクスカーション法アイデア創出プロンプト](prompts/excursion-ideation.md) | 遠い領域の特徴を借りて発想を広げる |
 | [実装ロードマップ生成プロンプト](prompts/implementation-roadmap.md) | 30日、90日、180日の導入計画を作る |
 | [レポート横断比較プロンプト](prompts/cross-report-comparison.md) | 複数レポートの共通点、差異、補完関係を比較する |
-| [根拠付き回答プロンプト](prompts/citation-answering.md) | `metadata/chunks.jsonl` などを根拠に、出典付きで回答する |
+| [根拠付き回答プロンプト](prompts/citation-answering.md) | `ai/rag/chunks.jsonl` などを根拠に、出典付きで回答する |
 | [計画立案テンプレート](prompts/planning-template.md) | 授業、研修、企画を手早く構造化するための空欄テンプレート |
 
 ## ウェブアプリで読む
@@ -4871,15 +6665,16 @@ scripts/update_web_manifest.sh
 
 ## AI向けデータパッケージの使い方
 
-AIにリポジトリを読ませるときは、資料そのものと依頼文を分けて扱うと安定します。先にデータパッケージを読み込ませ、AIがレポート本文、メタデータ、参考文献を参照できる状態にします。そのあとで、`prompts/` のプロンプトを使って、授業案、研修案、サービス企画、比較表、ロードマップなどの出力形式を指定します。
+AIにリポジトリを読ませるときは、資料そのものと依頼文を分けて扱うと安定します。先にデータパッケージを読み込ませ、AIが読む順序、レポート本文、メタデータ、引用、図版、検索用チャンクを参照できる状態にします。そのあとで、`prompts/` のプロンプトを使って、授業案、研修案、サービス企画、比較表、ロードマップなどの出力形式を指定します。
 
 用途に応じて、最初に渡す資料を選びます。
 
-1. 全体像だけ必要な場合: [`ai/llms.txt`](ai/llms.txt)
-2. レポート群の要約とテーマも必要な場合: [`ai/llms-full.md`](ai/llms-full.md)
-3. AI読解ツールで全文検索・質問応答をしたい場合: [`ai/notebooklm-source.txt`](ai/notebooklm-source.txt)
-4. RAGや検索システムに組み込む場合: [`metadata/chunks.jsonl`](metadata/chunks.jsonl)
-5. 出典や図版も扱う場合: [`references/references.md`](references/references.md)、[`metadata/figures.json`](metadata/figures.json)
+1. 読む順序と回答ルールを指定する場合: [`ai/system-instructions.md`](ai/system-instructions.md)
+2. 全体像だけ必要な場合: [`ai/context-brief.md`](ai/context-brief.md)
+3. レポート群の詳しい要約と用途が必要な場合: [`ai/context-full.md`](ai/context-full.md)
+4. AI読解ツールで全文検索・質問応答をしたい場合: [`ai/notebooklm-source.txt`](ai/notebooklm-source.txt)
+5. RAGや検索システムに組み込む場合: [`ai/rag/chunks.jsonl`](ai/rag/chunks.jsonl)
+6. 出典や図版も扱う場合: [`ai/citations.json`](ai/citations.json)、[`metadata/report-sidecars/`](metadata/report-sidecars/)、[`metadata/figures.json`](metadata/figures.json)
 
 次に、目的に近いプロンプトを選びます。
 
@@ -4898,7 +6693,7 @@ AIには、たとえば次のように指示してください。
 ```text
 この資料群は「AIとクリエイティブと教育」に関する公開レポート集です。
 東京大学大学院 渡邉英徳研究室と関係者の実践・研究リソースをもとに、生成AIとの対話を通じて編集されています。
-回答では reports/ の本文、metadata/chunks.jsonl、references/ を根拠にしてください。
+回答では reports/ の本文、ai/rag/chunks.jsonl、ai/citations.json、metadata/report-sidecars/ を根拠にしてください。
 本文にない情報を補う場合は、推測または外部知識であることを明示してください。
 授業案、研修案、サービス企画を作る場合は、prompts/ の該当プロンプトの形式に従い、どのレポートに基づく提案かを示してください。
 ```
@@ -4908,7 +6703,10 @@ AIには、たとえば次のように指示してください。
 | ファイル | 役割 |
 | --- | --- |
 | [`metadata/reports.json`](metadata/reports.json) | レポートID、タイトル、概要、著者、想定読者、テーマ、活用場面などの機械可読索引 |
-| [`metadata/chunks.jsonl`](metadata/chunks.jsonl) | レポート本文を見出し単位に分割した検索・RAG用データ |
+| [`metadata/chunks.jsonl`](metadata/chunks.jsonl) | レポート本文を見出し単位に分割した基礎チャンク |
+| [`metadata/report-sidecars/`](metadata/report-sidecars/) | レポート単位のAI用構造化補助。本文正本、節、図版、文献、注意点を結ぶ |
+| [`ai/rag/chunks.jsonl`](ai/rag/chunks.jsonl) | 基礎チャンクに根拠ID、用途、リスク注記を付けたRAG用データ |
+| [`ai/citations.json`](ai/citations.json) | 本文中の文献番号とレポート別参考文献を結ぶ引用索引 |
 | [`metadata/concept-schema.json`](metadata/concept-schema.json) | `concept_alignment` の固定語彙と分類軸 |
 | [`metadata/glossary.json`](metadata/glossary.json) | 用語の揺れを抑えるための用語集 |
 | [`metadata/figures.json`](metadata/figures.json) | 図版のキャプション、代替テキスト、出典メモ |
@@ -4917,7 +6715,7 @@ AIには、たとえば次のように指示してください。
 
 ## AI読解ツール向け単一テキスト
 
-[`ai/notebooklm-source.txt`](ai/notebooklm-source.txt) は、AI読解ツールにリポジトリ全体を読み込ませるための単一テキストです。画像、動画、PDF、`.git`、生成ファイル自身を除外し、レポート本文、プロンプト、メタデータ、参考文献をまとめています。
+[`ai/notebooklm-source.txt`](ai/notebooklm-source.txt) は、AI読解ツールにリポジトリ全体を読み込ませるための単一テキストです。画像、動画、PDF、`.git`、生成ファイル自身を除外し、レポート本文、プロンプト、メタデータ、参考文献、AI向け構造化パッケージをまとめています。
 
 AI読解ツールが内容を見つけやすいよう、生成時には次のルールを維持します。
 
@@ -4931,11 +6729,12 @@ AI読解ツールが内容を見つけやすいよう、生成時には次のル
 
 ```sh
 python3 -m pip install --user -r requirements/ai.txt
+python3 scripts/build_ai_package.py
 scripts/update_web_manifest.sh
 scripts/update_notebooklm_source.sh
 ```
 
-このリポジトリでは Git フックを `.githooks/` に置いています。次のコマンドを一度実行すると、コミット前、マージ後、ブランチ切り替え後に `config/web_content.json` と `ai/notebooklm-source.txt` が自動更新されます。
+このリポジトリでは Git フックを `.githooks/` に置いています。次のコマンドを一度実行すると、コミット前、マージ後、ブランチ切り替え後に `config/web_content.json`、`ai/` 配下のAI向け構造化ファイル、`metadata/report-sidecars/`、`ai/notebooklm-source.txt` が自動更新されます。
 
 ```sh
 scripts/setup_git_hooks.sh
@@ -4946,9 +6745,10 @@ scripts/setup_git_hooks.sh
 - レポート本文は [`reports/`](reports/) 配下の `.md` を直接編集します。
 - プロンプト例は [`prompts/`](prompts/) 配下の `.md` を直接編集します。
 - Wordファイルからレポートを再生成する仕組みは使いません。
+- レポート、参考文献、図版、メタデータを更新したら、`python3 scripts/build_ai_package.py` を実行し、`ai/manifest.json`、`ai/rag/chunks.jsonl`、`metadata/report-sidecars/` に反映してください。
 - レポートやプロンプトの `.md` を追加・削除したら、`scripts/update_web_manifest.sh` を実行し、`config/web_content.json` に反映してください。
 - READMEやウェブアプリを更新したら、必要に応じて `scripts/update_notebooklm_source.sh` を実行し、`ai/notebooklm-source.txt` に反映してください。
-- 図版やメタデータを追加した場合は、`metadata/figures.json`、`metadata/reports.json`、`metadata/chunks.jsonl` との整合を確認してください。
+- 図版やメタデータを追加した場合は、`metadata/figures.json`、`metadata/reports.json`、`metadata/chunks.jsonl`、`metadata/report-sidecars/` との整合を確認してください。
 
 ## ライセンス
 
@@ -4980,6 +6780,1066 @@ scripts/setup_git_hooks.sh
 
 
 ---
+ai/manifest.json
+---
+{
+  "schema": "aice.ai_package_manifest.v1",
+  "project": {
+    "title": "AIとクリエイティブと教育",
+    "description": "生成AI時代の創造性教育プロジェクト",
+    "version": "1.0.0",
+    "date": "2026-05-27",
+    "license": "CC BY 4.0",
+    "audience": [
+      "教育関係者",
+      "教育ソリューション提供企業",
+      "AI時代の教育・創造性・情報リテラシーに関心を持つ研究者と実践者"
+    ],
+    "authors": [
+      {
+        "affiliation": "東京大学 大学院情報学環・学際情報学府",
+        "members": [
+          "教授 [渡邉英徳](https://researchmap.jp/hwtnv)",
+          "特任准教授 [原田真喜子](https://researchmap.jp/kokima)（都留文科大学 地域交流研究センター 特任講師）",
+          "博士後期課程 [小松尚平](https://researchmap.jp/komanbe)",
+          "博士後期課程 [片山実咲](https://researchmap.jp/misaki_katayama)",
+          "博士後期課程 [楊欽](https://researchmap.jp/kevinyang)",
+          "博士後期課程 [森吉蓉子](https://researchmap.jp/ymoriyos)"
+        ]
+      },
+      {
+        "affiliation": "同志社大学 文化情報学府",
+        "members": [
+          "准教授 [大井将生](https://researchmap.jp/m-oi)"
+        ]
+      }
+    ],
+    "ai_collaborators": [
+      {
+        "name": "対話型生成AI"
+      },
+      {
+        "name": "長文読解支援AI"
+      },
+      {
+        "name": "コード生成支援AI"
+      },
+      {
+        "name": "AIペアプログラミング支援ツール"
+      }
+    ],
+    "support_statement": "このプロジェクトは日本マイクロソフト株式会社の支援を受けて実施されています。"
+  },
+  "source_of_truth": {
+    "human_markdown": "reports/*.md",
+    "report_config": "config/reports.json",
+    "references": "config/report_references.json",
+    "figures": "metadata/figures.json"
+  },
+  "ai_first_outputs": [
+    "ai/system-instructions.md",
+    "ai/context-brief.md",
+    "ai/context-full.md",
+    "ai/citations.json",
+    "ai/rag/chunks.jsonl",
+    "metadata/report-sidecars/*.json"
+  ],
+  "reports": [
+    {
+      "id": "00-overview",
+      "title": "AIとクリエイティブと教育 総括レポート",
+      "source_md": "reports/00-overview.md",
+      "sidecar": "metadata/report-sidecars/00-overview.json"
+    },
+    {
+      "id": "01-information-visualization-osint",
+      "title": "AIと情報可視化・OSINT教育",
+      "source_md": "reports/01-information-visualization-osint.md",
+      "sidecar": "metadata/report-sidecars/01-information-visualization-osint.json"
+    },
+    {
+      "id": "02-photo-colorization-peace-education",
+      "title": "AIによるモノクロ写真カラー化を活かした高校生の平和教育実践",
+      "source_md": "reports/02-photo-colorization-peace-education.md",
+      "sidecar": "metadata/report-sidecars/02-photo-colorization-peace-education.json"
+    },
+    {
+      "id": "03-digital-citizenship",
+      "title": "AIを活かしたデジタルシティズンシップ教育",
+      "source_md": "reports/03-digital-citizenship.md",
+      "sidecar": "metadata/report-sidecars/03-digital-citizenship.json"
+    },
+    {
+      "id": "04-student-hackathon",
+      "title": "AI時代の学生ハッカソン：実装の民主化と発想力への転換",
+      "source_md": "reports/04-student-hackathon.md",
+      "sidecar": "metadata/report-sidecars/04-student-hackathon.json"
+    },
+    {
+      "id": "05-digital-archive-ai",
+      "title": "デジタルアーカイブとAIを活かした教育実践",
+      "source_md": "reports/05-digital-archive-ai.md",
+      "sidecar": "metadata/report-sidecars/05-digital-archive-ai.json"
+    },
+    {
+      "id": "06-sf-prototyping",
+      "title": "生成AIを用いたSFプロトタイピング",
+      "source_md": "reports/06-sf-prototyping.md",
+      "sidecar": "metadata/report-sidecars/06-sf-prototyping.json"
+    },
+    {
+      "id": "07-minecraft-ai-education",
+      "title": "AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ",
+      "source_md": "reports/07-minecraft-ai-education.md",
+      "sidecar": "metadata/report-sidecars/07-minecraft-ai-education.json"
+    }
+  ],
+  "human_verification_required": true
+}
+
+
+---
+ai/system-instructions.md
+---
+# AI System Instructions: AIとクリエイティブと教育
+
+このファイルは、AIが本リポジトリを読むときの優先順位と禁止事項を定める。
+
+## 読む順序
+
+1. `ai/manifest.json` で利用可能なAI向けファイルを把握する。
+2. 全体像は `ai/context-brief.md` を読む。
+3. 詳細な根拠は `metadata/report-sidecars/*.json` と `ai/rag/chunks.jsonl` を読む。
+4. 人間向けの正本確認が必要な場合は `reports/*.md` を読む。
+5. 出典確認は `ai/citations.json` と `references/references.md` を使う。
+
+## 回答ルール
+
+- 本文・メタデータ・参考文献にないことは、推測として明示する。
+- 授業案、研修案、サービス企画を出す場合は、根拠にした `report_id` と `evidence_refs` を示す。
+- AI出力を完成版として扱わず、人間による検証・編集が必要であることを前提にする。
+- 図版について述べる場合は、画像パスだけでなく `metadata/figures.json` の `alt`、`caption`、`license_note` を確認する。
+- プロジェクト概要ではAIサービスの商品名を出さず、必要な場合は「対話型生成AI」「AI読解ツール」「コード生成支援AI」などの一般名詞で述べる。
+- レポート本文・参考文献に含まれる固有名詞は、出典や事例の正確性に関わるため、一般化せず出典として扱う。
+
+## 重要な制約
+
+- `reports/*.md` が人間向けHTML版の本文正本である。
+- `metadata/report-sidecars/*.json` はAI用の構造化補助であり、本文の代替ではない。
+- `ai/rag/chunks.jsonl` は検索・RAG用であり、チャンク単体で結論を断定しない。
+- `ai/notebooklm-source.txt` は単一テキスト読解ツール向けの互換パッケージである。
+
+
+---
+ai/context-brief.md
+---
+# AI Context Brief: AIとクリエイティブと教育
+
+## プロジェクト概要
+
+生成AI時代の創造性教育を、問い・資料読解・制作・検証・社会発信をつなぐ学びとして整理する公開プロジェクト。
+人間向けにはMarkdownレポートとHTML閲覧アプリを、AI向けには構造化メタデータ、RAGチャンク、引用対応、用途別プロンプトを提供する。
+
+## AIに渡すときの最短ルート
+
+1. この `ai/context-brief.md` で全体像を把握する。
+2. `ai/system-instructions.md` の回答ルールを守る。
+3. 根拠が必要な回答では `ai/rag/chunks.jsonl` と `ai/citations.json` を使う。
+4. 重要な判断では `reports/*.md` の本文を確認する。
+
+## レポート一覧
+
+### 00-overview: AIとクリエイティブと教育 総括レポート
+
+- 要旨: 生成AI時代の教育を、問い・資料読解・制作・検証・社会発信をつなぐ創造性教育として整理。
+- 著者: 渡邉英徳
+- 主なテーマ: 生成AI, 創造性, 教育実践, 総括
+- 想定読者: 生成AI時代の教育方針を検討する学校管理職・教育委員会担当者, AI・創造性・情報リテラシーを横断するカリキュラム設計者, 教育ソリューションやEdTechサービスの企画担当者, AIと教育実践の全体像を把握したい研究者・実践者
+- 正本: `reports/00-overview.md`
+- AI sidecar: `metadata/report-sidecars/00-overview.json`
+
+### 01-information-visualization-osint: AIと情報可視化・OSINT教育
+
+- 要旨: GIS・データ可視化・OSINTを通じて、公開情報を検証し社会へ伝える情報メディア教育モデル。
+- 著者: 渡邉英徳
+- 主なテーマ: 生成AI, 情報可視化, OSINT, 探究学習
+- 想定読者: 情報・メディア・探究学習を担当する高校・大学教員, データ可視化、GIS、デジタルアーカイブを授業に取り入れたい教育者, OSINTや調査報道の基礎を教育・研修化したい報道関係者, 公開情報の検証と社会的説明を扱う教材・サービス企画者
+- 正本: `reports/01-information-visualization-osint.md`
+- AI sidecar: `metadata/report-sidecars/01-information-visualization-osint.json`
+
+### 02-photo-colorization-peace-education: AIによるモノクロ写真カラー化を活かした高校生の平和教育実践
+
+- 要旨: AIカラー化を、写真資料・証言・地域の記憶をつなぐ平和教育と記憶継承の探究へ展開。
+- 著者: 森吉蓉子, 渡邉英徳
+- 主なテーマ: 生成AI, 写真カラー化, 平和教育, 歴史学習
+- 想定読者: 平和教育・歴史教育・地域学習を担当する中学・高校教員, 写真資料や証言を活用する博物館・資料館・地域アーカイブ担当者, AIカラー化を探究学習や記憶継承に活かしたい教育実践者, 生徒の成果発信や社会連携型プロジェクトを支援する担当者
+- 正本: `reports/02-photo-colorization-peace-education.md`
+- AI sidecar: `metadata/report-sidecars/02-photo-colorization-peace-education.json`
+
+### 03-digital-citizenship: AIを活かしたデジタルシティズンシップ教育
+
+- 要旨: AIの禁止・管理を超え、判断・参加・公共性を育てるデジタルシティズンシップ教育。
+- 著者: 原田真喜子
+- 主なテーマ: 生成AI, デジタルシティズンシップ, AIリテラシー, 情報モラル
+- 想定読者: 小中高の情報活用能力・情報モラル・ICT活用を担当する教員, デジタルシティズンシップ教育のカリキュラム設計者, 生成AI利用ルールや校内研修を設計する学校管理職・ICT担当者, AIリテラシー教材や安全な学習環境を開発する教育サービス担当者
+- 正本: `reports/03-digital-citizenship.md`
+- AI sidecar: `metadata/report-sidecars/03-digital-citizenship.json`
+
+### 04-student-hackathon: AI時代の学生ハッカソン：実装の民主化と発想力への転換
+
+- 要旨: 生成AIで実装負荷が下がる時代の学生ハッカソンを、課題設定と発想力の学びとして再定義。
+- 著者: 小松尚平, 渡邉英徳
+- 主なテーマ: 生成AI, ハッカソン, プロトタイピング, 実装教育
+- 想定読者: 大学・高専・高校でハッカソンやPBLを運営する教職員, AIを用いたプロトタイピング教育を設計するメンター・ファシリテーター, 学生起業、地域課題解決、産学連携プログラムの企画担当者, 生成AI時代の開発教育や創造性評価に関心を持つ実践者
+- 正本: `reports/04-student-hackathon.md`
+- AI sidecar: `metadata/report-sidecars/04-student-hackathon.json`
+
+### 05-digital-archive-ai: デジタルアーカイブとAIを活かした教育実践
+
+- 要旨: デジタルアーカイブと生成AIを組み合わせ、一次資料を用いた探究と社会発信を支える教育実践。
+- 著者: 大井将生
+- 主なテーマ: 生成AI, デジタルアーカイブ, 教育実践, 資料活用
+- 想定読者: 学校教育で一次資料や地域資料を活用したい教員, デジタルアーカイブの教育利用を進める図書館・博物館・自治体担当者, 探究学習、キュレーション授業、教材アーカイブを設計する教育者, AIと資料検索・要約・再編集を組み合わせた学習サービス企画者
+- 正本: `reports/05-digital-archive-ai.md`
+- AI sidecar: `metadata/report-sidecars/05-digital-archive-ai.json`
+
+### 06-sf-prototyping: 生成AIを用いたSFプロトタイピング
+
+- 要旨: 生成AIで未来シナリオを素早く仮設し、人間が批判・修正するSFプロトタイピングの教育活用。
+- 著者: 楊欽, 渡邉英徳
+- 主なテーマ: 生成AI, SFプロトタイピング, 未来構想, 創造性教育
+- 想定読者: 未来構想・探究学習・創造性教育を担当する大学・高校教員, 産学協創、企業研修、ワークショップを設計するファシリテーター, 新規事業開発やビジョン策定にSFプロトタイピングを使いたい企画担当者, 生成AIを用いた物語生成・合意形成・アイデア創出に関心を持つ実践者
+- 正本: `reports/06-sf-prototyping.md`
+- AI sidecar: `metadata/report-sidecars/06-sf-prototyping.json`
+
+### 07-minecraft-ai-education: AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ
+
+- 要旨: MinecraftとAIを、記憶継承・地域学習・創造・AIリテラシーを横断する学習空間として整理。
+- 著者: 片山実咲, 渡邉英徳
+- 主なテーマ: 生成AI, Minecraft, ゲームベース学習, AIリテラシー, 記憶継承
+- 想定読者: Minecraft Educationやゲームベース学習を授業に取り入れたい小中高・大学教員, 平和教育・地域学習・災害復興学習で仮想空間制作を活用したい教育実践者, AIリテラシー，プログラミング，デジタルシティズンシップを横断する教材設計者, Minecraftや生成AIを活用した学習サービス・ワークショップの企画担当者
+- 正本: `reports/07-minecraft-ai-education.md`
+- AI sidecar: `metadata/report-sidecars/07-minecraft-ai-education.json`
+
+
+---
+ai/context-full.md
+---
+# AI Context Full: AIとクリエイティブと教育
+
+このファイルは、AIが本文へ入る前に読む構造化サマリーである。本文の正本は `reports/*.md` にある。
+
+## プロジェクト
+
+- タイトル: AIとクリエイティブと教育
+- 説明: 生成AI時代の創造性教育プロジェクト
+- ライセンス: CC BY 4.0
+- 支援表記: このプロジェクトは日本マイクロソフト株式会社の支援を受けて実施されています。
+
+## 00-overview: AIとクリエイティブと教育 総括レポート
+
+- 種別: overview
+- 正本Markdown: `reports/00-overview.md`
+- Sidecar: `metadata/report-sidecars/00-overview.json`
+- 要旨: 生成AI時代の教育を、問い・資料読解・制作・検証・社会発信をつなぐ創造性教育として整理。
+- 著者: 渡邉英徳
+- 想定読者: 生成AI時代の教育方針を検討する学校管理職・教育委員会担当者, AI・創造性・情報リテラシーを横断するカリキュラム設計者, 教育ソリューションやEdTechサービスの企画担当者, AIと教育実践の全体像を把握したい研究者・実践者
+- テーマ: 生成AI, 創造性, 教育実践, 総括
+- キーワード: AIと教育, クリエイティブ, 学習設計, 教育実践
+
+### 主要示唆
+- 生成AIにより制作や調査のハードルが下がるほど、問いの設定と社会的価値への接続が重要になる。
+- AIは効率化ツールだけでなく、構想・検証・編集を支える伴走者として設計する必要がある。
+- 七つの実践は、創造性教育を技能習得から判断・編集・発信の学習へ広げる視点を共有している。
+
+### 活用場面
+- 生成AI時代の教育方針や校内研修の導入資料
+- AI・創造性・情報リテラシーを横断するカリキュラム設計
+- EdTechサービスや教材企画の論点整理
+- 複数レポートを比較するRAG・AIエージェントの入口
+
+### 学習活動案
+- 各レポートの共通概念をマッピングし、AI活用教育の全体像を整理する。
+- AIに任せる作業と人間が判断する作業を分類し、授業設計原則を作る。
+- レポート群を比較し、学校・地域・企業研修に応用できる実践案を提案する。
+
+### 実装アイデア
+- 90分の教員研修で、レポート群をもとに自校のAI活用方針を検討する。
+- 教育委員会や学校向けに、生成AI活用のカリキュラム横断マップを作成する。
+- AIエージェントに読み込ませる基礎資料として、授業案・研修案・サービス案の生成に使う。
+
+## 01-information-visualization-osint: AIと情報可視化・OSINT教育
+
+- 種別: report
+- 正本Markdown: `reports/01-information-visualization-osint.md`
+- Sidecar: `metadata/report-sidecars/01-information-visualization-osint.json`
+- 要旨: GIS・データ可視化・OSINTを通じて、公開情報を検証し社会へ伝える情報メディア教育モデル。
+- 著者: 渡邉英徳
+- 想定読者: 情報・メディア・探究学習を担当する高校・大学教員, データ可視化、GIS、デジタルアーカイブを授業に取り入れたい教育者, OSINTや調査報道の基礎を教育・研修化したい報道関係者, 公開情報の検証と社会的説明を扱う教材・サービス企画者
+- テーマ: 生成AI, 情報可視化, OSINT, 探究学習
+- キーワード: 情報可視化, OSINT, メディアリテラシー, 探究学習
+
+### 主要示唆
+- GIS、データ可視化、OSINTは、公開情報を検証可能な形で読み解く情報メディア教育の中核になる。
+- AIは結論を代行するのではなく、観察、仮説比較、説明の点検を支援する対話的編集者として使う。
+- 読売新聞への学術指導や日本テレビとの共同研究事例は、教育・報道・社会課題を接続する実践モデルになる。
+
+### 活用場面
+- 高校・大学のGIS、データ可視化、OSINT授業
+- 報道機関や自治体と連携した公開情報検証ワークショップ
+- 災害、地域課題、都市分析を扱う探究学習
+- 情報可視化教材や調査支援サービスの企画
+
+### 学習活動案
+- 地域の公開データを地図化し、分布や偏りについてAIと対話しながら仮説を作る。
+- ニュースやSNS投稿の位置情報・時系列・出典を検証し、確実に言えることと推測を分ける。
+- 地図、グラフ、テキストを組み合わせ、第三者に説明可能な調査レポートを作成する。
+
+### 実装アイデア
+- GIS作品例を使った導入ワークショップを設計し、地図表現の読み解きから始める。
+- OSINT検証ラボとして、公開情報の収集、照合、説明文作成、AIによる推論チェックを行う。
+- 報道機関や自治体と連携し、地域課題を扱うデータストーリーテリング課題を実施する。
+
+## 02-photo-colorization-peace-education: AIによるモノクロ写真カラー化を活かした高校生の平和教育実践
+
+- 種別: report
+- 正本Markdown: `reports/02-photo-colorization-peace-education.md`
+- Sidecar: `metadata/report-sidecars/02-photo-colorization-peace-education.json`
+- 要旨: AIカラー化を、写真資料・証言・地域の記憶をつなぐ平和教育と記憶継承の探究へ展開。
+- 著者: 森吉蓉子, 渡邉英徳
+- 想定読者: 平和教育・歴史教育・地域学習を担当する中学・高校教員, 写真資料や証言を活用する博物館・資料館・地域アーカイブ担当者, AIカラー化を探究学習や記憶継承に活かしたい教育実践者, 生徒の成果発信や社会連携型プロジェクトを支援する担当者
+- テーマ: 生成AI, 写真カラー化, 平和教育, 歴史学習
+- キーワード: 写真カラー化, 平和教育, 高校教育, 歴史資料
+
+### 主要示唆
+- AIカラー化は過去を正確に復元する処理ではなく、資料批判と対話を促す探究の入口になる。
+- 高校生が写真、証言、地域の記憶を照合することで、平和教育を受け身の学習から社会発信へ広げられる。
+- AIリテラシーと歴史資料の扱いを結び、記憶継承を若い世代の表現活動として設計できる。
+
+### 活用場面
+- 中学・高校の平和教育、歴史教育、地域学習
+- 博物館・資料館と学校が連携する写真資料活用授業
+- AIカラー化をめぐる資料批判と倫理の教材化
+- 生徒による展示、発表、写真集制作プロジェクト
+
+### 学習活動案
+- 白黒写真を観察し、AIカラー化前後で印象や解釈がどう変わるかを記録する。
+- 証言や専門資料を参照し、AIが生成した色の妥当性と限界を検討する。
+- 写真に添えるキャプションや発表原稿を作り、記憶継承の表現として公開する。
+
+### 実装アイデア
+- 地域資料館と連携し、写真選定、カラー化、検証、展示までを一連の探究にする。
+- 発表風景や制作物の図版を含め、学習成果を外部に説明できるポートフォリオにまとめる。
+- AI利用の透明性、資料出典、証言者への配慮を評価項目に入れたルーブリックを作る。
+
+## 03-digital-citizenship: AIを活かしたデジタルシティズンシップ教育
+
+- 種別: report
+- 正本Markdown: `reports/03-digital-citizenship.md`
+- Sidecar: `metadata/report-sidecars/03-digital-citizenship.json`
+- 要旨: AIの禁止・管理を超え、判断・参加・公共性を育てるデジタルシティズンシップ教育。
+- 著者: 原田真喜子
+- 想定読者: 小中高の情報活用能力・情報モラル・ICT活用を担当する教員, デジタルシティズンシップ教育のカリキュラム設計者, 生成AI利用ルールや校内研修を設計する学校管理職・ICT担当者, AIリテラシー教材や安全な学習環境を開発する教育サービス担当者
+- テーマ: 生成AI, デジタルシティズンシップ, AIリテラシー, 情報モラル
+- キーワード: デジタルシティズンシップ, AIリテラシー, 情報モラル, 教育実践
+
+### 主要示唆
+- 生成AI時代のデジタルシティズンシップは，禁止や管理ではなく，技術社会への判断と参加を学ぶ教育である。
+- AI出力を疑い，根拠を確認し，自分の判断として再構成する経験が中核になる。
+- 知識を獲得・再編集・共有・表出する過程を，公共的価値へ接続する設計が重要になる。
+
+### 活用場面
+- 小中高の情報モラル、ICT活用、AIリテラシー授業
+- 学校の生成AI利用ルールや校内研修の設計
+- 安全な学習環境を備えた教育サービスの企画
+- 生徒の表現活動における倫理・著作権・プライバシー指導
+
+### 学習活動案
+- AIの回答について，根拠，偏り，未確認情報をチェックするワークを行う。
+- プロンプト，出力，修正過程，利用後の判断を記録し，AI利用を検証可能な学習過程として振り返る。
+- 生成物を公開する前に，影響を受ける他者，著作権，個人情報を点検する。
+
+### 実装アイデア
+- 各教科で使えるAI利用チェックリストを作り，授業ごとに更新する。
+- 校内研修で，禁止事項だけでなく判断プロセスを共有するケーススタディを行う。
+- AI教材に，根拠確認，出典表示，公開前レビュー，振り返り記録の流れを組み込む。
+
+## 04-student-hackathon: AI時代の学生ハッカソン：実装の民主化と発想力への転換
+
+- 種別: report
+- 正本Markdown: `reports/04-student-hackathon.md`
+- Sidecar: `metadata/report-sidecars/04-student-hackathon.json`
+- 要旨: 生成AIで実装負荷が下がる時代の学生ハッカソンを、課題設定と発想力の学びとして再定義。
+- 著者: 小松尚平, 渡邉英徳
+- 想定読者: 大学・高専・高校でハッカソンやPBLを運営する教職員, AIを用いたプロトタイピング教育を設計するメンター・ファシリテーター, 学生起業、地域課題解決、産学連携プログラムの企画担当者, 生成AI時代の開発教育や創造性評価に関心を持つ実践者
+- テーマ: 生成AI, ハッカソン, プロトタイピング, 実装教育
+- キーワード: 学生ハッカソン, プロダクト開発, 実装の民主化, 創造性
+
+### 主要示唆
+- 生成AIにより実装のハードルが下がると、ハッカソンの評価軸は課題設定、体験設計、社会的価値へ移る。
+- AIはコード生成やデバッグを支援するが、何を作るか、誰に価値があるかの判断は人間が担う。
+- 学生ハッカソンは、技術競争だけでなく、発想を検証し社会に説明する教育機会として再設計できる。
+
+### 活用場面
+- 大学・高専・高校のハッカソンやPBL設計
+- AIプロトタイピング研修やメンター育成
+- 地域課題解決、学生起業、産学連携プログラム
+- AI時代の創造性評価や成果発表の設計
+
+### 学習活動案
+- AIを用いて複数のプロトタイプ案を作り、利用者価値とリスクで比較する。
+- 生成されたコードやUIを検証し、発想、実装、説明のどこに人間の判断が必要かを振り返る。
+- 発表資料を作る際に、課題、ユーザー、価値、検証結果を明確にする。
+
+### 実装アイデア
+- 短時間のAIプロトタイピング演習を導入し、実装より課題定義と検証を重視する。
+- 審査基準に、社会的価値、利用者理解、AI利用の透明性、検証プロセスを加える。
+- メンター向けに、AI出力を鵜呑みにしないレビュー観点を共有する。
+
+## 05-digital-archive-ai: デジタルアーカイブとAIを活かした教育実践
+
+- 種別: report
+- 正本Markdown: `reports/05-digital-archive-ai.md`
+- Sidecar: `metadata/report-sidecars/05-digital-archive-ai.json`
+- 要旨: デジタルアーカイブと生成AIを組み合わせ、一次資料を用いた探究と社会発信を支える教育実践。
+- 著者: 大井将生
+- 想定読者: 学校教育で一次資料や地域資料を活用したい教員, デジタルアーカイブの教育利用を進める図書館・博物館・自治体担当者, 探究学習、キュレーション授業、教材アーカイブを設計する教育者, AIと資料検索・要約・再編集を組み合わせた学習サービス企画者
+- テーマ: 生成AI, デジタルアーカイブ, 教育実践, 資料活用
+- キーワード: デジタルアーカイブ, 資料活用, 探究学習, AI教育
+
+### 主要示唆
+- デジタルアーカイブは保存基盤にとどまらず、学習者が問いを立て資料を再編集する探究環境になる。
+- AIは検索、要約、比較、表現を支援するが、一次資料性と出典確認を学習活動に組み込む必要がある。
+- 資料活用、AIカラー化、S×UKILAM連携は、学校と文化資源を結ぶ教育実践の基盤になる。
+
+### 活用場面
+- 一次資料や地域資料を活用した探究学習
+- 図書館・博物館・自治体の教育連携プログラム
+- デジタルアーカイブを使う教材・検索支援サービスの企画
+- AIによる資料要約、比較、再編集を扱う授業
+
+### 学習活動案
+- ジャパンサーチ等で資料を探し、出典、作成時期、文脈を確認して問いを立てる。
+- AIに資料の要約や比較をさせ、その妥当性を原資料に戻って検証する。
+- 複数資料を組み合わせ、展示案、教材、地域ストーリーとして再構成する。
+
+### 実装アイデア
+- 学校と図書館・博物館が連携し、地域資料を使う探究単元を設計する。
+- AI検索・要約機能に、出典確認と一次資料へのリンクを必ず表示する設計にする。
+- 学習成果をデジタル展示や教材アーカイブとして蓄積し、次年度の学習資源にする。
+
+## 06-sf-prototyping: 生成AIを用いたSFプロトタイピング
+
+- 種別: report
+- 正本Markdown: `reports/06-sf-prototyping.md`
+- Sidecar: `metadata/report-sidecars/06-sf-prototyping.json`
+- 要旨: 生成AIで未来シナリオを素早く仮設し、人間が批判・修正するSFプロトタイピングの教育活用。
+- 著者: 楊欽, 渡邉英徳
+- 想定読者: 未来構想・探究学習・創造性教育を担当する大学・高校教員, 産学協創、企業研修、ワークショップを設計するファシリテーター, 新規事業開発やビジョン策定にSFプロトタイピングを使いたい企画担当者, 生成AIを用いた物語生成・合意形成・アイデア創出に関心を持つ実践者
+- テーマ: 生成AI, SFプロトタイピング, 未来構想, 創造性教育
+- キーワード: SFプロトタイピング, 未来洞察, 創造性, ワークショップ
+
+### 主要示唆
+- 生成AIは未来社会の物語や世界観を短時間で立ち上げ、SFプロトタイピングの参加ハードルを下げる。
+- 重要なのはAIが出した未来像を批判、修正、再構成し、望ましい未来と避けたい未来を議論することである。
+- SFプロトタイピングは教育、産学協創、事業開発における想像力と合意形成を支援する。
+
+### 活用場面
+- 高校・大学の未来構想、探究学習、創造性教育
+- 企業研修、産学協創、新規事業開発ワークショップ
+- 地域や組織のビジョン策定
+- 生成AIを用いた物語生成・アイデア創出教材
+
+### 学習活動案
+- AIに未来シナリオを複数生成させ、前提、価値観、リスクを読み解く。
+- 参加者が未来像を修正し、望ましい技術利用や社会制度を提案する。
+- SFプロトタイプを短編、新聞記事、サービス広告、政策提案などの形式で表現する。
+
+### 実装アイデア
+- 90分から半日のSFプロトタイピングワークショップを設計し、AI生成と人間の批評を交互に行う。
+- 新規事業や研究テーマ検討で、未来シナリオ、ステークホルダー、倫理的論点を可視化する。
+- 成果物をハッカソンやPBLの課題設定に接続し、プロトタイプ制作へ展開する。
+
+## 07-minecraft-ai-education: AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ
+
+- 種別: report
+- 正本Markdown: `reports/07-minecraft-ai-education.md`
+- Sidecar: `metadata/report-sidecars/07-minecraft-ai-education.json`
+- 要旨: MinecraftとAIを、記憶継承・地域学習・創造・AIリテラシーを横断する学習空間として整理。
+- 著者: 片山実咲, 渡邉英徳
+- 想定読者: Minecraft Educationやゲームベース学習を授業に取り入れたい小中高・大学教員, 平和教育・地域学習・災害復興学習で仮想空間制作を活用したい教育実践者, AIリテラシー，プログラミング，デジタルシティズンシップを横断する教材設計者, Minecraftや生成AIを活用した学習サービス・ワークショップの企画担当者
+- テーマ: 生成AI, Minecraft, ゲームベース学習, AIリテラシー, 記憶継承
+- キーワード: Minecraft Education, Peacecraft, AIリテラシー, ゲームベース学習, 地域学習
+
+### 主要示唆
+- Minecraftは単なるゲームではなく，過去を再現し，地域や未来を構想する共有可能な学習空間になる。
+- AIカラー化，AIエージェント，生成AIによる物語化は，Minecraft内の制作を支える一方で，資料批判と人間の判断を必要とする。
+- 国内のPeacecraft系実践と海外のAIリテラシー教材は，平和教育，地域学習，プログラミング，デジタルシティズンシップを横断するモデルを示している。
+
+### 活用場面
+- Minecraftを用いた平和教育・災害復興学習・地域学習の設計
+- AIエージェントや生成AIを使う小中高向けAIリテラシー授業
+- 教育機関・自治体・企業が連携するゲームベース学習ワークショップ
+- 過去の資料や証言をもとに仮想空間を制作する探究学習
+
+### 学習活動案
+- 白黒写真や証言をもとに，失われた街並みや地域の記憶をMinecraft内で再構築する。
+- AIが生成した色，説明，建築案を資料や証言と照合し，どこまで信頼できるかを検討する。
+- AIエージェントに指示を出し，目的設定，プロンプト，検証，修正の過程を振り返る。
+
+### 実装アイデア
+- 地域資料館や自治体と連携し，写真・地図・証言を使うMinecraft制作ワークショップを実施する。
+- Minecraft Educationの既存AI教材を導入し，デジタルシティズンシップや情報モラルの授業と接続する。
+- 完成した仮想空間を展示・発表し，地域住民や専門家との対話を通じて学習成果を検証する。
+
+
+---
+ai/citations.json
+---
+{
+  "schema": "aice.citations.v1",
+  "rule": "本文中の[1]などの番号はreport_idごとのreferences[number]に対応する。",
+  "items": [
+    {
+      "id": "00-overview-ref-01",
+      "report_id": "00-overview",
+      "report_title": "AIとクリエイティブと教育 総括レポート",
+      "number": 1,
+      "citation": "Bellingcat. n.d. Online Open Source Investigation Toolkit. Bellingcat. Retrieved May 27, 2026 from https://bellingcat.gitbook.io/toolkit",
+      "source_md": "reports/00-overview.md"
+    },
+    {
+      "id": "00-overview-ref-02",
+      "report_id": "00-overview",
+      "report_title": "AIとクリエイティブと教育 総括レポート",
+      "number": 2,
+      "citation": "UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students",
+      "source_md": "reports/00-overview.md"
+    },
+    {
+      "id": "00-overview-ref-03",
+      "report_id": "00-overview",
+      "report_title": "AIとクリエイティブと教育 総括レポート",
+      "number": 3,
+      "citation": "UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum",
+      "source_md": "reports/00-overview.md"
+    },
+    {
+      "id": "00-overview-ref-04",
+      "report_id": "00-overview",
+      "report_title": "AIとクリエイティブと教育 総括レポート",
+      "number": 4,
+      "citation": "UNESCO. n.d. Media and Information Literacy. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/media-information-literacy",
+      "source_md": "reports/00-overview.md"
+    },
+    {
+      "id": "00-overview-ref-05",
+      "report_id": "00-overview",
+      "report_title": "AIとクリエイティブと教育 総括レポート",
+      "number": 5,
+      "citation": "東京大学大学院情報学環・学際情報学府. 2025. Hack-1グランプリ2025 開催レポート. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/research/20250725report",
+      "source_md": "reports/00-overview.md"
+    },
+    {
+      "id": "00-overview-ref-06",
+      "report_id": "00-overview",
+      "report_title": "AIとクリエイティブと教育 総括レポート",
+      "number": 6,
+      "citation": "日テレ共創ラボ. 2026. 日テレ クリエイティブメディアハッカソン開催レポート. Retrieved May 27, 2026 from https://lab.ntvhd.co.jp/topics/2026/04/post-24.html",
+      "source_md": "reports/00-overview.md"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-01",
+      "report_id": "01-information-visualization-osint",
+      "report_title": "AIと情報可視化・OSINT教育",
+      "number": 1,
+      "citation": "東京大学. n.d. 情報メディア基礎論. 東京大学授業カタログ. Retrieved May 27, 2026 from https://catalog.he.u-tokyo.ac.jp/detail?code=30259",
+      "source_md": "reports/01-information-visualization-osint.md"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-02",
+      "report_id": "01-information-visualization-osint",
+      "report_title": "AIと情報可視化・OSINT教育",
+      "number": 2,
+      "citation": "Hidenori Watanave. 2022. ArcGIS Onlineを用いたオープンデータの可視化・学生作品（2022年度）. Hidenori Watanave Lab. Retrieved May 27, 2026 from https://labo.wtnv.jp/2022/05/arcgis-online2022.html",
+      "source_md": "reports/01-information-visualization-osint.md"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-03",
+      "report_id": "01-information-visualization-osint",
+      "report_title": "AIと情報可視化・OSINT教育",
+      "number": 3,
+      "citation": "国土交通省 Project PLATEAU. 2023. 大学生が挑戦。GISを使って過去の災害データを可視化・継承する. PLATEAU Journal. Retrieved May 27, 2026 from https://www.mlit.go.jp/plateau/journal/j033/",
+      "source_md": "reports/01-information-visualization-osint.md"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-04",
+      "report_id": "01-information-visualization-osint",
+      "report_title": "AIと情報可視化・OSINT教育",
+      "number": 4,
+      "citation": "UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students",
+      "source_md": "reports/01-information-visualization-osint.md"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-05",
+      "report_id": "01-information-visualization-osint",
+      "report_title": "AIと情報可視化・OSINT教育",
+      "number": 5,
+      "citation": "wtnv-lab. 2026. gee-sentinel2-osi. GitHub repository. Retrieved May 27, 2026 from https://github.com/wtnv-lab/gee-sentinel2-osi",
+      "source_md": "reports/01-information-visualization-osint.md"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-06",
+      "report_id": "01-information-visualization-osint",
+      "report_title": "AIと情報可視化・OSINT教育",
+      "number": 6,
+      "citation": "Bellingcat. 2021. First Steps to Getting Started in Open Source Research. Bellingcat. Retrieved May 27, 2026 from https://www.bellingcat.com/resources/2021/11/09/first-steps-to-getting-started-in-open-source-research/",
+      "source_md": "reports/01-information-visualization-osint.md"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-07",
+      "report_id": "01-information-visualization-osint",
+      "report_title": "AIと情報可視化・OSINT教育",
+      "number": 7,
+      "citation": "Bellingcat. n.d. Online Open Source Investigation Toolkit. Bellingcat. Retrieved May 27, 2026 from https://bellingcat.gitbook.io/toolkit",
+      "source_md": "reports/01-information-visualization-osint.md"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-08",
+      "report_id": "01-information-visualization-osint",
+      "report_title": "AIと情報可視化・OSINT教育",
+      "number": 8,
+      "citation": "渡邉英徳. n.d. 戦災・災害のOSINT. note. Retrieved May 27, 2026 from https://note.com/hwtnv/m/m04416eca695b",
+      "source_md": "reports/01-information-visualization-osint.md"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-09",
+      "report_id": "01-information-visualization-osint",
+      "report_title": "AIと情報可視化・OSINT教育",
+      "number": 9,
+      "citation": "UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum",
+      "source_md": "reports/01-information-visualization-osint.md"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-10",
+      "report_id": "01-information-visualization-osint",
+      "report_title": "AIと情報可視化・OSINT教育",
+      "number": 10,
+      "citation": "Alberto Cairo. 2016. The Truthful Art: Data, Charts, and Maps for Communication. New Riders. Retrieved May 27, 2026 from https://www.peachpit.com/store/truthful-art-data-charts-and-maps-for-communication-9780321934079",
+      "source_md": "reports/01-information-visualization-osint.md"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-11",
+      "report_id": "01-information-visualization-osint",
+      "report_title": "AIと情報可視化・OSINT教育",
+      "number": 11,
+      "citation": "Jonathan Gray, Liliana Bounegru, Stefania Milan, and Paolo Ciuccarelli. 2016. Ways of Seeing Data: Toward a Critical Literacy for Data Visualizations as Research Objects and Research Devices. In Innovative Methods in Media and Communication Research. Retrieved May 27, 2026 from https://www.researchgate.net/publication/312284929_Ways_of_Seeing_Data_Toward_a_Critical_Literacy_for_Data_Visualizations_as_Research_Objects_and_Research_Devices",
+      "source_md": "reports/01-information-visualization-osint.md"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-12",
+      "report_id": "01-information-visualization-osint",
+      "report_title": "AIと情報可視化・OSINT教育",
+      "number": 12,
+      "citation": "よみうりノート. 2024. 記者たちで作る能登地震被災状況マップ（記者の現場＃７）. note. Retrieved May 30, 2026 from https://note.com/yomi_tokyo_saiyo/n/n8cf9838e1a3a",
+      "source_md": "reports/01-information-visualization-osint.md"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-13",
+      "report_id": "01-information-visualization-osint",
+      "report_title": "AIと情報可視化・OSINT教育",
+      "number": 13,
+      "citation": "日テレNEWS. 2026. 【独自分析】カーグ島で大規模石油流出か…広い海域に拡散 イランの石油輸出拠点. YouTube. Retrieved May 28, 2026 from https://www.youtube.com/watch?v=ulJRQ8TvkW4",
+      "source_md": "reports/01-information-visualization-osint.md"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-14",
+      "report_id": "01-information-visualization-osint",
+      "report_title": "AIと情報可視化・OSINT教育",
+      "number": 14,
+      "citation": "東京大学大学院情報学環・学際情報学府. 2025. 東京大学情報学環渡邉英徳研究室と日本テレビホールディングス、「先端技術を活用した報道手法のアップデート」を目的に共同研究を開始. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/news/2025020321925",
+      "source_md": "reports/01-information-visualization-osint.md"
+    },
+    {
+      "id": "02-photo-colorization-peace-education-ref-01",
+      "report_id": "02-photo-colorization-peace-education",
+      "report_title": "AIによるモノクロ写真カラー化を活かした高校生の平和教育実践",
+      "number": 1,
+      "citation": "長崎県立長崎東中学校・高等学校. 2026. あの日に色がさすとき: 高校生がAIとカラー化した長崎の戦前・戦後. Retrieved May 27, 2026 from https://www.news.ed.jp/higashi-h/img/file13.pdf",
+      "source_md": "reports/02-photo-colorization-peace-education.md"
+    },
+    {
+      "id": "02-photo-colorization-peace-education-ref-02",
+      "report_id": "02-photo-colorization-peace-education",
+      "report_title": "AIによるモノクロ写真カラー化を活かした高校生の平和教育実践",
+      "number": 2,
+      "citation": "長崎県立長崎東中学校・高等学校. n.d. WWL・DX: あの日に色がさすとき. Retrieved May 27, 2026 from https://www.news.ed.jp/higashi-h/wwldx.html",
+      "source_md": "reports/02-photo-colorization-peace-education.md"
+    },
+    {
+      "id": "02-photo-colorization-peace-education-ref-03",
+      "report_id": "02-photo-colorization-peace-education",
+      "report_title": "AIによるモノクロ写真カラー化を活かした高校生の平和教育実践",
+      "number": 3,
+      "citation": "NCC長崎文化放送. 2026. AIでよみがえる戦前の長崎 高校生が写真集制作. Retrieved May 27, 2026 from https://www.ncctv.co.jp/news/article/16463000",
+      "source_md": "reports/02-photo-colorization-peace-education.md"
+    },
+    {
+      "id": "02-photo-colorization-peace-education-ref-04",
+      "report_id": "02-photo-colorization-peace-education",
+      "report_title": "AIによるモノクロ写真カラー化を活かした高校生の平和教育実践",
+      "number": 4,
+      "citation": "日テレNEWS NNN. 2025. 次世代への継承「原爆投下前の長崎の白黒写真をカラー化」高校生が最新技術を活用し挑戦《長崎》. Retrieved May 27, 2026 from https://news.ntv.co.jp/category/society/ni48845778ff4347bbaedd512c7cdeeece",
+      "source_md": "reports/02-photo-colorization-peace-education.md"
+    },
+    {
+      "id": "02-photo-colorization-peace-education-ref-05",
+      "report_id": "02-photo-colorization-peace-education",
+      "report_title": "AIによるモノクロ写真カラー化を活かした高校生の平和教育実践",
+      "number": 5,
+      "citation": "Hidenori Watanave and Anju Niwata. 2019. 「記憶の解凍」：カラー化写真をもとにした“フロー”の生成と記憶の継承. デジタルアーカイブ学会誌 3, 3 (2019), 317–323. https://doi.org/10.24506/jsda.3.3_317",
+      "source_md": "reports/02-photo-colorization-peace-education.md"
+    },
+    {
+      "id": "03-digital-citizenship-ref-01",
+      "report_id": "03-digital-citizenship",
+      "report_title": "AIを活かしたデジタルシティズンシップ教育",
+      "number": 1,
+      "citation": "Atsushi Yoshino. 2023. 日本のデジタル・シティズンシップ教育の受容状況における情報モラル教育・道徳科の位置づけについての一考察. 早稲田大学大学院教育学研究科紀要：別冊 31, 1 (2023), 45–55. Retrieved May 27, 2026 from https://waseda.repo.nii.ac.jp/records/2000538",
+      "source_md": "reports/03-digital-citizenship.md"
+    },
+    {
+      "id": "03-digital-citizenship-ref-02",
+      "report_id": "03-digital-citizenship",
+      "report_title": "AIを活かしたデジタルシティズンシップ教育",
+      "number": 2,
+      "citation": "UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum",
+      "source_md": "reports/03-digital-citizenship.md"
+    },
+    {
+      "id": "03-digital-citizenship-ref-03",
+      "report_id": "03-digital-citizenship",
+      "report_title": "AIを活かしたデジタルシティズンシップ教育",
+      "number": 3,
+      "citation": "UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students",
+      "source_md": "reports/03-digital-citizenship.md"
+    },
+    {
+      "id": "03-digital-citizenship-ref-04",
+      "report_id": "03-digital-citizenship",
+      "report_title": "AIを活かしたデジタルシティズンシップ教育",
+      "number": 4,
+      "citation": "ISTE. n.d. ISTE Standards: For Students. ISTE. Retrieved May 27, 2026 from https://iste.org/standards/students",
+      "source_md": "reports/03-digital-citizenship.md"
+    },
+    {
+      "id": "03-digital-citizenship-ref-05",
+      "report_id": "03-digital-citizenship",
+      "report_title": "AIを活かしたデジタルシティズンシップ教育",
+      "number": 5,
+      "citation": "OECD. 2026. OECD Digital Education Outlook 2026: Exploring Effective Uses of Generative AI in Education. OECD Publishing. https://doi.org/10.1787/062a7394-en",
+      "source_md": "reports/03-digital-citizenship.md"
+    },
+    {
+      "id": "04-student-hackathon-ref-01",
+      "report_id": "04-student-hackathon",
+      "report_title": "AI時代の学生ハッカソン：実装の民主化と発想力への転換",
+      "number": 1,
+      "citation": "Sidney Peng, Eirini Kalliamvakou, Peter Cihon, and Mert Demirer. 2023. The Impact of AI on Developer Productivity: Evidence from GitHub Copilot. arXiv:2302.06590. Retrieved May 27, 2026 from https://arxiv.org/abs/2302.06590",
+      "source_md": "reports/04-student-hackathon.md"
+    },
+    {
+      "id": "04-student-hackathon-ref-02",
+      "report_id": "04-student-hackathon",
+      "report_title": "AI時代の学生ハッカソン：実装の民主化と発想力への転換",
+      "number": 2,
+      "citation": "Jeannette M. Wing. 2006. Computational Thinking. Communications of the ACM 49, 3 (March 2006), 33–35. https://doi.org/10.1145/1118178.1118215",
+      "source_md": "reports/04-student-hackathon.md"
+    },
+    {
+      "id": "04-student-hackathon-ref-03",
+      "report_id": "04-student-hackathon",
+      "report_title": "AI時代の学生ハッカソン：実装の民主化と発想力への転換",
+      "number": 3,
+      "citation": "東京大学大学院情報学環・学際情報学府. 2025. Hack-1グランプリ2025 開催レポート. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/research/20250725report",
+      "source_md": "reports/04-student-hackathon.md"
+    },
+    {
+      "id": "04-student-hackathon-ref-04",
+      "report_id": "04-student-hackathon",
+      "report_title": "AI時代の学生ハッカソン：実装の民主化と発想力への転換",
+      "number": 4,
+      "citation": "東京大学大学院情報学環・学際情報学府. 2026. Hack-1グランプリ2026 告知. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/event/20260404event",
+      "source_md": "reports/04-student-hackathon.md"
+    },
+    {
+      "id": "04-student-hackathon-ref-05",
+      "report_id": "04-student-hackathon",
+      "report_title": "AI時代の学生ハッカソン：実装の民主化と発想力への転換",
+      "number": 5,
+      "citation": "GMO Developers. 2026. 【前編】Hack-1グランプリ2026 デモデーレポート｜AI時代の学生ハッカソンに圧倒される2日間。「小さくなる日本」をどう表現する？ Retrieved May 28, 2026 from https://developers.gmo.jp/events/83407/",
+      "source_md": "reports/04-student-hackathon.md"
+    },
+    {
+      "id": "04-student-hackathon-ref-06",
+      "report_id": "04-student-hackathon",
+      "report_title": "AI時代の学生ハッカソン：実装の民主化と発想力への転換",
+      "number": 6,
+      "citation": "GMO Developers. 2026. 【Hack-1グランプリ2026 キックオフレポート】約150名の学生がハイブリッド形式で集結. Retrieved May 31, 2026 from https://developers.gmo.jp/events/83078/",
+      "source_md": "reports/04-student-hackathon.md"
+    },
+    {
+      "id": "04-student-hackathon-ref-07",
+      "report_id": "04-student-hackathon",
+      "report_title": "AI時代の学生ハッカソン：実装の民主化と発想力への転換",
+      "number": 7,
+      "citation": "日テレ共創ラボ. 2026. 日テレ クリエイティブメディアハッカソン開催レポート. Retrieved May 27, 2026 from https://lab.ntvhd.co.jp/topics/2026/04/post-24.html",
+      "source_md": "reports/04-student-hackathon.md"
+    },
+    {
+      "id": "04-student-hackathon-ref-08",
+      "report_id": "04-student-hackathon",
+      "report_title": "AI時代の学生ハッカソン：実装の民主化と発想力への転換",
+      "number": 8,
+      "citation": "UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students",
+      "source_md": "reports/04-student-hackathon.md"
+    },
+    {
+      "id": "04-student-hackathon-ref-09",
+      "report_id": "04-student-hackathon",
+      "report_title": "AI時代の学生ハッカソン：実装の民主化と発想力への転換",
+      "number": 9,
+      "citation": "OECD. 2023. AI and the Future of Skills, Volume 2. OECD Publishing. https://doi.org/10.1787/a9fe53cb-en",
+      "source_md": "reports/04-student-hackathon.md"
+    },
+    {
+      "id": "05-digital-archive-ai-ref-01",
+      "report_id": "05-digital-archive-ai",
+      "report_title": "デジタルアーカイブとAIを活かした教育実践",
+      "number": 1,
+      "citation": "Masao Oi and Hidenori Watanave. 2020. ジャパンサーチを活用した小中高でのキュレーション授業デザイン：デジタルアーカイブの教育活用意義と可能性. デジタルアーカイブ学会誌 4, 4 (2020), 352–359. https://doi.org/10.24506/jsda.4.4_352",
+      "source_md": "reports/05-digital-archive-ai.md"
+    },
+    {
+      "id": "05-digital-archive-ai-ref-02",
+      "report_id": "05-digital-archive-ai",
+      "report_title": "デジタルアーカイブとAIを活かした教育実践",
+      "number": 2,
+      "citation": "ADEAC. n.d. S×UKILAM：Primary Source Sets／スキラム連携：多様な資料を活用した教材アーカイブ. Retrieved May 27, 2026 from https://adeac.jp/adeac-lab/top/sxukilam/index.html",
+      "source_md": "reports/05-digital-archive-ai.md"
+    },
+    {
+      "id": "05-digital-archive-ai-ref-03",
+      "report_id": "05-digital-archive-ai",
+      "report_title": "デジタルアーカイブとAIを活かした教育実践",
+      "number": 3,
+      "citation": "Masao Oi and Hidenori Watanave. 2022. S×UKILAM連携：多様な資料を学校教育で活用するための「人」と「データ」のネットワーク構築. デジタルアーカイブ学会誌 6, s3 (2022), s214–s217. https://doi.org/10.24506/jsda.6.s3_s214",
+      "source_md": "reports/05-digital-archive-ai.md"
+    },
+    {
+      "id": "05-digital-archive-ai-ref-04",
+      "report_id": "05-digital-archive-ai",
+      "report_title": "デジタルアーカイブとAIを活かした教育実践",
+      "number": 4,
+      "citation": "UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students",
+      "source_md": "reports/05-digital-archive-ai.md"
+    },
+    {
+      "id": "05-digital-archive-ai-ref-05",
+      "report_id": "05-digital-archive-ai",
+      "report_title": "デジタルアーカイブとAIを活かした教育実践",
+      "number": 5,
+      "citation": "UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum",
+      "source_md": "reports/05-digital-archive-ai.md"
+    },
+    {
+      "id": "06-sf-prototyping-ref-01",
+      "report_id": "06-sf-prototyping",
+      "report_title": "生成AIを用いたSFプロトタイピング",
+      "number": 1,
+      "citation": "Brian David Johnson. 2011. Science Fiction Prototyping: Designing the Future with Science Fiction. Morgan & Claypool. https://doi.org/10.2200/S00336ED1V01Y201102CSL003",
+      "source_md": "reports/06-sf-prototyping.md"
+    },
+    {
+      "id": "06-sf-prototyping-ref-02",
+      "report_id": "06-sf-prototyping",
+      "report_title": "生成AIを用いたSFプロトタイピング",
+      "number": 2,
+      "citation": "宮本道人, 難波優輝, and 大澤博隆. 2021. SFプロトタイピング：SFからイノベーションを生み出す新戦略. 早川書房.",
+      "source_md": "reports/06-sf-prototyping.md"
+    },
+    {
+      "id": "06-sf-prototyping-ref-03",
+      "report_id": "06-sf-prototyping",
+      "report_title": "生成AIを用いたSFプロトタイピング",
+      "number": 3,
+      "citation": "Qin Yang and Hidenori Watanave. 2024. 小説家不要のSFプロトタイピングワークショップ手法の提案：生成AIとの共同作業によるストーリーテリング支援. In 2024年度人工知能学会全国大会（第38回）. https://doi.org/10.11517/pjsai.JSAI2024.0_2A4GS1004",
+      "source_md": "reports/06-sf-prototyping.md"
+    },
+    {
+      "id": "06-sf-prototyping-ref-04",
+      "report_id": "06-sf-prototyping",
+      "report_title": "生成AIを用いたSFプロトタイピング",
+      "number": 4,
+      "citation": "Haoran Chu and Sixiao Liu. 2024. Can AI tell good stories? Narrative transportation and persuasion with ChatGPT. Journal of Communication 74, 5 (October 2024), 347–358. https://doi.org/10.1093/joc/jqae029",
+      "source_md": "reports/06-sf-prototyping.md"
+    },
+    {
+      "id": "06-sf-prototyping-ref-05",
+      "report_id": "06-sf-prototyping",
+      "report_title": "生成AIを用いたSFプロトタイピング",
+      "number": 5,
+      "citation": "Jakob Tholander and Martin Jonsson. 2023. Design Ideation with AI. In Proceedings of the 2023 ACM Designing Interactive Systems Conference (DIS '23). ACM, 1934–1946. https://doi.org/10.1145/3563657.3596014",
+      "source_md": "reports/06-sf-prototyping.md"
+    },
+    {
+      "id": "06-sf-prototyping-ref-06",
+      "report_id": "06-sf-prototyping",
+      "report_title": "生成AIを用いたSFプロトタイピング",
+      "number": 6,
+      "citation": "東京大学. n.d. グローバルインターンシッププログラム・企業協創プログラム. Retrieved May 27, 2026 from https://www.u-tokyo.ac.jp/ja/students/special-activities/ugip.html",
+      "source_md": "reports/06-sf-prototyping.md"
+    },
+    {
+      "id": "06-sf-prototyping-ref-07",
+      "report_id": "06-sf-prototyping",
+      "report_title": "生成AIを用いたSFプロトタイピング",
+      "number": 7,
+      "citation": "ダイキン工業. 2018. 東京大学とダイキン工業「空気の価値化」を目指す産学協創協定を締結. Retrieved May 27, 2026 from https://www.daikin.co.jp/press/2018/20181217",
+      "source_md": "reports/06-sf-prototyping.md"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-01",
+      "report_id": "07-minecraft-ai-education",
+      "report_title": "AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ",
+      "number": 1,
+      "citation": "UNESCO. 2023. Guidance for generative AI in education and research. UNESCO. Retrieved May 29, 2026 from https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research",
+      "source_md": "reports/07-minecraft-ai-education.md"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-02",
+      "report_id": "07-minecraft-ai-education",
+      "report_title": "AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ",
+      "number": 2,
+      "citation": "UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 29, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students",
+      "source_md": "reports/07-minecraft-ai-education.md"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-03",
+      "report_id": "07-minecraft-ai-education",
+      "report_title": "AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ",
+      "number": 3,
+      "citation": "きのこぐものしたにあったまち. n.d. きのこぐものしたにあったまち｜ブロッククラフトで学ぶ広島・長崎歴史探訪ワークショップ. Retrieved May 29, 2026 from https://peacecraft.info/",
+      "source_md": "reports/07-minecraft-ai-education.md"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-04",
+      "report_id": "07-minecraft-ai-education",
+      "report_title": "AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ",
+      "number": 4,
+      "citation": "マイクラカップ. 2026. 石川県輪島市門前町にて、マイクラ×ARワークショップ「門前の記憶と未来」を開催しました. Retrieved May 29, 2026 from https://mccup.jp/eventreports/26671/",
+      "source_md": "reports/07-minecraft-ai-education.md"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-05",
+      "report_id": "07-minecraft-ai-education",
+      "report_title": "AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ",
+      "number": 5,
+      "citation": "内外教育ウェブ. 2026. 「マイクラ」で北方領土啓発＝北海道標津町. Retrieved May 29, 2026 from https://edu-naigai.jiji.com/timeline/3411",
+      "source_md": "reports/07-minecraft-ai-education.md"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-06",
+      "report_id": "07-minecraft-ai-education",
+      "report_title": "AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ",
+      "number": 6,
+      "citation": "Minecraft Education. n.d. AI Foundations. Retrieved May 29, 2026 from https://education.minecraft.net/en-us/lessons/ai-foundations",
+      "source_md": "reports/07-minecraft-ai-education.md"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-07",
+      "report_id": "07-minecraft-ai-education",
+      "report_title": "AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ",
+      "number": 7,
+      "citation": "National 4-H Council and Microsoft. 2025. National 4-H Council and Microsoft Extend $10M Partnership to Expand AI Education for Rural Youth and Educators. Retrieved May 29, 2026 from https://4-h.org/about/blog/national-4-h-council-and-microsoft-extend-10m-partnership-to-expand-ai-education-for-rural-youth-and-educators/",
+      "source_md": "reports/07-minecraft-ai-education.md"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-08",
+      "report_id": "07-minecraft-ai-education",
+      "report_title": "AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ",
+      "number": 8,
+      "citation": "Minecraft Education. n.d. BBC Day of AI. Retrieved May 29, 2026 from https://education.minecraft.net/en-us/resources/bbc-day-of-ai",
+      "source_md": "reports/07-minecraft-ai-education.md"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-09",
+      "report_id": "07-minecraft-ai-education",
+      "report_title": "AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ",
+      "number": 9,
+      "citation": "Code.org. n.d. Hour of AI with Minecraft. Retrieved May 29, 2026 from https://code.org/en-US/minecraft",
+      "source_md": "reports/07-minecraft-ai-education.md"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-10",
+      "report_id": "07-minecraft-ai-education",
+      "report_title": "AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ",
+      "number": 10,
+      "citation": "Microsoft Japan. 2019. Minecraft Hour of Code: AI for Good 日本語版提供開始. Retrieved May 29, 2026 from https://news.microsoft.com/ja-jp/2019/12/09/191209-information/",
+      "source_md": "reports/07-minecraft-ai-education.md"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-11",
+      "report_id": "07-minecraft-ai-education",
+      "report_title": "AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ",
+      "number": 11,
+      "citation": "Mahajan, J. et al. 2023. MineObserver 2.0: A Deep Learning & In-Game Framework for Assessing Natural Language Descriptions of Minecraft Imagery. arXiv:2301.08167. Retrieved May 29, 2026 from https://arxiv.org/abs/2301.08167",
+      "source_md": "reports/07-minecraft-ai-education.md"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-12",
+      "report_id": "07-minecraft-ai-education",
+      "report_title": "AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ",
+      "number": 12,
+      "citation": "Tadimalla, S. Y. and Maher, M. L. 2024. AI Literacy for All: Adjustable Interdisciplinary Socio-technical Curriculum. arXiv:2403.04824. Retrieved May 29, 2026 from https://arxiv.org/abs/2403.04824",
+      "source_md": "reports/07-minecraft-ai-education.md"
+    }
+  ]
+}
+
+
+---
+ai/rag/chunks.jsonl
+---
+{"schema":"aice.rag_chunk.v1","id":"00-overview:001","report_id":"00-overview","source_md":"reports/00-overview.md","title":"AIとクリエイティブと教育 総括レポート","section":"AIとクリエイティブと教育 総括レポート","chunk_type":"overview","claim":"生成AI時代の創造性教育を横断的に整理する総括レポート。","text":"本レポートは，東京大学大学院 渡邉英徳研究室と関係者によるAI・クリエイティブ・教育の実践・研究リソースを横断し，生成AI時代の教育設計に必要な視点を整理するものである。各レポートは，研究資料，実践記録，参考文献を生成AIが整理し，著者が根拠，文脈，表現を確認しながら編集した。生成AIの普及は，教育における「クリエイティブ」の意味を，制作技能の獲得から，問いを立て，資料を読み解き，社会に届く表現へ編集する力へと移しつつある。七つの実践レポートに共通するのは，AIを単なる効率化ツールではなく，学習者の構想力，編集力，批判的思考を拡張する伴走者として位置づけている点である。AIと情報可視化・OSINT教育は，公開情報の検証と社会的説明の実践を扱う。AIによるモノクロ写真カラー化を活かした高校生の平和教育実践は，AIを過去と現在を再接続する媒介として捉える。AIを活かしたデジタルシティズンシップ教育は，AI時代の学びを公共性の問題として位置づける。","evidence_refs":[],"figure_ids":[],"audience":["生成AI時代の教育方針を検討する学校管理職・教育委員会担当者","AI・創造性・情報リテラシーを横断するカリキュラム設計者","教育ソリューションやEdTechサービスの企画担当者","AIと教育実践の全体像を把握したい研究者・実践者"],"themes":["生成AI","創造性","教育実践","総括"],"keywords":["AIと教育","クリエイティブ","学習設計","教育実践"],"usable_for":["根拠付き回答","横断比較","全体方針整理","研修導入","サービス企画"],"risk_notes":["本文にない事実を補う場合は推測として明示する。","AIの出力は完成版ではなく、人間が本文・参考文献・図版メタデータで検証する。","AIカラー化は推定であり、史実の色として断定しない。","観察事実と推論を分け、確度を明示する。"],"depends_on":["01-information-visualization-osint","02-photo-colorization-peace-education","03-digital-citizenship","04-student-hackathon","05-digital-archive-ai","06-sf-prototyping","07-minecraft-ai-education"],"human_verification_required":true}
+{"schema":"aice.rag_chunk.v1","id":"00-overview:002","report_id":"00-overview","source_md":"reports/00-overview.md","title":"AIとクリエイティブと教育 総括レポート","section":"AIとクリエイティブと教育 総括レポート","chunk_type":"overview","claim":"生成AI時代の創造性教育を横断的に整理する総括レポート。","text":"AI時代の学生ハッカソンは，生成AIによって実装負荷が下がる時代に，課題設定，ユーザー体験，社会的価値を重視する学習へ転換する実践である。デジタルアーカイブとAIを活かした教育実践は，資料保存の基盤を，問い，対話，表現を通じた探究環境へ広げる。生成AIを用いたSFプロトタイピングは，未来を予測するのではなく，ありうる未来を物語化し，現在の選択を問い直す。AIとMinecraft教育は，仮想空間を記憶継承，地域学習，防災・復興，平和教育，AIリテラシーの学びへ接続する。総括すれば，AIとクリエイティブと教育の核心は，人間の創造性が不要になることではなく，創造性の重心が上流へ移ることにある。人間の読者にとっては，AIをどの学習活動に置き，どの判断を人間が担い，どの成果を社会へ接続するのかを設計するための視点集である。AIに読み込ませる場合も，本文，メタデータ，参考文献，プロンプトを照合し，根拠に基づく授業案，研修案，サービス企画へ展開することが重要である。","evidence_refs":[],"figure_ids":[],"audience":["生成AI時代の教育方針を検討する学校管理職・教育委員会担当者","AI・創造性・情報リテラシーを横断するカリキュラム設計者","教育ソリューションやEdTechサービスの企画担当者","AIと教育実践の全体像を把握したい研究者・実践者"],"themes":["生成AI","創造性","教育実践","総括"],"keywords":["AIと教育","クリエイティブ","学習設計","教育実践"],"usable_for":["根拠付き回答","横断比較","全体方針整理","研修導入","サービス企画"],"risk_notes":["本文にない事実を補う場合は推測として明示する。","AIの出力は完成版ではなく、人間が本文・参考文献・図版メタデータで検証する。"],"depends_on":["01-information-visualization-osint","02-photo-colorization-peace-education","03-digital-citizenship","04-student-hackathon","05-digital-archive-ai","06-sf-prototyping","07-minecraft-ai-education"],"human_verification_required":true}
+{"schema":"aice.rag_chunk.v1","id":"00-overview:003","report_id":"00-overview","source_md":"reports/00-overview.md","title":"AIとクリエイティブと教育 総括レポート","section":"参考文献・関連資料","chunk_type":"references","claim":"AIとクリエイティブと教育 総括レポートで用いる参考文献・関連資料の一覧。","text":"1. Bellingcat. n.d. Online Open Source Investigation Toolkit. Bellingcat. Retrieved May 27, 2026 from https://bellingcat.gitbook.io/toolkit 2. UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students 3. UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum 4. UNESCO. n.d. Media and Information Literacy. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/media-information-literacy 5. 東京大学大学院情報学環・学際情報学府. 2025. Hack-1グランプリ2025 開催レポート. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/research/20250725report 6. 日テレ共創ラボ. 2026. 日テレ クリエイティブメディアハッカソン開催レポート. Retrieved May 27, 2026 from https://lab.ntvhd.co.jp/topics/2026/04/post-24.html","evidence_refs":[],"figure_ids":[],"audience":["生成AI時代の教育方針を検討する学校管理職・教育委員会担当者","AI・創造性・情報リテラシーを横断するカリキュラム設計者","教育ソリューションやEdTechサービスの企画担当者","AIと教育実践の全体像を把握したい研究者・実践者"],"themes":["生成AI","創造性","教育実践","総括"],"keywords":["AIと教育","クリエイティブ","学習設計","教育実践"],"usable_for":["引用確認","参考文献照合","出典リスト生成"],"risk_notes":["本文にない事実を補う場合は推測として明示する。","AIの出力は完成版ではなく、人間が本文・参考文献・図版メタデータで検証する。","参考文献名や固有名詞は出典表記として保持し、プロジェクト概要の表現規則とは分けて扱う。"],"depends_on":["01-information-visualization-osint","02-photo-colorization-peace-education","03-digital-citizenship","04-student-hackathon","05-digital-archive-ai","06-sf-prototyping","07-minecraft-ai-education"],"human_verification_required":true}
+{"schema":"aice.rag_chunk.v1","id":"01-information-visualization-osint:001","report_id":"01-information-visualization-osint","source_md":"reports/01-information-visualization-osint.md","title":"AIと情報可視化・OSINT教育","section":"AIと情報可視化・OSINT教育","chunk_type":"body","claim":"GIS・情報可視化・OSINTを組み合わせた情報メディア教育モデル。","text":"> 公開情報を検証し，根拠ある説明として社会へ届ける情報メディア教育モデル 本レポートが示すのは，公開情報を集める技術そのものではなく，公開情報を検証可能な知識へと組み替え，社会に伝える力を育てる教育モデルである。東京大学前期課程「情報メディア基礎論」では，情報を“ストック”し，データビジュアライゼーションやデジタルアーカイブによって“フロー”化するメディア実践を通じて，情報・メディア・社会の関係を学ぶ[1]。授業では，学生が自ら問いを設定し，データを収集・整理したうえで，ArcGISやRe:Earthを用いて2D／3D地図上に可視化し，成果物をウェブ公開する。2022年度のArcGIS Onlineを用いた学生作品，2023年度のProject PLATEAUとRe:Earthを用いた3D都市モデルの可視化は，いずれもデータを単なる素材ではなく，根拠をもつ社会的な説明へ変換する実践として位置づけられる[2,3]。 ![GIS・データ可視化を用いた学生作品例](../assets/01-information-visualization-osint/gis-education-examples.jpg) *図1. GIS・データ可視化を用いた学生作品例* 本実践の特徴は，この一連のプロセスに生成AIとの対話を組み込む点にある。学生は，テーマ設定，データ探索，仮説形成，地図化，文章化，公開時の説明文作成に至る各段階でAIを活用する。AIは，単に答えを出す存在ではなく，観察結果を言語化し，複数の解釈可能性を比較し，データの不足や推論の飛躍を指摘する「対話的な編集者」として機能する。これは，AIを安全かつ批判的に使う能力を，単なる操作技能ではなく，倫理・判断・創造を含む総合的なコンピテンシーとして捉える近年のAI教育論とも合致する。UNESCOのAIコンピテンシー枠組みも，学生をAIの受動的利用者ではなく，責任ある利用者・共同設計者として育成する必要性を示している[4]。 近年は，この方法をOSINT教育にも展開している。ここで重視するのは，AIS，衛星画像，公開報道，SNS上の専門的知見といった多様な公開情報を，ばらばらの断片として扱うのではなく，出所，時刻，空間的位置，解釈の確度を照合しながら，一つの検証可能な説明へ組み立てることである[5]。ホルムズ海峡周辺の船舶動向，戦災・災害，山林火災などを扱う実践では，参加者は「何が起きたか」を急いで断定するのではなく，どこまでが観察で，どこからが推論なのかを区別する態度を学ぶ。noteマガジンに記録される実践群やBellingcatのオンライン調査ツールキットは，公開情報を用いた調査報道や市民調査の方法論を教育へ接続する参照点となる[6,7,8]。 また，本実践はメディア・情報リテラシー教育の拡張としても位置づけられる。UNESCOは，偽情報，ヘイトスピーチ，メディア不信，AIを含むデジタル技術の進展に対応するため，メディア・情報リテラシーを21世紀の基礎的能力として整理している[9]。OSINT教育において重要なのは，データを「見つける」ことだけではない。情報源の性質を見極め，複数のデータを照合し，確度の異なる推論を区別し，社会に伝える際の表現責任を自覚することである。これは，データ可視化を単なる表現技術ではなく，社会の中で意味を生み出す批判的実践として捉えるデータ・ビジュアライゼーション研究とも重なる[10,11]。","evidence_refs":["01-information-visualization-osint-ref-01","01-information-visualization-osint-ref-02","01-information-visualization-osint-ref-03","01-information-visualization-osint-ref-04","01-information-visualization-osint-ref-05","01-information-visualization-osint-ref-06","01-information-visualization-osint-ref-07","01-information-visualization-osint-ref-08","01-information-visualization-osint-ref-09","01-information-visualization-osint-ref-10","01-information-visualization-osint-ref-11"],"figure_ids":["01-gis-education-examples"],"audience":["情報・メディア・探究学習を担当する高校・大学教員","データ可視化、GIS、デジタルアーカイブを授業に取り入れたい教育者","OSINTや調査報道の基礎を教育・研修化したい報道関係者","公開情報の検証と社会的説明を扱う教材・サービス企画者"],"themes":["生成AI","情報可視化","OSINT","探究学習"],"keywords":["情報可視化","OSINT","メディアリテラシー","探究学習"],"usable_for":["根拠付き回答","横断比較","授業案生成","ワークショップ設計","教材企画"],"risk_notes":["本文にない事実を補う場合は推測として明示する。","AIの出力は完成版ではなく、人間が本文・参考文献・図版メタデータで検証する。","観察事実と推論を分け、確度を明示する。"],"depends_on":["00-overview","03-digital-citizenship","05-digital-archive-ai"],"human_verification_required":true}
+{"schema":"aice.rag_chunk.v1","id":"01-information-visualization-osint:002","report_id":"01-information-visualization-osint","source_md":"reports/01-information-visualization-osint.md","title":"AIと情報可視化・OSINT教育","section":"AIと情報可視化・OSINT教育","chunk_type":"body","claim":"GIS・情報可視化・OSINTを組み合わせた情報メディア教育モデル。","text":"本実践は，東京大学の授業，あるいはマスメディアとの学術指導・共同研究を横断する「教育×AI×OSINT」の試みである。読売新聞への学術指導では，能登半島地震の発生後，記者が撮影した写真の手がかりやGPS情報をもとにArcGIS StoryMapsで被災状況を地図化し，当日夜から公開・更新する実践へつながった[12]。日本テレビとの共同研究では，カーグ島周辺の大規模石油流出の衛星画像を，AIも活用しながら解析し，検証した調査報道が公開されている[13,14]。動画: https://www.youtube.com/watch?v=ulJRQ8TvkW4 学生や記者は，AIを用いながら，データを集め，疑い，照合し，仮説を組み立て，社会に向けて説明するプロセスを学ぶ。重要なのは，AIに判断を委ねることではなく，AIとの対話を通じて，人間の観察力，批判的思考，表現力を拡張することである。公開情報を扱う教育は，結論の速さよりも，根拠の透明性と説明責任を学ぶ場として設計される必要がある。","evidence_refs":["01-information-visualization-osint-ref-12","01-information-visualization-osint-ref-13","01-information-visualization-osint-ref-14"],"figure_ids":[],"audience":["情報・メディア・探究学習を担当する高校・大学教員","データ可視化、GIS、デジタルアーカイブを授業に取り入れたい教育者","OSINTや調査報道の基礎を教育・研修化したい報道関係者","公開情報の検証と社会的説明を扱う教材・サービス企画者"],"themes":["生成AI","情報可視化","OSINT","探究学習"],"keywords":["情報可視化","OSINT","メディアリテラシー","探究学習"],"usable_for":["根拠付き回答","横断比較","授業案生成","ワークショップ設計","教材企画"],"risk_notes":["本文にない事実を補う場合は推測として明示する。","AIの出力は完成版ではなく、人間が本文・参考文献・図版メタデータで検証する。","観察事実と推論を分け、確度を明示する。"],"depends_on":["00-overview","03-digital-citizenship","05-digital-archive-ai"],"human_verification_required":true}
+{"schema":"aice.rag_chunk.v1","id":"01-information-visualization-osint:003","report_id":"01-information-visualization-osint","source_md":"reports/01-information-visualization-osint.md","title":"AIと情報可視化・OSINT教育","section":"参考文献・関連資料","chunk_type":"references","claim":"AIと情報可視化・OSINT教育で用いる参考文献・関連資料の一覧。","text":"1. 東京大学. n.d. 情報メディア基礎論. 東京大学授業カタログ. Retrieved May 27, 2026 from https://catalog.he.u-tokyo.ac.jp/detail?code=30259 2. Hidenori Watanave. 2022. ArcGIS Onlineを用いたオープンデータの可視化・学生作品（2022年度）. Hidenori Watanave Lab. Retrieved May 27, 2026 from https://labo.wtnv.jp/2022/05/arcgis-online2022.html 3. 国土交通省 Project PLATEAU. 2023. 大学生が挑戦。GISを使って過去の災害データを可視化・継承する. PLATEAU Journal. Retrieved May 27, 2026 from https://www.mlit.go.jp/plateau/journal/j033/ 4. UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students 5. wtnv-lab. 2026. gee-sentinel2-osi. GitHub repository. Retrieved May 27, 2026 from https://github.com/wtnv-lab/gee-sentinel2-osi 6. Bellingcat. 2021. First Steps to Getting Started in Open Source Research. Bellingcat. Retrieved May 27, 2026 from https://www.bellingcat.com/resources/2021/11/09/first-steps-to-getting-started-in-open-source-research/ 7. Bellingcat. n.d. Online Open Source Investigation Toolkit. Bellingcat. Retrieved May 27, 2026 from https://bellingcat.gitbook.io/toolkit 8. 渡邉英徳. n.d. 戦災・災害のOSINT. note. Retrieved May 27, 2026 from https://note.com/hwtnv/m/m04416eca695b 9. UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum","evidence_refs":[],"figure_ids":[],"audience":["情報・メディア・探究学習を担当する高校・大学教員","データ可視化、GIS、デジタルアーカイブを授業に取り入れたい教育者","OSINTや調査報道の基礎を教育・研修化したい報道関係者","公開情報の検証と社会的説明を扱う教材・サービス企画者"],"themes":["生成AI","情報可視化","OSINT","探究学習"],"keywords":["情報可視化","OSINT","メディアリテラシー","探究学習"],"usable_for":["引用確認","参考文献照合","出典リスト生成"],"risk_notes":["本文にない事実を補う場合は推測として明示する。","AIの出力は完成版ではなく、人間が本文・参考文献・図版メタデータで検証する。","参考文献名や固有名詞は出典表記として保持し、プロジェクト概要の表現規則とは分けて扱う。","観察事実と推論を分け、確度を明示する。"],"depends_on":["00-overview","03-digital-citizenship","05-digital-archive-ai"],"human_verification_required":true}
+{"schema":"aice.rag_chunk.v1","id":"01-information-visualization-osint:004","report_id":"01-information-visualization-osint","source_md":"reports/01-information-visualization-osint.md","title":"AIと情報可視化・OSINT教育","section":"参考文献・関連資料","chunk_type":"references","claim":"AIと情報可視化・OSINT教育で用いる参考文献・関連資料の一覧。","text":"10. Alberto Cairo. 2016. The Truthful Art: Data, Charts, and Maps for Communication. New Riders. Retrieved May 27, 2026 from https://www.peachpit.com/store/truthful-art-data-charts-and-maps-for-communication-9780321934079 11. Jonathan Gray, Liliana Bounegru, Stefania Milan, and Paolo Ciuccarelli. 2016. Ways of Seeing Data: Toward a Critical Literacy for Data Visualizations as Research Objects and Research Devices. In Innovative Methods in Media and Communication Research. Retrieved May 27, 2026 from https://www.researchgate.net/publication/312284929_Ways_of_Seeing_Data_Toward_a_Critical_Literacy_for_Data_Visualizations_as_Research_Objects_and_Research_Devices 12. よみうりノート. 2024. 記者たちで作る能登地震被災状況マップ（記者の現場＃７）. note. Retrieved May 30, 2026 from https://note.com/yomi_tokyo_saiyo/n/n8cf9838e1a3a 13. 日テレNEWS. 2026. 【独自分析】カーグ島で大規模石油流出か…広い海域に拡散 イランの石油輸出拠点. YouTube. Retrieved May 28, 2026 from https://www.youtube.com/watch?v=ulJRQ8TvkW4 14. 東京大学大学院情報学環・学際情報学府. 2025. 東京大学情報学環渡邉英徳研究室と日本テレビホールディングス、「先端技術を活用した報道手法のアップデート」を目的に共同研究を開始. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/news/2025020321925","evidence_refs":[],"figure_ids":[],"audience":["情報・メディア・探究学習を担当する高校・大学教員","データ可視化、GIS、デジタルアーカイブを授業に取り入れたい教育者","OSINTや調査報道の基礎を教育・研修化したい報道関係者","公開情報の検証と社会的説明を扱う教材・サービス企画者"],"themes":["生成AI","情報可視化","OSINT","探究学習"],"keywords":["情報可視化","OSINT","メディアリテラシー","探究学習"],"usable_for":["引用確認","参考文献照合","出典リスト生成"],"risk_notes":["本文にない事実を補う場合は推測として明示する。","AIの出力は完成版ではなく、人間が本文・参考文献・図版メタデータで検証する。","参考文献名や固有名詞は出典表記として保持し、プロジェクト概要の表現規則とは分けて扱う。"],"depends_on":["00-overview","03-digital-citizenship","05-digital-archive-ai"],"human_verification_required":true}
+{"schema":"aice.rag_chunk.v1","id":"02-photo-colorization-peace-education:001","report_id":"02-photo-colorization-peace-education","source_md":"reports/02-photo-colorization-peace-education.md","title":"AIによるモノクロ写真カラー化を活かした高校生の平和教育実践","section":"AIによるモノクロ写真カラー化を活かした高校生の平和教育実践","chunk_type":"body","claim":"AIカラー化を平和教育、資料批判、社会発信に結びつけた高校生の実践事例。","text":"> AIカラー化を入口に，記憶を読み解き社会へ継承する平和教育モデル ![写真集「あの日に色がさすとき」表紙](../assets/02-photo-colorization-peace-education/the-day-color-returned.png) *図1. 写真集「あの日に色がさすとき」表紙* 長崎県立長崎東高校の生徒による「あの日に色がさすとき」は，AIによるモノクロ写真のカラー化を起点に，戦前・戦後の長崎の記憶を次世代へ継承する探究型学習の実践である[1,2]。生徒たちは，戦前・戦後の長崎を写した白黒写真20点を題材に，AIで自動カラー化したうえで，被爆者や専門家への聞き取りを通じて色味を補正し，写真集としてまとめた[3,4]。題材には，長崎大学核兵器廃絶研究センター（RECNA）の「被爆前の日常アーカイブ」に関わる写真が用いられ，完成した写真集は長崎市や図書館，平和関連施設，国際機関などへ寄贈・共有された[1]。 この実践の特徴は，AIを単なる画像処理ツールとして用いるのではなく，「本物の色とは何か」を問う探究の入口として位置づけている点にある。写真集には，白黒写真とカラー化写真だけでなく，専門家による講義，被爆者との対話，AIによるカラー化手法，撮影地へアクセスできるQRコードなども収録されている。したがって本実践は，画像の復元にとどまらず，写真一枚一枚に込められた記憶や証言を読み解き，歴史理解と平和構築へ接続する総合的な学習成果といえる。 教育的意義は三点に整理できる。第一に，カラー化は，今を生きる生徒たちと戦前・戦後の長崎との「再接続」を生み出すことである。本来，現在と過去は断絶しているわけではなく，私たちの日常は，かつて同じ場所で営まれていた生活の延長線上にある。しかし白黒写真として残された過去は，日常生活のなかでは遠い歴史として受け取られやすい。そこに色が加わることで，写っている人々の服装，街並み，表情，生活の気配が，作り手である生徒にとっても，受け手である鑑賞者にとっても，現前のものとして立ち上がる。参加した生徒からも，白黒写真では陰影しか分からなかったが，カラー化によって鮮やかな着物を着ていたことが分かった，という気づきが示されている[4]。カラー化は，過去を現在に似せる操作ではなく，もともと連続していた時間と場所を，あらためて感じ取れるようにする「再接続」のメディアなのである。 第二に，AIの出力を批判的に検証する姿勢を育てている点である。AIカラー化は，過去の色を「正解」として復元するものではない。大量の画像データから推定された仮説であり，誤りや過剰な鮮やかさも含みうる。そこで生徒たちは，当時の幟や服装，街並みの色について専門家に確認し，色が実体とかけ離れていないかを一つひとつ検討した。このプロセスにより，AIを便利な道具として使うだけでなく，その出力を資料・証言・地域の知見と照合しながら判断する，AIリテラシーと歴史資料批判の双方が育まれている。","evidence_refs":["02-photo-colorization-peace-education-ref-01","02-photo-colorization-peace-education-ref-02","02-photo-colorization-peace-education-ref-03","02-photo-colorization-peace-education-ref-04"],"figure_ids":["02-the-day-color-returned"],"audience":["平和教育・歴史教育・地域学習を担当する中学・高校教員","写真資料や証言を活用する博物館・資料館・地域アーカイブ担当者","AIカラー化を探究学習や記憶継承に活かしたい教育実践者","生徒の成果発信や社会連携型プロジェクトを支援する担当者"],"themes":["生成AI","写真カラー化","平和教育","歴史学習"],"keywords":["写真カラー化","平和教育","高校教育","歴史資料"],"usable_for":["根拠付き回答","横断比較","授業案生成","ワークショップ設計","教材企画"],"risk_notes":["本文にない事実を補う場合は推測として明示する。","AIの出力は完成版ではなく、人間が本文・参考文献・図版メタデータで検証する。","AIカラー化は推定であり、史実の色として断定しない。"],"depends_on":["00-overview","03-digital-citizenship","05-digital-archive-ai"],"human_verification_required":true}
+{"schema":"aice.rag_chunk.v1","id":"02-photo-colorization-peace-education:002","report_id":"02-photo-colorization-peace-education","source_md":"reports/02-photo-colorization-peace-education.md","title":"AIによるモノクロ写真カラー化を活かした高校生の平和教育実践","section":"AIによるモノクロ写真カラー化を活かした高校生の平和教育実践","chunk_type":"body","claim":"AIカラー化を平和教育、資料批判、社会発信に結びつけた高校生の実践事例。","text":"第三に，成果物を社会に届ける実践になっている点である。写真集は非売品として公共的な場所へ配布され，クラウドファンディングによって活動の持続化も図られた。ここで重要なのは，生徒の学習成果が教室内の発表で終わらず，地域社会，平和教育施設，海外の関係機関へと開かれていることである。探究学習が「調べる」段階にとどまらず，社会へ伝え，対話を生み出すメディア実践へと展開している。 ![長崎東高校の生徒による発表風景](../assets/02-photo-colorization-peace-education/presentation-scene.jpg) *図2. 長崎東高校の生徒による発表風景* この実践は，渡邉英徳・庭田杏珠による「記憶の解凍」の理論とも接続する。同論文では，デジタルアーカイブに“ストック”された白黒写真をAIでカラー化し，そこから社会的な“フロー”を生み出すことで，過去と現在の心理的距離を縮め，対話を誘発すると論じられている[5]。本実践に即して言えば，カラー化は失われた色を機械的に補う作業ではなく，写真のなかの過去と，いま写真を見ている人びとの生活感覚を再接続する行為である。色をめぐる考証や証言の聞き取りを通じて，生徒たちは「昔の長崎」を外部の対象として眺めるのではなく，自分たちの住む場所や社会の延長として捉え直していく。 「あの日に色がさすとき」は，AI時代の平和教育の重要なモデルである。生徒はAIを使って過去を「再現」するだけでなく，その出力を疑い，証言と照らし合わせ，社会に向けて表現する。ここでは，AIリテラシー，歴史理解，メディア表現，平和教育が一体化している。被爆者から直接話を聞く機会が少なくなる時代において，重要なのは記憶を保存するだけではなく，若い世代が根拠を確かめながら自分の言葉で継承することである。本プロジェクトは，AIをそのための入口として使う平和教育の可能性を具体的に示している。","evidence_refs":["02-photo-colorization-peace-education-ref-05"],"figure_ids":["02-presentation-scene"],"audience":["平和教育・歴史教育・地域学習を担当する中学・高校教員","写真資料や証言を活用する博物館・資料館・地域アーカイブ担当者","AIカラー化を探究学習や記憶継承に活かしたい教育実践者","生徒の成果発信や社会連携型プロジェクトを支援する担当者"],"themes":["生成AI","写真カラー化","平和教育","歴史学習"],"keywords":["写真カラー化","平和教育","高校教育","歴史資料"],"usable_for":["根拠付き回答","横断比較","授業案生成","ワークショップ設計","教材企画"],"risk_notes":["本文にない事実を補う場合は推測として明示する。","AIの出力は完成版ではなく、人間が本文・参考文献・図版メタデータで検証する。","AIカラー化は推定であり、史実の色として断定しない。"],"depends_on":["00-overview","03-digital-citizenship","05-digital-archive-ai"],"human_verification_required":true}
+{"schema":"aice.rag_chunk.v1","id":"02-photo-colorization-peace-education:003","report_id":"02-photo-colorization-peace-education","source_md":"reports/02-photo-colorization-peace-education.md","title":"AIによるモノクロ写真カラー化を活かした高校生の平和教育実践","section":"参考文献・関連資料","chunk_type":"references","claim":"AIによるモノクロ写真カラー化を活かした高校生の平和教育実践で用いる参考文献・関連資料の一覧。","text":"1. 長崎県立長崎東中学校・高等学校. 2026. あの日に色がさすとき: 高校生がAIとカラー化した長崎の戦前・戦後. Retrieved May 27, 2026 from https://www.news.ed.jp/higashi-h/img/file13.pdf 2. 長崎県立長崎東中学校・高等学校. n.d. WWL・DX: あの日に色がさすとき. Retrieved May 27, 2026 from https://www.news.ed.jp/higashi-h/wwldx.html 3. NCC長崎文化放送. 2026. AIでよみがえる戦前の長崎 高校生が写真集制作. Retrieved May 27, 2026 from https://www.ncctv.co.jp/news/article/16463000 4. 日テレNEWS NNN. 2025. 次世代への継承「原爆投下前の長崎の白黒写真をカラー化」高校生が最新技術を活用し挑戦《長崎》. Retrieved May 27, 2026 from https://news.ntv.co.jp/category/society/ni48845778ff4347bbaedd512c7cdeeece 5. Hidenori Watanave and Anju Niwata. 2019. 「記憶の解凍」：カラー化写真をもとにした“フロー”の生成と記憶の継承. デジタルアーカイブ学会誌 3, 3 (2019), 317–323. https://doi.org/10.24506/jsda.3.3_317","evidence_refs":[],"figure_ids":[],"audience":["平和教育・歴史教育・地域学習を担当する中学・高校教員","写真資料や証言を活用する博物館・資料館・地域アーカイブ担当者","AIカラー化を探究学習や記憶継承に活かしたい教育実践者","生徒の成果発信や社会連携型プロジェクトを支援する担当者"],"themes":["生成AI","写真カラー化","平和教育","歴史学習"],"keywords":["写真カラー化","平和教育","高校教育","歴史資料"],"usable_for":["引用確認","参考文献照合","出典リスト生成"],"risk_notes":["本文にない事実を補う場合は推測として明示する。","AIの出力は完成版ではなく、人間が本文・参考文献・図版メタデータで検証する。","参考文献名や固有名詞は出典表記として保持し、プロジェクト概要の表現規則とは分けて扱う。","AIカラー化は推定であり、史実の色として断定しない。"],"depends_on":["00-overview","03-digital-citizenship","05-digital-archive-ai"],"human_verification_required":true}
+{"schema":"aice.rag_chunk.v1","id":"04-student-hackathon:001","report_id":"04-student-hackathon","source_md":"reports/04-student-hackathon.md","title":"AI時代の学生ハッカソン：実装の民主化と発想力への転換","section":"AI時代の学生ハッカソン：実装の民主化と発想力への転換","chunk_type":"body","claim":"生成AIによる実装支援を前提に、学生ハッカソンの教育的価値を再定義するレポート。","text":"> 実装支援から課題設定・価値検証へ移る開発教育モデル 学生ハッカソンにおける生成AIの導入は，「開発」教育の重心を大きく変えつつある。従来のハッカソンでは，限られた時間内にアイデアを実装できるかどうかが，参加者のプログラミング経験やフレームワーク習熟度に強く左右されていた。しかし現在は，生成AIがコード生成，UI設計，API連携，デバッグ，スライドや動画の作成まで支援することで，初期実装のハードルは大幅に下がっている。GitHub Copilotに関する実験研究でも，AIペアプログラマを利用した開発者は特定課題を約55.8％速く完了したと報告されており，AIが実装工程の生産性を押し上げる可能性は実証的にも示されている[1]。 この変化は，学生に求められる力を「速くコードを書く能力」から，「何をつくるべきかを構想し，誰に，どのような価値として届けるかを設計する能力」へと移行させる。これは，Wingが提唱した「計算論的思考」が，単なるプログラミング技能ではなく，問題を分解し，抽象化し，計算可能なかたちで解決する思考法であると論じた点とも接続する[2]。生成AI時代には，この思考法に加えて，AIが出力したコードや表現を検証し，目的に照らして再構成する批判的判断力が重要になる（図1）。 ![図1　生成AI時代のハッカソン教育における重心の移動](../assets/04-student-hackathon/fig_hackathon_shift.svg) *図1. 生成AI時代のハッカソン教育における重心の移動* 東京大学大学院情報学環が後援した「Hack-1グランプリ2025」は，この変化を象徴する事例である。同イベントは「AI時代のものづくり」をテーマに，全国から100名以上の学生が参加し，約1ヶ月で「社会に届けられるプロダクト」の開発に取り組んだ[3]。キックオフでは，Vibe Coding，生成AIを組み込んだ次世代アプリ設計，生成AIではじめるプロダクト開発，AIと一緒に小さく早く作る方法など，AIを前提とした開発手法が共有された。開発期間中は産業界のメンターが伴走し，技術相談だけでなく，プロジェクト管理や意思決定も支援した。 2026年のHack-1グランプリでは，テーマが「小さくなる日本」に設定され，人口減少や地域縮小，社会インフラの変化を見据えたプロダクト開発が行われた[4]。本大会は対面とオンラインのハイブリッド形式で約1ヶ月間（2026年4月12日〜5月10日）にわたって実施され，約150名（対面約80名／オンライン約70名）の学生が参加した[5]。開発期間中はGMOインターネットグループのエンジニア・クリエイター19名がメンターとして加わり，デザインレビュー，技術相談，定期的な進捗確認を通じて学生の制作に伴走した[5,6]。 最終発表会は東京大学本郷キャンパスの情報学環・福武ホールで開かれ，全チームによる30秒間のピッチ，50分間の「Touch & Try」（ブース展示），そしてグランプリ審査（賞金50万円）という構成で進められた[5]。とりわけ印象的なのは，生成AIの活用により，プロダクト本体だけでなく，スライド，動画，グラフィック，ブース展示まで含めた「見せ方」「伝え方」の完成度が高まっていた点である（図2）。わずか30秒という持ち時間のなかで，何を作り，誰の，どのような課題に向き合ったのかを伝えきる力が問われ，なかには3Dプリンターで制作した物理プロトタイプを持ち込むチームもあった[5]。ここでは，実装力だけでなく，課題設定，体験設計，物語化，プレゼンテーションが総合的に問われている。 ![図2　Hack-1グランプリ2026 最終発表会の様子](../assets/04-student-hackathon/hack1-2026-demoday.png) *図2. Hack-1グランプリ2026 最終発表会の様子*","evidence_refs":["04-student-hackathon-ref-01","04-student-hackathon-ref-02","04-student-hackathon-ref-03","04-student-hackathon-ref-04","04-student-hackathon-ref-05","04-student-hackathon-ref-06"],"figure_ids":["04-hackathon-shift","04-hack1-2026-demoday"],"audience":["大学・高専・高校でハッカソンやPBLを運営する教職員","AIを用いたプロトタイピング教育を設計するメンター・ファシリテーター","学生起業、地域課題解決、産学連携プログラムの企画担当者","生成AI時代の開発教育や創造性評価に関心を持つ実践者"],"themes":["生成AI","ハッカソン","プロトタイピング","実装教育"],"keywords":["学生ハッカソン","プロダクト開発","実装の民主化","創造性"],"usable_for":["根拠付き回答","横断比較","授業案生成","ワークショップ設計","教材企画"],"risk_notes":["本文にない事実を補う場合は推測として明示する。","AIの出力は完成版ではなく、人間が本文・参考文献・図版メタデータで検証する。"],"depends_on":["00-overview","03-digital-citizenship","06-sf-prototyping"],"human_verification_required":true}
+{"schema":"aice.rag_chunk.v1","id":"04-student-hackathon:002","report_id":"04-student-hackathon","source_md":"reports/04-student-hackathon.md","title":"AI時代の学生ハッカソン：実装の民主化と発想力への転換","section":"AI時代の学生ハッカソン：実装の民主化と発想力への転換","chunk_type":"body","claim":"生成AIによる実装支援を前提に、学生ハッカソンの教育的価値を再定義するレポート。","text":"日テレ クリエイティブメディアハッカソンにも，同様の傾向が見られる。2026年3月に開催された同イベントでは，学生・若手社会人32名，13チームに加え，日本テレビ社員も参加し，「新しいメディア表現」「宇宙コンテンツ・サービス」「衛星データや新技術を活用した調査報道」をテーマに，2日間で全12チームがプロダクトを完成させた[7]。受賞作品には，衛星データやオープンデータをもとにニュースの真相に迫るゲーム，実際のニュースを時系列で追体験するプロダクト，ニュース見出しをホログラムとして空間化する体験などがあり，単なるアプリ開発ではなく，メディア体験そのものを再設計する試みとなっていた。 一方で，実装の民主化は，教育上の課題も伴う。AIが生成したコードやデザインは，動作しているように見えても，安全性，著作権，データ保護，アクセシビリティ，ユーザー体験の妥当性を人間が検証しなければならない。UNESCOのAIコンピテンシー枠組みも，学生をAIの受動的利用者ではなく，責任ある利用者・共同設計者として育成する必要性を強調している[8]。OECDも，AIの能力を人間のスキルと比較しながら，教育や仕事への影響を継続的に把握する枠組みの重要性を示している[9]。 したがって，AI時代のハッカソン教育とは，AIに実装を任せる教育ではない。むしろ，AIを伴走者として使いながら，課題を発見し，仮説を立て，素早く形にし，社会的価値を検証する教育である。実装のハードルが下がったからこそ，発想の質，問いの鋭さ，ユーザー理解，社会への接続，そして生成物を批判的に評価する力が前景化する。学生ハッカソンは，技術を競う場から，問いを形にし，根拠をもって社会へ説明する学習モデルへと変化している。","evidence_refs":["04-student-hackathon-ref-07","04-student-hackathon-ref-08","04-student-hackathon-ref-09"],"figure_ids":[],"audience":["大学・高専・高校でハッカソンやPBLを運営する教職員","AIを用いたプロトタイピング教育を設計するメンター・ファシリテーター","学生起業、地域課題解決、産学連携プログラムの企画担当者","生成AI時代の開発教育や創造性評価に関心を持つ実践者"],"themes":["生成AI","ハッカソン","プロトタイピング","実装教育"],"keywords":["学生ハッカソン","プロダクト開発","実装の民主化","創造性"],"usable_for":["根拠付き回答","横断比較","授業案生成","ワークショップ設計","教材企画"],"risk_notes":["本文にない事実を補う場合は推測として明示する。","AIの出力は完成版ではなく、人間が本文・参考文献・図版メタデータで検証する。"],"depends_on":["00-overview","03-digital-citizenship","06-sf-prototyping"],"human_verification_required":true}
+{"schema":"aice.rag_chunk.v1","id":"04-student-hackathon:003","report_id":"04-student-hackathon","source_md":"reports/04-student-hackathon.md","title":"AI時代の学生ハッカソン：実装の民主化と発想力への転換","section":"参考文献・関連資料","chunk_type":"references","claim":"AI時代の学生ハッカソン：実装の民主化と発想力への転換で用いる参考文献・関連資料の一覧。","text":"1. Sidney Peng, Eirini Kalliamvakou, Peter Cihon, and Mert Demirer. 2023. The Impact of AI on Developer Productivity: Evidence from GitHub Copilot. arXiv:2302.06590. Retrieved May 27, 2026 from https://arxiv.org/abs/2302.06590 2. Jeannette M. Wing. 2006. Computational Thinking. Communications of the ACM 49, 3 (March 2006), 33–35. https://doi.org/10.1145/1118178.1118215 3. 東京大学大学院情報学環・学際情報学府. 2025. Hack-1グランプリ2025 開催レポート. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/research/20250725report 4. 東京大学大学院情報学環・学際情報学府. 2026. Hack-1グランプリ2026 告知. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/event/20260404event 5. GMO Developers. 2026. 【前編】Hack-1グランプリ2026 デモデーレポート｜AI時代の学生ハッカソンに圧倒される2日間。「小さくなる日本」をどう表現する？ Retrieved May 28, 2026 from https://developers.gmo.jp/events/83407/ 6. GMO Developers. 2026. 【Hack-1グランプリ2026 キックオフレポート】約150名の学生がハイブリッド形式で集結. Retrieved May 31, 2026 from https://developers.gmo.jp/events/83078/ 7. 日テレ共創ラボ. 2026. 日テレ クリエイティブメディアハッカソン開催レポート. Retrieved May 27, 2026 from https://lab.ntvhd.co.jp/topics/2026/04/post-24.html 8. UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students 9. OECD. 2023. AI and the Future of Skills, Volume 2. OECD Publishing. https://doi.org/10.1787/a9fe53cb-en","evidence_refs":[],"figure_ids":[],"audience":["大学・高専・高校でハッカソンやPBLを運営する教職員","AIを用いたプロトタイピング教育を設計するメンター・ファシリテーター","学生起業、地域課題解決、産学連携プログラムの企画担当者","生成AI時代の開発教育や創造性評価に関心を持つ実践者"],"themes":["生成AI","ハッカソン","プロトタイピング","実装教育"],"keywords":["学生ハッカソン","プロダクト開発","実装の民主化","創造性"],"usable_for":["引用確認","参考文献照合","出典リスト生成"],"risk_notes":["本文にない事実を補う場合は推測として明示する。","AIの出力は完成版ではなく、人間が本文・参考文献・図版メタデータで検証する。","参考文献名や固有名詞は出典表記として保持し、プロジェクト概要の表現規則とは分けて扱う。"],"depends_on":["00-overview","03-digital-citizenship","06-sf-prototyping"],"human_verification_required":true}
+{"schema":"aice.rag_chunk.v1","id":"05-digital-archive-ai:001","report_id":"05-digital-archive-ai","source_md":"reports/05-digital-archive-ai.md","title":"デジタルアーカイブとAIを活かした教育実践","section":"デジタルアーカイブとAIを活かした教育実践","chunk_type":"body","claim":"デジタルアーカイブと生成AIを組み合わせ、一次資料を用いた探究学習を設計するレポート。","text":"> 資料を保存から探究へひらき，出典と文脈を確かめる学び デジタルアーカイブとAIを組み合わせた教育実践は，資料を単に保存・閲覧する段階から，学習者が問いを立て，資料を読み解き，他者へ伝える探究的な学びへと発展させる可能性を持つ。デジタルアーカイブは，写真，文書，地図，映像，文化財などを体系的に蓄積する基盤である。しかし，資料が「そこにある」だけでは，学習者の関心や授業実践には直結しにくい。重要なのは，ストックされた資料を，学習者の問い，対話，表現を通じてフロー化する設計である。 ![S×UKILAMワークショップのコンセプト](../assets/05-digital-archive-ai/sukilam-workshop.png) *図1. S×UKILAMワークショップのコンセプト：多様な資料から教材を共創する* その代表例が，ジャパンサーチを活用したキュレーション型授業である。大井・渡邉らは，デジタルアーカイブの教育活用には，教科書やカリキュラムとの接続，児童生徒自身の「問い」に基づく実践の蓄積が必要であるとし，小中高でのキュレーション授業を提案している[1]。そこでは，学習者が一つの資料から問いを立て，関連資料を探索・選択し，複数の資料を関係づけながら意味を構成する。これは，既成の答えを受け取る学びではなく，資料を通じて多面的・多角的な視座を獲得する学びである。 さらに，探究学習における「問い」と「資料」の接続を支援するモデルとして，ジャパンサーチの検索機能や協働キュレーション機能を用いた実践も展開されている。この研究では，生徒自身の問いを起点とし，資料を収集し，考察する力が向上したことが示唆されている[1]。すなわち，デジタルアーカイブは，教師が用意した資料を提示するためだけの装置ではなく，学習者が自ら資料と出会い，問いを構造化し，根拠にもとづいて考えるための知的環境となる。 AIは，この学習過程をさらに拡張する。たとえば，白黒写真のAIカラー化を活用した歴史教材では，児童の家族・親族の写真をAIでカラー化し，家庭内での聞き取りや教室での発表につなげる実践が行われた。白黒写真はしばしば「遠い過去」という印象を与えるが，色彩が加わることで，写真に写る人物の表情や生活感が現在に近づき，世代間対話を促す。ここでAIは，正解を与える装置ではなく，資料を読み直し，過去と現在，学習者と家族，記録と記憶を再接続する媒介として機能している。 また，S×UKILAM連携は，学校，大学，公民館，産業界，図書館，文書館，博物館を結ぶ「人」と「データ」のネットワークとして重要である。全国規模のワークショップでは，教員と資料公開機関の関係者が協働して教材化を行い，教育メタデータを付与した教材をIIIFにより公開している[2,3]。これにより，資料は専門機関の内部に閉じたものではなく，学年，教科，単元，地域，時代などの教育文脈から再利用可能な教材となる。","evidence_refs":["05-digital-archive-ai-ref-01","05-digital-archive-ai-ref-02","05-digital-archive-ai-ref-03"],"figure_ids":["05-sukilam-workshop"],"audience":["学校教育で一次資料や地域資料を活用したい教員","デジタルアーカイブの教育利用を進める図書館・博物館・自治体担当者","探究学習、キュレーション授業、教材アーカイブを設計する教育者","AIと資料検索・要約・再編集を組み合わせた学習サービス企画者"],"themes":["生成AI","デジタルアーカイブ","教育実践","資料活用"],"keywords":["デジタルアーカイブ","資料活用","探究学習","AI教育"],"usable_for":["根拠付き回答","横断比較","授業案生成","ワークショップ設計","教材企画"],"risk_notes":["本文にない事実を補う場合は推測として明示する。","AIの出力は完成版ではなく、人間が本文・参考文献・図版メタデータで検証する。","AIカラー化は推定であり、史実の色として断定しない。"],"depends_on":["00-overview","01-information-visualization-osint","02-photo-colorization-peace-education"],"human_verification_required":true}
+{"schema":"aice.rag_chunk.v1","id":"05-digital-archive-ai:002","report_id":"05-digital-archive-ai","source_md":"reports/05-digital-archive-ai.md","title":"デジタルアーカイブとAIを活かした教育実践","section":"デジタルアーカイブとAIを活かした教育実践","chunk_type":"body","claim":"デジタルアーカイブと生成AIを組み合わせ、一次資料を用いた探究学習を設計するレポート。","text":"![S×UKILAM連携における人とデータのネットワーク](../assets/05-digital-archive-ai/sukilam-network.png) *図2. S×UKILAM連携における「人」と「データ」のネットワーク* 国際的にも，AIとデジタル資料を活用する教育には，批判的・倫理的な視点が求められている。UNESCOのAIコンピテンシー枠組みは，学習者をAIの受動的利用者ではなく，責任ある利用者・共同設計者として育成する必要性を示している[4]。また，UNESCOのメディア・情報リテラシー教育は，インターネット，図書館，デジタルアーカイブなどが一体化する情報環境を前提に，情報を批判的に読み解き，責任をもって活用する力を重視している[5]。 以上を踏まえると，デジタルアーカイブとAIを活かした教育実践の核心は，資料のデジタル化そのものではない。資料を起点に問いを生み，AIを対話的な補助者として使い，過去と現在，個人と社会，地域と世界を結び直す学習デザインにある。今後の教育では，AIによる生成・補助の利便性と，デジタルアーカイブがもつ一次資料性・公共性を組み合わせ，学習者が出典と文脈を確かめながら考え，表現し，社会へ伝える力を育てることが重要になる。","evidence_refs":["05-digital-archive-ai-ref-04","05-digital-archive-ai-ref-05"],"figure_ids":["05-sukilam-network"],"audience":["学校教育で一次資料や地域資料を活用したい教員","デジタルアーカイブの教育利用を進める図書館・博物館・自治体担当者","探究学習、キュレーション授業、教材アーカイブを設計する教育者","AIと資料検索・要約・再編集を組み合わせた学習サービス企画者"],"themes":["生成AI","デジタルアーカイブ","教育実践","資料活用"],"keywords":["デジタルアーカイブ","資料活用","探究学習","AI教育"],"usable_for":["根拠付き回答","横断比較","授業案生成","ワークショップ設計","教材企画"],"risk_notes":["本文にない事実を補う場合は推測として明示する。","AIの出力は完成版ではなく、人間が本文・参考文献・図版メタデータで検証する。"],"depends_on":["00-overview","01-information-visualization-osint","02-photo-colorization-peace-education"],"human_verification_required":true}
+{"schema":"aice.rag_chunk.v1","id":"05-digital-archive-ai:003","report_id":"05-digital-archive-ai","source_md":"reports/05-digital-archive-ai.md","title":"デジタルアーカイブとAIを活かした教育実践","section":"参考文献・関連資料","chunk_type":"references","claim":"デジタルアーカイブとAIを活かした教育実践で用いる参考文献・関連資料の一覧。","text":"1. Masao Oi and Hidenori Watanave. 2020. ジャパンサーチを活用した小中高でのキュレーション授業デザイン：デジタルアーカイブの教育活用意義と可能性. デジタルアーカイブ学会誌 4, 4 (2020), 352–359. https://doi.org/10.24506/jsda.4.4_352 2. ADEAC. n.d. S×UKILAM：Primary Source Sets／スキラム連携：多様な資料を活用した教材アーカイブ. Retrieved May 27, 2026 from https://adeac.jp/adeac-lab/top/sxukilam/index.html 3. Masao Oi and Hidenori Watanave. 2022. S×UKILAM連携：多様な資料を学校教育で活用するための「人」と「データ」のネットワーク構築. デジタルアーカイブ学会誌 6, s3 (2022), s214–s217. https://doi.org/10.24506/jsda.6.s3_s214 4. UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students 5. UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum","evidence_refs":[],"figure_ids":[],"audience":["学校教育で一次資料や地域資料を活用したい教員","デジタルアーカイブの教育利用を進める図書館・博物館・自治体担当者","探究学習、キュレーション授業、教材アーカイブを設計する教育者","AIと資料検索・要約・再編集を組み合わせた学習サービス企画者"],"themes":["生成AI","デジタルアーカイブ","教育実践","資料活用"],"keywords":["デジタルアーカイブ","資料活用","探究学習","AI教育"],"usable_for":["引用確認","参考文献照合","出典リスト生成"],"risk_notes":["本文にない事実を補う場合は推測として明示する。","AIの出力は完成版ではなく、人間が本文・参考文献・図版メタデータで検証する。","参考文献名や固有名詞は出典表記として保持し、プロジェクト概要の表現規則とは分けて扱う。"],"depends_on":["00-overview","01-information-visualization-osint","02-photo-colorization-peace-education"],"human_verification_required":true}
+{"schema":"aice.rag_chunk.v1","id":"06-sf-prototyping:001","report_id":"06-sf-prototyping","source_md":"reports/06-sf-prototyping.md","title":"生成AIを用いたSFプロトタイピング","section":"生成AIを用いたSFプロトタイピング","chunk_type":"body","claim":"生成AIを用いて未来構想を民主化し、教育・産学協創・事業開発に応用するSFプロトタイピングのレポート。","text":"> AIが仮設した未来を，人間が批判し再構成する創造ワークショップ ![生成AIを用いたSFプロトタイピング・ワークショップのイメージ](../assets/06-sf-prototyping/workshop-hero.jpg) *図1. 生成AIを用いたSFプロトタイピング・ワークショップのイメージ* SFプロトタイピングは，サイエンス・フィクションの発想を用いて，まだ存在しない技術・制度・生活様式を物語として描き，他者と未来像を議論する方法である。Brian David Johnsonは，SFを単なる空想ではなく，未来の技術や製品の含意を検討するための実践的な道具として位置づけた[1]。日本でも，企業や行政，大学において，未来洞察，事業構想，組織変革の手法として導入が進んでいる[2]。 従来のSFプロトタイピングでは，小説家，SF作家，デザイナー，アーティストなど，物語化に長けた専門家の関与が重要だった。未来社会を単なるアイデアの列挙ではなく，人物，葛藤，制度，生活環境を含む「世界観」として描く必要があるためである。特に、他の未来洞察や思考法との大きな違いの一つとして、ストーリーテリングが挙げられる。未来の状況をプロット（物語）として具体的に肉付けし、そこでの生活や課題をリアルに想像することこそが本手法の核心だからである。しかし、このようなストーリー構築を非熟練者のみで行うことは極めて難しく、何らかの形で専門家の補助が不可欠であった。 しかし，専門家を常に招聘することは難しく，短時間の研修や企業内ワークショップ，学生向け演習では，参加者全員のアイディアから１つのストーリーを構築するのに時間がかかる，発言力のある参加者の意見に偏る，ワークショップ進行の判断基準が曖昧になる，といった課題が生じやすい。 この課題に対して，生成AIは有効な補助線となる。東京大学大学院情報学環・学際情報学府の楊欽・渡邉英徳による研究では，小説家などの専門家が不在でも実施可能なSFプロトタイピングワークショップ手法が提案されている[3]。手法は，キーワードによるアイデア収集，AIによる初期ストーリー生成，ガイドフレームワークとなりうるツール支援，AI出力への評価・批判プロセスから構成される。専門家の代替として、AIの利用だけでなく、ワークショップの進行や参加者の主体性を導くツールが非常に重要である。生成AIによる物語生成やデザイン発想支援に関する研究も，AIが参加者の発想を広げる一方で，人間による評価と再構成が不可欠であることを示している[4,5]。 ![生成AI支援SFプロトタイピングのプロセス](../assets/06-sf-prototyping/workshop-process.jpg) *図2. 生成AI支援SFプロトタイピングのプロセス* 実践の結果、本手法のメインの効果として、AIが全員のアイデアを一つのストーリーへと自然にまとめ上げ、物語の細部を具体的に詳細化（肉付け）できるという、ストーリーテリングの強力な補助効果が確認された。さらに、この手法の他の効用として、短時間でSFプロトタイピングの本格的な体験が可能になることや、発言力に左右されず参加者全員の視点が公平に物語へ反映されること、架空世界への没入が促進されることなども挙げられる。ここで最も重要なのは、単にAIを利用して効率化を図るだけでなく、出力された物語を起点に参加者が主体的に思考し、「AIを超える」ことを強く意識して再構成を目指す点である。","evidence_refs":["06-sf-prototyping-ref-01","06-sf-prototyping-ref-02","06-sf-prototyping-ref-03","06-sf-prototyping-ref-04","06-sf-prototyping-ref-05"],"figure_ids":["06-workshop-hero","06-workshop-process"],"audience":["未来構想・探究学習・創造性教育を担当する大学・高校教員","産学協創、企業研修、ワークショップを設計するファシリテーター","新規事業開発やビジョン策定にSFプロトタイピングを使いたい企画担当者","生成AIを用いた物語生成・合意形成・アイデア創出に関心を持つ実践者"],"themes":["生成AI","SFプロトタイピング","未来構想","創造性教育"],"keywords":["SFプロトタイピング","未来洞察","創造性","ワークショップ"],"usable_for":["根拠付き回答","横断比較","授業案生成","ワークショップ設計","教材企画"],"risk_notes":["本文にない事実を補う場合は推測として明示する。","AIの出力は完成版ではなく、人間が本文・参考文献・図版メタデータで検証する。"],"depends_on":["00-overview","03-digital-citizenship","04-student-hackathon"],"human_verification_required":true}
+{"schema":"aice.rag_chunk.v1","id":"06-sf-prototyping:002","report_id":"06-sf-prototyping","source_md":"reports/06-sf-prototyping.md","title":"生成AIを用いたSFプロトタイピング","section":"生成AIを用いたSFプロトタイピング","chunk_type":"body","claim":"生成AIを用いて未来構想を民主化し、教育・産学協創・事業開発に応用するSFプロトタイピングのレポート。","text":"この方法は，教育だけでなく，産学協創や組織改革にも応用可能である。東京大学の企業協創プログラムでは，ダイキン工業や電通との連携のもと，生成AIを用いたSFプロトタイピング型ワークショップが実施されている[6]。たとえばダイキンとのワークショップでは「2050年の空調」，電通とのワークショップでは「2050年の東京湾」といったテーマが設定され，参加者は遠い未来の生活環境，都市，気候，産業，メディア体験を物語として構想した[7]。ここで重要なのは，空調や湾岸地域を単なる技術・施設として扱うのではなく，人々の暮らし，身体感覚，環境変化，社会制度，都市の使われ方を含む未来の「世界観」として描く点である。生成AIは，参加者の断片的なキーワードや問題意識を短時間で複数のシナリオに展開し，それをもとに参加者が批判・修正・再構成するためのたたき台を提供する。これにより，専門分野や職位の異なる参加者が，共通の未来像を媒介に議論しやすくなる。 同様に，若手職員向けの業務改革ワークショップにも適している。業務改革は，しばしば既存業務の効率化に閉じがちである。しかしSFプロトタイピングを用いれば，「10年後の大学事務」「AIエージェントと協働する研究支援」「学生が迷わない窓口体験」など，未来の利用者像から逆算して現在の制度や業務を再設計できる。ダイキンや電通との実践が示すように，未来のテーマを大胆に設定することで，参加者は現在の制約から一度離れ，そのうえで現在に戻ってくるバックキャスティング型の思考を行える。生成AIは，その往復運動を支える対話相手として機能する。 生成AIを用いたSFプロトタイピングの意義は，AIに未来を予測させることではない。むしろ，人間が未来を語るための足場をAIに仮設させ，その足場を批判し，組み替え，よりよい未来像を共創する点にある。未来の物語は，AIが出した答えではなく，参加者が価値観，リスク，社会的含意を読み解きながら引き受ける仮説である。AI時代の創造的ワークショップは，効率化のための道具利用にとどまらず，人間の批判力や、物語のディテール（細部）をリアリティを持って構想する能力、そして合意形成力を拡張する教育・組織開発の方法として位置づけられる。","evidence_refs":["06-sf-prototyping-ref-06","06-sf-prototyping-ref-07"],"figure_ids":[],"audience":["未来構想・探究学習・創造性教育を担当する大学・高校教員","産学協創、企業研修、ワークショップを設計するファシリテーター","新規事業開発やビジョン策定にSFプロトタイピングを使いたい企画担当者","生成AIを用いた物語生成・合意形成・アイデア創出に関心を持つ実践者"],"themes":["生成AI","SFプロトタイピング","未来構想","創造性教育"],"keywords":["SFプロトタイピング","未来洞察","創造性","ワークショップ"],"usable_for":["根拠付き回答","横断比較","授業案生成","ワークショップ設計","教材企画"],"risk_notes":["本文にない事実を補う場合は推測として明示する。","AIの出力は完成版ではなく、人間が本文・参考文献・図版メタデータで検証する。"],"depends_on":["00-overview","03-digital-citizenship","04-student-hackathon"],"human_verification_required":true}
+{"schema":"aice.rag_chunk.v1","id":"06-sf-prototyping:003","report_id":"06-sf-prototyping","source_md":"reports/06-sf-prototyping.md","title":"生成AIを用いたSFプロトタイピング","section":"参考文献・関連資料","chunk_type":"references","claim":"生成AIを用いたSFプロトタイピングで用いる参考文献・関連資料の一覧。","text":"1. Brian David Johnson. 2011. Science Fiction Prototyping: Designing the Future with Science Fiction. Morgan & Claypool. https://doi.org/10.2200/S00336ED1V01Y201102CSL003 2. 宮本道人, 難波優輝, and 大澤博隆. 2021. SFプロトタイピング：SFからイノベーションを生み出す新戦略. 早川書房. 3. Qin Yang and Hidenori Watanave. 2024. 小説家不要のSFプロトタイピングワークショップ手法の提案：生成AIとの共同作業によるストーリーテリング支援. In 2024年度人工知能学会全国大会（第38回）. https://doi.org/10.11517/pjsai.JSAI2024.0_2A4GS1004 4. Haoran Chu and Sixiao Liu. 2024. Can AI tell good stories? Narrative transportation and persuasion with ChatGPT. Journal of Communication 74, 5 (October 2024), 347–358. https://doi.org/10.1093/joc/jqae029 5. Jakob Tholander and Martin Jonsson. 2023. Design Ideation with AI. In Proceedings of the 2023 ACM Designing Interactive Systems Conference (DIS '23). ACM, 1934–1946. https://doi.org/10.1145/3563657.3596014 6. 東京大学. n.d. グローバルインターンシッププログラム・企業協創プログラム. Retrieved May 27, 2026 from https://www.u-tokyo.ac.jp/ja/students/special-activities/ugip.html 7. ダイキン工業. 2018. 東京大学とダイキン工業「空気の価値化」を目指す産学協創協定を締結. Retrieved May 27, 2026 from https://www.daikin.co.jp/press/2018/20181217","evidence_refs":[],"figure_ids":[],"audience":["未来構想・探究学習・創造性教育を担当する大学・高校教員","産学協創、企業研修、ワークショップを設計するファシリテーター","新規事業開発やビジョン策定にSFプロトタイピングを使いたい企画担当者","生成AIを用いた物語生成・合意形成・アイデア創出に関心を持つ実践者"],"themes":["生成AI","SFプロトタイピング","未来構想","創造性教育"],"keywords":["SFプロトタイピング","未来洞察","創造性","ワークショップ"],"usable_for":["引用確認","参考文献照合","出典リスト生成"],"risk_notes":["本文にない事実を補う場合は推測として明示する。","AIの出力は完成版ではなく、人間が本文・参考文献・図版メタデータで検証する。","参考文献名や固有名詞は出典表記として保持し、プロジェクト概要の表現規則とは分けて扱う。"],"depends_on":["00-overview","03-digital-citizenship","04-student-hackathon"],"human_verification_required":true}
+{"schema":"aice.rag_chunk.v1","id":"07-minecraft-ai-education:001","report_id":"07-minecraft-ai-education","source_md":"reports/07-minecraft-ai-education.md","title":"AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ","section":"AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ","chunk_type":"body","claim":"MinecraftとAIを，記憶継承，地域学習，創造，AIリテラシーを横断する教育メディアとして整理するレポート。","text":"> 仮想空間で記憶を再構成し，創造とAIリテラシーを育てる学び ![長崎のMinecraftワールド](../assets/07-minecraft-ai-education/nagasaki-minecraft-world.jpg) *図1. 長崎のMinecraftワールド* Minecraftは単なるゲームではなく，子どもや若者が世界を構築し，過去を再現し，未来を構想するための学習環境として注目されている。ブロックを積み上げる直感的な操作は，専門的なプログラミング経験の有無にかかわらず参加者を創作に導く。そこにAIが加わることで，歴史資料の読み解き，画像のカラー化，仮想空間内のエージェント操作，生成AIを用いたストーリーテリングなど，多層的な学びが可能になる[1,2]。 国内の代表的な実践が，戦災・災害の記憶継承を目的としたPeacecraft系のワークショップである。広島，長崎，東京，長岡などで展開された取り組みでは，戦前の街並みや失われた日常を，子どもたちがMinecraft上で再構築する[3]。事前学習では，白黒写真をAIでカラー化した資料や証言を用い，当時の人びとの暮らしを具体的に想像する。カラー化は過去を単に「見やすくする」技術ではない。いまを生きる参加者と，写真のなかの過去の生活とを再接続し，歴史を自分ごととして考える契機となる。 この実践の重要性は，知識伝達型の平和教育から，制作と対話を通じた参加型の平和教育へと重心を移している点にある。参加者は，街路，建物，商店，生活の場をつくりながら，戦争や災害によって失われたものを想像する。同時に，AIカラー化の結果を鵜呑みにせず，色の推定には不確実性があること，AIが生成したものは資料批判を経て扱う必要があることも学ぶ。つまり，Minecraftは没入型の記憶継承の場であり，AIは過去への想像力を支える一方で，批判的リテラシーを育てる教材にもなる。 ![子どもたちによるMinecraftワークの様子](../assets/07-minecraft-ai-education/children-work.jpg) *図2. 子どもたちによるMinecraftワークの様子* 災害復興や地域学習にも応用が広がっている。能登半島地震後の門前町を題材とするワークショップでは，震災前の街の記録や3Dデータをもとに，子どもたちが未来の商店街をMinecraftで構想した[4]。ここでは，デジタルアーカイブが過去の保存にとどまらず，復興後の地域像を考える素材として機能している。北方領土をめぐる記憶継承の実践でも，元島民の証言や写真をもとに，若い世代が失われたふるさとを仮想空間に再現する試みが行われている[5]。Minecraftは，遠い歴史や地理的に離れた場所を，手を動かして理解するための「共有可能な模型」となる。 海外では，Minecraftを用いたAIリテラシー教育が制度的に展開されている。Microsoftと4-HによるAI Foundationsは，農村部の青少年にAIの基礎と責任ある利用を学ばせるプログラムとして広がっている[6,7]。BBCとMinecraft EducationによるDay of AIも，AIの仕組みや安全な利用を小学生向けに伝える教材群を提供している[8]。またCode.orgのHour of AI with Minecraftでは，AIエージェントに指示を与えながら課題を解く活動を通じて，AIは自律的に「何でもできる」存在ではなく，人間の目的設定，指示，検証を必要とする存在であることを学ぶ[9,10]。MinecraftをAIリテラシー評価やカリキュラム設計に用いる研究も進んでおり，仮想空間はAI概念を体験的に理解する場として位置づけられている[11,12]。","evidence_refs":["07-minecraft-ai-education-ref-01","07-minecraft-ai-education-ref-02","07-minecraft-ai-education-ref-03","07-minecraft-ai-education-ref-04","07-minecraft-ai-education-ref-05","07-minecraft-ai-education-ref-06","07-minecraft-ai-education-ref-07","07-minecraft-ai-education-ref-08","07-minecraft-ai-education-ref-09","07-minecraft-ai-education-ref-10","07-minecraft-ai-education-ref-11","07-minecraft-ai-education-ref-12"],"figure_ids":["07-nagasaki-minecraft-world","07-children-work"],"audience":["Minecraft Educationやゲームベース学習を授業に取り入れたい小中高・大学教員","平和教育・地域学習・災害復興学習で仮想空間制作を活用したい教育実践者","AIリテラシー，プログラミング，デジタルシティズンシップを横断する教材設計者","Minecraftや生成AIを活用した学習サービス・ワークショップの企画担当者"],"themes":["生成AI","Minecraft","ゲームベース学習","AIリテラシー","記憶継承"],"keywords":["Minecraft Education","Peacecraft","AIリテラシー","ゲームベース学習","地域学習"],"usable_for":["根拠付き回答","横断比較","授業案生成","ワークショップ設計","教材企画"],"risk_notes":["本文にない事実を補う場合は推測として明示する。","AIの出力は完成版ではなく、人間が本文・参考文献・図版メタデータで検証する。","AIカラー化は推定であり、史実の色として断定しない。"],"depends_on":["00-overview","02-photo-colorization-peace-education","03-digital-citizenship","05-digital-archive-ai","06-sf-prototyping"],"human_verification_required":true}
+{"schema":"aice.rag_chunk.v1","id":"07-minecraft-ai-education:002","report_id":"07-minecraft-ai-education","source_md":"reports/07-minecraft-ai-education.md","title":"AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ","section":"AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ","chunk_type":"body","claim":"MinecraftとAIを，記憶継承，地域学習，創造，AIリテラシーを横断する教育メディアとして整理するレポート。","text":"これらの事例に共通するのは，AIを単なる効率化ツールとして扱わない点である。Minecraft内で何をつくるか，どの資料を参照するか，AIの出力をどのように検証するか，完成した世界を誰に向けてどう説明するかは，いずれも人間の判断に委ねられる。AI時代のMinecraft教育は，プログラミング，歴史，平和，地域，デジタル・シティズンシップを横断する総合的な学びである。子どもたちはブロックを置きながら，資料を読み，過去と現在を結び，未来を構想する。その意味でMinecraftは，遊びの空間であると同時に，記憶を継承し，社会を想像し，AIを批判的に使う力を育てる教育メディアなのである。","evidence_refs":[],"figure_ids":[],"audience":["Minecraft Educationやゲームベース学習を授業に取り入れたい小中高・大学教員","平和教育・地域学習・災害復興学習で仮想空間制作を活用したい教育実践者","AIリテラシー，プログラミング，デジタルシティズンシップを横断する教材設計者","Minecraftや生成AIを活用した学習サービス・ワークショップの企画担当者"],"themes":["生成AI","Minecraft","ゲームベース学習","AIリテラシー","記憶継承"],"keywords":["Minecraft Education","Peacecraft","AIリテラシー","ゲームベース学習","地域学習"],"usable_for":["根拠付き回答","横断比較","授業案生成","ワークショップ設計","教材企画"],"risk_notes":["本文にない事実を補う場合は推測として明示する。","AIの出力は完成版ではなく、人間が本文・参考文献・図版メタデータで検証する。"],"depends_on":["00-overview","02-photo-colorization-peace-education","03-digital-citizenship","05-digital-archive-ai","06-sf-prototyping"],"human_verification_required":true}
+{"schema":"aice.rag_chunk.v1","id":"07-minecraft-ai-education:003","report_id":"07-minecraft-ai-education","source_md":"reports/07-minecraft-ai-education.md","title":"AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ","section":"参考文献・関連資料","chunk_type":"references","claim":"AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへで用いる参考文献・関連資料の一覧。","text":"1. UNESCO. 2023. Guidance for generative AI in education and research. UNESCO. Retrieved May 29, 2026 from https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research 2. UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 29, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students 3. きのこぐものしたにあったまち. n.d. きのこぐものしたにあったまち｜ブロッククラフトで学ぶ広島・長崎歴史探訪ワークショップ. Retrieved May 29, 2026 from https://peacecraft.info/ 4. マイクラカップ. 2026. 石川県輪島市門前町にて、マイクラ×ARワークショップ「門前の記憶と未来」を開催しました. Retrieved May 29, 2026 from https://mccup.jp/eventreports/26671/ 5. 内外教育ウェブ. 2026. 「マイクラ」で北方領土啓発＝北海道標津町. Retrieved May 29, 2026 from https://edu-naigai.jiji.com/timeline/3411 6. Minecraft Education. n.d. AI Foundations. Retrieved May 29, 2026 from https://education.minecraft.net/en-us/lessons/ai-foundations 7. National 4-H Council and Microsoft. 2025. National 4-H Council and Microsoft Extend $10M Partnership to Expand AI Education for Rural Youth and Educators. Retrieved May 29, 2026 from https://4-h.org/about/blog/national-4-h-council-and-microsoft-extend-10m-partnership-to-expand-ai-education-for-rural-youth-and-educators/ 8. Minecraft Education. n.d. BBC Day of AI. Retrieved May 29, 2026 from https://education.minecraft.net/en-us/resources/bbc-day-of-ai","evidence_refs":[],"figure_ids":[],"audience":["Minecraft Educationやゲームベース学習を授業に取り入れたい小中高・大学教員","平和教育・地域学習・災害復興学習で仮想空間制作を活用したい教育実践者","AIリテラシー，プログラミング，デジタルシティズンシップを横断する教材設計者","Minecraftや生成AIを活用した学習サービス・ワークショップの企画担当者"],"themes":["生成AI","Minecraft","ゲームベース学習","AIリテラシー","記憶継承"],"keywords":["Minecraft Education","Peacecraft","AIリテラシー","ゲームベース学習","地域学習"],"usable_for":["引用確認","参考文献照合","出典リスト生成"],"risk_notes":["本文にない事実を補う場合は推測として明示する。","AIの出力は完成版ではなく、人間が本文・参考文献・図版メタデータで検証する。","参考文献名や固有名詞は出典表記として保持し、プロジェクト概要の表現規則とは分けて扱う。"],"depends_on":["00-overview","02-photo-colorization-peace-education","03-digital-citizenship","05-digital-archive-ai","06-sf-prototyping"],"human_verification_required":true}
+{"schema":"aice.rag_chunk.v1","id":"07-minecraft-ai-education:004","report_id":"07-minecraft-ai-education","source_md":"reports/07-minecraft-ai-education.md","title":"AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ","section":"参考文献・関連資料","chunk_type":"references","claim":"AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへで用いる参考文献・関連資料の一覧。","text":"9. Code.org. n.d. Hour of AI with Minecraft. Retrieved May 29, 2026 from https://code.org/en-US/minecraft 10. Microsoft Japan. 2019. Minecraft Hour of Code: AI for Good 日本語版提供開始. Retrieved May 29, 2026 from https://news.microsoft.com/ja-jp/2019/12/09/191209-information/ 11. Mahajan, J. et al. 2023. MineObserver 2.0: A Deep Learning & In-Game Framework for Assessing Natural Language Descriptions of Minecraft Imagery. arXiv:2301.08167. Retrieved May 29, 2026 from https://arxiv.org/abs/2301.08167 12. Tadimalla, S. Y. and Maher, M. L. 2024. AI Literacy for All: Adjustable Interdisciplinary Socio-technical Curriculum. arXiv:2403.04824. Retrieved May 29, 2026 from https://arxiv.org/abs/2403.04824","evidence_refs":[],"figure_ids":[],"audience":["Minecraft Educationやゲームベース学習を授業に取り入れたい小中高・大学教員","平和教育・地域学習・災害復興学習で仮想空間制作を活用したい教育実践者","AIリテラシー，プログラミング，デジタルシティズンシップを横断する教材設計者","Minecraftや生成AIを活用した学習サービス・ワークショップの企画担当者"],"themes":["生成AI","Minecraft","ゲームベース学習","AIリテラシー","記憶継承"],"keywords":["Minecraft Education","Peacecraft","AIリテラシー","ゲームベース学習","地域学習"],"usable_for":["引用確認","参考文献照合","出典リスト生成"],"risk_notes":["本文にない事実を補う場合は推測として明示する。","AIの出力は完成版ではなく、人間が本文・参考文献・図版メタデータで検証する。","参考文献名や固有名詞は出典表記として保持し、プロジェクト概要の表現規則とは分けて扱う。"],"depends_on":["00-overview","02-photo-colorization-peace-education","03-digital-citizenship","05-digital-archive-ai","06-sf-prototyping"],"human_verification_required":true}
+{"schema":"aice.rag_chunk.v1","id":"03-digital-citizenship:001","report_id":"03-digital-citizenship","source_md":"reports/03-digital-citizenship.md","title":"AIを活かしたデジタルシティズンシップ教育","section":"AIを活かしたデジタルシティズンシップ教育","chunk_type":"body","claim":"AI利用を判断・参加・知識体験・公共性の学習として捉えるデジタルシティズンシップ教育レポート。","text":"> 禁止から参加へ，AI時代の判断と公共性を育てる学び 生成AIの急速な普及によって，学校教育は「AIを使わせるべきか，禁止すべきか」という問いに直面している。しかし本当に問われているのは，AIそのものの可否ではない。AIが存在する社会のなかで，私たちがどのように判断し，他者と関わり，公共的な価値を生み出していくのかである。デジタルシティズンシップ教育は，ICT機器の操作や情報モラルの指導にとどまらず，デジタル社会における権利と責任を理解し，情報を収集・判断・発信しながら主体的に参加する力を育てる教育である[1,2]。 ![AI時代のデジタルシティズンシップ教育](../assets/03-digital-citizenship/ai-digital-citizenship-participation.jpg) *図1. AI時代のデジタルシティズンシップ教育：禁止・管理から主体的な参加へ* 従来の学校教育では，SNSでのトラブル，不適切投稿，個人情報流出などを避けるため，「使わない」「見ない」「投稿しない」といった禁止や制限が中心になりやすかった。だがデジタル技術が社会の基盤となった現在，子どもたちを技術から遠ざけるだけでは十分ではない。必要なのは，技術の恩恵とリスクを理解し，自ら時間を管理し，情報を吟味し，責任をもって発信できる力である。デジタル空間は現実社会から切り離された特殊な場所ではなく，権利，倫理，公共性が交差する生活世界として捉えられるべきである。 生成AIは，この課題をより鮮明にする。文章作成，要約，翻訳，画像生成，調査補助を支援する一方で，ハルシネーション，著作権，個人情報，バイアス，依存，責任の所在といった問題を生む。したがって，教育現場で求められるのはAIを単純に禁止することではなく，AIの出力を疑い，根拠を確認し，自分の判断として再構成する経験である。UNESCOはAIの仕組み，倫理，人間中心性，AIシステム設計を含む能力育成を示し[3]，ISTEやOECDも，生成AIを学習の代替ではなく，明確な教育原理に導かれた支援として扱う必要を指摘している[4,5]。 AI時代のデジタルシティズンシップ教育の第一の柱は，情報環境を読む力である。SNSのアルゴリズム，ターゲティング広告，フィルターバブル，エコーチェンバー，ディープフェイクを学ぶことは，情報が自然に届いているのではなく，技術的・経済的な仕組みによって選別されていることを理解することである。情報を受け取る前，拡散する前に立ち止まり，出所，根拠，表示の仕組みを確認する態度が，現代の市民的資質になる。 第二の柱は，AIと対話しながら思考を深める力である。AIは知識を与える教師でも，学習者に代わって考える存在でもない。問いを整理し，関連情報を提示し，別の見方を示すナビゲーターである。たとえばレポート作成でAIを使う場合，プロンプト，出力，修正過程，利用後の判断を記録することで，AI利用は不可視の補助ではなく，検証可能な思考過程になる。不正利用の防止だけでなく，AI時代の学習過程そのものを可視化する方法である。","evidence_refs":["03-digital-citizenship-ref-01","03-digital-citizenship-ref-02","03-digital-citizenship-ref-03","03-digital-citizenship-ref-04","03-digital-citizenship-ref-05"],"figure_ids":["03-ai-digital-citizenship-participation"],"audience":["小中高の情報活用能力・情報モラル・ICT活用を担当する教員","デジタルシティズンシップ教育のカリキュラム設計者","生成AI利用ルールや校内研修を設計する学校管理職・ICT担当者","AIリテラシー教材や安全な学習環境を開発する教育サービス担当者"],"themes":["生成AI","デジタルシティズンシップ","AIリテラシー","情報モラル"],"keywords":["デジタルシティズンシップ","AIリテラシー","情報モラル","教育実践"],"usable_for":["根拠付き回答","横断比較","授業案生成","ワークショップ設計","教材企画"],"risk_notes":["本文にない事実を補う場合は推測として明示する。","AIの出力は完成版ではなく、人間が本文・参考文献・図版メタデータで検証する。"],"depends_on":["00-overview","01-information-visualization-osint","04-student-hackathon"],"human_verification_required":true}
+{"schema":"aice.rag_chunk.v1","id":"03-digital-citizenship:002","report_id":"03-digital-citizenship","source_md":"reports/03-digital-citizenship.md","title":"AIを活かしたデジタルシティズンシップ教育","section":"AIを活かしたデジタルシティズンシップ教育","chunk_type":"body","claim":"AI利用を判断・参加・知識体験・公共性の学習として捉えるデジタルシティズンシップ教育レポート。","text":"第三の柱は，知識を公共的価値へ変換する力である。知識は教員や教材から受け取るだけのものではなく，獲得，享受，再編集，共有，表出の循環のなかで構築される。そこでは，「自己」「他者」「コンテンツ」に加えてAIも学びを支える存在として関わる。文章，動画，地図，可視化，プレゼンテーションを通じて自分の考えを社会に差し出し，他者からの応答を受けて再編集する経験が重要になる。 AIを活かしたデジタルシティズンシップ教育とは，「AIを使ってよいか，悪いか」を問う教育ではない。AIを使うことで自分の判断がどう変わるのか，他者や社会にどのような影響を与えるのかを考える教育である。AI時代に必要なのは，技術を正しく恐れる力と，技術を公共的価値の創出に結びつける力である。禁止や管理の内側に閉じず，AIとともに考え，根拠を確かめ，責任ある形で社会に参加する市民を育てることが求められる。","evidence_refs":[],"figure_ids":[],"audience":["小中高の情報活用能力・情報モラル・ICT活用を担当する教員","デジタルシティズンシップ教育のカリキュラム設計者","生成AI利用ルールや校内研修を設計する学校管理職・ICT担当者","AIリテラシー教材や安全な学習環境を開発する教育サービス担当者"],"themes":["生成AI","デジタルシティズンシップ","AIリテラシー","情報モラル"],"keywords":["デジタルシティズンシップ","AIリテラシー","情報モラル","教育実践"],"usable_for":["根拠付き回答","横断比較","授業案生成","ワークショップ設計","教材企画"],"risk_notes":["本文にない事実を補う場合は推測として明示する。","AIの出力は完成版ではなく、人間が本文・参考文献・図版メタデータで検証する。"],"depends_on":["00-overview","01-information-visualization-osint","04-student-hackathon"],"human_verification_required":true}
+{"schema":"aice.rag_chunk.v1","id":"03-digital-citizenship:003","report_id":"03-digital-citizenship","source_md":"reports/03-digital-citizenship.md","title":"AIを活かしたデジタルシティズンシップ教育","section":"参考文献・関連資料","chunk_type":"references","claim":"AIを活かしたデジタルシティズンシップ教育で用いる参考文献・関連資料の一覧。","text":"1. Atsushi Yoshino. 2023. 日本のデジタル・シティズンシップ教育の受容状況における情報モラル教育・道徳科の位置づけについての一考察. 早稲田大学大学院教育学研究科紀要：別冊 31, 1 (2023), 45–55. Retrieved May 27, 2026 from https://waseda.repo.nii.ac.jp/records/2000538 2. UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum 3. UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students 4. ISTE. n.d. ISTE Standards: For Students. ISTE. Retrieved May 27, 2026 from https://iste.org/standards/students 5. OECD. 2026. OECD Digital Education Outlook 2026: Exploring Effective Uses of Generative AI in Education. OECD Publishing. https://doi.org/10.1787/062a7394-en","evidence_refs":[],"figure_ids":[],"audience":["小中高の情報活用能力・情報モラル・ICT活用を担当する教員","デジタルシティズンシップ教育のカリキュラム設計者","生成AI利用ルールや校内研修を設計する学校管理職・ICT担当者","AIリテラシー教材や安全な学習環境を開発する教育サービス担当者"],"themes":["生成AI","デジタルシティズンシップ","AIリテラシー","情報モラル"],"keywords":["デジタルシティズンシップ","AIリテラシー","情報モラル","教育実践"],"usable_for":["引用確認","参考文献照合","出典リスト生成"],"risk_notes":["本文にない事実を補う場合は推測として明示する。","AIの出力は完成版ではなく、人間が本文・参考文献・図版メタデータで検証する。","参考文献名や固有名詞は出典表記として保持し、プロジェクト概要の表現規則とは分けて扱う。"],"depends_on":["00-overview","01-information-visualization-osint","04-student-hackathon"],"human_verification_required":true}
+
+
+---
 ai/llms.txt
 ---
 # AIとクリエイティブと教育
@@ -4991,9 +7851,9 @@ This repository publishes Markdown reports, prompts, and AI-readable metadata fo
 Use this repository in two layers:
 
 1. Human-readable layer: README, index.html, and reports/*.md explain the project, reports, examples, and references for people.
-2. AI-readable data package: ai/notebooklm-source.txt, ai/llms-full.md, metadata/*.json, metadata/chunks.jsonl, and references/* provide grounded context for AI agents, AI reading tools, and RAG.
+2. AI-readable data package: ai/manifest.json, ai/system-instructions.md, ai/context-brief.md, ai/context-full.md, ai/citations.json, ai/rag/chunks.jsonl, metadata/report-sidecars/*.json, and references/* provide grounded context for AI agents, AI reading tools, and RAG.
 
-Recommended workflow: read the overview, load the AI-readable data package into the AI system, then use a prompt from ../prompts/ to generate a lesson plan, workshop plan, service concept, comparison, citation-aware answer, or implementation roadmap. Treat AI outputs as drafts and verify them against the reports and references.
+Recommended workflow: read the overview, load ai/system-instructions.md and ai/context-brief.md first, use ai/rag/chunks.jsonl or metadata/report-sidecars/*.json for grounded retrieval, then use a prompt from ../prompts/ to generate a lesson plan, workshop plan, service concept, comparison, citation-aware answer, or implementation roadmap. Treat AI outputs as drafts and verify them against reports/*.md and references.
 
 ## Authors
 
@@ -5034,10 +7894,17 @@ The Markdown files in `../reports/` are the source of truth for report text.
 
 - [Concept map](../assets/00-overview/project-concept-map.svg): Visual summary of the shift from production skills to conception, editing, and social responsibility.
 - [Data package workflow](../assets/00-overview/data-package-flow.svg): Visual guide for reading the human-facing text, loading the AI data package, using prompts, and verifying outputs.
+- [AI package manifest](manifest.json): Machine-readable index of source-of-truth files and AI-first outputs.
+- [AI system instructions](system-instructions.md): Read order, answer rules, citation handling, and limits on inference.
+- [Brief AI context](context-brief.md): Short project context and report list for first-pass loading.
 - [Full AI context](llms-full.md): Consolidated overview of all reports.
+- [Structured AI context](context-full.md): Detailed report-level summaries, takeaways, use cases, and implementation ideas.
+- [Citation index](citations.json): Mapping from report-local citation numbers to stable evidence IDs.
+- [RAG chunks](rag/chunks.jsonl): Retrieval chunks with claims, evidence IDs, figure IDs, use cases, and risk notes.
 - [AI source package](notebooklm-source.txt): Single text file generated by files-to-prompt from README, reports, metadata, config, prompts, and scripts.
+- [Report sidecars](../metadata/report-sidecars/): Per-report JSON sidecars linking Markdown source, sections, references, figures, and AI constraints.
 - [Report metadata](../metadata/reports.json): Machine-readable report index.
-- [Chunked corpus](../metadata/chunks.jsonl): Section-level JSONL for retrieval and analysis.
+- [Base chunked corpus](../metadata/chunks.jsonl): Section-level JSONL used to generate AI-first retrieval chunks.
 - [Concept schema](../metadata/concept-schema.json): Controlled IDs for process stages, literacies, and concept alignment fields.
 - [Glossary](../metadata/glossary.json): Terms and short definitions for AI/RAG grounding.
 - [Figure metadata](../metadata/figures.json): Captions, alt text, and source notes for visual assets.
@@ -5060,7 +7927,7 @@ ai/llms-full.md
 
 ## 使い方
 
-このリポジトリは、ヒト向けの文章とAI向けのデータパッケージを分けて提供する。ヒトはREADME、index.html、reports/*.mdで全体像と個別レポートを読む。AIにはai/notebooklm-source.txt、ai/llms*.md、metadata/*.json、metadata/chunks.jsonl、references/*を読み込ませ、本文、メタデータ、検索用チャンク、参考文献を参照できる状態にする。そのあとでprompts/のプロンプトを使い、授業案、ワークショップ、教育サービス企画、比較表、根拠付き回答、実装ロードマップを作る。AIの出力はたたき台であり、ヒトがレポート本文と参考文献に照らして検証・編集する。
+このリポジトリは、ヒト向けの文章とAI向けのデータパッケージを分けて提供する。ヒトはREADME、index.html、reports/*.mdで全体像と個別レポートを読む。AIにはai/system-instructions.md、ai/context-brief.md、ai/context-full.md、ai/rag/chunks.jsonl、ai/citations.json、metadata/report-sidecars/*.json、references/*を読み込ませ、読む順序、本文、メタデータ、検索用チャンク、参考文献を参照できる状態にする。単一ファイルで渡す必要がある場合はai/notebooklm-source.txtを使う。そのあとでprompts/のプロンプトを使い、授業案、ワークショップ、教育サービス企画、比較表、根拠付き回答、実装ロードマップを作る。AIの出力はたたき台であり、ヒトがレポート本文と参考文献に照らして検証・編集する。
 
 図解: [ヒト向けの文章とAI向けデータパッケージの使い方](../assets/00-overview/data-package-flow.svg)
 
@@ -5101,6 +7968,17 @@ ai/llms-full.md
 - literacy_ids: ai_competency_citizenship, design_editing_critical_thinking, publicness_social_responsibility
 - concept_alignment_schema: {schema, primary_stage_ids, supporting_stage_ids, literacy_ids, ai_role_ids, human_responsibility_ids, domain_tags}
 - schema_file: ../metadata/concept-schema.json
+
+## AI向け構造化パッケージ
+
+- 読む順序: [`system-instructions.md`](system-instructions.md)
+- パッケージ索引: [`manifest.json`](manifest.json)
+- 短い全体像: [`context-brief.md`](context-brief.md)
+- 詳しい全体像: [`context-full.md`](context-full.md)
+- 引用索引: [`citations.json`](citations.json)
+- RAGチャンク: [`rag/chunks.jsonl`](rag/chunks.jsonl)
+- レポート別sidecar: [`../metadata/report-sidecars/`](../metadata/report-sidecars/)
+- 本文正本: [`../reports/`](../reports/)
 
 ## レポート概要
 
@@ -6967,6 +9845,503 @@ assets/00-overview/data-package-flow.svg
 
 
 ---
+scripts/build_ai_package.py
+---
+#!/usr/bin/env python3
+"""Build AI-first package files from Markdown reports and structured config."""
+
+from __future__ import annotations
+
+import json
+import re
+from pathlib import Path
+from typing import Any
+
+
+ROOT = Path(__file__).resolve().parents[1]
+AI_DIR = ROOT / "ai"
+RAG_DIR = AI_DIR / "rag"
+SIDECAR_DIR = ROOT / "metadata" / "report-sidecars"
+
+
+def load_json(path: Path) -> Any:
+    with path.open(encoding="utf-8") as fp:
+        return json.load(fp)
+
+
+def write_text(path: Path, text: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(text.rstrip() + "\n", encoding="utf-8")
+
+
+def write_json(path: Path, data: Any) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8") as fp:
+        json.dump(data, fp, ensure_ascii=False, indent=2)
+        fp.write("\n")
+
+
+def load_jsonl(path: Path) -> list[dict[str, Any]]:
+    if not path.exists():
+        return []
+    rows = []
+    with path.open(encoding="utf-8") as fp:
+        for line in fp:
+            line = line.strip()
+            if line:
+                rows.append(json.loads(line))
+    return rows
+
+
+def write_jsonl(path: Path, rows: list[dict[str, Any]]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8") as fp:
+        for row in rows:
+            fp.write(json.dumps(row, ensure_ascii=False, separators=(",", ":")) + "\n")
+
+
+def read_markdown(report: dict[str, Any]) -> str:
+    path = ROOT / report["output_md"]
+    return path.read_text(encoding="utf-8")
+
+
+def extract_sections(markdown: str) -> list[dict[str, Any]]:
+    sections: list[dict[str, Any]] = []
+    current = {"heading": "", "level": 0, "text": []}
+    for line in markdown.splitlines():
+        match = re.match(r"^(#{1,6})\s+(.+)$", line)
+        if match:
+            if current["heading"] or current["text"]:
+                sections.append(
+                    {
+                        "heading": current["heading"],
+                        "level": current["level"],
+                        "text": "\n".join(current["text"]).strip(),
+                    }
+                )
+            current = {
+                "heading": match.group(2).strip(),
+                "level": len(match.group(1)),
+                "text": [],
+            }
+        else:
+            current["text"].append(line)
+    if current["heading"] or current["text"]:
+        sections.append(
+            {
+                "heading": current["heading"],
+                "level": current["level"],
+                "text": "\n".join(current["text"]).strip(),
+            }
+        )
+    return sections
+
+
+def citation_numbers(text: str) -> list[int]:
+    found: list[int] = []
+    for match in re.finditer(r"\[([0-9,\-\s]+)\]", text):
+        for part in match.group(1).split(","):
+            part = part.strip()
+            if not part:
+                continue
+            if "-" in part:
+                start, end = part.split("-", 1)
+                if start.strip().isdigit() and end.strip().isdigit():
+                    found.extend(range(int(start), int(end) + 1))
+            elif part.isdigit():
+                found.append(int(part))
+    return sorted(dict.fromkeys(found))
+
+
+def figure_paths(text: str) -> list[str]:
+    return re.findall(r"!\[[^\]]*\]\(([^)]+)\)", text)
+
+
+def slugify(value: str) -> str:
+    value = value.lower()
+    value = re.sub(r"[^a-z0-9]+", "-", value)
+    value = value.strip("-")
+    return value or "section"
+
+
+def evidence_refs(report_id: str, numbers: list[int], references: dict[str, list[str]]) -> list[str]:
+    max_ref = len(references.get(report_id, []))
+    return [f"{report_id}-ref-{number:02d}" for number in numbers if 1 <= number <= max_ref]
+
+
+def figures_for_report(report_id: str, figures: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    return [figure for figure in figures if figure.get("report_id") == report_id]
+
+
+def figure_ids_for_paths(paths: list[str], figures: list[dict[str, Any]]) -> list[str]:
+    normalized = {path.lstrip("./").replace("../", "") for path in paths}
+    ids = []
+    for figure in figures:
+        figure_path = str(figure.get("path", "")).lstrip("./")
+        if figure_path in normalized:
+            ids.append(figure["id"])
+    return ids
+
+
+def report_claim(report: dict[str, Any], chunk: dict[str, Any]) -> str:
+    if chunk.get("chunk_type") == "references":
+        return f"{report['title']}で用いる参考文献・関連資料の一覧。"
+    if chunk.get("summary"):
+        return str(chunk["summary"])
+    takeaways = report.get("key_takeaways") or []
+    if takeaways:
+        return takeaways[0]
+    return report.get("abstract") or report["title"]
+
+
+def usable_for(report: dict[str, Any], chunk: dict[str, Any]) -> list[str]:
+    base = ["根拠付き回答", "横断比較"]
+    chunk_type = chunk.get("chunk_type")
+    if chunk_type == "references":
+        return ["引用確認", "参考文献照合", "出典リスト生成"]
+    if report.get("kind") == "overview":
+        return base + ["全体方針整理", "研修導入", "サービス企画"]
+    return base + ["授業案生成", "ワークショップ設計", "教材企画"]
+
+
+def risk_notes(chunk: dict[str, Any]) -> list[str]:
+    notes = [
+        "本文にない事実を補う場合は推測として明示する。",
+        "AIの出力は完成版ではなく、人間が本文・参考文献・図版メタデータで検証する。",
+    ]
+    if chunk.get("chunk_type") == "references":
+        notes.append("参考文献名や固有名詞は出典表記として保持し、プロジェクト概要の表現規則とは分けて扱う。")
+    if "カラー化" in chunk.get("text", ""):
+        notes.append("AIカラー化は推定であり、史実の色として断定しない。")
+    if "OSINT" in chunk.get("text", ""):
+        notes.append("観察事実と推論を分け、確度を明示する。")
+    return notes
+
+
+def build_sidecar(
+    report: dict[str, Any],
+    references: dict[str, list[str]],
+    figures: list[dict[str, Any]],
+) -> dict[str, Any]:
+    markdown = read_markdown(report)
+    sections = extract_sections(markdown)
+    report_figures = figures_for_report(report["id"], figures)
+    ref_items = []
+    for index, citation in enumerate(references.get(report["id"], []), start=1):
+        ref_items.append(
+            {
+                "id": f"{report['id']}-ref-{index:02d}",
+                "number": index,
+                "citation": citation,
+            }
+        )
+
+    return {
+        "schema": "aice.report_sidecar.v1",
+        "report_id": report["id"],
+        "title": report["title"],
+        "source_md": report["output_md"],
+        "source_of_truth": True,
+        "html_source_note": "HTML版はこのMarkdown本文とconfig/metadataから生成・表示する。",
+        "ai_contract": {
+            "read_order": [
+                "abstract",
+                "key_takeaways",
+                "sections",
+                "references",
+                "figures",
+                "risk_notes",
+            ],
+            "must_cite": True,
+            "do_not_infer_beyond_sources": True,
+            "human_verification_required": True,
+        },
+        "authors": report.get("authors", []),
+        "audience": report.get("audience", []),
+        "themes": report.get("themes", []),
+        "keywords": report.get("keywords", []),
+        "abstract": report.get("abstract", ""),
+        "key_takeaways": report.get("key_takeaways", []),
+        "use_cases": report.get("use_cases", []),
+        "learning_activities": report.get("learning_activities", []),
+        "implementation_ideas": report.get("implementation_ideas", []),
+        "related_reports": report.get("related_reports", []),
+        "concept_alignment": report.get("concept_alignment", {}),
+        "figures": [
+            {
+                "id": figure["id"],
+                "path": figure.get("path", ""),
+                "caption": figure.get("caption", ""),
+                "alt": figure.get("alt", ""),
+                "license_note": figure.get("license_note", ""),
+            }
+            for figure in report_figures
+        ],
+        "references": ref_items,
+        "sections": [
+            {
+                "id": f"{report['id']}#{slugify(section['heading'])}",
+                "heading": section["heading"],
+                "level": section["level"],
+                "citation_numbers": citation_numbers(section["text"]),
+                "evidence_refs": evidence_refs(
+                    report["id"], citation_numbers(section["text"]), references
+                ),
+                "figure_ids": figure_ids_for_paths(figure_paths(section["text"]), report_figures),
+                "text_preview": re.sub(r"\s+", " ", section["text"])[:320],
+            }
+            for section in sections
+            if section["heading"]
+        ],
+        "risk_notes": [
+            "このsidecarはAI用の構造化補助であり、本文の正本はsource_mdにある。",
+            "引用番号はsource_md内の参考文献登場順に対応する。",
+            "図版を説明するときはfigures.pathだけでなくalt/caption/license_noteも確認する。",
+        ],
+    }
+
+
+def build_ai_manifest(project: dict[str, Any], reports: list[dict[str, Any]]) -> dict[str, Any]:
+    return {
+        "schema": "aice.ai_package_manifest.v1",
+        "project": project,
+        "source_of_truth": {
+            "human_markdown": "reports/*.md",
+            "report_config": "config/reports.json",
+            "references": "config/report_references.json",
+            "figures": "metadata/figures.json",
+        },
+        "ai_first_outputs": [
+            "ai/system-instructions.md",
+            "ai/context-brief.md",
+            "ai/context-full.md",
+            "ai/citations.json",
+            "ai/rag/chunks.jsonl",
+            "metadata/report-sidecars/*.json",
+        ],
+        "reports": [
+            {
+                "id": report["id"],
+                "title": report["title"],
+                "source_md": report["output_md"],
+                "sidecar": f"metadata/report-sidecars/{report['id']}.json",
+            }
+            for report in reports
+        ],
+        "human_verification_required": True,
+    }
+
+
+def build_citations(reports: list[dict[str, Any]], references: dict[str, list[str]]) -> dict[str, Any]:
+    items = []
+    for report in reports:
+        for index, citation in enumerate(references.get(report["id"], []), start=1):
+            items.append(
+                {
+                    "id": f"{report['id']}-ref-{index:02d}",
+                    "report_id": report["id"],
+                    "report_title": report["title"],
+                    "number": index,
+                    "citation": citation,
+                    "source_md": report["output_md"],
+                }
+            )
+    return {
+        "schema": "aice.citations.v1",
+        "rule": "本文中の[1]などの番号はreport_idごとのreferences[number]に対応する。",
+        "items": items,
+    }
+
+
+def build_rag_chunks(
+    chunks: list[dict[str, Any]],
+    reports_by_id: dict[str, dict[str, Any]],
+    references: dict[str, list[str]],
+    figures: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    rows = []
+    for chunk in chunks:
+        report = reports_by_id.get(chunk.get("report_id"))
+        if not report:
+            continue
+        numbers = citation_numbers(chunk.get("text", ""))
+        report_figures = figures_for_report(report["id"], figures)
+        rows.append(
+            {
+                "schema": "aice.rag_chunk.v1",
+                "id": chunk["id"],
+                "report_id": report["id"],
+                "source_md": chunk.get("source") or report["output_md"],
+                "title": chunk.get("title") or report["title"],
+                "section": chunk.get("section", ""),
+                "chunk_type": chunk.get("chunk_type", ""),
+                "claim": report_claim(report, chunk),
+                "text": chunk.get("text", ""),
+                "evidence_refs": evidence_refs(report["id"], numbers, references),
+                "figure_ids": figure_ids_for_paths(figure_paths(chunk.get("text", "")), report_figures),
+                "audience": chunk.get("audience") or report.get("audience", []),
+                "themes": chunk.get("themes") or report.get("themes", []),
+                "keywords": chunk.get("keywords") or report.get("keywords", []),
+                "usable_for": usable_for(report, chunk),
+                "risk_notes": risk_notes(chunk),
+                "depends_on": report.get("related_reports", []),
+                "human_verification_required": True,
+            }
+        )
+    return rows
+
+
+def markdown_list(items: list[str]) -> str:
+    return "\n".join(f"- {item}" for item in items)
+
+
+def build_system_instructions(project: dict[str, Any]) -> str:
+    return f"""# AI System Instructions: {project.get("title", "AIとクリエイティブと教育")}
+
+このファイルは、AIが本リポジトリを読むときの優先順位と禁止事項を定める。
+
+## 読む順序
+
+1. `ai/manifest.json` で利用可能なAI向けファイルを把握する。
+2. 全体像は `ai/context-brief.md` を読む。
+3. 詳細な根拠は `metadata/report-sidecars/*.json` と `ai/rag/chunks.jsonl` を読む。
+4. 人間向けの正本確認が必要な場合は `reports/*.md` を読む。
+5. 出典確認は `ai/citations.json` と `references/references.md` を使う。
+
+## 回答ルール
+
+- 本文・メタデータ・参考文献にないことは、推測として明示する。
+- 授業案、研修案、サービス企画を出す場合は、根拠にした `report_id` と `evidence_refs` を示す。
+- AI出力を完成版として扱わず、人間による検証・編集が必要であることを前提にする。
+- 図版について述べる場合は、画像パスだけでなく `metadata/figures.json` の `alt`、`caption`、`license_note` を確認する。
+- プロジェクト概要ではAIサービスの商品名を出さず、必要な場合は「対話型生成AI」「AI読解ツール」「コード生成支援AI」などの一般名詞で述べる。
+- レポート本文・参考文献に含まれる固有名詞は、出典や事例の正確性に関わるため、一般化せず出典として扱う。
+
+## 重要な制約
+
+- `reports/*.md` が人間向けHTML版の本文正本である。
+- `metadata/report-sidecars/*.json` はAI用の構造化補助であり、本文の代替ではない。
+- `ai/rag/chunks.jsonl` は検索・RAG用であり、チャンク単体で結論を断定しない。
+- `ai/notebooklm-source.txt` は単一テキスト読解ツール向けの互換パッケージである。
+"""
+
+
+def build_context_brief(project: dict[str, Any], reports: list[dict[str, Any]]) -> str:
+    lines = [
+        f"# AI Context Brief: {project.get('title', 'AIとクリエイティブと教育')}",
+        "",
+        "## プロジェクト概要",
+        "",
+        "生成AI時代の創造性教育を、問い・資料読解・制作・検証・社会発信をつなぐ学びとして整理する公開プロジェクト。",
+        "人間向けにはMarkdownレポートとHTML閲覧アプリを、AI向けには構造化メタデータ、RAGチャンク、引用対応、用途別プロンプトを提供する。",
+        "",
+        "## AIに渡すときの最短ルート",
+        "",
+        "1. この `ai/context-brief.md` で全体像を把握する。",
+        "2. `ai/system-instructions.md` の回答ルールを守る。",
+        "3. 根拠が必要な回答では `ai/rag/chunks.jsonl` と `ai/citations.json` を使う。",
+        "4. 重要な判断では `reports/*.md` の本文を確認する。",
+        "",
+        "## レポート一覧",
+        "",
+    ]
+    for report in reports:
+        lines.extend(
+            [
+                f"### {report['id']}: {report['title']}",
+                "",
+                f"- 要旨: {report.get('abstract', '')}",
+                f"- 著者: {', '.join(report.get('authors', []))}",
+                f"- 主なテーマ: {', '.join(report.get('themes', []))}",
+                f"- 想定読者: {', '.join(report.get('audience', []))}",
+                f"- 正本: `{report['output_md']}`",
+                f"- AI sidecar: `metadata/report-sidecars/{report['id']}.json`",
+                "",
+            ]
+        )
+    return "\n".join(lines)
+
+
+def build_context_full(project: dict[str, Any], reports: list[dict[str, Any]]) -> str:
+    lines = [
+        f"# AI Context Full: {project.get('title', 'AIとクリエイティブと教育')}",
+        "",
+        "このファイルは、AIが本文へ入る前に読む構造化サマリーである。本文の正本は `reports/*.md` にある。",
+        "",
+        "## プロジェクト",
+        "",
+        f"- タイトル: {project.get('title', '')}",
+        f"- 説明: {project.get('description', '')}",
+        f"- ライセンス: {project.get('license', '')}",
+        f"- 支援表記: {project.get('support_statement', '')}",
+        "",
+    ]
+    for report in reports:
+        lines.extend(
+            [
+                f"## {report['id']}: {report['title']}",
+                "",
+                f"- 種別: {report.get('kind', '')}",
+                f"- 正本Markdown: `{report['output_md']}`",
+                f"- Sidecar: `metadata/report-sidecars/{report['id']}.json`",
+                f"- 要旨: {report.get('abstract', '')}",
+                f"- 著者: {', '.join(report.get('authors', []))}",
+                f"- 想定読者: {', '.join(report.get('audience', []))}",
+                f"- テーマ: {', '.join(report.get('themes', []))}",
+                f"- キーワード: {', '.join(report.get('keywords', []))}",
+                "",
+                "### 主要示唆",
+                markdown_list(report.get("key_takeaways", [])) or "- 未設定",
+                "",
+                "### 活用場面",
+                markdown_list(report.get("use_cases", [])) or "- 未設定",
+                "",
+                "### 学習活動案",
+                markdown_list(report.get("learning_activities", [])) or "- 未設定",
+                "",
+                "### 実装アイデア",
+                markdown_list(report.get("implementation_ideas", [])) or "- 未設定",
+                "",
+            ]
+        )
+    return "\n".join(lines)
+
+
+def main() -> None:
+    reports_config = load_json(ROOT / "config" / "reports.json")
+    references = load_json(ROOT / "config" / "report_references.json")
+    figures = load_json(ROOT / "metadata" / "figures.json")
+    chunks = load_jsonl(ROOT / "metadata" / "chunks.jsonl")
+    project = reports_config["project"]
+    reports = reports_config["reports"]
+    reports_by_id = {report["id"]: report for report in reports}
+
+    AI_DIR.mkdir(exist_ok=True)
+    RAG_DIR.mkdir(parents=True, exist_ok=True)
+    SIDECAR_DIR.mkdir(parents=True, exist_ok=True)
+
+    write_json(AI_DIR / "manifest.json", build_ai_manifest(project, reports))
+    write_text(AI_DIR / "system-instructions.md", build_system_instructions(project))
+    write_text(AI_DIR / "context-brief.md", build_context_brief(project, reports))
+    write_text(AI_DIR / "context-full.md", build_context_full(project, reports))
+    write_json(AI_DIR / "citations.json", build_citations(reports, references))
+    write_jsonl(
+        RAG_DIR / "chunks.jsonl",
+        build_rag_chunks(chunks, reports_by_id, references, figures),
+    )
+
+    for report in reports:
+        write_json(
+            SIDECAR_DIR / f"{report['id']}.json",
+            build_sidecar(report, references, figures),
+        )
+
+
+if __name__ == "__main__":
+    main()
+
+
+---
 scripts/setup_git_hooks.sh
 ---
 #!/usr/bin/env bash
@@ -6975,6 +10350,8 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 git -C "$ROOT" config core.hooksPath .githooks
+python3 "$ROOT/scripts/build_ai_package.py"
+"$ROOT/scripts/update_web_manifest.sh"
 "$ROOT/scripts/update_notebooklm_source.sh"
 
 
@@ -7022,14 +10399,18 @@ cat > "$TMP_OUTPUT" <<'HEADER'
 4. 区切り線 `---`
 
 質問に答えるときは、ファイルパスだけで判断せず、区切り線の間にある本文を根拠として読んでください。
-特に教育内容、平和学習、AI活用、授業案、ワークショップ案、サービス企画について答える場合は、`reports/*.md`、`prompts/*.md`、`metadata/*.json`、`references/*` の本文を優先してください。
+特に教育内容、平和学習、AI活用、授業案、ワークショップ案、サービス企画について答える場合は、`ai/system-instructions.md`、`ai/rag/chunks.jsonl`、`metadata/report-sidecars/*.json`、`reports/*.md`、`prompts/*.md`、`references/*` の本文を優先してください。
 本文にないことは推測として扱い、根拠にしたファイルパスやレポート名を回答に含めてください。
 
 ## 含まれる主な内容
 
 - `reports/*.md`: 各レポートの本文、参考文献、メタデータ
 - `prompts/*.md`: 授業案、ワークショップ、サービス企画、比較、根拠付き回答などの具体的なプロンプト
-- `metadata/*.json` と `metadata/chunks.jsonl`: レポート索引、概念スキーマ、検索用チャンク、図版メタデータ、用語集
+- `ai/manifest.json`: AI向けパッケージ全体の索引
+- `ai/system-instructions.md`: AIが読む順序、回答ルール、引用・推測の扱い
+- `ai/context-brief.md` と `ai/context-full.md`: AI向けの短い概要と詳しい概要
+- `ai/citations.json` と `ai/rag/chunks.jsonl`: 引用索引、根拠付きRAGチャンク
+- `metadata/*.json`、`metadata/chunks.jsonl`、`metadata/report-sidecars/*.json`: レポート索引、概念スキーマ、検索用チャンク、図版メタデータ、用語集、レポート別sidecar
 - `references/*`: 参考文献・関連資料
 - `index.html` と `web/*`: ヒト向け閲覧アプリのHTML、CSS、JavaScript
 - `README.md`、`ai/llms.txt`、`ai/llms-full.md`: プロジェクト概要とAI向け概説
@@ -7044,6 +10425,7 @@ cat > "$TMP_OUTPUT" <<'HEADER'
 - 画像、動画、PDF、`.git`、生成ファイル自身は含めない。
 - `reports/` 配下のMarkdownファイルをレポート本文の一次ソースとして扱う。
 - `prompts/` 配下のMarkdownファイルをプロンプト本文の一次ソースとして扱う。
+- `metadata/report-sidecars/` と `ai/rag/chunks.jsonl` はAI用の構造化補助として扱い、正本本文の代替にしない。
 
 ## ここから統合本文
 
@@ -7057,6 +10439,12 @@ python3 -m files_to_prompt \
   metadata \
   references \
   README.md \
+  ai/manifest.json \
+  ai/system-instructions.md \
+  ai/context-brief.md \
+  ai/context-full.md \
+  ai/citations.json \
+  ai/rag \
   ai/llms.txt \
   ai/llms-full.md \
   config \
@@ -7228,6 +10616,7 @@ set -euo pipefail
 ROOT="$(git rev-parse --show-toplevel)"
 cd "$ROOT"
 
+python3 scripts/build_ai_package.py
 scripts/update_web_manifest.sh
 scripts/update_notebooklm_source.sh
 
@@ -7241,6 +10630,7 @@ set -euo pipefail
 ROOT="$(git rev-parse --show-toplevel)"
 cd "$ROOT"
 
+python3 scripts/build_ai_package.py
 scripts/update_web_manifest.sh
 scripts/update_notebooklm_source.sh
 
@@ -7254,9 +10644,19 @@ set -euo pipefail
 ROOT="$(git rev-parse --show-toplevel)"
 cd "$ROOT"
 
+python3 scripts/build_ai_package.py
 scripts/update_web_manifest.sh
 scripts/update_notebooklm_source.sh
-git add config/web_content.json ai/notebooklm-source.txt
+git add \
+  ai/manifest.json \
+  ai/system-instructions.md \
+  ai/context-brief.md \
+  ai/context-full.md \
+  ai/citations.json \
+  ai/rag/chunks.jsonl \
+  metadata/report-sidecars \
+  config/web_content.json \
+  ai/notebooklm-source.txt
 
 
 ---

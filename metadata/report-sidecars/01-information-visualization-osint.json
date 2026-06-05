@@ -1,0 +1,252 @@
+{
+  "schema": "aice.report_sidecar.v1",
+  "report_id": "01-information-visualization-osint",
+  "title": "AIと情報可視化・OSINT教育",
+  "source_md": "reports/01-information-visualization-osint.md",
+  "source_of_truth": true,
+  "html_source_note": "HTML版はこのMarkdown本文とconfig/metadataから生成・表示する。",
+  "ai_contract": {
+    "read_order": [
+      "abstract",
+      "key_takeaways",
+      "sections",
+      "references",
+      "figures",
+      "risk_notes"
+    ],
+    "must_cite": true,
+    "do_not_infer_beyond_sources": true,
+    "human_verification_required": true
+  },
+  "authors": [
+    "渡邉英徳"
+  ],
+  "audience": [
+    "情報・メディア・探究学習を担当する高校・大学教員",
+    "データ可視化、GIS、デジタルアーカイブを授業に取り入れたい教育者",
+    "OSINTや調査報道の基礎を教育・研修化したい報道関係者",
+    "公開情報の検証と社会的説明を扱う教材・サービス企画者"
+  ],
+  "themes": [
+    "生成AI",
+    "情報可視化",
+    "OSINT",
+    "探究学習"
+  ],
+  "keywords": [
+    "情報可視化",
+    "OSINT",
+    "メディアリテラシー",
+    "探究学習"
+  ],
+  "abstract": "GIS・データ可視化・OSINTを通じて、公開情報を検証し社会へ伝える情報メディア教育モデル。",
+  "key_takeaways": [
+    "GIS、データ可視化、OSINTは、公開情報を検証可能な形で読み解く情報メディア教育の中核になる。",
+    "AIは結論を代行するのではなく、観察、仮説比較、説明の点検を支援する対話的編集者として使う。",
+    "読売新聞への学術指導や日本テレビとの共同研究事例は、教育・報道・社会課題を接続する実践モデルになる。"
+  ],
+  "use_cases": [
+    "高校・大学のGIS、データ可視化、OSINT授業",
+    "報道機関や自治体と連携した公開情報検証ワークショップ",
+    "災害、地域課題、都市分析を扱う探究学習",
+    "情報可視化教材や調査支援サービスの企画"
+  ],
+  "learning_activities": [
+    "地域の公開データを地図化し、分布や偏りについてAIと対話しながら仮説を作る。",
+    "ニュースやSNS投稿の位置情報・時系列・出典を検証し、確実に言えることと推測を分ける。",
+    "地図、グラフ、テキストを組み合わせ、第三者に説明可能な調査レポートを作成する。"
+  ],
+  "implementation_ideas": [
+    "GIS作品例を使った導入ワークショップを設計し、地図表現の読み解きから始める。",
+    "OSINT検証ラボとして、公開情報の収集、照合、説明文作成、AIによる推論チェックを行う。",
+    "報道機関や自治体と連携し、地域課題を扱うデータストーリーテリング課題を実施する。"
+  ],
+  "related_reports": [
+    "00-overview",
+    "03-digital-citizenship",
+    "05-digital-archive-ai"
+  ],
+  "concept_alignment": {
+    "schema": "aice.concept_alignment.v1",
+    "primary_stage_ids": [
+      "question_framing",
+      "source_evaluation",
+      "human_verification",
+      "public_communication"
+    ],
+    "supporting_stage_ids": [
+      "prototyping"
+    ],
+    "literacy_ids": [
+      "ai_competency_citizenship",
+      "design_editing_critical_thinking",
+      "publicness_social_responsibility"
+    ],
+    "ai_role_ids": [
+      "observation_verbalization",
+      "hypothesis_comparison",
+      "inference_check",
+      "editorial_support"
+    ],
+    "human_responsibility_ids": [
+      "source_verification",
+      "observation_inference_separation",
+      "evidence_transparency",
+      "explanatory_accountability"
+    ],
+    "domain_tags": [
+      "osint",
+      "gis",
+      "data_visualization",
+      "public_information",
+      "media_literacy"
+    ]
+  },
+  "figures": [
+    {
+      "id": "01-gis-education-examples",
+      "path": "assets/01-information-visualization-osint/gis-education-examples.jpg",
+      "caption": "GIS・データ可視化を用いた学生作品例",
+      "alt": "GIS・データ可視化を用いた学生作品例のコラージュ",
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+    }
+  ],
+  "references": [
+    {
+      "id": "01-information-visualization-osint-ref-01",
+      "number": 1,
+      "citation": "東京大学. n.d. 情報メディア基礎論. 東京大学授業カタログ. Retrieved May 27, 2026 from https://catalog.he.u-tokyo.ac.jp/detail?code=30259"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-02",
+      "number": 2,
+      "citation": "Hidenori Watanave. 2022. ArcGIS Onlineを用いたオープンデータの可視化・学生作品（2022年度）. Hidenori Watanave Lab. Retrieved May 27, 2026 from https://labo.wtnv.jp/2022/05/arcgis-online2022.html"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-03",
+      "number": 3,
+      "citation": "国土交通省 Project PLATEAU. 2023. 大学生が挑戦。GISを使って過去の災害データを可視化・継承する. PLATEAU Journal. Retrieved May 27, 2026 from https://www.mlit.go.jp/plateau/journal/j033/"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-04",
+      "number": 4,
+      "citation": "UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-05",
+      "number": 5,
+      "citation": "wtnv-lab. 2026. gee-sentinel2-osi. GitHub repository. Retrieved May 27, 2026 from https://github.com/wtnv-lab/gee-sentinel2-osi"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-06",
+      "number": 6,
+      "citation": "Bellingcat. 2021. First Steps to Getting Started in Open Source Research. Bellingcat. Retrieved May 27, 2026 from https://www.bellingcat.com/resources/2021/11/09/first-steps-to-getting-started-in-open-source-research/"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-07",
+      "number": 7,
+      "citation": "Bellingcat. n.d. Online Open Source Investigation Toolkit. Bellingcat. Retrieved May 27, 2026 from https://bellingcat.gitbook.io/toolkit"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-08",
+      "number": 8,
+      "citation": "渡邉英徳. n.d. 戦災・災害のOSINT. note. Retrieved May 27, 2026 from https://note.com/hwtnv/m/m04416eca695b"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-09",
+      "number": 9,
+      "citation": "UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-10",
+      "number": 10,
+      "citation": "Alberto Cairo. 2016. The Truthful Art: Data, Charts, and Maps for Communication. New Riders. Retrieved May 27, 2026 from https://www.peachpit.com/store/truthful-art-data-charts-and-maps-for-communication-9780321934079"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-11",
+      "number": 11,
+      "citation": "Jonathan Gray, Liliana Bounegru, Stefania Milan, and Paolo Ciuccarelli. 2016. Ways of Seeing Data: Toward a Critical Literacy for Data Visualizations as Research Objects and Research Devices. In Innovative Methods in Media and Communication Research. Retrieved May 27, 2026 from https://www.researchgate.net/publication/312284929_Ways_of_Seeing_Data_Toward_a_Critical_Literacy_for_Data_Visualizations_as_Research_Objects_and_Research_Devices"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-12",
+      "number": 12,
+      "citation": "よみうりノート. 2024. 記者たちで作る能登地震被災状況マップ（記者の現場＃７）. note. Retrieved May 30, 2026 from https://note.com/yomi_tokyo_saiyo/n/n8cf9838e1a3a"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-13",
+      "number": 13,
+      "citation": "日テレNEWS. 2026. 【独自分析】カーグ島で大規模石油流出か…広い海域に拡散 イランの石油輸出拠点. YouTube. Retrieved May 28, 2026 from https://www.youtube.com/watch?v=ulJRQ8TvkW4"
+    },
+    {
+      "id": "01-information-visualization-osint-ref-14",
+      "number": 14,
+      "citation": "東京大学大学院情報学環・学際情報学府. 2025. 東京大学情報学環渡邉英徳研究室と日本テレビホールディングス、「先端技術を活用した報道手法のアップデート」を目的に共同研究を開始. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/news/2025020321925"
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-information-visualization-osint#ai-osint",
+      "heading": "AIと情報可視化・OSINT教育",
+      "level": 1,
+      "citation_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "evidence_refs": [
+        "01-information-visualization-osint-ref-01",
+        "01-information-visualization-osint-ref-02",
+        "01-information-visualization-osint-ref-03",
+        "01-information-visualization-osint-ref-04",
+        "01-information-visualization-osint-ref-05",
+        "01-information-visualization-osint-ref-06",
+        "01-information-visualization-osint-ref-07",
+        "01-information-visualization-osint-ref-08",
+        "01-information-visualization-osint-ref-09",
+        "01-information-visualization-osint-ref-10",
+        "01-information-visualization-osint-ref-11",
+        "01-information-visualization-osint-ref-12",
+        "01-information-visualization-osint-ref-13",
+        "01-information-visualization-osint-ref-14"
+      ],
+      "figure_ids": [
+        "01-gis-education-examples"
+      ],
+      "text_preview": "> 公開情報を検証し，根拠ある説明として社会へ届ける情報メディア教育モデル 本レポートが示すのは，公開情報を集める技術そのものではなく，公開情報を検証可能な知識へと組み替え，社会に伝える力を育てる教育モデルである。東京大学前期課程「情報メディア基礎論」では，情報を“ストック”し，データビジュアライゼーションやデジタルアーカイブによって“フロー”化するメディア実践を通じて，情報・メディア・社会の関係を学ぶ[1]。授業では，学生が自ら問いを設定し，データを収集・整理したうえで，ArcGISやRe:Earthを用いて2D／3D地図上に可視化し，成果物をウェブ公開する。2022年度のArcGIS Onlineを用いた学生作品，2023年度の"
+    },
+    {
+      "id": "01-information-visualization-osint#section",
+      "heading": "参考文献・関連資料",
+      "level": 2,
+      "citation_numbers": [],
+      "evidence_refs": [],
+      "figure_ids": [],
+      "text_preview": "1. 東京大学. n.d. 情報メディア基礎論. 東京大学授業カタログ. Retrieved May 27, 2026 from https://catalog.he.u-tokyo.ac.jp/detail?code=30259 2. Hidenori Watanave. 2022. ArcGIS Onlineを用いたオープンデータの可視化・学生作品（2022年度）. Hidenori Watanave Lab. Retrieved May 27, 2026 from https://labo.wtnv.jp/2022/05/arcgis-online2022.html 3. 国土交通省 Project PLATEAU. 2023"
+    },
+    {
+      "id": "01-information-visualization-osint#section",
+      "heading": "メタデータ",
+      "level": 2,
+      "citation_numbers": [],
+      "evidence_refs": [],
+      "figure_ids": [],
+      "text_preview": "| 項目 | 内容 | | --- | --- | | ID | `01-information-visualization-osint` | | プロジェクト | AIとクリエイティブと教育 | | 日付 | 2026-05-27 | | バージョン | 1.0.0 | | 種別 | report | | 概要 | GIS・データ可視化・OSINTを通じて、公開情報を検証し社会へ伝える情報メディア教育モデル。 | | 著者 | 渡邉英徳 | | 想定読者 | 情報・メディア・探究学習を担当する高校・大学教員<br>データ可視化、GIS、デジタルアーカイブを授業に取り入れたい教育者<br>OSINTや調査報道の基礎を教育・研修化した"
+    }
+  ],
+  "risk_notes": [
+    "このsidecarはAI用の構造化補助であり、本文の正本はsource_mdにある。",
+    "引用番号はsource_md内の参考文献登場順に対応する。",
+    "図版を説明するときはfigures.pathだけでなくalt/caption/license_noteも確認する。"
+  ]
+}

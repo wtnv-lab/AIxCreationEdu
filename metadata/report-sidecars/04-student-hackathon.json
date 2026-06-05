@@ -1,0 +1,225 @@
+{
+  "schema": "aice.report_sidecar.v1",
+  "report_id": "04-student-hackathon",
+  "title": "AI時代の学生ハッカソン：実装の民主化と発想力への転換",
+  "source_md": "reports/04-student-hackathon.md",
+  "source_of_truth": true,
+  "html_source_note": "HTML版はこのMarkdown本文とconfig/metadataから生成・表示する。",
+  "ai_contract": {
+    "read_order": [
+      "abstract",
+      "key_takeaways",
+      "sections",
+      "references",
+      "figures",
+      "risk_notes"
+    ],
+    "must_cite": true,
+    "do_not_infer_beyond_sources": true,
+    "human_verification_required": true
+  },
+  "authors": [
+    "小松尚平",
+    "渡邉英徳"
+  ],
+  "audience": [
+    "大学・高専・高校でハッカソンやPBLを運営する教職員",
+    "AIを用いたプロトタイピング教育を設計するメンター・ファシリテーター",
+    "学生起業、地域課題解決、産学連携プログラムの企画担当者",
+    "生成AI時代の開発教育や創造性評価に関心を持つ実践者"
+  ],
+  "themes": [
+    "生成AI",
+    "ハッカソン",
+    "プロトタイピング",
+    "実装教育"
+  ],
+  "keywords": [
+    "学生ハッカソン",
+    "プロダクト開発",
+    "実装の民主化",
+    "創造性"
+  ],
+  "abstract": "生成AIで実装負荷が下がる時代の学生ハッカソンを、課題設定と発想力の学びとして再定義。",
+  "key_takeaways": [
+    "生成AIにより実装のハードルが下がると、ハッカソンの評価軸は課題設定、体験設計、社会的価値へ移る。",
+    "AIはコード生成やデバッグを支援するが、何を作るか、誰に価値があるかの判断は人間が担う。",
+    "学生ハッカソンは、技術競争だけでなく、発想を検証し社会に説明する教育機会として再設計できる。"
+  ],
+  "use_cases": [
+    "大学・高専・高校のハッカソンやPBL設計",
+    "AIプロトタイピング研修やメンター育成",
+    "地域課題解決、学生起業、産学連携プログラム",
+    "AI時代の創造性評価や成果発表の設計"
+  ],
+  "learning_activities": [
+    "AIを用いて複数のプロトタイプ案を作り、利用者価値とリスクで比較する。",
+    "生成されたコードやUIを検証し、発想、実装、説明のどこに人間の判断が必要かを振り返る。",
+    "発表資料を作る際に、課題、ユーザー、価値、検証結果を明確にする。"
+  ],
+  "implementation_ideas": [
+    "短時間のAIプロトタイピング演習を導入し、実装より課題定義と検証を重視する。",
+    "審査基準に、社会的価値、利用者理解、AI利用の透明性、検証プロセスを加える。",
+    "メンター向けに、AI出力を鵜呑みにしないレビュー観点を共有する。"
+  ],
+  "related_reports": [
+    "00-overview",
+    "03-digital-citizenship",
+    "06-sf-prototyping"
+  ],
+  "concept_alignment": {
+    "schema": "aice.concept_alignment.v1",
+    "primary_stage_ids": [
+      "question_framing",
+      "prototyping",
+      "human_verification",
+      "public_communication"
+    ],
+    "supporting_stage_ids": [
+      "source_evaluation"
+    ],
+    "literacy_ids": [
+      "ai_competency_citizenship",
+      "design_editing_critical_thinking",
+      "publicness_social_responsibility"
+    ],
+    "ai_role_ids": [
+      "code_generation",
+      "ui_drafting",
+      "debugging_support",
+      "pitch_support"
+    ],
+    "human_responsibility_ids": [
+      "problem_selection",
+      "user_value_judgment",
+      "prototype_review",
+      "transparent_ai_use"
+    ],
+    "domain_tags": [
+      "hackathon",
+      "prototyping",
+      "implementation_democratization",
+      "student_projects"
+    ]
+  },
+  "figures": [
+    {
+      "id": "04-hackathon-shift",
+      "path": "assets/04-student-hackathon/fig_hackathon_shift.svg",
+      "caption": "生成AI時代のハッカソン教育における重心の移動",
+      "alt": "生成AI時代のハッカソン教育における重心の移動を示す概念図",
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+    },
+    {
+      "id": "04-hack1-2026-demoday",
+      "path": "assets/04-student-hackathon/hack1-2026-demoday.png",
+      "caption": "Hack-1グランプリ2026 最終発表会の様子",
+      "alt": "Hack-1グランプリ2026最終発表会のピッチ、ブース展示、プロトタイプ展示の様子",
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+    }
+  ],
+  "references": [
+    {
+      "id": "04-student-hackathon-ref-01",
+      "number": 1,
+      "citation": "Sidney Peng, Eirini Kalliamvakou, Peter Cihon, and Mert Demirer. 2023. The Impact of AI on Developer Productivity: Evidence from GitHub Copilot. arXiv:2302.06590. Retrieved May 27, 2026 from https://arxiv.org/abs/2302.06590"
+    },
+    {
+      "id": "04-student-hackathon-ref-02",
+      "number": 2,
+      "citation": "Jeannette M. Wing. 2006. Computational Thinking. Communications of the ACM 49, 3 (March 2006), 33–35. https://doi.org/10.1145/1118178.1118215"
+    },
+    {
+      "id": "04-student-hackathon-ref-03",
+      "number": 3,
+      "citation": "東京大学大学院情報学環・学際情報学府. 2025. Hack-1グランプリ2025 開催レポート. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/research/20250725report"
+    },
+    {
+      "id": "04-student-hackathon-ref-04",
+      "number": 4,
+      "citation": "東京大学大学院情報学環・学際情報学府. 2026. Hack-1グランプリ2026 告知. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/event/20260404event"
+    },
+    {
+      "id": "04-student-hackathon-ref-05",
+      "number": 5,
+      "citation": "GMO Developers. 2026. 【前編】Hack-1グランプリ2026 デモデーレポート｜AI時代の学生ハッカソンに圧倒される2日間。「小さくなる日本」をどう表現する？ Retrieved May 28, 2026 from https://developers.gmo.jp/events/83407/"
+    },
+    {
+      "id": "04-student-hackathon-ref-06",
+      "number": 6,
+      "citation": "GMO Developers. 2026. 【Hack-1グランプリ2026 キックオフレポート】約150名の学生がハイブリッド形式で集結. Retrieved May 31, 2026 from https://developers.gmo.jp/events/83078/"
+    },
+    {
+      "id": "04-student-hackathon-ref-07",
+      "number": 7,
+      "citation": "日テレ共創ラボ. 2026. 日テレ クリエイティブメディアハッカソン開催レポート. Retrieved May 27, 2026 from https://lab.ntvhd.co.jp/topics/2026/04/post-24.html"
+    },
+    {
+      "id": "04-student-hackathon-ref-08",
+      "number": 8,
+      "citation": "UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students"
+    },
+    {
+      "id": "04-student-hackathon-ref-09",
+      "number": 9,
+      "citation": "OECD. 2023. AI and the Future of Skills, Volume 2. OECD Publishing. https://doi.org/10.1787/a9fe53cb-en"
+    }
+  ],
+  "sections": [
+    {
+      "id": "04-student-hackathon#ai",
+      "heading": "AI時代の学生ハッカソン：実装の民主化と発想力への転換",
+      "level": 1,
+      "citation_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "evidence_refs": [
+        "04-student-hackathon-ref-01",
+        "04-student-hackathon-ref-02",
+        "04-student-hackathon-ref-03",
+        "04-student-hackathon-ref-04",
+        "04-student-hackathon-ref-05",
+        "04-student-hackathon-ref-06",
+        "04-student-hackathon-ref-07",
+        "04-student-hackathon-ref-08",
+        "04-student-hackathon-ref-09"
+      ],
+      "figure_ids": [
+        "04-hackathon-shift",
+        "04-hack1-2026-demoday"
+      ],
+      "text_preview": "> 実装支援から課題設定・価値検証へ移る開発教育モデル 学生ハッカソンにおける生成AIの導入は，「開発」教育の重心を大きく変えつつある。従来のハッカソンでは，限られた時間内にアイデアを実装できるかどうかが，参加者のプログラミング経験やフレームワーク習熟度に強く左右されていた。しかし現在は，生成AIがコード生成，UI設計，API連携，デバッグ，スライドや動画の作成まで支援することで，初期実装のハードルは大幅に下がっている。GitHub Copilotに関する実験研究でも，AIペアプログラマを利用した開発者は特定課題を約55.8％速く完了したと報告されており，AIが実装工程の生産性を押し上げる可能性は実証的にも示されている[1]。 この"
+    },
+    {
+      "id": "04-student-hackathon#section",
+      "heading": "参考文献・関連資料",
+      "level": 2,
+      "citation_numbers": [],
+      "evidence_refs": [],
+      "figure_ids": [],
+      "text_preview": "1. Sidney Peng, Eirini Kalliamvakou, Peter Cihon, and Mert Demirer. 2023. The Impact of AI on Developer Productivity: Evidence from GitHub Copilot. arXiv:2302.06590. Retrieved May 27, 2026 from https://arxiv.org/abs/2302.06590 2. Jeannette M. Wing. 2006. Computational Thinking. Communications of the ACM 49, 3 (March 20"
+    },
+    {
+      "id": "04-student-hackathon#section",
+      "heading": "メタデータ",
+      "level": 2,
+      "citation_numbers": [],
+      "evidence_refs": [],
+      "figure_ids": [],
+      "text_preview": "| 項目 | 内容 | | --- | --- | | ID | `04-student-hackathon` | | プロジェクト | AIとクリエイティブと教育 | | 日付 | 2026-05-27 | | バージョン | 1.0.0 | | 種別 | report | | 概要 | 生成AIで実装負荷が下がる時代の学生ハッカソンを、課題設定と発想力の学びとして再定義。 | | 著者 | 小松尚平<br>渡邉英徳 | | 想定読者 | 大学・高専・高校でハッカソンやPBLを運営する教職員<br>AIを用いたプロトタイピング教育を設計するメンター・ファシリテーター<br>学生起業、地域課題解決、産学連携プログラムの企画担当者<b"
+    }
+  ],
+  "risk_notes": [
+    "このsidecarはAI用の構造化補助であり、本文の正本はsource_mdにある。",
+    "引用番号はsource_md内の参考文献登場順に対応する。",
+    "図版を説明するときはfigures.pathだけでなくalt/caption/license_noteも確認する。"
+  ]
+}

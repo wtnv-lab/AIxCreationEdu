@@ -1,0 +1,196 @@
+{
+  "schema": "aice.report_sidecar.v1",
+  "report_id": "05-digital-archive-ai",
+  "title": "デジタルアーカイブとAIを活かした教育実践",
+  "source_md": "reports/05-digital-archive-ai.md",
+  "source_of_truth": true,
+  "html_source_note": "HTML版はこのMarkdown本文とconfig/metadataから生成・表示する。",
+  "ai_contract": {
+    "read_order": [
+      "abstract",
+      "key_takeaways",
+      "sections",
+      "references",
+      "figures",
+      "risk_notes"
+    ],
+    "must_cite": true,
+    "do_not_infer_beyond_sources": true,
+    "human_verification_required": true
+  },
+  "authors": [
+    "大井将生"
+  ],
+  "audience": [
+    "学校教育で一次資料や地域資料を活用したい教員",
+    "デジタルアーカイブの教育利用を進める図書館・博物館・自治体担当者",
+    "探究学習、キュレーション授業、教材アーカイブを設計する教育者",
+    "AIと資料検索・要約・再編集を組み合わせた学習サービス企画者"
+  ],
+  "themes": [
+    "生成AI",
+    "デジタルアーカイブ",
+    "教育実践",
+    "資料活用"
+  ],
+  "keywords": [
+    "デジタルアーカイブ",
+    "資料活用",
+    "探究学習",
+    "AI教育"
+  ],
+  "abstract": "デジタルアーカイブと生成AIを組み合わせ、一次資料を用いた探究と社会発信を支える教育実践。",
+  "key_takeaways": [
+    "デジタルアーカイブは保存基盤にとどまらず、学習者が問いを立て資料を再編集する探究環境になる。",
+    "AIは検索、要約、比較、表現を支援するが、一次資料性と出典確認を学習活動に組み込む必要がある。",
+    "資料活用、AIカラー化、S×UKILAM連携は、学校と文化資源を結ぶ教育実践の基盤になる。"
+  ],
+  "use_cases": [
+    "一次資料や地域資料を活用した探究学習",
+    "図書館・博物館・自治体の教育連携プログラム",
+    "デジタルアーカイブを使う教材・検索支援サービスの企画",
+    "AIによる資料要約、比較、再編集を扱う授業"
+  ],
+  "learning_activities": [
+    "ジャパンサーチ等で資料を探し、出典、作成時期、文脈を確認して問いを立てる。",
+    "AIに資料の要約や比較をさせ、その妥当性を原資料に戻って検証する。",
+    "複数資料を組み合わせ、展示案、教材、地域ストーリーとして再構成する。"
+  ],
+  "implementation_ideas": [
+    "学校と図書館・博物館が連携し、地域資料を使う探究単元を設計する。",
+    "AI検索・要約機能に、出典確認と一次資料へのリンクを必ず表示する設計にする。",
+    "学習成果をデジタル展示や教材アーカイブとして蓄積し、次年度の学習資源にする。"
+  ],
+  "related_reports": [
+    "00-overview",
+    "01-information-visualization-osint",
+    "02-photo-colorization-peace-education"
+  ],
+  "concept_alignment": {
+    "schema": "aice.concept_alignment.v1",
+    "primary_stage_ids": [
+      "source_evaluation",
+      "prototyping",
+      "public_communication"
+    ],
+    "supporting_stage_ids": [
+      "question_framing",
+      "human_verification"
+    ],
+    "literacy_ids": [
+      "ai_competency_citizenship",
+      "design_editing_critical_thinking",
+      "publicness_social_responsibility"
+    ],
+    "ai_role_ids": [
+      "search_support",
+      "summarization",
+      "comparison",
+      "material_recomposition"
+    ],
+    "human_responsibility_ids": [
+      "source_context_check",
+      "primary_source_verification",
+      "curation_judgment",
+      "public_reframing"
+    ],
+    "domain_tags": [
+      "digital_archive",
+      "primary_sources",
+      "sukilam",
+      "educational_materials"
+    ]
+  },
+  "figures": [
+    {
+      "id": "05-sukilam-workshop",
+      "path": "assets/05-digital-archive-ai/sukilam-workshop.png",
+      "caption": "S×UKILAMワークショップのコンセプト：多様な資料から教材を共創する",
+      "alt": "S×UKILAMワークショップのコンセプトを示す教室写真ベースの図版",
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+    },
+    {
+      "id": "05-sukilam-network",
+      "path": "assets/05-digital-archive-ai/sukilam-network.png",
+      "caption": "S×UKILAM連携における「人」と「データ」のネットワーク",
+      "alt": "S×UKILAM連携における人とデータのネットワーク構造を示す図",
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+    }
+  ],
+  "references": [
+    {
+      "id": "05-digital-archive-ai-ref-01",
+      "number": 1,
+      "citation": "Masao Oi and Hidenori Watanave. 2020. ジャパンサーチを活用した小中高でのキュレーション授業デザイン：デジタルアーカイブの教育活用意義と可能性. デジタルアーカイブ学会誌 4, 4 (2020), 352–359. https://doi.org/10.24506/jsda.4.4_352"
+    },
+    {
+      "id": "05-digital-archive-ai-ref-02",
+      "number": 2,
+      "citation": "ADEAC. n.d. S×UKILAM：Primary Source Sets／スキラム連携：多様な資料を活用した教材アーカイブ. Retrieved May 27, 2026 from https://adeac.jp/adeac-lab/top/sxukilam/index.html"
+    },
+    {
+      "id": "05-digital-archive-ai-ref-03",
+      "number": 3,
+      "citation": "Masao Oi and Hidenori Watanave. 2022. S×UKILAM連携：多様な資料を学校教育で活用するための「人」と「データ」のネットワーク構築. デジタルアーカイブ学会誌 6, s3 (2022), s214–s217. https://doi.org/10.24506/jsda.6.s3_s214"
+    },
+    {
+      "id": "05-digital-archive-ai-ref-04",
+      "number": 4,
+      "citation": "UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students"
+    },
+    {
+      "id": "05-digital-archive-ai-ref-05",
+      "number": 5,
+      "citation": "UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum"
+    }
+  ],
+  "sections": [
+    {
+      "id": "05-digital-archive-ai#ai",
+      "heading": "デジタルアーカイブとAIを活かした教育実践",
+      "level": 1,
+      "citation_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "evidence_refs": [
+        "05-digital-archive-ai-ref-01",
+        "05-digital-archive-ai-ref-02",
+        "05-digital-archive-ai-ref-03",
+        "05-digital-archive-ai-ref-04",
+        "05-digital-archive-ai-ref-05"
+      ],
+      "figure_ids": [
+        "05-sukilam-workshop",
+        "05-sukilam-network"
+      ],
+      "text_preview": "> 資料を保存から探究へひらき，出典と文脈を確かめる学び デジタルアーカイブとAIを組み合わせた教育実践は，資料を単に保存・閲覧する段階から，学習者が問いを立て，資料を読み解き，他者へ伝える探究的な学びへと発展させる可能性を持つ。デジタルアーカイブは，写真，文書，地図，映像，文化財などを体系的に蓄積する基盤である。しかし，資料が「そこにある」だけでは，学習者の関心や授業実践には直結しにくい。重要なのは，ストックされた資料を，学習者の問い，対話，表現を通じてフロー化する設計である。 ![S×UKILAMワークショップのコンセプト](../assets/05-digital-archive-ai/sukilam-workshop.png"
+    },
+    {
+      "id": "05-digital-archive-ai#section",
+      "heading": "参考文献・関連資料",
+      "level": 2,
+      "citation_numbers": [],
+      "evidence_refs": [],
+      "figure_ids": [],
+      "text_preview": "1. Masao Oi and Hidenori Watanave. 2020. ジャパンサーチを活用した小中高でのキュレーション授業デザイン：デジタルアーカイブの教育活用意義と可能性. デジタルアーカイブ学会誌 4, 4 (2020), 352–359. https://doi.org/10.24506/jsda.4.4_352 2. ADEAC. n.d. S×UKILAM：Primary Source Sets／スキラム連携：多様な資料を活用した教材アーカイブ. Retrieved May 27, 2026 from https://adeac.jp/adeac-lab/top/sxukilam/index.html 3. M"
+    },
+    {
+      "id": "05-digital-archive-ai#section",
+      "heading": "メタデータ",
+      "level": 2,
+      "citation_numbers": [],
+      "evidence_refs": [],
+      "figure_ids": [],
+      "text_preview": "| 項目 | 内容 | | --- | --- | | ID | `05-digital-archive-ai` | | プロジェクト | AIとクリエイティブと教育 | | 日付 | 2026-05-27 | | バージョン | 1.0.0 | | 種別 | report | | 概要 | デジタルアーカイブと生成AIを組み合わせ、一次資料を用いた探究と社会発信を支える教育実践。 | | 著者 | 大井将生 | | 想定読者 | 学校教育で一次資料や地域資料を活用したい教員<br>デジタルアーカイブの教育利用を進める図書館・博物館・自治体担当者<br>探究学習、キュレーション授業、教材アーカイブを設計する教育者<br>AIと資料検"
+    }
+  ],
+  "risk_notes": [
+    "このsidecarはAI用の構造化補助であり、本文の正本はsource_mdにある。",
+    "引用番号はsource_md内の参考文献登場順に対応する。",
+    "図版を説明するときはfigures.pathだけでなくalt/caption/license_noteも確認する。"
+  ]
+}

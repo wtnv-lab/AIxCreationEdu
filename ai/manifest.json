@@ -1,0 +1,114 @@
+{
+  "schema": "aice.ai_package_manifest.v1",
+  "project": {
+    "title": "AIとクリエイティブと教育",
+    "description": "生成AI時代の創造性教育プロジェクト",
+    "version": "1.0.0",
+    "date": "2026-05-27",
+    "license": "CC BY 4.0",
+    "audience": [
+      "教育関係者",
+      "教育ソリューション提供企業",
+      "AI時代の教育・創造性・情報リテラシーに関心を持つ研究者と実践者"
+    ],
+    "authors": [
+      {
+        "affiliation": "東京大学 大学院情報学環・学際情報学府",
+        "members": [
+          "教授 [渡邉英徳](https://researchmap.jp/hwtnv)",
+          "特任准教授 [原田真喜子](https://researchmap.jp/kokima)（都留文科大学 地域交流研究センター 特任講師）",
+          "博士後期課程 [小松尚平](https://researchmap.jp/komanbe)",
+          "博士後期課程 [片山実咲](https://researchmap.jp/misaki_katayama)",
+          "博士後期課程 [楊欽](https://researchmap.jp/kevinyang)",
+          "博士後期課程 [森吉蓉子](https://researchmap.jp/ymoriyos)"
+        ]
+      },
+      {
+        "affiliation": "同志社大学 文化情報学府",
+        "members": [
+          "准教授 [大井将生](https://researchmap.jp/m-oi)"
+        ]
+      }
+    ],
+    "ai_collaborators": [
+      {
+        "name": "対話型生成AI"
+      },
+      {
+        "name": "長文読解支援AI"
+      },
+      {
+        "name": "コード生成支援AI"
+      },
+      {
+        "name": "AIペアプログラミング支援ツール"
+      }
+    ],
+    "support_statement": "このプロジェクトは日本マイクロソフト株式会社の支援を受けて実施されています。"
+  },
+  "source_of_truth": {
+    "human_markdown": "reports/*.md",
+    "report_config": "config/reports.json",
+    "references": "config/report_references.json",
+    "figures": "metadata/figures.json"
+  },
+  "ai_first_outputs": [
+    "ai/system-instructions.md",
+    "ai/context-brief.md",
+    "ai/context-full.md",
+    "ai/citations.json",
+    "ai/rag/chunks.jsonl",
+    "metadata/report-sidecars/*.json"
+  ],
+  "reports": [
+    {
+      "id": "00-overview",
+      "title": "AIとクリエイティブと教育 総括レポート",
+      "source_md": "reports/00-overview.md",
+      "sidecar": "metadata/report-sidecars/00-overview.json"
+    },
+    {
+      "id": "01-information-visualization-osint",
+      "title": "AIと情報可視化・OSINT教育",
+      "source_md": "reports/01-information-visualization-osint.md",
+      "sidecar": "metadata/report-sidecars/01-information-visualization-osint.json"
+    },
+    {
+      "id": "02-photo-colorization-peace-education",
+      "title": "AIによるモノクロ写真カラー化を活かした高校生の平和教育実践",
+      "source_md": "reports/02-photo-colorization-peace-education.md",
+      "sidecar": "metadata/report-sidecars/02-photo-colorization-peace-education.json"
+    },
+    {
+      "id": "03-digital-citizenship",
+      "title": "AIを活かしたデジタルシティズンシップ教育",
+      "source_md": "reports/03-digital-citizenship.md",
+      "sidecar": "metadata/report-sidecars/03-digital-citizenship.json"
+    },
+    {
+      "id": "04-student-hackathon",
+      "title": "AI時代の学生ハッカソン：実装の民主化と発想力への転換",
+      "source_md": "reports/04-student-hackathon.md",
+      "sidecar": "metadata/report-sidecars/04-student-hackathon.json"
+    },
+    {
+      "id": "05-digital-archive-ai",
+      "title": "デジタルアーカイブとAIを活かした教育実践",
+      "source_md": "reports/05-digital-archive-ai.md",
+      "sidecar": "metadata/report-sidecars/05-digital-archive-ai.json"
+    },
+    {
+      "id": "06-sf-prototyping",
+      "title": "生成AIを用いたSFプロトタイピング",
+      "source_md": "reports/06-sf-prototyping.md",
+      "sidecar": "metadata/report-sidecars/06-sf-prototyping.json"
+    },
+    {
+      "id": "07-minecraft-ai-education",
+      "title": "AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ",
+      "source_md": "reports/07-minecraft-ai-education.md",
+      "sidecar": "metadata/report-sidecars/07-minecraft-ai-education.json"
+    }
+  ],
+  "human_verification_required": true
+}

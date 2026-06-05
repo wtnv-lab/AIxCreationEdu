@@ -4,7 +4,7 @@
 
 本リポジトリは、東京大学大学院 渡邉英徳研究室と関係者が蓄積してきた、AI・クリエイティブ・教育に関する研究資料、実践記録、参考文献をもとにした公開レポート集です。生成AIが資料群を整理し、著者との対話を通じて論点を編み直し、ヒトが根拠、文脈、表現を確認しながらMarkdown本文として編集しています。
 
-このリポジトリには、二つの入口があります。一つは、ヒトが読むための文章です。`index.html`、`README.md`、`reports/` は、生成AI時代の授業、探究学習、ワークショップ、教育サービス企画を考えるために読みやすく整えています。もう一つは、AIに読み込ませるためのデータパッケージです。`ai/notebooklm-source.txt`、`ai/llms.txt`、`metadata/`、`references/` は、AIエージェント、AI読解ツール、RAGが本文、メタデータ、検索用チャンク、出典をたどれるようにまとめています。
+このリポジトリには、二つの入口があります。一つは、ヒトが読むための文章です。`index.html`、`README.md`、`reports/` は、生成AI時代の授業、探究学習、ワークショップ、教育サービス企画を考えるために読みやすく整えています。もう一つは、AIに読み込ませるためのデータパッケージです。`ai/manifest.json`、`ai/system-instructions.md`、`ai/rag/chunks.jsonl`、`metadata/report-sidecars/`、`references/` は、AIエージェント、AI読解ツール、RAGが本文、メタデータ、検索用チャンク、出典をたどれるようにまとめています。
 
 基本的な使い方は、先にヒトが全体像を読み、次にAIへデータパッケージを読み込ませ、そのあと `prompts/` のプロンプトで授業案、研修案、サービス企画、ロードマップを作る流れです。AIの出力は完成品ではなく、本文と参考文献に照らしてヒトが検証し、目的に合わせて編集するためのたたき台として扱います。
 
@@ -16,7 +16,7 @@
 
 1. `index.html` または `README.md` で全体像を読む。
 2. 必要に応じて `reports/` の個別レポートを読み、使いたいテーマを決める。
-3. AI読解ツールや対話型生成AIに `ai/notebooklm-source.txt` を読み込ませる。軽く試す場合は `ai/llms.txt` や `ai/llms-full.md` から始める。
+3. AI読解ツールや対話型生成AIに `ai/system-instructions.md` と `ai/context-brief.md` を渡す。全文をまとめて読み込ませる場合は `ai/notebooklm-source.txt` を使う。
 4. 目的に近い `prompts/` のプロンプトを貼り付け、学年、教科、対象者、時間数、成果物などの条件を加える。
 5. 出力された授業案、研修案、企画案、ロードマップを、レポート本文、メタデータ、参考文献に照らして確認し、ヒトが編集する。
 
@@ -34,25 +34,30 @@
 | ヒトが全体像を把握する | [`README.md`](README.md) | このリポジトリの目的、構造、利用法、主要リソースの案内 |
 | AIに最初の案内を渡す | [`ai/llms.txt`](ai/llms.txt) | AI向けの短い索引と重要ファイル一覧 |
 | AIにレポート群の要約を渡す | [`ai/llms-full.md`](ai/llms-full.md) | 各レポートの要約、テーマ、利用想定、メタデータの統合版 |
+| AIに読解ルールを渡す | [`ai/system-instructions.md`](ai/system-instructions.md) | 読む順序、回答ルール、推測や引用の扱い |
+| AIにパッケージ全体を知らせる | [`ai/manifest.json`](ai/manifest.json) | 正本、派生ファイル、sidecar、RAGチャンクの索引 |
+| AIに短い全体像を渡す | [`ai/context-brief.md`](ai/context-brief.md) | 最初に読むプロジェクト概要とレポート一覧 |
+| AIに詳しい全体像を渡す | [`ai/context-full.md`](ai/context-full.md) | レポート別の要旨、示唆、活用場面、実装案 |
 | AI読解ツールに全文を渡す | [`ai/notebooklm-source.txt`](ai/notebooklm-source.txt) | レポート本文、プロンプト、メタデータ、参考文献をまとめた単一テキスト |
 | レポート本文を読む、編集する | [`reports/`](reports/) | 各レポートの一次ソース。今後の本文更新はここを直接編集 |
 | 授業案や企画案を生成する | [`prompts/`](prompts/) | 利用目的別のプロンプト例 |
-| RAGや検索に使う | [`metadata/chunks.jsonl`](metadata/chunks.jsonl) | 見出し単位に分割した検索用チャンク |
+| RAGや検索に使う | [`ai/rag/chunks.jsonl`](ai/rag/chunks.jsonl) | 根拠、用途、リスク注記を付けたAI向けチャンク |
+| レポート単位で構造化する | [`metadata/report-sidecars/`](metadata/report-sidecars/) | 本文正本、図版、文献、節構造を結ぶsidecar |
 
 ## ディレクトリ構成
 
 | パス | 役割 |
 | --- | --- |
-| [`ai/`](ai/) | AIに渡す入口ファイル、統合テキスト、AI向け概説 |
+| [`ai/`](ai/) | AIに渡す入口ファイル、統合テキスト、AI向け概説、引用索引、RAGチャンク |
 | [`reports/`](reports/) | レポート本文の一次ソース |
 | [`prompts/`](prompts/) | 授業案、企画案、比較、根拠付き回答などのプロンプト例 |
 | [`web/`](web/) | レポート・プロンプト閲覧アプリのCSSとJavaScript |
-| [`metadata/`](metadata/) | 検索、RAG、AIエージェント向けの構造化データ |
+| [`metadata/`](metadata/) | 検索、RAG、AIエージェント向けの構造化データとレポート別sidecar |
 | [`references/`](references/) | 参考文献・関連資料 |
 | [`assets/`](assets/) | 図版・画像などの視覚資料 |
 | [`config/`](config/) | レポート定義、参照情報、補助設定 |
 | [`templates/`](templates/) | レポート作成時のテンプレート |
-| [`scripts/`](scripts/) | AI読解ツール向け単一テキストなどの更新スクリプト |
+| [`scripts/`](scripts/) | AI向け構造化パッケージ、単一テキスト、閲覧アプリ索引の更新スクリプト |
 | [`.githooks/`](.githooks/) | 自動更新用のGitフック |
 | [`requirements/`](requirements/) | AI向け生成処理に必要な依存関係 |
 
@@ -68,7 +73,7 @@
 AIやRAGでは、次の用途で使えます。
 
 - AI読解ツールや対話型生成AIに読み込ませ、レポートに根拠を置いた授業案、企画案、比較表、ロードマップを作る。
-- `metadata/chunks.jsonl`、`metadata/reports.json`、`metadata/concept-schema.json` を使って、検索、RAG、AIエージェント向けの知識ベースを組む。
+- `ai/rag/chunks.jsonl`、`metadata/report-sidecars/`、`metadata/reports.json`、`metadata/concept-schema.json` を使って、検索、RAG、AIエージェント向けの知識ベースを組む。
 - `prompts/` のプロンプトを使い、出典付き回答、授業案、サービス企画、アイデア発想を行う。
 - 回答時に、本文、メタデータ、参考文献のどこに根拠があるかを確認する。
 
@@ -89,7 +94,7 @@ AIやRAGでは、次の用途で使えます。
 
 ## プロンプト例
 
-各プロンプトは [`prompts/`](prompts/) にあります。AI読解ツールや対話型生成AIに `ai/notebooklm-source.txt`、`ai/llms.txt`、`metadata/`、`reports/` を読み込ませたうえで、目的に近いプロンプトを貼り付けて使ってください。
+各プロンプトは [`prompts/`](prompts/) にあります。AI読解ツールや対話型生成AIに `ai/system-instructions.md`、`ai/context-brief.md`、`ai/rag/chunks.jsonl`、`metadata/report-sidecars/`、`reports/` を読み込ませたうえで、目的に近いプロンプトを貼り付けて使ってください。単一ファイルで渡したい場合は、互換パッケージとして `ai/notebooklm-source.txt` を使えます。
 
 | プロンプト | 用途 |
 | --- | --- |
@@ -100,7 +105,7 @@ AIやRAGでは、次の用途で使えます。
 | [エクスカーション法アイデア創出プロンプト](prompts/excursion-ideation.md) | 遠い領域の特徴を借りて発想を広げる |
 | [実装ロードマップ生成プロンプト](prompts/implementation-roadmap.md) | 30日、90日、180日の導入計画を作る |
 | [レポート横断比較プロンプト](prompts/cross-report-comparison.md) | 複数レポートの共通点、差異、補完関係を比較する |
-| [根拠付き回答プロンプト](prompts/citation-answering.md) | `metadata/chunks.jsonl` などを根拠に、出典付きで回答する |
+| [根拠付き回答プロンプト](prompts/citation-answering.md) | `ai/rag/chunks.jsonl` などを根拠に、出典付きで回答する |
 | [計画立案テンプレート](prompts/planning-template.md) | 授業、研修、企画を手早く構造化するための空欄テンプレート |
 
 ## ウェブアプリで読む
@@ -123,15 +128,16 @@ scripts/update_web_manifest.sh
 
 ## AI向けデータパッケージの使い方
 
-AIにリポジトリを読ませるときは、資料そのものと依頼文を分けて扱うと安定します。先にデータパッケージを読み込ませ、AIがレポート本文、メタデータ、参考文献を参照できる状態にします。そのあとで、`prompts/` のプロンプトを使って、授業案、研修案、サービス企画、比較表、ロードマップなどの出力形式を指定します。
+AIにリポジトリを読ませるときは、資料そのものと依頼文を分けて扱うと安定します。先にデータパッケージを読み込ませ、AIが読む順序、レポート本文、メタデータ、引用、図版、検索用チャンクを参照できる状態にします。そのあとで、`prompts/` のプロンプトを使って、授業案、研修案、サービス企画、比較表、ロードマップなどの出力形式を指定します。
 
 用途に応じて、最初に渡す資料を選びます。
 
-1. 全体像だけ必要な場合: [`ai/llms.txt`](ai/llms.txt)
-2. レポート群の要約とテーマも必要な場合: [`ai/llms-full.md`](ai/llms-full.md)
-3. AI読解ツールで全文検索・質問応答をしたい場合: [`ai/notebooklm-source.txt`](ai/notebooklm-source.txt)
-4. RAGや検索システムに組み込む場合: [`metadata/chunks.jsonl`](metadata/chunks.jsonl)
-5. 出典や図版も扱う場合: [`references/references.md`](references/references.md)、[`metadata/figures.json`](metadata/figures.json)
+1. 読む順序と回答ルールを指定する場合: [`ai/system-instructions.md`](ai/system-instructions.md)
+2. 全体像だけ必要な場合: [`ai/context-brief.md`](ai/context-brief.md)
+3. レポート群の詳しい要約と用途が必要な場合: [`ai/context-full.md`](ai/context-full.md)
+4. AI読解ツールで全文検索・質問応答をしたい場合: [`ai/notebooklm-source.txt`](ai/notebooklm-source.txt)
+5. RAGや検索システムに組み込む場合: [`ai/rag/chunks.jsonl`](ai/rag/chunks.jsonl)
+6. 出典や図版も扱う場合: [`ai/citations.json`](ai/citations.json)、[`metadata/report-sidecars/`](metadata/report-sidecars/)、[`metadata/figures.json`](metadata/figures.json)
 
 次に、目的に近いプロンプトを選びます。
 
@@ -150,7 +156,7 @@ AIには、たとえば次のように指示してください。
 ```text
 この資料群は「AIとクリエイティブと教育」に関する公開レポート集です。
 東京大学大学院 渡邉英徳研究室と関係者の実践・研究リソースをもとに、生成AIとの対話を通じて編集されています。
-回答では reports/ の本文、metadata/chunks.jsonl、references/ を根拠にしてください。
+回答では reports/ の本文、ai/rag/chunks.jsonl、ai/citations.json、metadata/report-sidecars/ を根拠にしてください。
 本文にない情報を補う場合は、推測または外部知識であることを明示してください。
 授業案、研修案、サービス企画を作る場合は、prompts/ の該当プロンプトの形式に従い、どのレポートに基づく提案かを示してください。
 ```
@@ -160,7 +166,10 @@ AIには、たとえば次のように指示してください。
 | ファイル | 役割 |
 | --- | --- |
 | [`metadata/reports.json`](metadata/reports.json) | レポートID、タイトル、概要、著者、想定読者、テーマ、活用場面などの機械可読索引 |
-| [`metadata/chunks.jsonl`](metadata/chunks.jsonl) | レポート本文を見出し単位に分割した検索・RAG用データ |
+| [`metadata/chunks.jsonl`](metadata/chunks.jsonl) | レポート本文を見出し単位に分割した基礎チャンク |
+| [`metadata/report-sidecars/`](metadata/report-sidecars/) | レポート単位のAI用構造化補助。本文正本、節、図版、文献、注意点を結ぶ |
+| [`ai/rag/chunks.jsonl`](ai/rag/chunks.jsonl) | 基礎チャンクに根拠ID、用途、リスク注記を付けたRAG用データ |
+| [`ai/citations.json`](ai/citations.json) | 本文中の文献番号とレポート別参考文献を結ぶ引用索引 |
 | [`metadata/concept-schema.json`](metadata/concept-schema.json) | `concept_alignment` の固定語彙と分類軸 |
 | [`metadata/glossary.json`](metadata/glossary.json) | 用語の揺れを抑えるための用語集 |
 | [`metadata/figures.json`](metadata/figures.json) | 図版のキャプション、代替テキスト、出典メモ |
@@ -169,7 +178,7 @@ AIには、たとえば次のように指示してください。
 
 ## AI読解ツール向け単一テキスト
 
-[`ai/notebooklm-source.txt`](ai/notebooklm-source.txt) は、AI読解ツールにリポジトリ全体を読み込ませるための単一テキストです。画像、動画、PDF、`.git`、生成ファイル自身を除外し、レポート本文、プロンプト、メタデータ、参考文献をまとめています。
+[`ai/notebooklm-source.txt`](ai/notebooklm-source.txt) は、AI読解ツールにリポジトリ全体を読み込ませるための単一テキストです。画像、動画、PDF、`.git`、生成ファイル自身を除外し、レポート本文、プロンプト、メタデータ、参考文献、AI向け構造化パッケージをまとめています。
 
 AI読解ツールが内容を見つけやすいよう、生成時には次のルールを維持します。
 
@@ -183,11 +192,12 @@ AI読解ツールが内容を見つけやすいよう、生成時には次のル
 
 ```sh
 python3 -m pip install --user -r requirements/ai.txt
+python3 scripts/build_ai_package.py
 scripts/update_web_manifest.sh
 scripts/update_notebooklm_source.sh
 ```
 
-このリポジトリでは Git フックを `.githooks/` に置いています。次のコマンドを一度実行すると、コミット前、マージ後、ブランチ切り替え後に `config/web_content.json` と `ai/notebooklm-source.txt` が自動更新されます。
+このリポジトリでは Git フックを `.githooks/` に置いています。次のコマンドを一度実行すると、コミット前、マージ後、ブランチ切り替え後に `config/web_content.json`、`ai/` 配下のAI向け構造化ファイル、`metadata/report-sidecars/`、`ai/notebooklm-source.txt` が自動更新されます。
 
 ```sh
 scripts/setup_git_hooks.sh
@@ -198,9 +208,10 @@ scripts/setup_git_hooks.sh
 - レポート本文は [`reports/`](reports/) 配下の `.md` を直接編集します。
 - プロンプト例は [`prompts/`](prompts/) 配下の `.md` を直接編集します。
 - Wordファイルからレポートを再生成する仕組みは使いません。
+- レポート、参考文献、図版、メタデータを更新したら、`python3 scripts/build_ai_package.py` を実行し、`ai/manifest.json`、`ai/rag/chunks.jsonl`、`metadata/report-sidecars/` に反映してください。
 - レポートやプロンプトの `.md` を追加・削除したら、`scripts/update_web_manifest.sh` を実行し、`config/web_content.json` に反映してください。
 - READMEやウェブアプリを更新したら、必要に応じて `scripts/update_notebooklm_source.sh` を実行し、`ai/notebooklm-source.txt` に反映してください。
-- 図版やメタデータを追加した場合は、`metadata/figures.json`、`metadata/reports.json`、`metadata/chunks.jsonl` との整合を確認してください。
+- 図版やメタデータを追加した場合は、`metadata/figures.json`、`metadata/reports.json`、`metadata/chunks.jsonl`、`metadata/report-sidecars/` との整合を確認してください。
 
 ## ライセンス
 

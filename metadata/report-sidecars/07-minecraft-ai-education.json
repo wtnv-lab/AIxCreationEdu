@@ -1,0 +1,251 @@
+{
+  "schema": "aice.report_sidecar.v1",
+  "report_id": "07-minecraft-ai-education",
+  "title": "AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ",
+  "source_md": "reports/07-minecraft-ai-education.md",
+  "source_of_truth": true,
+  "html_source_note": "HTML版はこのMarkdown本文とconfig/metadataから生成・表示する。",
+  "ai_contract": {
+    "read_order": [
+      "abstract",
+      "key_takeaways",
+      "sections",
+      "references",
+      "figures",
+      "risk_notes"
+    ],
+    "must_cite": true,
+    "do_not_infer_beyond_sources": true,
+    "human_verification_required": true
+  },
+  "authors": [
+    "片山実咲",
+    "渡邉英徳"
+  ],
+  "audience": [
+    "Minecraft Educationやゲームベース学習を授業に取り入れたい小中高・大学教員",
+    "平和教育・地域学習・災害復興学習で仮想空間制作を活用したい教育実践者",
+    "AIリテラシー，プログラミング，デジタルシティズンシップを横断する教材設計者",
+    "Minecraftや生成AIを活用した学習サービス・ワークショップの企画担当者"
+  ],
+  "themes": [
+    "生成AI",
+    "Minecraft",
+    "ゲームベース学習",
+    "AIリテラシー",
+    "記憶継承"
+  ],
+  "keywords": [
+    "Minecraft Education",
+    "Peacecraft",
+    "AIリテラシー",
+    "ゲームベース学習",
+    "地域学習"
+  ],
+  "abstract": "MinecraftとAIを、記憶継承・地域学習・創造・AIリテラシーを横断する学習空間として整理。",
+  "key_takeaways": [
+    "Minecraftは単なるゲームではなく，過去を再現し，地域や未来を構想する共有可能な学習空間になる。",
+    "AIカラー化，AIエージェント，生成AIによる物語化は，Minecraft内の制作を支える一方で，資料批判と人間の判断を必要とする。",
+    "国内のPeacecraft系実践と海外のAIリテラシー教材は，平和教育，地域学習，プログラミング，デジタルシティズンシップを横断するモデルを示している。"
+  ],
+  "use_cases": [
+    "Minecraftを用いた平和教育・災害復興学習・地域学習の設計",
+    "AIエージェントや生成AIを使う小中高向けAIリテラシー授業",
+    "教育機関・自治体・企業が連携するゲームベース学習ワークショップ",
+    "過去の資料や証言をもとに仮想空間を制作する探究学習"
+  ],
+  "learning_activities": [
+    "白黒写真や証言をもとに，失われた街並みや地域の記憶をMinecraft内で再構築する。",
+    "AIが生成した色，説明，建築案を資料や証言と照合し，どこまで信頼できるかを検討する。",
+    "AIエージェントに指示を出し，目的設定，プロンプト，検証，修正の過程を振り返る。"
+  ],
+  "implementation_ideas": [
+    "地域資料館や自治体と連携し，写真・地図・証言を使うMinecraft制作ワークショップを実施する。",
+    "Minecraft Educationの既存AI教材を導入し，デジタルシティズンシップや情報モラルの授業と接続する。",
+    "完成した仮想空間を展示・発表し，地域住民や専門家との対話を通じて学習成果を検証する。"
+  ],
+  "related_reports": [
+    "00-overview",
+    "02-photo-colorization-peace-education",
+    "03-digital-citizenship",
+    "05-digital-archive-ai",
+    "06-sf-prototyping"
+  ],
+  "concept_alignment": {
+    "schema": "aice.concept_alignment.v1",
+    "primary_stage_ids": [
+      "source_evaluation",
+      "prototyping",
+      "human_verification",
+      "public_communication"
+    ],
+    "supporting_stage_ids": [
+      "question_framing"
+    ],
+    "literacy_ids": [
+      "ai_competency_citizenship",
+      "design_editing_critical_thinking",
+      "publicness_social_responsibility"
+    ],
+    "ai_role_ids": [
+      "worldbuilding_support",
+      "agent_assistance",
+      "story_generation",
+      "colorization_probe"
+    ],
+    "human_responsibility_ids": [
+      "evidence_uncertainty_handling",
+      "reconstruction_judgment",
+      "community_dialogue",
+      "ai_output_review"
+    ],
+    "domain_tags": [
+      "minecraft_education",
+      "game_based_learning",
+      "memory_inheritance",
+      "regional_learning",
+      "ai_literacy"
+    ]
+  },
+  "figures": [
+    {
+      "id": "07-nagasaki-minecraft-world",
+      "path": "assets/07-minecraft-ai-education/nagasaki-minecraft-world.jpg",
+      "caption": "長崎のMinecraftワールド",
+      "alt": "長崎のMinecraftワールドの俯瞰図",
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+    },
+    {
+      "id": "07-children-work",
+      "path": "assets/07-minecraft-ai-education/children-work.jpg",
+      "caption": "子どもたちによるMinecraftワークの様子",
+      "alt": "子どもたちがMinecraftを用いたワークに取り組む様子",
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+    }
+  ],
+  "references": [
+    {
+      "id": "07-minecraft-ai-education-ref-01",
+      "number": 1,
+      "citation": "UNESCO. 2023. Guidance for generative AI in education and research. UNESCO. Retrieved May 29, 2026 from https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-02",
+      "number": 2,
+      "citation": "UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 29, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-03",
+      "number": 3,
+      "citation": "きのこぐものしたにあったまち. n.d. きのこぐものしたにあったまち｜ブロッククラフトで学ぶ広島・長崎歴史探訪ワークショップ. Retrieved May 29, 2026 from https://peacecraft.info/"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-04",
+      "number": 4,
+      "citation": "マイクラカップ. 2026. 石川県輪島市門前町にて、マイクラ×ARワークショップ「門前の記憶と未来」を開催しました. Retrieved May 29, 2026 from https://mccup.jp/eventreports/26671/"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-05",
+      "number": 5,
+      "citation": "内外教育ウェブ. 2026. 「マイクラ」で北方領土啓発＝北海道標津町. Retrieved May 29, 2026 from https://edu-naigai.jiji.com/timeline/3411"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-06",
+      "number": 6,
+      "citation": "Minecraft Education. n.d. AI Foundations. Retrieved May 29, 2026 from https://education.minecraft.net/en-us/lessons/ai-foundations"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-07",
+      "number": 7,
+      "citation": "National 4-H Council and Microsoft. 2025. National 4-H Council and Microsoft Extend $10M Partnership to Expand AI Education for Rural Youth and Educators. Retrieved May 29, 2026 from https://4-h.org/about/blog/national-4-h-council-and-microsoft-extend-10m-partnership-to-expand-ai-education-for-rural-youth-and-educators/"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-08",
+      "number": 8,
+      "citation": "Minecraft Education. n.d. BBC Day of AI. Retrieved May 29, 2026 from https://education.minecraft.net/en-us/resources/bbc-day-of-ai"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-09",
+      "number": 9,
+      "citation": "Code.org. n.d. Hour of AI with Minecraft. Retrieved May 29, 2026 from https://code.org/en-US/minecraft"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-10",
+      "number": 10,
+      "citation": "Microsoft Japan. 2019. Minecraft Hour of Code: AI for Good 日本語版提供開始. Retrieved May 29, 2026 from https://news.microsoft.com/ja-jp/2019/12/09/191209-information/"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-11",
+      "number": 11,
+      "citation": "Mahajan, J. et al. 2023. MineObserver 2.0: A Deep Learning & In-Game Framework for Assessing Natural Language Descriptions of Minecraft Imagery. arXiv:2301.08167. Retrieved May 29, 2026 from https://arxiv.org/abs/2301.08167"
+    },
+    {
+      "id": "07-minecraft-ai-education-ref-12",
+      "number": 12,
+      "citation": "Tadimalla, S. Y. and Maher, M. L. 2024. AI Literacy for All: Adjustable Interdisciplinary Socio-technical Curriculum. arXiv:2403.04824. Retrieved May 29, 2026 from https://arxiv.org/abs/2403.04824"
+    }
+  ],
+  "sections": [
+    {
+      "id": "07-minecraft-ai-education#ai-minecraft-ai",
+      "heading": "AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ",
+      "level": 1,
+      "citation_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "evidence_refs": [
+        "07-minecraft-ai-education-ref-01",
+        "07-minecraft-ai-education-ref-02",
+        "07-minecraft-ai-education-ref-03",
+        "07-minecraft-ai-education-ref-04",
+        "07-minecraft-ai-education-ref-05",
+        "07-minecraft-ai-education-ref-06",
+        "07-minecraft-ai-education-ref-07",
+        "07-minecraft-ai-education-ref-08",
+        "07-minecraft-ai-education-ref-09",
+        "07-minecraft-ai-education-ref-10",
+        "07-minecraft-ai-education-ref-11",
+        "07-minecraft-ai-education-ref-12"
+      ],
+      "figure_ids": [
+        "07-nagasaki-minecraft-world",
+        "07-children-work"
+      ],
+      "text_preview": "> 仮想空間で記憶を再構成し，創造とAIリテラシーを育てる学び ![長崎のMinecraftワールド](../assets/07-minecraft-ai-education/nagasaki-minecraft-world.jpg) *図1. 長崎のMinecraftワールド* Minecraftは単なるゲームではなく，子どもや若者が世界を構築し，過去を再現し，未来を構想するための学習環境として注目されている。ブロックを積み上げる直感的な操作は，専門的なプログラミング経験の有無にかかわらず参加者を創作に導く。そこにAIが加わることで，歴史資料の読み解き，画像のカラー化，仮想空間内のエージェント操作，生成AIを用いたストーリーテリン"
+    },
+    {
+      "id": "07-minecraft-ai-education#section",
+      "heading": "参考文献・関連資料",
+      "level": 2,
+      "citation_numbers": [],
+      "evidence_refs": [],
+      "figure_ids": [],
+      "text_preview": "1. UNESCO. 2023. Guidance for generative AI in education and research. UNESCO. Retrieved May 29, 2026 from https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research 2. UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 29, 2026 from https://www.unesco.org/en/articles/ai-com"
+    },
+    {
+      "id": "07-minecraft-ai-education#section",
+      "heading": "メタデータ",
+      "level": 2,
+      "citation_numbers": [],
+      "evidence_refs": [],
+      "figure_ids": [],
+      "text_preview": "| 項目 | 内容 | | --- | --- | | ID | `07-minecraft-ai-education` | | プロジェクト | AIとクリエイティブと教育 | | 日付 | 2026-05-27 | | バージョン | 1.0.0 | | 種別 | report | | 概要 | MinecraftとAIを、記憶継承・地域学習・創造・AIリテラシーを横断する学習空間として整理。 | | 著者 | 片山実咲<br>渡邉英徳 | | 想定読者 | Minecraft Educationやゲームベース学習を授業に取り入れたい小中高・大学教員<br>平和教育・地域学習・災害復興学習で仮想空間制作を活用したい教育実践者<b"
+    }
+  ],
+  "risk_notes": [
+    "このsidecarはAI用の構造化補助であり、本文の正本はsource_mdにある。",
+    "引用番号はsource_md内の参考文献登場順に対応する。",
+    "図版を説明するときはfigures.pathだけでなくalt/caption/license_noteも確認する。"
+  ]
+}

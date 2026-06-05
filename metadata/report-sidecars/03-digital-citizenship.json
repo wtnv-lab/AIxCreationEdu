@@ -1,0 +1,189 @@
+{
+  "schema": "aice.report_sidecar.v1",
+  "report_id": "03-digital-citizenship",
+  "title": "AIを活かしたデジタルシティズンシップ教育",
+  "source_md": "reports/03-digital-citizenship.md",
+  "source_of_truth": true,
+  "html_source_note": "HTML版はこのMarkdown本文とconfig/metadataから生成・表示する。",
+  "ai_contract": {
+    "read_order": [
+      "abstract",
+      "key_takeaways",
+      "sections",
+      "references",
+      "figures",
+      "risk_notes"
+    ],
+    "must_cite": true,
+    "do_not_infer_beyond_sources": true,
+    "human_verification_required": true
+  },
+  "authors": [
+    "原田真喜子"
+  ],
+  "audience": [
+    "小中高の情報活用能力・情報モラル・ICT活用を担当する教員",
+    "デジタルシティズンシップ教育のカリキュラム設計者",
+    "生成AI利用ルールや校内研修を設計する学校管理職・ICT担当者",
+    "AIリテラシー教材や安全な学習環境を開発する教育サービス担当者"
+  ],
+  "themes": [
+    "生成AI",
+    "デジタルシティズンシップ",
+    "AIリテラシー",
+    "情報モラル"
+  ],
+  "keywords": [
+    "デジタルシティズンシップ",
+    "AIリテラシー",
+    "情報モラル",
+    "教育実践"
+  ],
+  "abstract": "AIの禁止・管理を超え、判断・参加・公共性を育てるデジタルシティズンシップ教育。",
+  "key_takeaways": [
+    "生成AI時代のデジタルシティズンシップは，禁止や管理ではなく，技術社会への判断と参加を学ぶ教育である。",
+    "AI出力を疑い，根拠を確認し，自分の判断として再構成する経験が中核になる。",
+    "知識を獲得・再編集・共有・表出する過程を，公共的価値へ接続する設計が重要になる。"
+  ],
+  "use_cases": [
+    "小中高の情報モラル、ICT活用、AIリテラシー授業",
+    "学校の生成AI利用ルールや校内研修の設計",
+    "安全な学習環境を備えた教育サービスの企画",
+    "生徒の表現活動における倫理・著作権・プライバシー指導"
+  ],
+  "learning_activities": [
+    "AIの回答について，根拠，偏り，未確認情報をチェックするワークを行う。",
+    "プロンプト，出力，修正過程，利用後の判断を記録し，AI利用を検証可能な学習過程として振り返る。",
+    "生成物を公開する前に，影響を受ける他者，著作権，個人情報を点検する。"
+  ],
+  "implementation_ideas": [
+    "各教科で使えるAI利用チェックリストを作り，授業ごとに更新する。",
+    "校内研修で，禁止事項だけでなく判断プロセスを共有するケーススタディを行う。",
+    "AI教材に，根拠確認，出典表示，公開前レビュー，振り返り記録の流れを組み込む。"
+  ],
+  "related_reports": [
+    "00-overview",
+    "01-information-visualization-osint",
+    "04-student-hackathon"
+  ],
+  "concept_alignment": {
+    "schema": "aice.concept_alignment.v1",
+    "primary_stage_ids": [
+      "human_verification",
+      "public_communication"
+    ],
+    "supporting_stage_ids": [
+      "question_framing",
+      "source_evaluation"
+    ],
+    "literacy_ids": [
+      "ai_competency_citizenship",
+      "design_editing_critical_thinking",
+      "publicness_social_responsibility"
+    ],
+    "ai_role_ids": [
+      "case_material",
+      "risk_prompt",
+      "reflection_partner",
+      "knowledge_navigator"
+    ],
+    "human_responsibility_ids": [
+      "bias_check",
+      "rights_privacy_review",
+      "impact_assessment",
+      "guideline_design",
+      "knowledge_reediting"
+    ],
+    "domain_tags": [
+      "digital_citizenship",
+      "ai_literacy",
+      "media_literacy",
+      "publicness",
+      "knowledge_experience"
+    ]
+  },
+  "figures": [
+    {
+      "id": "03-ai-digital-citizenship-participation",
+      "path": "assets/03-digital-citizenship/ai-digital-citizenship-participation.jpg",
+      "caption": "AI時代のデジタルシティズンシップ教育：禁止・管理から主体的な参加へ",
+      "alt": "AI時代のデジタルシティズンシップ教育における禁止から主体的な参加への転換、AIとの協働、知識循環を示す図",
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+    }
+  ],
+  "references": [
+    {
+      "id": "03-digital-citizenship-ref-01",
+      "number": 1,
+      "citation": "Atsushi Yoshino. 2023. 日本のデジタル・シティズンシップ教育の受容状況における情報モラル教育・道徳科の位置づけについての一考察. 早稲田大学大学院教育学研究科紀要：別冊 31, 1 (2023), 45–55. Retrieved May 27, 2026 from https://waseda.repo.nii.ac.jp/records/2000538"
+    },
+    {
+      "id": "03-digital-citizenship-ref-02",
+      "number": 2,
+      "citation": "UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum"
+    },
+    {
+      "id": "03-digital-citizenship-ref-03",
+      "number": 3,
+      "citation": "UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students"
+    },
+    {
+      "id": "03-digital-citizenship-ref-04",
+      "number": 4,
+      "citation": "ISTE. n.d. ISTE Standards: For Students. ISTE. Retrieved May 27, 2026 from https://iste.org/standards/students"
+    },
+    {
+      "id": "03-digital-citizenship-ref-05",
+      "number": 5,
+      "citation": "OECD. 2026. OECD Digital Education Outlook 2026: Exploring Effective Uses of Generative AI in Education. OECD Publishing. https://doi.org/10.1787/062a7394-en"
+    }
+  ],
+  "sections": [
+    {
+      "id": "03-digital-citizenship#ai",
+      "heading": "AIを活かしたデジタルシティズンシップ教育",
+      "level": 1,
+      "citation_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "evidence_refs": [
+        "03-digital-citizenship-ref-01",
+        "03-digital-citizenship-ref-02",
+        "03-digital-citizenship-ref-03",
+        "03-digital-citizenship-ref-04",
+        "03-digital-citizenship-ref-05"
+      ],
+      "figure_ids": [
+        "03-ai-digital-citizenship-participation"
+      ],
+      "text_preview": "> 禁止から参加へ，AI時代の判断と公共性を育てる学び 生成AIの急速な普及によって，学校教育は「AIを使わせるべきか，禁止すべきか」という問いに直面している。しかし本当に問われているのは，AIそのものの可否ではない。AIが存在する社会のなかで，私たちがどのように判断し，他者と関わり，公共的な価値を生み出していくのかである。デジタルシティズンシップ教育は，ICT機器の操作や情報モラルの指導にとどまらず，デジタル社会における権利と責任を理解し，情報を収集・判断・発信しながら主体的に参加する力を育てる教育である[1,2]。 ![AI時代のデジタルシティズンシップ教育](../assets/03-digital-citizenship/a"
+    },
+    {
+      "id": "03-digital-citizenship#section",
+      "heading": "参考文献・関連資料",
+      "level": 2,
+      "citation_numbers": [],
+      "evidence_refs": [],
+      "figure_ids": [],
+      "text_preview": "1. Atsushi Yoshino. 2023. 日本のデジタル・シティズンシップ教育の受容状況における情報モラル教育・道徳科の位置づけについての一考察. 早稲田大学大学院教育学研究科紀要：別冊 31, 1 (2023), 45–55. Retrieved May 27, 2026 from https://waseda.repo.nii.ac.jp/records/2000538 2. UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https"
+    },
+    {
+      "id": "03-digital-citizenship#section",
+      "heading": "メタデータ",
+      "level": 2,
+      "citation_numbers": [],
+      "evidence_refs": [],
+      "figure_ids": [],
+      "text_preview": "| 項目 | 内容 | | --- | --- | | ID | `03-digital-citizenship` | | プロジェクト | AIとクリエイティブと教育 | | 日付 | 2026-05-27 | | バージョン | 1.0.0 | | 種別 | report | | 概要 | AIの禁止・管理を超え、判断・参加・公共性を育てるデジタルシティズンシップ教育。 | | 著者 | 原田真喜子 | | 想定読者 | 小中高の情報活用能力・情報モラル・ICT活用を担当する教員<br>デジタルシティズンシップ教育のカリキュラム設計者<br>生成AI利用ルールや校内研修を設計する学校管理職・ICT担当者<br>AIリテラシー教材"
+    }
+  ],
+  "risk_notes": [
+    "このsidecarはAI用の構造化補助であり、本文の正本はsource_mdにある。",
+    "引用番号はsource_md内の参考文献登場順に対応する。",
+    "図版を説明するときはfigures.pathだけでなくalt/caption/license_noteも確認する。"
+  ]
+}

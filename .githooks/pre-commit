@@ -4,6 +4,16 @@ set -euo pipefail
 ROOT="$(git rev-parse --show-toplevel)"
 cd "$ROOT"
 
+python3 scripts/build_ai_package.py
 scripts/update_web_manifest.sh
 scripts/update_notebooklm_source.sh
-git add config/web_content.json ai/notebooklm-source.txt
+git add \
+  ai/manifest.json \
+  ai/system-instructions.md \
+  ai/context-brief.md \
+  ai/context-full.md \
+  ai/citations.json \
+  ai/rag/chunks.jsonl \
+  metadata/report-sidecars \
+  config/web_content.json \
+  ai/notebooklm-source.txt

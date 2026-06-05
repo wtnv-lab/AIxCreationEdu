@@ -1,0 +1,210 @@
+{
+  "schema": "aice.report_sidecar.v1",
+  "report_id": "06-sf-prototyping",
+  "title": "生成AIを用いたSFプロトタイピング",
+  "source_md": "reports/06-sf-prototyping.md",
+  "source_of_truth": true,
+  "html_source_note": "HTML版はこのMarkdown本文とconfig/metadataから生成・表示する。",
+  "ai_contract": {
+    "read_order": [
+      "abstract",
+      "key_takeaways",
+      "sections",
+      "references",
+      "figures",
+      "risk_notes"
+    ],
+    "must_cite": true,
+    "do_not_infer_beyond_sources": true,
+    "human_verification_required": true
+  },
+  "authors": [
+    "楊欽",
+    "渡邉英徳"
+  ],
+  "audience": [
+    "未来構想・探究学習・創造性教育を担当する大学・高校教員",
+    "産学協創、企業研修、ワークショップを設計するファシリテーター",
+    "新規事業開発やビジョン策定にSFプロトタイピングを使いたい企画担当者",
+    "生成AIを用いた物語生成・合意形成・アイデア創出に関心を持つ実践者"
+  ],
+  "themes": [
+    "生成AI",
+    "SFプロトタイピング",
+    "未来構想",
+    "創造性教育"
+  ],
+  "keywords": [
+    "SFプロトタイピング",
+    "未来洞察",
+    "創造性",
+    "ワークショップ"
+  ],
+  "abstract": "生成AIで未来シナリオを素早く仮設し、人間が批判・修正するSFプロトタイピングの教育活用。",
+  "key_takeaways": [
+    "生成AIは未来社会の物語や世界観を短時間で立ち上げ、SFプロトタイピングの参加ハードルを下げる。",
+    "重要なのはAIが出した未来像を批判、修正、再構成し、望ましい未来と避けたい未来を議論することである。",
+    "SFプロトタイピングは教育、産学協創、事業開発における想像力と合意形成を支援する。"
+  ],
+  "use_cases": [
+    "高校・大学の未来構想、探究学習、創造性教育",
+    "企業研修、産学協創、新規事業開発ワークショップ",
+    "地域や組織のビジョン策定",
+    "生成AIを用いた物語生成・アイデア創出教材"
+  ],
+  "learning_activities": [
+    "AIに未来シナリオを複数生成させ、前提、価値観、リスクを読み解く。",
+    "参加者が未来像を修正し、望ましい技術利用や社会制度を提案する。",
+    "SFプロトタイプを短編、新聞記事、サービス広告、政策提案などの形式で表現する。"
+  ],
+  "implementation_ideas": [
+    "90分から半日のSFプロトタイピングワークショップを設計し、AI生成と人間の批評を交互に行う。",
+    "新規事業や研究テーマ検討で、未来シナリオ、ステークホルダー、倫理的論点を可視化する。",
+    "成果物をハッカソンやPBLの課題設定に接続し、プロトタイプ制作へ展開する。"
+  ],
+  "related_reports": [
+    "00-overview",
+    "03-digital-citizenship",
+    "04-student-hackathon"
+  ],
+  "concept_alignment": {
+    "schema": "aice.concept_alignment.v1",
+    "primary_stage_ids": [
+      "question_framing",
+      "prototyping",
+      "human_verification"
+    ],
+    "supporting_stage_ids": [
+      "public_communication"
+    ],
+    "literacy_ids": [
+      "ai_competency_citizenship",
+      "design_editing_critical_thinking",
+      "publicness_social_responsibility"
+    ],
+    "ai_role_ids": [
+      "scenario_generation",
+      "worldbuilding",
+      "alternative_generation",
+      "ideation_support"
+    ],
+    "human_responsibility_ids": [
+      "future_assumption_critique",
+      "value_judgment",
+      "scenario_revision",
+      "consensus_building"
+    ],
+    "domain_tags": [
+      "sf_prototyping",
+      "future_scenarios",
+      "workshop",
+      "backcasting"
+    ]
+  },
+  "figures": [
+    {
+      "id": "06-workshop-hero",
+      "path": "assets/06-sf-prototyping/workshop-hero.jpg",
+      "caption": "生成AIを用いたSFプロトタイピング・ワークショップのイメージ",
+      "alt": "生成AIを用いたSFプロトタイピング・ワークショップのイメージ",
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+    },
+    {
+      "id": "06-workshop-process",
+      "path": "assets/06-sf-prototyping/workshop-process.jpg",
+      "caption": "生成AI支援SFプロトタイピングのプロセス",
+      "alt": "生成AI支援SFプロトタイピングのプロセス",
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+    }
+  ],
+  "references": [
+    {
+      "id": "06-sf-prototyping-ref-01",
+      "number": 1,
+      "citation": "Brian David Johnson. 2011. Science Fiction Prototyping: Designing the Future with Science Fiction. Morgan & Claypool. https://doi.org/10.2200/S00336ED1V01Y201102CSL003"
+    },
+    {
+      "id": "06-sf-prototyping-ref-02",
+      "number": 2,
+      "citation": "宮本道人, 難波優輝, and 大澤博隆. 2021. SFプロトタイピング：SFからイノベーションを生み出す新戦略. 早川書房."
+    },
+    {
+      "id": "06-sf-prototyping-ref-03",
+      "number": 3,
+      "citation": "Qin Yang and Hidenori Watanave. 2024. 小説家不要のSFプロトタイピングワークショップ手法の提案：生成AIとの共同作業によるストーリーテリング支援. In 2024年度人工知能学会全国大会（第38回）. https://doi.org/10.11517/pjsai.JSAI2024.0_2A4GS1004"
+    },
+    {
+      "id": "06-sf-prototyping-ref-04",
+      "number": 4,
+      "citation": "Haoran Chu and Sixiao Liu. 2024. Can AI tell good stories? Narrative transportation and persuasion with ChatGPT. Journal of Communication 74, 5 (October 2024), 347–358. https://doi.org/10.1093/joc/jqae029"
+    },
+    {
+      "id": "06-sf-prototyping-ref-05",
+      "number": 5,
+      "citation": "Jakob Tholander and Martin Jonsson. 2023. Design Ideation with AI. In Proceedings of the 2023 ACM Designing Interactive Systems Conference (DIS '23). ACM, 1934–1946. https://doi.org/10.1145/3563657.3596014"
+    },
+    {
+      "id": "06-sf-prototyping-ref-06",
+      "number": 6,
+      "citation": "東京大学. n.d. グローバルインターンシッププログラム・企業協創プログラム. Retrieved May 27, 2026 from https://www.u-tokyo.ac.jp/ja/students/special-activities/ugip.html"
+    },
+    {
+      "id": "06-sf-prototyping-ref-07",
+      "number": 7,
+      "citation": "ダイキン工業. 2018. 東京大学とダイキン工業「空気の価値化」を目指す産学協創協定を締結. Retrieved May 27, 2026 from https://www.daikin.co.jp/press/2018/20181217"
+    }
+  ],
+  "sections": [
+    {
+      "id": "06-sf-prototyping#ai-sf",
+      "heading": "生成AIを用いたSFプロトタイピング",
+      "level": 1,
+      "citation_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "evidence_refs": [
+        "06-sf-prototyping-ref-01",
+        "06-sf-prototyping-ref-02",
+        "06-sf-prototyping-ref-03",
+        "06-sf-prototyping-ref-04",
+        "06-sf-prototyping-ref-05",
+        "06-sf-prototyping-ref-06",
+        "06-sf-prototyping-ref-07"
+      ],
+      "figure_ids": [
+        "06-workshop-hero",
+        "06-workshop-process"
+      ],
+      "text_preview": "> AIが仮設した未来を，人間が批判し再構成する創造ワークショップ ![生成AIを用いたSFプロトタイピング・ワークショップのイメージ](../assets/06-sf-prototyping/workshop-hero.jpg) *図1. 生成AIを用いたSFプロトタイピング・ワークショップのイメージ* SFプロトタイピングは，サイエンス・フィクションの発想を用いて，まだ存在しない技術・制度・生活様式を物語として描き，他者と未来像を議論する方法である。Brian David Johnsonは，SFを単なる空想ではなく，未来の技術や製品の含意を検討するための実践的な道具として位置づけた[1]。日本でも，企業や行政，大学において，未来"
+    },
+    {
+      "id": "06-sf-prototyping#section",
+      "heading": "参考文献・関連資料",
+      "level": 2,
+      "citation_numbers": [],
+      "evidence_refs": [],
+      "figure_ids": [],
+      "text_preview": "1. Brian David Johnson. 2011. Science Fiction Prototyping: Designing the Future with Science Fiction. Morgan & Claypool. https://doi.org/10.2200/S00336ED1V01Y201102CSL003 2. 宮本道人, 難波優輝, and 大澤博隆. 2021. SFプロトタイピング：SFからイノベーションを生み出す新戦略. 早川書房. 3. Qin Yang and Hidenori Watanave. 2024. 小説家不要のSFプロトタイピングワークショップ手法の提案：生成AIとの共同作業"
+    },
+    {
+      "id": "06-sf-prototyping#section",
+      "heading": "メタデータ",
+      "level": 2,
+      "citation_numbers": [],
+      "evidence_refs": [],
+      "figure_ids": [],
+      "text_preview": "| 項目 | 内容 | | --- | --- | | ID | `06-sf-prototyping` | | プロジェクト | AIとクリエイティブと教育 | | 日付 | 2026-05-27 | | バージョン | 1.0.0 | | 種別 | report | | 概要 | 生成AIで未来シナリオを素早く仮設し、人間が批判・修正するSFプロトタイピングの教育活用。 | | 著者 | 楊欽<br>渡邉英徳 | | 想定読者 | 未来構想・探究学習・創造性教育を担当する大学・高校教員<br>産学協創、企業研修、ワークショップを設計するファシリテーター<br>新規事業開発やビジョン策定にSFプロトタイピングを使いたい企画担当者<"
+    }
+  ],
+  "risk_notes": [
+    "このsidecarはAI用の構造化補助であり、本文の正本はsource_mdにある。",
+    "引用番号はsource_md内の参考文献登場順に対応する。",
+    "図版を説明するときはfigures.pathだけでなくalt/caption/license_noteも確認する。"
+  ]
+}

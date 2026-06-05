@@ -39,14 +39,18 @@ cat > "$TMP_OUTPUT" <<'HEADER'
 4. 区切り線 `---`
 
 質問に答えるときは、ファイルパスだけで判断せず、区切り線の間にある本文を根拠として読んでください。
-特に教育内容、平和学習、AI活用、授業案、ワークショップ案、サービス企画について答える場合は、`reports/*.md`、`prompts/*.md`、`metadata/*.json`、`references/*` の本文を優先してください。
+特に教育内容、平和学習、AI活用、授業案、ワークショップ案、サービス企画について答える場合は、`ai/system-instructions.md`、`ai/rag/chunks.jsonl`、`metadata/report-sidecars/*.json`、`reports/*.md`、`prompts/*.md`、`references/*` の本文を優先してください。
 本文にないことは推測として扱い、根拠にしたファイルパスやレポート名を回答に含めてください。
 
 ## 含まれる主な内容
 
 - `reports/*.md`: 各レポートの本文、参考文献、メタデータ
 - `prompts/*.md`: 授業案、ワークショップ、サービス企画、比較、根拠付き回答などの具体的なプロンプト
-- `metadata/*.json` と `metadata/chunks.jsonl`: レポート索引、概念スキーマ、検索用チャンク、図版メタデータ、用語集
+- `ai/manifest.json`: AI向けパッケージ全体の索引
+- `ai/system-instructions.md`: AIが読む順序、回答ルール、引用・推測の扱い
+- `ai/context-brief.md` と `ai/context-full.md`: AI向けの短い概要と詳しい概要
+- `ai/citations.json` と `ai/rag/chunks.jsonl`: 引用索引、根拠付きRAGチャンク
+- `metadata/*.json`、`metadata/chunks.jsonl`、`metadata/report-sidecars/*.json`: レポート索引、概念スキーマ、検索用チャンク、図版メタデータ、用語集、レポート別sidecar
 - `references/*`: 参考文献・関連資料
 - `index.html` と `web/*`: ヒト向け閲覧アプリのHTML、CSS、JavaScript
 - `README.md`、`ai/llms.txt`、`ai/llms-full.md`: プロジェクト概要とAI向け概説
@@ -61,6 +65,7 @@ cat > "$TMP_OUTPUT" <<'HEADER'
 - 画像、動画、PDF、`.git`、生成ファイル自身は含めない。
 - `reports/` 配下のMarkdownファイルをレポート本文の一次ソースとして扱う。
 - `prompts/` 配下のMarkdownファイルをプロンプト本文の一次ソースとして扱う。
+- `metadata/report-sidecars/` と `ai/rag/chunks.jsonl` はAI用の構造化補助として扱い、正本本文の代替にしない。
 
 ## ここから統合本文
 
@@ -74,6 +79,12 @@ python3 -m files_to_prompt \
   metadata \
   references \
   README.md \
+  ai/manifest.json \
+  ai/system-instructions.md \
+  ai/context-brief.md \
+  ai/context-full.md \
+  ai/citations.json \
+  ai/rag \
   ai/llms.txt \
   ai/llms-full.md \
   config \
