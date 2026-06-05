@@ -12,6 +12,19 @@
     ]
   },
   {
+    "id": "00-data-package-flow",
+    "report_id": "00-overview",
+    "path": "assets/00-overview/data-package-flow.svg",
+    "alt": "ヒト向けの文章とAI向けデータパッケージを分け、AIに読み込ませた後にプロンプトで計画化し、ヒトが検証・編集する流れを示す図",
+    "caption": "ヒト向けの文章とAI向けデータパッケージの使い方",
+    "source": "本リポジトリで作成したSVG",
+    "license_note": "CC BY 4.0",
+    "related_sections": [
+      "AIとクリエイティブと教育 総括レポート",
+      "README"
+    ]
+  },
+  {
     "id": "01-gis-education-examples",
     "report_id": "01-information-visualization-osint",
     "path": "assets/01-information-visualization-osint/gis-education-examples.jpg",

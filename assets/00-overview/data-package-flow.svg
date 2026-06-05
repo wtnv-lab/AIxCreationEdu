@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-labelledby="title desc">
+  <title id="title">ヒト向けの文章とAI向けデータパッケージの使い方</title>
+  <desc id="desc">ヒトが文章を読み、AIに根拠をたどれるデータパッケージを渡し、プロンプトで計画化し、ヒトが検証して編集する流れを示す図。</desc>
+  <defs>
+    <style>
+      .bg { fill: #f7f4ec; }
+      .panel { fill: #ffffff; stroke-width: 2.5; rx: 8; }
+      .panel-a { stroke: #387a7a; }
+      .panel-b { stroke: #6b6aa8; }
+      .panel-c { stroke: #b35f45; }
+      .panel-d { stroke: #5d7c42; }
+      .label { fill: #241f1a; font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif; font-weight: 700; }
+      .text { fill: #3d352e; font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif; }
+      .small { fill: #5d534a; font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif; }
+      .tag-a { fill: #e5f1ef; stroke: #89b9b3; }
+      .tag-b { fill: #eceafb; stroke: #aaa7d8; }
+      .tag-c { fill: #f8e9e2; stroke: #d49a84; }
+      .tag-d { fill: #ecf3e6; stroke: #9ebb84; }
+      .tag { stroke-width: 1.4; rx: 6; }
+      .arrow { fill: none; stroke: #51473f; stroke-width: 3; stroke-linecap: round; marker-end: url(#arrowhead); }
+      .loop { fill: none; stroke: #8a7f75; stroke-width: 2.4; stroke-dasharray: 8 8; marker-end: url(#arrowhead-muted); }
+    </style>
+    <marker id="arrowhead" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#51473f"/>
+    </marker>
+    <marker id="arrowhead-muted" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#8a7f75"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1200" height="560"/>
+  <text x="600" y="56" class="label" font-size="30" text-anchor="middle">読む資料と，AIに渡す資料を分けて使う</text>
+  <text x="600" y="92" class="text" font-size="17" text-anchor="middle">ヒトは文章で理解し，AIには根拠をたどれるデータを渡して，計画づくりに活用する。</text>
+
+  <rect class="panel panel-a" x="60" y="156" width="238" height="248" rx="8"/>
+  <rect class="tag tag-a" x="92" y="184" width="96" height="30" rx="6"/>
+  <text x="140" y="205" class="small" font-size="14" text-anchor="middle">1 読む</text>
+  <text x="92" y="254" class="label" font-size="23">ヒトが読む</text>
+  <text x="92" y="302" class="text" font-size="17">全体像をつかむ</text>
+  <text x="92" y="336" class="text" font-size="17">事例を比較する</text>
+  <text x="92" y="370" class="text" font-size="17">問いを決める</text>
+
+  <rect class="panel panel-b" x="352" y="156" width="238" height="248" rx="8"/>
+  <rect class="tag tag-b" x="384" y="184" width="120" height="30" rx="6"/>
+  <text x="444" y="205" class="small" font-size="14" text-anchor="middle">2 渡す</text>
+  <text x="384" y="254" class="label" font-size="23">AIに渡す</text>
+  <text x="384" y="302" class="text" font-size="17">本文をまとめる</text>
+  <text x="384" y="336" class="text" font-size="17">根拠を保持する</text>
+  <text x="384" y="370" class="text" font-size="17">検索しやすくする</text>
+
+  <rect class="panel panel-c" x="644" y="156" width="238" height="248" rx="8"/>
+  <rect class="tag tag-c" x="676" y="184" width="120" height="30" rx="6"/>
+  <text x="736" y="205" class="small" font-size="14" text-anchor="middle">3 頼む</text>
+  <text x="676" y="254" class="label" font-size="23">AIに頼む</text>
+  <text x="676" y="302" class="text" font-size="17">条件を指定する</text>
+  <text x="676" y="336" class="text" font-size="17">形式を決める</text>
+  <text x="676" y="370" class="text" font-size="17">計画に展開する</text>
+
+  <rect class="panel panel-d" x="936" y="156" width="238" height="248" rx="8"/>
+  <rect class="tag tag-d" x="968" y="184" width="120" height="30" rx="6"/>
+  <text x="1028" y="205" class="small" font-size="14" text-anchor="middle">4 整える</text>
+  <text x="968" y="254" class="label" font-size="23">ヒトが直す</text>
+  <text x="968" y="302" class="text" font-size="17">根拠を確かめる</text>
+  <text x="968" y="336" class="text" font-size="17">文脈を補う</text>
+  <text x="968" y="370" class="text" font-size="17">実践用に直す</text>
+
+  <path class="arrow" d="M306 280 H340"/>
+  <path class="arrow" d="M598 280 H632"/>
+  <path class="arrow" d="M890 280 H924"/>
+  <path class="loop" d="M1050 424 C842 500 422 500 166 424"/>
+
+  <text x="600" y="512" class="small" font-size="15" text-anchor="middle">使い方: 読む → AIに渡す → AIに頼む → 根拠を確認して直す</text>
+</svg>

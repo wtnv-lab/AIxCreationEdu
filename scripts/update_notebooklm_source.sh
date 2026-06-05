@@ -48,7 +48,7 @@ cat > "$TMP_OUTPUT" <<'HEADER'
 - `prompts/*.md`: 授業案、ワークショップ、サービス企画、比較、根拠付き回答などの具体的なプロンプト
 - `metadata/*.json` と `metadata/chunks.jsonl`: レポート索引、概念スキーマ、検索用チャンク、図版メタデータ、用語集
 - `references/*`: 参考文献・関連資料
-- `index.html` と `web/*`: 人間向け閲覧アプリのHTML、CSS、JavaScript
+- `index.html` と `web/*`: ヒト向け閲覧アプリのHTML、CSS、JavaScript
 - `README.md`、`ai/llms.txt`、`ai/llms-full.md`: プロジェクト概要とAI向け概説
 - `config/*`: レポート定義や参照情報。過去の置換ログなど、読解用資料として紛らわしい補助ファイルは除外する。
 - `scripts/*` と `.githooks/*`: この単一テキストの自動生成ルール
@@ -79,6 +79,7 @@ python3 -m files_to_prompt \
   config \
   templates \
   assets/00-overview/project-concept-map.svg \
+  assets/00-overview/data-package-flow.svg \
   scripts \
   .githooks \
   .gitignore \

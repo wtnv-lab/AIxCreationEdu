@@ -2,6 +2,12 @@
 
 > 東京大学大学院 渡邉英徳研究室と関係者の実践・研究リソースをもとに、生成AI時代の創造性教育を読み解く公開レポート集。
 
+## 使い方
+
+このリポジトリは、ヒト向けの文章とAI向けのデータパッケージを分けて提供する。ヒトはREADME、index.html、reports/*.mdで全体像と個別レポートを読む。AIにはai/notebooklm-source.txt、ai/llms*.md、metadata/*.json、metadata/chunks.jsonl、references/*を読み込ませ、本文、メタデータ、検索用チャンク、参考文献を参照できる状態にする。そのあとでprompts/のプロンプトを使い、授業案、ワークショップ、教育サービス企画、比較表、根拠付き回答、実装ロードマップを作る。AIの出力はたたき台であり、ヒトがレポート本文と参考文献に照らして検証・編集する。
+
+図解: [ヒト向けの文章とAI向けデータパッケージの使い方](../assets/00-overview/data-package-flow.svg)
+
 ## 著者
 
 ### 東京大学 大学院情報学環・学際情報学府
@@ -50,7 +56,7 @@
 - 概要: 生成AI時代の教育を、問い・資料読解・制作・検証・社会発信をつなぐ創造性教育として整理。
 - 主要示唆: 生成AIにより制作や調査のハードルが下がるほど、問いの設定と社会的価値への接続が重要になる。 / AIは効率化ツールだけでなく、構想・検証・編集を支える伴走者として設計する必要がある。 / 七つの実践は、創造性教育を技能習得から判断・編集・発信の学習へ広げる視点を共有している。
 - 活用場面: 生成AI時代の教育方針や校内研修の導入資料 / AI・創造性・情報リテラシーを横断するカリキュラム設計 / EdTechサービスや教材企画の論点整理 / 複数レポートを比較するRAG・AIエージェントの入口
-- 学習活動案: 各レポートの共通概念をマッピングし、AI活用教育の全体像を整理する。 / AIに任せる作業と人間が判断する作業を分類し、授業設計原則を作る。 / レポート群を比較し、学校・地域・企業研修に応用できる実践案を提案する。
+- 学習活動案: 各レポートの共通概念をマッピングし、AI活用教育の全体像を整理する。 / AIに任せる作業とヒトが判断する作業を分類し、授業設計原則を作る。 / レポート群を比較し、学校・地域・企業研修に応用できる実践案を提案する。
 - 実装アイデア: 90分の教員研修で、レポート群をもとに自校のAI活用方針を検討する。 / 教育委員会や学校向けに、生成AI活用のカリキュラム横断マップを作成する。 / AIエージェントに読み込ませる基礎資料として、授業案・研修案・サービス案の生成に使う。
 - concept_alignment: {"schema":"aice.concept_alignment.v1","primary_stage_ids":["question_framing","source_evaluation","prototyping","human_verification","public_communication"],"supporting_stage_ids":[],"literacy_ids":["ai_competency_citizenship","design_editing_critical_thinking","publicness_social_responsibility"],"ai_role_ids":["co_inquiry","idea_expansion","drafting","critique","prototyping_support"],"human_responsibility_ids":["question_design","source_selection","output_verification","ethical_editing","public_accountability"],"domain_tags":["overview","concept_map","creativity_education","production_to_conception_shift"]}
 - 関連レポート: 01-information-visualization-osint, 02-photo-colorization-peace-education, 03-digital-citizenship, 04-student-hackathon, 05-digital-archive-ai, 06-sf-prototyping, 07-minecraft-ai-education
@@ -112,9 +118,9 @@
 - テーマ: 生成AI, ハッカソン, プロトタイピング, 実装教育
 - キーワード: 学生ハッカソン, プロダクト開発, 実装の民主化, 創造性
 - 概要: 生成AIで実装負荷が下がる時代の学生ハッカソンを、課題設定と発想力の学びとして再定義。
-- 主要示唆: 生成AIにより実装のハードルが下がると、ハッカソンの評価軸は課題設定、体験設計、社会的価値へ移る。 / AIはコード生成やデバッグを支援するが、何を作るか、誰に価値があるかの判断は人間が担う。 / 学生ハッカソンは、技術競争だけでなく、発想を検証し社会に説明する教育機会として再設計できる。
+- 主要示唆: 生成AIにより実装のハードルが下がると、ハッカソンの評価軸は課題設定、体験設計、社会的価値へ移る。 / AIはコード生成やデバッグを支援するが、何を作るか、誰に価値があるかの判断はヒトが担う。 / 学生ハッカソンは、技術競争だけでなく、発想を検証し社会に説明する教育機会として再設計できる。
 - 活用場面: 大学・高専・高校のハッカソンやPBL設計 / AIプロトタイピング研修やメンター育成 / 地域課題解決、学生起業、産学連携プログラム / AI時代の創造性評価や成果発表の設計
-- 学習活動案: AIを用いて複数のプロトタイプ案を作り、利用者価値とリスクで比較する。 / 生成されたコードやUIを検証し、発想、実装、説明のどこに人間の判断が必要かを振り返る。 / 発表資料を作る際に、課題、ユーザー、価値、検証結果を明確にする。
+- 学習活動案: AIを用いて複数のプロトタイプ案を作り、利用者価値とリスクで比較する。 / 生成されたコードやUIを検証し、発想、実装、説明のどこにヒトの判断が必要かを振り返る。 / 発表資料を作る際に、課題、ユーザー、価値、検証結果を明確にする。
 - 実装アイデア: 短時間のAIプロトタイピング演習を導入し、実装より課題定義と検証を重視する。 / 審査基準に、社会的価値、利用者理解、AI利用の透明性、検証プロセスを加える。 / メンター向けに、AI出力を鵜呑みにしないレビュー観点を共有する。
 - concept_alignment: {"schema":"aice.concept_alignment.v1","primary_stage_ids":["question_framing","prototyping","human_verification","public_communication"],"supporting_stage_ids":["source_evaluation"],"literacy_ids":["ai_competency_citizenship","design_editing_critical_thinking","publicness_social_responsibility"],"ai_role_ids":["code_generation","ui_drafting","debugging_support","pitch_support"],"human_responsibility_ids":["problem_selection","user_value_judgment","prototype_review","transparent_ai_use"],"domain_tags":["hackathon","prototyping","implementation_democratization","student_projects"]}
 - 関連レポート: 00-overview, 03-digital-citizenship, 06-sf-prototyping
@@ -143,11 +149,11 @@
 - 想定読者: 未来構想・探究学習・創造性教育を担当する大学・高校教員, 産学協創、企業研修、ワークショップを設計するファシリテーター, 新規事業開発やビジョン策定にSFプロトタイピングを使いたい企画担当者, 生成AIを用いた物語生成・合意形成・アイデア創出に関心を持つ実践者
 - テーマ: 生成AI, SFプロトタイピング, 未来構想, 創造性教育
 - キーワード: SFプロトタイピング, 未来洞察, 創造性, ワークショップ
-- 概要: 生成AIで未来シナリオを素早く仮設し、人間が批判・修正するSFプロトタイピングの教育活用。
+- 概要: 生成AIで未来シナリオを素早く仮設し、ヒトが批判・修正するSFプロトタイピングの教育活用。
 - 主要示唆: 生成AIは未来社会の物語や世界観を短時間で立ち上げ、SFプロトタイピングの参加ハードルを下げる。 / 重要なのはAIが出した未来像を批判、修正、再構成し、望ましい未来と避けたい未来を議論することである。 / SFプロトタイピングは教育、産学協創、事業開発における想像力と合意形成を支援する。
 - 活用場面: 高校・大学の未来構想、探究学習、創造性教育 / 企業研修、産学協創、新規事業開発ワークショップ / 地域や組織のビジョン策定 / 生成AIを用いた物語生成・アイデア創出教材
 - 学習活動案: AIに未来シナリオを複数生成させ、前提、価値観、リスクを読み解く。 / 参加者が未来像を修正し、望ましい技術利用や社会制度を提案する。 / SFプロトタイプを短編、新聞記事、サービス広告、政策提案などの形式で表現する。
-- 実装アイデア: 90分から半日のSFプロトタイピングワークショップを設計し、AI生成と人間の批評を交互に行う。 / 新規事業や研究テーマ検討で、未来シナリオ、ステークホルダー、倫理的論点を可視化する。 / 成果物をハッカソンやPBLの課題設定に接続し、プロトタイプ制作へ展開する。
+- 実装アイデア: 90分から半日のSFプロトタイピングワークショップを設計し、AI生成とヒトの批評を交互に行う。 / 新規事業や研究テーマ検討で、未来シナリオ、ステークホルダー、倫理的論点を可視化する。 / 成果物をハッカソンやPBLの課題設定に接続し、プロトタイプ制作へ展開する。
 - concept_alignment: {"schema":"aice.concept_alignment.v1","primary_stage_ids":["question_framing","prototyping","human_verification"],"supporting_stage_ids":["public_communication"],"literacy_ids":["ai_competency_citizenship","design_editing_critical_thinking","publicness_social_responsibility"],"ai_role_ids":["scenario_generation","worldbuilding","alternative_generation","ideation_support"],"human_responsibility_ids":["future_assumption_critique","value_judgment","scenario_revision","consensus_building"],"domain_tags":["sf_prototyping","future_scenarios","workshop","backcasting"]}
 - 関連レポート: 00-overview, 03-digital-citizenship, 04-student-hackathon
 - 引用メモ: 生成AIを用いて未来構想を民主化し、教育・産学協創・事業開発に応用するSFプロトタイピングのレポート。
@@ -160,7 +166,7 @@
 - テーマ: 生成AI, Minecraft, ゲームベース学習, AIリテラシー, 記憶継承
 - キーワード: Minecraft Education, Peacecraft, AIリテラシー, ゲームベース学習, 地域学習
 - 概要: MinecraftとAIを、記憶継承・地域学習・創造・AIリテラシーを横断する学習空間として整理。
-- 主要示唆: Minecraftは単なるゲームではなく，過去を再現し，地域や未来を構想する共有可能な学習空間になる。 / AIカラー化，AIエージェント，生成AIによる物語化は，Minecraft内の制作を支える一方で，資料批判と人間の判断を必要とする。 / 国内のPeacecraft系実践と海外のAIリテラシー教材は，平和教育，地域学習，プログラミング，デジタルシティズンシップを横断するモデルを示している。
+- 主要示唆: Minecraftは単なるゲームではなく，過去を再現し，地域や未来を構想する共有可能な学習空間になる。 / AIカラー化，AIエージェント，生成AIによる物語化は，Minecraft内の制作を支える一方で，資料批判とヒトの判断を必要とする。 / 国内のPeacecraft系実践と海外のAIリテラシー教材は，平和教育，地域学習，プログラミング，デジタルシティズンシップを横断するモデルを示している。
 - 活用場面: Minecraftを用いた平和教育・災害復興学習・地域学習の設計 / AIエージェントや生成AIを使う小中高向けAIリテラシー授業 / 教育機関・自治体・企業が連携するゲームベース学習ワークショップ / 過去の資料や証言をもとに仮想空間を制作する探究学習
 - 学習活動案: 白黒写真や証言をもとに，失われた街並みや地域の記憶をMinecraft内で再構築する。 / AIが生成した色，説明，建築案を資料や証言と照合し，どこまで信頼できるかを検討する。 / AIエージェントに指示を出し，目的設定，プロンプト，検証，修正の過程を振り返る。
 - 実装アイデア: 地域資料館や自治体と連携し，写真・地図・証言を使うMinecraft制作ワークショップを実施する。 / Minecraft Educationの既存AI教材を導入し，デジタルシティズンシップや情報モラルの授業と接続する。 / 完成した仮想空間を展示・発表し，地域住民や専門家との対話を通じて学習成果を検証する。

@@ -2,11 +2,25 @@
 
 > 東京大学大学院 渡邉英徳研究室と関係者の実践・研究リソースをもとに、生成AI時代の創造性教育をヒトとAIに扱いやすいかたちで提供する公開レポート集。
 
-本リポジトリは、東京大学大学院 渡邉英徳研究室と関係者が蓄積してきた、AI・クリエイティブ・教育に関する研究資料、実践記録、参考文献をもとにした公開レポート集です。生成AIが資料群を整理し、著者との対話を通じて論点を編み直し、人間が根拠、文脈、表現を確認しながらMarkdown本文として編集しています。
+本リポジトリは、東京大学大学院 渡邉英徳研究室と関係者が蓄積してきた、AI・クリエイティブ・教育に関する研究資料、実践記録、参考文献をもとにした公開レポート集です。生成AIが資料群を整理し、著者との対話を通じて論点を編み直し、ヒトが根拠、文脈、表現を確認しながらMarkdown本文として編集しています。
 
-人間の読者には、生成AI時代の授業、探究学習、ワークショップ、教育サービス企画を考えるための読み物として使えるようにしています。AIエージェント、NotebookLM、RAGに対しては、本文、メタデータ、検索用チャンク、プロンプトを併置し、構造と根拠をたどりやすい資料群として扱えるようにしています。
+このリポジトリには、二つの入口があります。一つは、ヒトが読むための文章です。`index.html`、`README.md`、`reports/` は、生成AI時代の授業、探究学習、ワークショップ、教育サービス企画を考えるために読みやすく整えています。もう一つは、AIに読み込ませるためのデータパッケージです。`ai/notebooklm-source.txt`、`ai/llms.txt`、`metadata/`、`references/` は、AIエージェント、NotebookLM、RAGが本文、メタデータ、検索用チャンク、出典をたどれるようにまとめています。
 
-このREADMEは、人間が目的に合うファイルをすばやく見つけるための案内であり、同時に、リポジトリごと読み込んだAIが構造、内容、利用法を理解するための入口です。
+基本的な使い方は、先にヒトが全体像を読み、次にAIへデータパッケージを読み込ませ、そのあと `prompts/` のプロンプトで授業案、研修案、サービス企画、ロードマップを作る流れです。AIの出力は完成品ではなく、本文と参考文献に照らしてヒトが検証し、目的に合わせて編集するためのたたき台として扱います。
+
+![ヒト向けの文章とAI向けデータパッケージの使い方](assets/00-overview/data-package-flow.svg)
+
+*ヒト向けの文章とAI向けデータパッケージの使い方*
+
+## 使い方の流れ
+
+1. `index.html` または `README.md` で全体像を読む。
+2. 必要に応じて `reports/` の個別レポートを読み、使いたいテーマを決める。
+3. NotebookLMやChatGPTなどに `ai/notebooklm-source.txt` を読み込ませる。軽く試す場合は `ai/llms.txt` や `ai/llms-full.md` から始める。
+4. 目的に近い `prompts/` のプロンプトを貼り付け、学年、教科、対象者、時間数、成果物などの条件を加える。
+5. 出力された授業案、研修案、企画案、ロードマップを、レポート本文、メタデータ、参考文献に照らして確認し、ヒトが編集する。
+
+このREADMEは、ヒトが目的に合うファイルをすばやく見つけるための案内であり、同時に、リポジトリごと読み込んだAIが構造、内容、利用法を理解するための入口です。
 
 ![AIとクリエイティブと教育の概念図](assets/00-overview/project-concept-map.svg)
 
@@ -16,8 +30,8 @@
 
 | 目的 | 使うファイル | 内容 |
 | --- | --- | --- |
-| 人間が資料を読む | [`index.html`](index.html) | レポート、プロンプト、ソースコードへの入口をブラウザで読みやすく表示する閲覧アプリ |
-| 人間が全体像を把握する | [`README.md`](README.md) | このリポジトリの目的、構造、利用法、主要リソースの案内 |
+| ヒトが資料を読む | [`index.html`](index.html) | レポート、プロンプト、ソースコードへの入口をブラウザで読みやすく表示する閲覧アプリ |
+| ヒトが全体像を把握する | [`README.md`](README.md) | このリポジトリの目的、構造、利用法、主要リソースの案内 |
 | AIに最初の案内を渡す | [`ai/llms.txt`](ai/llms.txt) | AI向けの短い索引と重要ファイル一覧 |
 | AIにレポート群の要約を渡す | [`ai/llms-full.md`](ai/llms-full.md) | 各レポートの要約、テーマ、利用想定、メタデータの統合版 |
 | NotebookLMなどに全文を渡す | [`ai/notebooklm-source.txt`](ai/notebooklm-source.txt) | レポート本文、プロンプト、メタデータ、参考文献をまとめた単一テキスト |
@@ -44,7 +58,7 @@
 
 ## このリポジトリでできること
 
-人間の読者は、次の用途で使えます。
+ヒトの読者は、次の用途で使えます。
 
 - [`index.html`](index.html) からレポートを読み、必要なプロンプトやGitHub上のソース一式へ移動する。
 - 生成AIが教育、創造性、平和学習、情報リテラシー、デジタルアーカイブ、未来構想に与える影響を横断的に理解する。
@@ -91,7 +105,7 @@ AIやRAGでは、次の用途で使えます。
 
 ## ウェブアプリで読む
 
-[`index.html`](index.html) は、人間の読者がレポートとプロンプトを読みやすい順序でたどるための静的な閲覧アプリです。トップページでは、研究・実践リソースを生成AIとの対話で編集した資料群であることを説明し、概念図、レポート、プロンプト、GitHub上のソース一式へ案内します。プロンプトは、先にリポジトリ全体または [`ai/notebooklm-source.txt`](ai/notebooklm-source.txt) をAIに提供したうえで使う流れにしています。
+[`index.html`](index.html) は、ヒトの読者がレポートとプロンプトを読みやすい順序でたどるための静的な閲覧アプリです。トップページでは、研究・実践リソースを生成AIとの対話で編集した資料群であることを説明し、概念図、レポート、プロンプト、GitHub上のソース一式へ案内します。プロンプトは、先にリポジトリ全体または [`ai/notebooklm-source.txt`](ai/notebooklm-source.txt) をAIに提供したうえで使う流れにしています。
 
 ローカルで確認する場合は、ブラウザのセキュリティ制約を避けるためHTTPサーバ経由で開いてください。
 
@@ -107,15 +121,29 @@ Markdownファイルを追加・削除した場合は、次を実行して閲覧
 scripts/update_web_manifest.sh
 ```
 
-## AIに読ませる場合
+## AI向けデータパッケージの使い方
 
-AIにリポジトリを読ませるときは、用途に応じて次の順で渡すと扱いやすくなります。
+AIにリポジトリを読ませるときは、資料そのものと依頼文を分けて扱うと安定します。先にデータパッケージを読み込ませ、AIがレポート本文、メタデータ、参考文献を参照できる状態にします。そのあとで、`prompts/` のプロンプトを使って、授業案、研修案、サービス企画、比較表、ロードマップなどの出力形式を指定します。
+
+用途に応じて、最初に渡す資料を選びます。
 
 1. 全体像だけ必要な場合: [`ai/llms.txt`](ai/llms.txt)
 2. レポート群の要約とテーマも必要な場合: [`ai/llms-full.md`](ai/llms-full.md)
 3. NotebookLMなどで全文検索・質問応答をしたい場合: [`ai/notebooklm-source.txt`](ai/notebooklm-source.txt)
 4. RAGや検索システムに組み込む場合: [`metadata/chunks.jsonl`](metadata/chunks.jsonl)
 5. 出典や図版も扱う場合: [`references/references.md`](references/references.md)、[`metadata/figures.json`](metadata/figures.json)
+
+次に、目的に近いプロンプトを選びます。
+
+| 作りたいもの | 使うプロンプト |
+| --- | --- |
+| 授業案 | [`prompts/lesson-plan-generation.md`](prompts/lesson-plan-generation.md) |
+| 半日または1日の研修・ワークショップ | [`prompts/workshop-design.md`](prompts/workshop-design.md) |
+| 教育サービスやEdTech企画 | [`prompts/service-planning.md`](prompts/service-planning.md) |
+| 新しい授業・教材・活動のアイデア | [`prompts/idea-generation.md`](prompts/idea-generation.md) |
+| 実装までのロードマップ | [`prompts/implementation-roadmap.md`](prompts/implementation-roadmap.md) |
+| 複数レポートの比較 | [`prompts/cross-report-comparison.md`](prompts/cross-report-comparison.md) |
+| 出典付きの回答 | [`prompts/citation-answering.md`](prompts/citation-answering.md) |
 
 AIには、たとえば次のように指示してください。
 

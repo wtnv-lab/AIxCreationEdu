@@ -1,4 +1,4 @@
-const manifestPath = "config/web_content.json?v=20260601-dynamic-meta";
+const manifestPath = "config/web_content.json?v=20260605-data-package-guide";
 const homeHash = "home";
 const githubUrl = "https://github.com/wtnv-lab/AIxCreationEdu";
 const siteUrl = "https://wtnv-lab.github.io/AIxCreationEdu/";
@@ -537,7 +537,20 @@ function renderHome() {
   return `
     <section class="home-intro">
       <blockquote class="lead"><p>${escapeHtml(homeSubtitle)}</p></blockquote>
-      <p class="purpose-text">このサイトは、東京大学大学院 渡邉英徳研究室と関係者の実践・研究リソースから生まれたレポートとプロンプトを、ヒトとAIに扱いやすいかたちで提供する公開レポート集です。各レポートは、研究資料や実践記録を生成AIが整理し、著者が根拠・文脈・表現を確認しながら編集しています。読みやすく整えた本文に加え、AIに資料として渡しやすいMarkdown本文、メタデータ、プロンプト、単一テキストを、<a href="${githubUrl}" target="_blank" rel="noopener">GitHubで公開しています</a>。</p>
+      <p class="purpose-text">このサイトは、東京大学大学院 渡邉英徳研究室と関係者の実践・研究リソースから生まれたレポートとプロンプトを、ヒトとAIに扱いやすいかたちで提供する公開レポート集です。ヒトには読みやすい文章として、AIには本文・メタデータ・検索用チャンク・参考文献をまとめたデータパッケージとして使えるようにしています。各レポートは、研究資料や実践記録を生成AIが整理し、著者が根拠・文脈・表現を確認しながら編集しています。</p>
+    </section>
+    <figure class="home-figure">
+      <img src="assets/00-overview/data-package-flow.svg" alt="ヒト向けの文章とAI向けデータパッケージの使い方">
+      <figcaption>ヒト向けの文章とAI向けデータパッケージの使い方</figcaption>
+    </figure>
+    <section>
+      <h2>AIに読み込ませて使う流れ</h2>
+      <ol>
+        <li>まずレポート本文で全体像と使いたいテーマを確認する。</li>
+        <li><a href="ai/notebooklm-source.txt" target="_blank" rel="noopener">AI向けデータパッケージ</a>をNotebookLMやChatGPTなどに読み込ませる。</li>
+        <li>目的に近い<a href="#prompts%2Flesson-plan-generation.md">プロンプト</a>を選び、対象者、時間数、成果物などの条件を加える。</li>
+        <li>出力された授業案、研修案、企画案を、本文と参考文献に照らしてヒトが検証・編集する。</li>
+      </ol>
     </section>
     <figure class="home-figure">
       <img src="assets/00-overview/project-concept-map.svg" alt="AIとクリエイティブと教育の概念図">
