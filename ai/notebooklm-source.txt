@@ -25,6 +25,7 @@
 - `ai/manifest.json`: AI向けパッケージ全体の索引
 - `ai/system-instructions.md`: AIが読む順序、回答ルール、引用・推測の扱い
 - `ai/context-brief.md` と `ai/context-full.md`: AI向けの短い概要と詳しい概要
+- `ai/workflows.json`: プロンプト別の必要資料、入力項目、出力項目、根拠ルール
 - `ai/citations.json` と `ai/rag/chunks.jsonl`: 引用索引、根拠付きRAGチャンク
 - `metadata/*.json`、`metadata/chunks.jsonl`、`metadata/report-sidecars/*.json`: レポート索引、概念スキーマ、検索用チャンク、図版メタデータ、用語集、レポート別sidecar
 - `references/*`: 参考文献・関連資料
@@ -567,7 +568,7 @@ prompts/citation-answering.md
 ---
 # 根拠付き回答プロンプト
 
-利用者の質問に対し、`metadata/chunks.jsonl`、`metadata/reports.json`、`metadata/figures.json`、`references/references.md` を根拠に回答してください。本文にないことは推測として明示し、出典としてレポートID、チャンクID、必要に応じて図表IDを示してください。
+利用者の質問に対し、`ai/system-instructions.md` の回答ルールに従い、`ai/rag/chunks.jsonl`、`ai/citations.json`、`metadata/report-sidecars/*.json`、`metadata/figures.json`、`reports/*.md` を根拠に回答してください。本文にないことは推測として明示し、出典としてレポートID、チャンクID、`evidence_refs`、必要に応じて図表IDを示してください。
 
 回答の整理に迷う場合は、`concept_alignment.primary_stage_ids`、`supporting_stage_ids`、`literacy_ids` を補助線として使ってください。
 
@@ -585,7 +586,7 @@ prompts/cross-report-comparison.md
 ---
 # レポート横断比較プロンプト
 
-`metadata/reports.json` と `metadata/chunks.jsonl` を使い、指定テーマについて複数レポートを比較してください。共通点、相違点、相互補完関係、未検討の論点を分け、必ずレポートIDとチャンクIDを添えてください。
+`ai/system-instructions.md` の回答ルールに従い、`ai/rag/chunks.jsonl`、`metadata/report-sidecars/*.json`、`ai/citations.json` を使い、指定テーマについて複数レポートを比較してください。共通点、相違点、相互補完関係、未検討の論点を分け、必ずレポートID、チャンクID、`evidence_refs` を添えてください。
 
 比較の軸には、各レポートの `concept_alignment` に含まれる `primary_stage_ids`、`literacy_ids`、`domain_tags` を含めてください。
 
@@ -607,7 +608,7 @@ prompts/excursion-ideation.md
 
 あなたは，AI時代の教育実践と教育ソリューション設計を支援するファシリテーターです。利用者の固定観念をゆるめ，遠い世界の特徴を借りて，新しい授業，教材，ワークショップ，サービス，表現活動のアイデアを広げてください。
 
-このリポジトリの `ai/llms.txt`，`ai/llms-full.md`，`metadata/reports.json`，`metadata/chunks.jsonl`，`metadata/concept-schema.json` を参照できる場合は，関連するレポートIDや `concept_alignment` を使って整理してください。本文にないことは推測として扱い，断定しないでください。
+このリポジトリの `ai/system-instructions.md`，`ai/context-brief.md`，`ai/context-full.md`，`ai/rag/chunks.jsonl`，`metadata/report-sidecars/*.json`，`metadata/reports.json`，`metadata/concept-schema.json` を参照できる場合は，関連するレポートID，チャンクID，`evidence_refs`，`concept_alignment` を使って整理してください。本文にないことは推測として扱い，断定しないでください。
 
 ## 入力条件
 
@@ -713,7 +714,7 @@ prompts/idea-generation.md
 ---
 # アイデア創出プロンプト
 
-あなたは教育実践と教育ソリューション設計の専門家です。このリポジトリの `ai/llms.txt`、`ai/llms-full.md`、`reports/`、`metadata/chunks.jsonl`、`metadata/reports.json` を読み、次の観点で新しい企画案を提案してください。
+あなたは教育実践と教育ソリューション設計の専門家です。このリポジトリの `ai/system-instructions.md`、`ai/context-brief.md`、`ai/context-full.md`、`ai/rag/chunks.jsonl`、`metadata/report-sidecars/*.json`、`metadata/reports.json` を読み、次の観点で新しい企画案を提案してください。重要な根拠は `reports/*.md` の本文正本で確認してください。
 
 提案は、各レポートの `concept_alignment.primary_stage_ids`、`supporting_stage_ids`、`literacy_ids` に沿って整理してください。
 
@@ -741,7 +742,7 @@ prompts/implementation-roadmap.md
 ---
 # 実装ロードマップ生成プロンプト
 
-指定された組織や授業テーマに対して、関連レポートの `implementation_ideas`、`learning_activities`、`concept_alignment` を参照し、30日・90日・180日の実装ロードマップを作成してください。小さく始める検証、関係者の巻き込み、評価、公開・発信まで含めてください。
+指定された組織や授業テーマに対して、`ai/system-instructions.md` の回答ルールに従い、`metadata/report-sidecars/*.json`、`ai/rag/chunks.jsonl`、`metadata/reports.json` から関連レポートの `implementation_ideas`、`learning_activities`、`concept_alignment` を参照し、30日・90日・180日の実装ロードマップを作成してください。小さく始める検証、関係者の巻き込み、評価、公開・発信まで含めてください。
 
 ロードマップは、`primary_stage_ids` と `human_responsibility_ids` を明示し、AIに任せる部分・人間が責任を持つ部分を分けてください。
 
@@ -763,7 +764,7 @@ prompts/lesson-plan-generation.md
 ---
 # 授業案生成プロンプト
 
-`metadata/reports.json` と `metadata/chunks.jsonl` を根拠に、指定された学年・教科・時間数に合わせた授業案を作成してください。出典として利用したレポートID、チャンクID、図表IDを明記し、AIの利用場面と人間が判断する場面を分けてください。
+`ai/system-instructions.md` の回答ルールに従い、`ai/rag/chunks.jsonl`、`metadata/report-sidecars/*.json`、`metadata/reports.json` を根拠に、指定された学年・教科・時間数に合わせた授業案を作成してください。出典として利用したレポートID、チャンクID、`evidence_refs`、図表IDを明記し、AIの利用場面と人間が判断する場面を分けてください。重要な判断は `reports/*.md` の本文正本で確認してください。
 
 授業の流れは、各レポートの `concept_alignment.primary_stage_ids`、`supporting_stage_ids`、`human_responsibility_ids` を参照して組み立ててください。
 
@@ -792,6 +793,8 @@ prompts/planning-template.md
 
 ## 参照するレポート
 
+## 根拠チャンク・文献ID
+
 ## concept_alignment
 
 ## 教育的価値
@@ -803,6 +806,8 @@ prompts/planning-template.md
 ## 実践またはサービスの流れ
 
 ## 評価方法
+
+## ヒトが確認・編集する点
 
 ## 倫理・安全・著作権上の配慮
 
@@ -816,7 +821,7 @@ prompts/service-planning.md
 ---
 # 教育サービス企画プロンプト
 
-あなたはEdTechサービスの企画担当者です。`metadata/reports.json` の想定読者、活用場面、実装アイデア、`concept_alignment` をもとに、生成AI時代の教育サービス案を作成してください。機能の羅列ではなく、利用者の課題、学習体験、導入条件を中心に整理してください。
+あなたはEdTechサービスの企画担当者です。`ai/system-instructions.md` の回答ルールに従い、`metadata/report-sidecars/*.json`、`ai/rag/chunks.jsonl`、`metadata/reports.json` の想定読者、活用場面、実装アイデア、`concept_alignment` をもとに、生成AI時代の教育サービス案を作成してください。機能の羅列ではなく、利用者の課題、学習体験、導入条件を中心に整理してください。
 
 サービス体験は、`ai_role_ids` と `human_responsibility_ids` の分担が分かる構造として示してください。
 
@@ -839,7 +844,7 @@ prompts/workshop-design.md
 ---
 # ワークショップ設計プロンプト
 
-`use_cases`、`learning_activities`、`implementation_ideas`、`concept_alignment` を参照し、学校・自治体・企業研修のいずれかに向けた半日または1日のワークショップを設計してください。参加者の前提知識、必要な資料、ファシリテーション上の注意を含めてください。
+`ai/system-instructions.md` の回答ルールに従い、`metadata/report-sidecars/*.json`、`ai/rag/chunks.jsonl` の `use_cases`、`learning_activities`、`implementation_ideas`、`concept_alignment` を参照し、学校・自治体・企業研修のいずれかに向けた半日または1日のワークショップを設計してください。参加者の前提知識、必要な資料、ファシリテーション上の注意を含めてください。
 
 タイムテーブルは、`stage_id` 単位で対応が分かるようにしてください。
 
@@ -6575,6 +6580,7 @@ README.md
 | AIにパッケージ全体を知らせる | [`ai/manifest.json`](ai/manifest.json) | 正本、派生ファイル、sidecar、RAGチャンクの索引 |
 | AIに短い全体像を渡す | [`ai/context-brief.md`](ai/context-brief.md) | 最初に読むプロジェクト概要とレポート一覧 |
 | AIに詳しい全体像を渡す | [`ai/context-full.md`](ai/context-full.md) | レポート別の要旨、示唆、活用場面、実装案 |
+| AIに実行手順を選ばせる | [`ai/workflows.json`](ai/workflows.json) | プロンプト別の必要資料、入力項目、出力項目、根拠ルール |
 | AI読解ツールに全文を渡す | [`ai/notebooklm-source.txt`](ai/notebooklm-source.txt) | レポート本文、プロンプト、メタデータ、参考文献をまとめた単一テキスト |
 | レポート本文を読む、編集する | [`reports/`](reports/) | 各レポートの一次ソース。今後の本文更新はここを直接編集 |
 | 授業案や企画案を生成する | [`prompts/`](prompts/) | 利用目的別のプロンプト例 |
@@ -6672,9 +6678,10 @@ AIにリポジトリを読ませるときは、資料そのものと依頼文を
 1. 読む順序と回答ルールを指定する場合: [`ai/system-instructions.md`](ai/system-instructions.md)
 2. 全体像だけ必要な場合: [`ai/context-brief.md`](ai/context-brief.md)
 3. レポート群の詳しい要約と用途が必要な場合: [`ai/context-full.md`](ai/context-full.md)
-4. AI読解ツールで全文検索・質問応答をしたい場合: [`ai/notebooklm-source.txt`](ai/notebooklm-source.txt)
-5. RAGや検索システムに組み込む場合: [`ai/rag/chunks.jsonl`](ai/rag/chunks.jsonl)
-6. 出典や図版も扱う場合: [`ai/citations.json`](ai/citations.json)、[`metadata/report-sidecars/`](metadata/report-sidecars/)、[`metadata/figures.json`](metadata/figures.json)
+4. 目的に合うプロンプトと必要資料を選ぶ場合: [`ai/workflows.json`](ai/workflows.json)
+5. AI読解ツールで全文検索・質問応答をしたい場合: [`ai/notebooklm-source.txt`](ai/notebooklm-source.txt)
+6. RAGや検索システムに組み込む場合: [`ai/rag/chunks.jsonl`](ai/rag/chunks.jsonl)
+7. 出典や図版も扱う場合: [`ai/citations.json`](ai/citations.json)、[`metadata/report-sidecars/`](metadata/report-sidecars/)、[`metadata/figures.json`](metadata/figures.json)
 
 次に、目的に近いプロンプトを選びます。
 
@@ -6705,6 +6712,7 @@ AIには、たとえば次のように指示してください。
 | [`metadata/reports.json`](metadata/reports.json) | レポートID、タイトル、概要、著者、想定読者、テーマ、活用場面などの機械可読索引 |
 | [`metadata/chunks.jsonl`](metadata/chunks.jsonl) | レポート本文を見出し単位に分割した基礎チャンク |
 | [`metadata/report-sidecars/`](metadata/report-sidecars/) | レポート単位のAI用構造化補助。本文正本、節、図版、文献、注意点を結ぶ |
+| [`ai/workflows.json`](ai/workflows.json) | プロンプト別の必要資料、入力項目、出力項目、根拠ルール |
 | [`ai/rag/chunks.jsonl`](ai/rag/chunks.jsonl) | 基礎チャンクに根拠ID、用途、リスク注記を付けたRAG用データ |
 | [`ai/citations.json`](ai/citations.json) | 本文中の文献番号とレポート別参考文献を結ぶ引用索引 |
 | [`metadata/concept-schema.json`](metadata/concept-schema.json) | `concept_alignment` の固定語彙と分類軸 |
@@ -6745,7 +6753,7 @@ scripts/setup_git_hooks.sh
 - レポート本文は [`reports/`](reports/) 配下の `.md` を直接編集します。
 - プロンプト例は [`prompts/`](prompts/) 配下の `.md` を直接編集します。
 - Wordファイルからレポートを再生成する仕組みは使いません。
-- レポート、参考文献、図版、メタデータを更新したら、`python3 scripts/build_ai_package.py` を実行し、`ai/manifest.json`、`ai/rag/chunks.jsonl`、`metadata/report-sidecars/` に反映してください。
+- レポート、参考文献、図版、メタデータ、プロンプトを更新したら、`python3 scripts/build_ai_package.py` を実行し、`ai/manifest.json`、`ai/workflows.json`、`ai/rag/chunks.jsonl`、`metadata/report-sidecars/` に反映してください。
 - レポートやプロンプトの `.md` を追加・削除したら、`scripts/update_web_manifest.sh` を実行し、`config/web_content.json` に反映してください。
 - READMEやウェブアプリを更新したら、必要に応じて `scripts/update_notebooklm_source.sh` を実行し、`ai/notebooklm-source.txt` に反映してください。
 - 図版やメタデータを追加した場合は、`metadata/figures.json`、`metadata/reports.json`、`metadata/chunks.jsonl`、`metadata/report-sidecars/` との整合を確認してください。
@@ -6840,6 +6848,7 @@ ai/manifest.json
     "ai/system-instructions.md",
     "ai/context-brief.md",
     "ai/context-full.md",
+    "ai/workflows.json",
     "ai/citations.json",
     "ai/rag/chunks.jsonl",
     "metadata/report-sidecars/*.json"
@@ -6909,9 +6918,10 @@ ai/system-instructions.md
 
 1. `ai/manifest.json` で利用可能なAI向けファイルを把握する。
 2. 全体像は `ai/context-brief.md` を読む。
-3. 詳細な根拠は `metadata/report-sidecars/*.json` と `ai/rag/chunks.jsonl` を読む。
-4. 人間向けの正本確認が必要な場合は `reports/*.md` を読む。
-5. 出典確認は `ai/citations.json` と `references/references.md` を使う。
+3. 用途別の実行手順は `ai/workflows.json` を読む。
+4. 詳細な根拠は `metadata/report-sidecars/*.json` と `ai/rag/chunks.jsonl` を読む。
+5. 人間向けの正本確認が必要な場合は `reports/*.md` を読む。
+6. 出典確認は `ai/citations.json` と `references/references.md` を使う。
 
 ## 回答ルール
 
@@ -7291,6 +7301,407 @@ ai/context-full.md
 - 地域資料館や自治体と連携し，写真・地図・証言を使うMinecraft制作ワークショップを実施する。
 - Minecraft Educationの既存AI教材を導入し，デジタルシティズンシップや情報モラルの授業と接続する。
 - 完成した仮想空間を展示・発表し，地域住民や専門家との対話を通じて学習成果を検証する。
+
+
+---
+ai/workflows.json
+---
+{
+  "schema": "aice.ai_workflows.v1",
+  "description": "AIエージェントが用途別プロンプトを選び、必要資料と出力契約を確認するための機械可読ワークフロー索引。",
+  "default_read_order": [
+    "ai/system-instructions.md",
+    "ai/manifest.json",
+    "ai/context-brief.md",
+    "ai/workflows.json"
+  ],
+  "workflows": [
+    {
+      "id": "lesson-plan-generation",
+      "purpose": "指定した学年・教科・時間数に合わせ、レポートの根拠を示しながら授業案を組み立てるための授業設計支援",
+      "prompt_path": "prompts/lesson-plan-generation.md",
+      "read_before_running": [
+        "ai/system-instructions.md",
+        "ai/context-brief.md",
+        "ai/manifest.json",
+        "ai/context-full.md",
+        "ai/rag/chunks.jsonl",
+        "metadata/report-sidecars/*.json",
+        "metadata/reports.json",
+        "prompts/lesson-plan-generation.md"
+      ],
+      "input_contract": [],
+      "output_contract": [
+        "授業名",
+        "対象学年・教科",
+        "到達目標",
+        "参照レポートと根拠チャンク",
+        "concept_alignment",
+        "時間配分",
+        "学習活動",
+        "AI利用の役割",
+        "評価観点",
+        "倫理・著作権・安全上の配慮"
+      ],
+      "evidence_policy": {
+        "prefer": [
+          "ai/rag/chunks.jsonl",
+          "metadata/report-sidecars/*.json",
+          "ai/citations.json",
+          "reports/*.md"
+        ],
+        "cite_with": [
+          "report_id",
+          "chunk_id",
+          "evidence_refs",
+          "figure_ids"
+        ],
+        "mark_unsourced_claims_as_inference": true,
+        "human_verification_required": true
+      }
+    },
+    {
+      "id": "workshop-design",
+      "purpose": "学校・自治体・企業研修向けに、半日または1日のワークショップをタイムテーブルや成果物まで整理するための設計支援",
+      "prompt_path": "prompts/workshop-design.md",
+      "read_before_running": [
+        "ai/system-instructions.md",
+        "ai/context-brief.md",
+        "ai/manifest.json",
+        "ai/context-full.md",
+        "ai/rag/chunks.jsonl",
+        "metadata/report-sidecars/*.json",
+        "metadata/reports.json",
+        "prompts/workshop-design.md"
+      ],
+      "input_contract": [],
+      "output_contract": [
+        "ワークショップ名",
+        "対象者",
+        "ねらい",
+        "使用するレポート",
+        "concept_alignment",
+        "タイムテーブル",
+        "個人活動・グループ活動",
+        "成果物",
+        "リスクと対策"
+      ],
+      "evidence_policy": {
+        "prefer": [
+          "ai/rag/chunks.jsonl",
+          "metadata/report-sidecars/*.json",
+          "ai/citations.json",
+          "reports/*.md"
+        ],
+        "cite_with": [
+          "report_id",
+          "chunk_id",
+          "evidence_refs",
+          "figure_ids"
+        ],
+        "mark_unsourced_claims_as_inference": true,
+        "human_verification_required": true
+      }
+    },
+    {
+      "id": "service-planning",
+      "purpose": "レポートの示唆をもとに、生成AI時代の教育サービス案を利用者課題・体験・検証計画まで具体化するためのサービス企画支援",
+      "prompt_path": "prompts/service-planning.md",
+      "read_before_running": [
+        "ai/system-instructions.md",
+        "ai/context-brief.md",
+        "ai/manifest.json",
+        "ai/context-full.md",
+        "ai/rag/chunks.jsonl",
+        "metadata/report-sidecars/*.json",
+        "metadata/reports.json",
+        "prompts/service-planning.md"
+      ],
+      "input_contract": [],
+      "output_contract": [
+        "サービス名",
+        "対象ユーザー",
+        "解決する課題",
+        "根拠にしたレポート",
+        "concept_alignment",
+        "主要機能",
+        "学習者・教員・管理者の体験",
+        "導入に必要なデータ・パートナー",
+        "評価指標",
+        "3か月の検証計画"
+      ],
+      "evidence_policy": {
+        "prefer": [
+          "ai/rag/chunks.jsonl",
+          "metadata/report-sidecars/*.json",
+          "ai/citations.json",
+          "reports/*.md"
+        ],
+        "cite_with": [
+          "report_id",
+          "chunk_id",
+          "evidence_refs",
+          "figure_ids"
+        ],
+        "mark_unsourced_claims_as_inference": true,
+        "human_verification_required": true
+      }
+    },
+    {
+      "id": "idea-generation",
+      "purpose": "対象者やテーマに応じて、リポジトリ内の知見を横断し、新しい授業・研修・サービス企画の種を提案するためのアイデア創出支援",
+      "prompt_path": "prompts/idea-generation.md",
+      "read_before_running": [
+        "ai/system-instructions.md",
+        "ai/context-brief.md",
+        "ai/manifest.json",
+        "ai/context-full.md",
+        "ai/rag/chunks.jsonl",
+        "metadata/report-sidecars/*.json",
+        "metadata/concept-schema.json",
+        "prompts/idea-generation.md"
+      ],
+      "input_contract": [
+        "対象: 教育機関、自治体、企業研修、EdTechサービスのいずれか",
+        "学習者: 小学生、中高生、大学生、教員、社会人のいずれか",
+        "重視するテーマ: 創造性、情報リテラシー、デジタルシティズンシップ、平和教育、未来構想、地域課題のいずれか"
+      ],
+      "output_contract": [
+        "企画名",
+        "背景となる課題",
+        "参照したレポートと示唆",
+        "concept_alignment",
+        "学習活動またはサービス体験",
+        "AIの役割",
+        "人間の判断が必要な点",
+        "実施上のリスクと対策",
+        "90日間の実装計画"
+      ],
+      "evidence_policy": {
+        "prefer": [
+          "ai/rag/chunks.jsonl",
+          "metadata/report-sidecars/*.json",
+          "ai/citations.json",
+          "reports/*.md"
+        ],
+        "cite_with": [
+          "report_id",
+          "chunk_id",
+          "evidence_refs",
+          "figure_ids"
+        ],
+        "mark_unsourced_claims_as_inference": true,
+        "human_verification_required": true
+      }
+    },
+    {
+      "id": "excursion-ideation",
+      "purpose": "固定観念をゆるめ、遠い領域の特徴を借りて、教育実践やサービスのアイデアを広げるための発想支援",
+      "prompt_path": "prompts/excursion-ideation.md",
+      "read_before_running": [
+        "ai/system-instructions.md",
+        "ai/context-brief.md",
+        "ai/manifest.json",
+        "ai/context-full.md",
+        "ai/rag/chunks.jsonl",
+        "metadata/report-sidecars/*.json",
+        "metadata/concept-schema.json",
+        "prompts/excursion-ideation.md"
+      ],
+      "input_contract": [
+        "解決したい課題: [ここに課題，考えたい商品・サービス，授業テーマ，ワークショップテーマを記入]",
+        "対象者: [小学生，中高生，大学生，教員，社会人，自治体，企業など]",
+        "活用場面: [授業，探究学習，校内研修，地域連携，EdTech企画，展示，発表など]",
+        "重視するテーマ: [創造性，情報リテラシー，デジタルシティズンシップ，平和教育，未来構想，地域課題など]",
+        "制約条件: [時間，人数，使用できるAI，公開範囲，倫理・著作権上の注意など]"
+      ],
+      "output_contract": [
+        "課題の捉え直し",
+        "無関係な世界の選定",
+        "特徴・本質の抽出",
+        "強制結びつけによるアイデアの種",
+        "有望案トップ3",
+        "concept_alignment",
+        "AIの役割と人間の責任",
+        "小さく試すプロトタイプ案",
+        "リスクと配慮",
+        "リフレクションの問い"
+      ],
+      "evidence_policy": {
+        "prefer": [
+          "ai/rag/chunks.jsonl",
+          "metadata/report-sidecars/*.json",
+          "ai/citations.json",
+          "reports/*.md"
+        ],
+        "cite_with": [
+          "report_id",
+          "chunk_id",
+          "evidence_refs",
+          "figure_ids"
+        ],
+        "mark_unsourced_claims_as_inference": true,
+        "human_verification_required": true
+      }
+    },
+    {
+      "id": "implementation-roadmap",
+      "purpose": "授業・研修・企画を実行へ移すために、30日・90日・180日のロードマップと体制・評価・リスクを整理する実装計画支援",
+      "prompt_path": "prompts/implementation-roadmap.md",
+      "read_before_running": [
+        "ai/system-instructions.md",
+        "ai/context-brief.md",
+        "ai/manifest.json",
+        "ai/context-full.md",
+        "ai/rag/chunks.jsonl",
+        "metadata/report-sidecars/*.json",
+        "metadata/reports.json",
+        "prompts/implementation-roadmap.md"
+      ],
+      "input_contract": [],
+      "output_contract": [
+        "実装目的",
+        "関連レポート",
+        "concept_alignment",
+        "30日計画",
+        "90日計画",
+        "180日計画",
+        "必要な体制",
+        "評価指標",
+        "リスクと対策"
+      ],
+      "evidence_policy": {
+        "prefer": [
+          "ai/rag/chunks.jsonl",
+          "metadata/report-sidecars/*.json",
+          "ai/citations.json",
+          "reports/*.md"
+        ],
+        "cite_with": [
+          "report_id",
+          "chunk_id",
+          "evidence_refs",
+          "figure_ids"
+        ],
+        "mark_unsourced_claims_as_inference": true,
+        "human_verification_required": true
+      }
+    },
+    {
+      "id": "cross-report-comparison",
+      "purpose": "指定テーマについて複数レポートを比較し、共通点・差異・相互補完関係・教育実践への示唆を根拠付きで整理する横断比較支援",
+      "prompt_path": "prompts/cross-report-comparison.md",
+      "read_before_running": [
+        "ai/system-instructions.md",
+        "ai/context-brief.md",
+        "ai/manifest.json",
+        "ai/rag/chunks.jsonl",
+        "ai/citations.json",
+        "metadata/report-sidecars/*.json",
+        "metadata/figures.json",
+        "reports/*.md"
+      ],
+      "input_contract": [],
+      "output_contract": [
+        "比較テーマ",
+        "対象レポート",
+        "共通する示唆",
+        "レポートごとの差異",
+        "concept_alignment_comparison",
+        "教育実践への応用",
+        "追加調査が必要な点"
+      ],
+      "evidence_policy": {
+        "prefer": [
+          "ai/rag/chunks.jsonl",
+          "metadata/report-sidecars/*.json",
+          "ai/citations.json",
+          "reports/*.md"
+        ],
+        "cite_with": [
+          "report_id",
+          "chunk_id",
+          "evidence_refs",
+          "figure_ids"
+        ],
+        "mark_unsourced_claims_as_inference": true,
+        "human_verification_required": true
+      }
+    },
+    {
+      "id": "citation-answering",
+      "purpose": "利用者の質問に対して、レポート本文・メタデータ・図表・参考文献を根拠に、出典付きで回答するための根拠確認支援",
+      "prompt_path": "prompts/citation-answering.md",
+      "read_before_running": [
+        "ai/system-instructions.md",
+        "ai/context-brief.md",
+        "ai/manifest.json",
+        "ai/rag/chunks.jsonl",
+        "ai/citations.json",
+        "metadata/report-sidecars/*.json",
+        "metadata/figures.json",
+        "reports/*.md"
+      ],
+      "input_contract": [],
+      "output_contract": [
+        "回答",
+        "根拠",
+        "concept_alignment_relation",
+        "関連図表・参考文献",
+        "推測または未確認事項"
+      ],
+      "evidence_policy": {
+        "prefer": [
+          "ai/rag/chunks.jsonl",
+          "metadata/report-sidecars/*.json",
+          "ai/citations.json",
+          "reports/*.md"
+        ],
+        "cite_with": [
+          "report_id",
+          "chunk_id",
+          "evidence_refs",
+          "figure_ids"
+        ],
+        "mark_unsourced_claims_as_inference": true,
+        "human_verification_required": true
+      }
+    },
+    {
+      "id": "planning-template",
+      "purpose": "授業・研修・企画を始める前に、目的・対象者・AI活用・評価・ロードマップを空欄形式で整理するための計画立案テンプレート",
+      "prompt_path": "prompts/planning-template.md",
+      "read_before_running": [
+        "ai/system-instructions.md",
+        "ai/context-brief.md",
+        "ai/manifest.json",
+        "ai/context-full.md",
+        "ai/rag/chunks.jsonl",
+        "metadata/report-sidecars/*.json",
+        "metadata/concept-schema.json",
+        "prompts/planning-template.md"
+      ],
+      "input_contract": [],
+      "output_contract": [],
+      "evidence_policy": {
+        "prefer": [
+          "ai/rag/chunks.jsonl",
+          "metadata/report-sidecars/*.json",
+          "ai/citations.json",
+          "reports/*.md"
+        ],
+        "cite_with": [
+          "report_id",
+          "chunk_id",
+          "evidence_refs",
+          "figure_ids"
+        ],
+        "mark_unsourced_claims_as_inference": true,
+        "human_verification_required": true
+      }
+    }
+  ]
+}
 
 
 ---
@@ -7851,9 +8262,9 @@ This repository publishes Markdown reports, prompts, and AI-readable metadata fo
 Use this repository in two layers:
 
 1. Human-readable layer: README, index.html, and reports/*.md explain the project, reports, examples, and references for people.
-2. AI-readable data package: ai/manifest.json, ai/system-instructions.md, ai/context-brief.md, ai/context-full.md, ai/citations.json, ai/rag/chunks.jsonl, metadata/report-sidecars/*.json, and references/* provide grounded context for AI agents, AI reading tools, and RAG.
+2. AI-readable data package: ai/manifest.json, ai/system-instructions.md, ai/context-brief.md, ai/context-full.md, ai/workflows.json, ai/citations.json, ai/rag/chunks.jsonl, metadata/report-sidecars/*.json, and references/* provide grounded context for AI agents, AI reading tools, and RAG.
 
-Recommended workflow: read the overview, load ai/system-instructions.md and ai/context-brief.md first, use ai/rag/chunks.jsonl or metadata/report-sidecars/*.json for grounded retrieval, then use a prompt from ../prompts/ to generate a lesson plan, workshop plan, service concept, comparison, citation-aware answer, or implementation roadmap. Treat AI outputs as drafts and verify them against reports/*.md and references.
+Recommended workflow: read the overview, load ai/system-instructions.md and ai/context-brief.md first, use ai/workflows.json to choose the right prompt and required context, use ai/rag/chunks.jsonl or metadata/report-sidecars/*.json for grounded retrieval, then use a prompt from ../prompts/ to generate a lesson plan, workshop plan, service concept, comparison, citation-aware answer, or implementation roadmap. Treat AI outputs as drafts and verify them against reports/*.md and references.
 
 ## Authors
 
@@ -7899,6 +8310,7 @@ The Markdown files in `../reports/` are the source of truth for report text.
 - [Brief AI context](context-brief.md): Short project context and report list for first-pass loading.
 - [Full AI context](llms-full.md): Consolidated overview of all reports.
 - [Structured AI context](context-full.md): Detailed report-level summaries, takeaways, use cases, and implementation ideas.
+- [AI workflows](workflows.json): Machine-readable prompt workflows with required context, input contract, output contract, and evidence policy.
 - [Citation index](citations.json): Mapping from report-local citation numbers to stable evidence IDs.
 - [RAG chunks](rag/chunks.jsonl): Retrieval chunks with claims, evidence IDs, figure IDs, use cases, and risk notes.
 - [AI source package](notebooklm-source.txt): Single text file generated by files-to-prompt from README, reports, metadata, config, prompts, and scripts.
@@ -7927,7 +8339,7 @@ ai/llms-full.md
 
 ## 使い方
 
-このリポジトリは、ヒト向けの文章とAI向けのデータパッケージを分けて提供する。ヒトはREADME、index.html、reports/*.mdで全体像と個別レポートを読む。AIにはai/system-instructions.md、ai/context-brief.md、ai/context-full.md、ai/rag/chunks.jsonl、ai/citations.json、metadata/report-sidecars/*.json、references/*を読み込ませ、読む順序、本文、メタデータ、検索用チャンク、参考文献を参照できる状態にする。単一ファイルで渡す必要がある場合はai/notebooklm-source.txtを使う。そのあとでprompts/のプロンプトを使い、授業案、ワークショップ、教育サービス企画、比較表、根拠付き回答、実装ロードマップを作る。AIの出力はたたき台であり、ヒトがレポート本文と参考文献に照らして検証・編集する。
+このリポジトリは、ヒト向けの文章とAI向けのデータパッケージを分けて提供する。ヒトはREADME、index.html、reports/*.mdで全体像と個別レポートを読む。AIにはai/system-instructions.md、ai/context-brief.md、ai/context-full.md、ai/workflows.json、ai/rag/chunks.jsonl、ai/citations.json、metadata/report-sidecars/*.json、references/*を読み込ませ、読む順序、本文、メタデータ、用途別プロンプト、検索用チャンク、参考文献を参照できる状態にする。単一ファイルで渡す必要がある場合はai/notebooklm-source.txtを使う。そのあとでprompts/のプロンプトを使い、授業案、ワークショップ、教育サービス企画、比較表、根拠付き回答、実装ロードマップを作る。AIの出力はたたき台であり、ヒトがレポート本文と参考文献に照らして検証・編集する。
 
 図解: [ヒト向けの文章とAI向けデータパッケージの使い方](../assets/00-overview/data-package-flow.svg)
 
@@ -7975,6 +8387,7 @@ ai/llms-full.md
 - パッケージ索引: [`manifest.json`](manifest.json)
 - 短い全体像: [`context-brief.md`](context-brief.md)
 - 詳しい全体像: [`context-full.md`](context-full.md)
+- 用途別ワークフロー: [`workflows.json`](workflows.json)
 - 引用索引: [`citations.json`](citations.json)
 - RAGチャンク: [`rag/chunks.jsonl`](rag/chunks.jsonl)
 - レポート別sidecar: [`../metadata/report-sidecars/`](../metadata/report-sidecars/)
@@ -9496,7 +9909,7 @@ config/web_content.json
       "path": "prompts/lesson-plan-generation.md",
       "summary": "指定した学年・教科・時間数に合わせ、レポートの根拠を示しながら授業案を組み立てるための授業設計支援",
       "purpose": "指定した学年・教科・時間数に合わせ、レポートの根拠を示しながら授業案を組み立てるための授業設計支援",
-      "last_updated": "2026-05-30",
+      "last_updated": "2026-06-05",
       "authors": [],
       "themes": [
         "プロンプト"
@@ -9511,7 +9924,7 @@ config/web_content.json
       "path": "prompts/workshop-design.md",
       "summary": "学校・自治体・企業研修向けに、半日または1日のワークショップをタイムテーブルや成果物まで整理するための設計支援",
       "purpose": "学校・自治体・企業研修向けに、半日または1日のワークショップをタイムテーブルや成果物まで整理するための設計支援",
-      "last_updated": "2026-05-30",
+      "last_updated": "2026-06-05",
       "authors": [],
       "themes": [
         "プロンプト"
@@ -9526,7 +9939,7 @@ config/web_content.json
       "path": "prompts/service-planning.md",
       "summary": "レポートの示唆をもとに、生成AI時代の教育サービス案を利用者課題・体験・検証計画まで具体化するためのサービス企画支援",
       "purpose": "レポートの示唆をもとに、生成AI時代の教育サービス案を利用者課題・体験・検証計画まで具体化するためのサービス企画支援",
-      "last_updated": "2026-05-30",
+      "last_updated": "2026-06-05",
       "authors": [],
       "themes": [
         "プロンプト"
@@ -9541,7 +9954,7 @@ config/web_content.json
       "path": "prompts/idea-generation.md",
       "summary": "対象者やテーマに応じて、リポジトリ内の知見を横断し、新しい授業・研修・サービス企画の種を提案するためのアイデア創出支援",
       "purpose": "対象者やテーマに応じて、リポジトリ内の知見を横断し、新しい授業・研修・サービス企画の種を提案するためのアイデア創出支援",
-      "last_updated": "2026-05-31",
+      "last_updated": "2026-06-05",
       "authors": [],
       "themes": [
         "プロンプト"
@@ -9556,7 +9969,7 @@ config/web_content.json
       "path": "prompts/excursion-ideation.md",
       "summary": "固定観念をゆるめ、遠い領域の特徴を借りて、教育実践やサービスのアイデアを広げるための発想支援",
       "purpose": "固定観念をゆるめ、遠い領域の特徴を借りて、教育実践やサービスのアイデアを広げるための発想支援",
-      "last_updated": "2026-05-31",
+      "last_updated": "2026-06-05",
       "authors": [],
       "themes": [
         "プロンプト"
@@ -9571,7 +9984,7 @@ config/web_content.json
       "path": "prompts/implementation-roadmap.md",
       "summary": "授業・研修・企画を実行へ移すために、30日・90日・180日のロードマップと体制・評価・リスクを整理する実装計画支援",
       "purpose": "授業・研修・企画を実行へ移すために、30日・90日・180日のロードマップと体制・評価・リスクを整理する実装計画支援",
-      "last_updated": "2026-05-30",
+      "last_updated": "2026-06-05",
       "authors": [],
       "themes": [
         "プロンプト"
@@ -9586,7 +9999,7 @@ config/web_content.json
       "path": "prompts/cross-report-comparison.md",
       "summary": "指定テーマについて複数レポートを比較し、共通点・差異・相互補完関係・教育実践への示唆を根拠付きで整理する横断比較支援",
       "purpose": "指定テーマについて複数レポートを比較し、共通点・差異・相互補完関係・教育実践への示唆を根拠付きで整理する横断比較支援",
-      "last_updated": "2026-05-30",
+      "last_updated": "2026-06-05",
       "authors": [],
       "themes": [
         "プロンプト"
@@ -9601,7 +10014,7 @@ config/web_content.json
       "path": "prompts/citation-answering.md",
       "summary": "利用者の質問に対して、レポート本文・メタデータ・図表・参考文献を根拠に、出典付きで回答するための根拠確認支援",
       "purpose": "利用者の質問に対して、レポート本文・メタデータ・図表・参考文献を根拠に、出典付きで回答するための根拠確認支援",
-      "last_updated": "2026-05-30",
+      "last_updated": "2026-06-05",
       "authors": [],
       "themes": [
         "プロンプト"
@@ -9616,7 +10029,7 @@ config/web_content.json
       "path": "prompts/planning-template.md",
       "summary": "授業・研修・企画を始める前に、目的・対象者・AI活用・評価・ロードマップを空欄形式で整理するための計画立案テンプレート",
       "purpose": "授業・研修・企画を始める前に、目的・対象者・AI活用・評価・ロードマップを空欄形式で整理するための計画立案テンプレート",
-      "last_updated": "2026-05-30",
+      "last_updated": "2026-06-05",
       "authors": [],
       "themes": [
         "プロンプト"
@@ -10115,6 +10528,7 @@ def build_ai_manifest(project: dict[str, Any], reports: list[dict[str, Any]]) ->
             "ai/system-instructions.md",
             "ai/context-brief.md",
             "ai/context-full.md",
+            "ai/workflows.json",
             "ai/citations.json",
             "ai/rag/chunks.jsonl",
             "metadata/report-sidecars/*.json",
@@ -10150,6 +10564,101 @@ def build_citations(reports: list[dict[str, Any]], references: dict[str, list[st
         "schema": "aice.citations.v1",
         "rule": "本文中の[1]などの番号はreport_idごとのreferences[number]に対応する。",
         "items": items,
+    }
+
+
+def extract_markdown_list_after_heading(markdown: str, heading: str) -> list[str]:
+    lines = markdown.splitlines()
+    items: list[str] = []
+    capture = False
+    for line in lines:
+        if re.match(r"^#{2,6}\s+", line):
+            if capture:
+                break
+            capture = line.strip() == heading
+            continue
+        if capture:
+            numbered = re.match(r"^\s*\d+\.\s+(.+)$", line)
+            bulleted = re.match(r"^\s*[-*]\s+(.+)$", line)
+            if numbered:
+                items.append(numbered.group(1).strip())
+            elif bulleted:
+                items.append(bulleted.group(1).strip())
+    return items
+
+
+def workflow_context(prompt_id: str) -> list[str]:
+    base = [
+        "ai/system-instructions.md",
+        "ai/context-brief.md",
+        "ai/manifest.json",
+    ]
+    if prompt_id in {"citation-answering", "cross-report-comparison"}:
+        return base + [
+            "ai/rag/chunks.jsonl",
+            "ai/citations.json",
+            "metadata/report-sidecars/*.json",
+            "metadata/figures.json",
+            "reports/*.md",
+        ]
+    if prompt_id in {"lesson-plan-generation", "workshop-design", "service-planning", "implementation-roadmap"}:
+        return base + [
+            "ai/context-full.md",
+            "ai/rag/chunks.jsonl",
+            "metadata/report-sidecars/*.json",
+            "metadata/reports.json",
+            "prompts/" + prompt_id + ".md",
+        ]
+    return base + [
+        "ai/context-full.md",
+        "ai/rag/chunks.jsonl",
+        "metadata/report-sidecars/*.json",
+        "metadata/concept-schema.json",
+        "prompts/" + prompt_id + ".md",
+    ]
+
+
+def build_workflows(prompts_config: dict[str, Any]) -> dict[str, Any]:
+    workflows = []
+    for prompt in prompts_config.get("prompts", []):
+        path = ROOT / prompt["path"]
+        markdown = path.read_text(encoding="utf-8")
+        workflows.append(
+            {
+                "id": prompt["id"],
+                "purpose": prompt.get("purpose", ""),
+                "prompt_path": prompt["path"],
+                "read_before_running": workflow_context(prompt["id"]),
+                "input_contract": extract_markdown_list_after_heading(markdown, "## 入力条件"),
+                "output_contract": extract_markdown_list_after_heading(markdown, "## 出力形式"),
+                "evidence_policy": {
+                    "prefer": [
+                        "ai/rag/chunks.jsonl",
+                        "metadata/report-sidecars/*.json",
+                        "ai/citations.json",
+                        "reports/*.md",
+                    ],
+                    "cite_with": [
+                        "report_id",
+                        "chunk_id",
+                        "evidence_refs",
+                        "figure_ids",
+                    ],
+                    "mark_unsourced_claims_as_inference": True,
+                    "human_verification_required": True,
+                },
+            }
+        )
+    return {
+        "schema": "aice.ai_workflows.v1",
+        "description": "AIエージェントが用途別プロンプトを選び、必要資料と出力契約を確認するための機械可読ワークフロー索引。",
+        "default_read_order": [
+            "ai/system-instructions.md",
+            "ai/manifest.json",
+            "ai/context-brief.md",
+            "ai/workflows.json",
+        ],
+        "workflows": workflows,
     }
 
 
@@ -10204,9 +10713,10 @@ def build_system_instructions(project: dict[str, Any]) -> str:
 
 1. `ai/manifest.json` で利用可能なAI向けファイルを把握する。
 2. 全体像は `ai/context-brief.md` を読む。
-3. 詳細な根拠は `metadata/report-sidecars/*.json` と `ai/rag/chunks.jsonl` を読む。
-4. 人間向けの正本確認が必要な場合は `reports/*.md` を読む。
-5. 出典確認は `ai/citations.json` と `references/references.md` を使う。
+3. 用途別の実行手順は `ai/workflows.json` を読む。
+4. 詳細な根拠は `metadata/report-sidecars/*.json` と `ai/rag/chunks.jsonl` を読む。
+5. 人間向けの正本確認が必要な場合は `reports/*.md` を読む。
+6. 出典確認は `ai/citations.json` と `references/references.md` を使う。
 
 ## 回答ルール
 
@@ -10310,6 +10820,7 @@ def build_context_full(project: dict[str, Any], reports: list[dict[str, Any]]) -
 def main() -> None:
     reports_config = load_json(ROOT / "config" / "reports.json")
     references = load_json(ROOT / "config" / "report_references.json")
+    prompts_config = load_json(ROOT / "config" / "prompts.json")
     figures = load_json(ROOT / "metadata" / "figures.json")
     chunks = load_jsonl(ROOT / "metadata" / "chunks.jsonl")
     project = reports_config["project"]
@@ -10324,6 +10835,7 @@ def main() -> None:
     write_text(AI_DIR / "system-instructions.md", build_system_instructions(project))
     write_text(AI_DIR / "context-brief.md", build_context_brief(project, reports))
     write_text(AI_DIR / "context-full.md", build_context_full(project, reports))
+    write_json(AI_DIR / "workflows.json", build_workflows(prompts_config))
     write_json(AI_DIR / "citations.json", build_citations(reports, references))
     write_jsonl(
         RAG_DIR / "chunks.jsonl",
@@ -10409,6 +10921,7 @@ cat > "$TMP_OUTPUT" <<'HEADER'
 - `ai/manifest.json`: AI向けパッケージ全体の索引
 - `ai/system-instructions.md`: AIが読む順序、回答ルール、引用・推測の扱い
 - `ai/context-brief.md` と `ai/context-full.md`: AI向けの短い概要と詳しい概要
+- `ai/workflows.json`: プロンプト別の必要資料、入力項目、出力項目、根拠ルール
 - `ai/citations.json` と `ai/rag/chunks.jsonl`: 引用索引、根拠付きRAGチャンク
 - `metadata/*.json`、`metadata/chunks.jsonl`、`metadata/report-sidecars/*.json`: レポート索引、概念スキーマ、検索用チャンク、図版メタデータ、用語集、レポート別sidecar
 - `references/*`: 参考文献・関連資料
@@ -10443,6 +10956,7 @@ python3 -m files_to_prompt \
   ai/system-instructions.md \
   ai/context-brief.md \
   ai/context-full.md \
+  ai/workflows.json \
   ai/citations.json \
   ai/rag \
   ai/llms.txt \
@@ -10652,6 +11166,7 @@ git add \
   ai/system-instructions.md \
   ai/context-brief.md \
   ai/context-full.md \
+  ai/workflows.json \
   ai/citations.json \
   ai/rag/chunks.jsonl \
   metadata/report-sidecars \

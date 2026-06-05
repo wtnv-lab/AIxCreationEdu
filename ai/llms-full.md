@@ -4,7 +4,7 @@
 
 ## 使い方
 
-このリポジトリは、ヒト向けの文章とAI向けのデータパッケージを分けて提供する。ヒトはREADME、index.html、reports/*.mdで全体像と個別レポートを読む。AIにはai/system-instructions.md、ai/context-brief.md、ai/context-full.md、ai/rag/chunks.jsonl、ai/citations.json、metadata/report-sidecars/*.json、references/*を読み込ませ、読む順序、本文、メタデータ、検索用チャンク、参考文献を参照できる状態にする。単一ファイルで渡す必要がある場合はai/notebooklm-source.txtを使う。そのあとでprompts/のプロンプトを使い、授業案、ワークショップ、教育サービス企画、比較表、根拠付き回答、実装ロードマップを作る。AIの出力はたたき台であり、ヒトがレポート本文と参考文献に照らして検証・編集する。
+このリポジトリは、ヒト向けの文章とAI向けのデータパッケージを分けて提供する。ヒトはREADME、index.html、reports/*.mdで全体像と個別レポートを読む。AIにはai/system-instructions.md、ai/context-brief.md、ai/context-full.md、ai/workflows.json、ai/rag/chunks.jsonl、ai/citations.json、metadata/report-sidecars/*.json、references/*を読み込ませ、読む順序、本文、メタデータ、用途別プロンプト、検索用チャンク、参考文献を参照できる状態にする。単一ファイルで渡す必要がある場合はai/notebooklm-source.txtを使う。そのあとでprompts/のプロンプトを使い、授業案、ワークショップ、教育サービス企画、比較表、根拠付き回答、実装ロードマップを作る。AIの出力はたたき台であり、ヒトがレポート本文と参考文献に照らして検証・編集する。
 
 図解: [ヒト向けの文章とAI向けデータパッケージの使い方](../assets/00-overview/data-package-flow.svg)
 
@@ -52,6 +52,7 @@
 - パッケージ索引: [`manifest.json`](manifest.json)
 - 短い全体像: [`context-brief.md`](context-brief.md)
 - 詳しい全体像: [`context-full.md`](context-full.md)
+- 用途別ワークフロー: [`workflows.json`](workflows.json)
 - 引用索引: [`citations.json`](citations.json)
 - RAGチャンク: [`rag/chunks.jsonl`](rag/chunks.jsonl)
 - レポート別sidecar: [`../metadata/report-sidecars/`](../metadata/report-sidecars/)

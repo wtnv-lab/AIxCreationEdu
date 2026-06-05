@@ -1,6 +1,6 @@
 # アイデア創出プロンプト
 
-あなたは教育実践と教育ソリューション設計の専門家です。このリポジトリの `ai/llms.txt`、`ai/llms-full.md`、`reports/`、`metadata/chunks.jsonl`、`metadata/reports.json` を読み、次の観点で新しい企画案を提案してください。
+あなたは教育実践と教育ソリューション設計の専門家です。このリポジトリの `ai/system-instructions.md`、`ai/context-brief.md`、`ai/context-full.md`、`ai/rag/chunks.jsonl`、`metadata/report-sidecars/*.json`、`metadata/reports.json` を読み、次の観点で新しい企画案を提案してください。重要な根拠は `reports/*.md` の本文正本で確認してください。
 
 提案は、各レポートの `concept_alignment.primary_stage_ids`、`supporting_stage_ids`、`literacy_ids` に沿って整理してください。
 

@@ -12,6 +12,7 @@ git add \
   ai/system-instructions.md \
   ai/context-brief.md \
   ai/context-full.md \
+  ai/workflows.json \
   ai/citations.json \
   ai/rag/chunks.jsonl \
   metadata/report-sidecars \

@@ -266,6 +266,7 @@ def build_ai_manifest(project: dict[str, Any], reports: list[dict[str, Any]]) ->
             "ai/system-instructions.md",
             "ai/context-brief.md",
             "ai/context-full.md",
+            "ai/workflows.json",
             "ai/citations.json",
             "ai/rag/chunks.jsonl",
             "metadata/report-sidecars/*.json",
@@ -301,6 +302,101 @@ def build_citations(reports: list[dict[str, Any]], references: dict[str, list[st
         "schema": "aice.citations.v1",
         "rule": "本文中の[1]などの番号はreport_idごとのreferences[number]に対応する。",
         "items": items,
+    }
+
+
+def extract_markdown_list_after_heading(markdown: str, heading: str) -> list[str]:
+    lines = markdown.splitlines()
+    items: list[str] = []
+    capture = False
+    for line in lines:
+        if re.match(r"^#{2,6}\s+", line):
+            if capture:
+                break
+            capture = line.strip() == heading
+            continue
+        if capture:
+            numbered = re.match(r"^\s*\d+\.\s+(.+)$", line)
+            bulleted = re.match(r"^\s*[-*]\s+(.+)$", line)
+            if numbered:
+                items.append(numbered.group(1).strip())
+            elif bulleted:
+                items.append(bulleted.group(1).strip())
+    return items
+
+
+def workflow_context(prompt_id: str) -> list[str]:
+    base = [
+        "ai/system-instructions.md",
+        "ai/context-brief.md",
+        "ai/manifest.json",
+    ]
+    if prompt_id in {"citation-answering", "cross-report-comparison"}:
+        return base + [
+            "ai/rag/chunks.jsonl",
+            "ai/citations.json",
+            "metadata/report-sidecars/*.json",
+            "metadata/figures.json",
+            "reports/*.md",
+        ]
+    if prompt_id in {"lesson-plan-generation", "workshop-design", "service-planning", "implementation-roadmap"}:
+        return base + [
+            "ai/context-full.md",
+            "ai/rag/chunks.jsonl",
+            "metadata/report-sidecars/*.json",
+            "metadata/reports.json",
+            "prompts/" + prompt_id + ".md",
+        ]
+    return base + [
+        "ai/context-full.md",
+        "ai/rag/chunks.jsonl",
+        "metadata/report-sidecars/*.json",
+        "metadata/concept-schema.json",
+        "prompts/" + prompt_id + ".md",
+    ]
+
+
+def build_workflows(prompts_config: dict[str, Any]) -> dict[str, Any]:
+    workflows = []
+    for prompt in prompts_config.get("prompts", []):
+        path = ROOT / prompt["path"]
+        markdown = path.read_text(encoding="utf-8")
+        workflows.append(
+            {
+                "id": prompt["id"],
+                "purpose": prompt.get("purpose", ""),
+                "prompt_path": prompt["path"],
+                "read_before_running": workflow_context(prompt["id"]),
+                "input_contract": extract_markdown_list_after_heading(markdown, "## 入力条件"),
+                "output_contract": extract_markdown_list_after_heading(markdown, "## 出力形式"),
+                "evidence_policy": {
+                    "prefer": [
+                        "ai/rag/chunks.jsonl",
+                        "metadata/report-sidecars/*.json",
+                        "ai/citations.json",
+                        "reports/*.md",
+                    ],
+                    "cite_with": [
+                        "report_id",
+                        "chunk_id",
+                        "evidence_refs",
+                        "figure_ids",
+                    ],
+                    "mark_unsourced_claims_as_inference": True,
+                    "human_verification_required": True,
+                },
+            }
+        )
+    return {
+        "schema": "aice.ai_workflows.v1",
+        "description": "AIエージェントが用途別プロンプトを選び、必要資料と出力契約を確認するための機械可読ワークフロー索引。",
+        "default_read_order": [
+            "ai/system-instructions.md",
+            "ai/manifest.json",
+            "ai/context-brief.md",
+            "ai/workflows.json",
+        ],
+        "workflows": workflows,
     }
 
 
@@ -355,9 +451,10 @@ def build_system_instructions(project: dict[str, Any]) -> str:
 
 1. `ai/manifest.json` で利用可能なAI向けファイルを把握する。
 2. 全体像は `ai/context-brief.md` を読む。
-3. 詳細な根拠は `metadata/report-sidecars/*.json` と `ai/rag/chunks.jsonl` を読む。
-4. 人間向けの正本確認が必要な場合は `reports/*.md` を読む。
-5. 出典確認は `ai/citations.json` と `references/references.md` を使う。
+3. 用途別の実行手順は `ai/workflows.json` を読む。
+4. 詳細な根拠は `metadata/report-sidecars/*.json` と `ai/rag/chunks.jsonl` を読む。
+5. 人間向けの正本確認が必要な場合は `reports/*.md` を読む。
+6. 出典確認は `ai/citations.json` と `references/references.md` を使う。
 
 ## 回答ルール
 
@@ -461,6 +558,7 @@ def build_context_full(project: dict[str, Any], reports: list[dict[str, Any]]) -
 def main() -> None:
     reports_config = load_json(ROOT / "config" / "reports.json")
     references = load_json(ROOT / "config" / "report_references.json")
+    prompts_config = load_json(ROOT / "config" / "prompts.json")
     figures = load_json(ROOT / "metadata" / "figures.json")
     chunks = load_jsonl(ROOT / "metadata" / "chunks.jsonl")
     project = reports_config["project"]
@@ -475,6 +573,7 @@ def main() -> None:
     write_text(AI_DIR / "system-instructions.md", build_system_instructions(project))
     write_text(AI_DIR / "context-brief.md", build_context_brief(project, reports))
     write_text(AI_DIR / "context-full.md", build_context_full(project, reports))
+    write_json(AI_DIR / "workflows.json", build_workflows(prompts_config))
     write_json(AI_DIR / "citations.json", build_citations(reports, references))
     write_jsonl(
         RAG_DIR / "chunks.jsonl",

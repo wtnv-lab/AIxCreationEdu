@@ -1,0 +1,396 @@
+{
+  "schema": "aice.ai_workflows.v1",
+  "description": "AIエージェントが用途別プロンプトを選び、必要資料と出力契約を確認するための機械可読ワークフロー索引。",
+  "default_read_order": [
+    "ai/system-instructions.md",
+    "ai/manifest.json",
+    "ai/context-brief.md",
+    "ai/workflows.json"
+  ],
+  "workflows": [
+    {
+      "id": "lesson-plan-generation",
+      "purpose": "指定した学年・教科・時間数に合わせ、レポートの根拠を示しながら授業案を組み立てるための授業設計支援",
+      "prompt_path": "prompts/lesson-plan-generation.md",
+      "read_before_running": [
+        "ai/system-instructions.md",
+        "ai/context-brief.md",
+        "ai/manifest.json",
+        "ai/context-full.md",
+        "ai/rag/chunks.jsonl",
+        "metadata/report-sidecars/*.json",
+        "metadata/reports.json",
+        "prompts/lesson-plan-generation.md"
+      ],
+      "input_contract": [],
+      "output_contract": [
+        "授業名",
+        "対象学年・教科",
+        "到達目標",
+        "参照レポートと根拠チャンク",
+        "concept_alignment",
+        "時間配分",
+        "学習活動",
+        "AI利用の役割",
+        "評価観点",
+        "倫理・著作権・安全上の配慮"
+      ],
+      "evidence_policy": {
+        "prefer": [
+          "ai/rag/chunks.jsonl",
+          "metadata/report-sidecars/*.json",
+          "ai/citations.json",
+          "reports/*.md"
+        ],
+        "cite_with": [
+          "report_id",
+          "chunk_id",
+          "evidence_refs",
+          "figure_ids"
+        ],
+        "mark_unsourced_claims_as_inference": true,
+        "human_verification_required": true
+      }
+    },
+    {
+      "id": "workshop-design",
+      "purpose": "学校・自治体・企業研修向けに、半日または1日のワークショップをタイムテーブルや成果物まで整理するための設計支援",
+      "prompt_path": "prompts/workshop-design.md",
+      "read_before_running": [
+        "ai/system-instructions.md",
+        "ai/context-brief.md",
+        "ai/manifest.json",
+        "ai/context-full.md",
+        "ai/rag/chunks.jsonl",
+        "metadata/report-sidecars/*.json",
+        "metadata/reports.json",
+        "prompts/workshop-design.md"
+      ],
+      "input_contract": [],
+      "output_contract": [
+        "ワークショップ名",
+        "対象者",
+        "ねらい",
+        "使用するレポート",
+        "concept_alignment",
+        "タイムテーブル",
+        "個人活動・グループ活動",
+        "成果物",
+        "リスクと対策"
+      ],
+      "evidence_policy": {
+        "prefer": [
+          "ai/rag/chunks.jsonl",
+          "metadata/report-sidecars/*.json",
+          "ai/citations.json",
+          "reports/*.md"
+        ],
+        "cite_with": [
+          "report_id",
+          "chunk_id",
+          "evidence_refs",
+          "figure_ids"
+        ],
+        "mark_unsourced_claims_as_inference": true,
+        "human_verification_required": true
+      }
+    },
+    {
+      "id": "service-planning",
+      "purpose": "レポートの示唆をもとに、生成AI時代の教育サービス案を利用者課題・体験・検証計画まで具体化するためのサービス企画支援",
+      "prompt_path": "prompts/service-planning.md",
+      "read_before_running": [
+        "ai/system-instructions.md",
+        "ai/context-brief.md",
+        "ai/manifest.json",
+        "ai/context-full.md",
+        "ai/rag/chunks.jsonl",
+        "metadata/report-sidecars/*.json",
+        "metadata/reports.json",
+        "prompts/service-planning.md"
+      ],
+      "input_contract": [],
+      "output_contract": [
+        "サービス名",
+        "対象ユーザー",
+        "解決する課題",
+        "根拠にしたレポート",
+        "concept_alignment",
+        "主要機能",
+        "学習者・教員・管理者の体験",
+        "導入に必要なデータ・パートナー",
+        "評価指標",
+        "3か月の検証計画"
+      ],
+      "evidence_policy": {
+        "prefer": [
+          "ai/rag/chunks.jsonl",
+          "metadata/report-sidecars/*.json",
+          "ai/citations.json",
+          "reports/*.md"
+        ],
+        "cite_with": [
+          "report_id",
+          "chunk_id",
+          "evidence_refs",
+          "figure_ids"
+        ],
+        "mark_unsourced_claims_as_inference": true,
+        "human_verification_required": true
+      }
+    },
+    {
+      "id": "idea-generation",
+      "purpose": "対象者やテーマに応じて、リポジトリ内の知見を横断し、新しい授業・研修・サービス企画の種を提案するためのアイデア創出支援",
+      "prompt_path": "prompts/idea-generation.md",
+      "read_before_running": [
+        "ai/system-instructions.md",
+        "ai/context-brief.md",
+        "ai/manifest.json",
+        "ai/context-full.md",
+        "ai/rag/chunks.jsonl",
+        "metadata/report-sidecars/*.json",
+        "metadata/concept-schema.json",
+        "prompts/idea-generation.md"
+      ],
+      "input_contract": [
+        "対象: 教育機関、自治体、企業研修、EdTechサービスのいずれか",
+        "学習者: 小学生、中高生、大学生、教員、社会人のいずれか",
+        "重視するテーマ: 創造性、情報リテラシー、デジタルシティズンシップ、平和教育、未来構想、地域課題のいずれか"
+      ],
+      "output_contract": [
+        "企画名",
+        "背景となる課題",
+        "参照したレポートと示唆",
+        "concept_alignment",
+        "学習活動またはサービス体験",
+        "AIの役割",
+        "人間の判断が必要な点",
+        "実施上のリスクと対策",
+        "90日間の実装計画"
+      ],
+      "evidence_policy": {
+        "prefer": [
+          "ai/rag/chunks.jsonl",
+          "metadata/report-sidecars/*.json",
+          "ai/citations.json",
+          "reports/*.md"
+        ],
+        "cite_with": [
+          "report_id",
+          "chunk_id",
+          "evidence_refs",
+          "figure_ids"
+        ],
+        "mark_unsourced_claims_as_inference": true,
+        "human_verification_required": true
+      }
+    },
+    {
+      "id": "excursion-ideation",
+      "purpose": "固定観念をゆるめ、遠い領域の特徴を借りて、教育実践やサービスのアイデアを広げるための発想支援",
+      "prompt_path": "prompts/excursion-ideation.md",
+      "read_before_running": [
+        "ai/system-instructions.md",
+        "ai/context-brief.md",
+        "ai/manifest.json",
+        "ai/context-full.md",
+        "ai/rag/chunks.jsonl",
+        "metadata/report-sidecars/*.json",
+        "metadata/concept-schema.json",
+        "prompts/excursion-ideation.md"
+      ],
+      "input_contract": [
+        "解決したい課題: [ここに課題，考えたい商品・サービス，授業テーマ，ワークショップテーマを記入]",
+        "対象者: [小学生，中高生，大学生，教員，社会人，自治体，企業など]",
+        "活用場面: [授業，探究学習，校内研修，地域連携，EdTech企画，展示，発表など]",
+        "重視するテーマ: [創造性，情報リテラシー，デジタルシティズンシップ，平和教育，未来構想，地域課題など]",
+        "制約条件: [時間，人数，使用できるAI，公開範囲，倫理・著作権上の注意など]"
+      ],
+      "output_contract": [
+        "課題の捉え直し",
+        "無関係な世界の選定",
+        "特徴・本質の抽出",
+        "強制結びつけによるアイデアの種",
+        "有望案トップ3",
+        "concept_alignment",
+        "AIの役割と人間の責任",
+        "小さく試すプロトタイプ案",
+        "リスクと配慮",
+        "リフレクションの問い"
+      ],
+      "evidence_policy": {
+        "prefer": [
+          "ai/rag/chunks.jsonl",
+          "metadata/report-sidecars/*.json",
+          "ai/citations.json",
+          "reports/*.md"
+        ],
+        "cite_with": [
+          "report_id",
+          "chunk_id",
+          "evidence_refs",
+          "figure_ids"
+        ],
+        "mark_unsourced_claims_as_inference": true,
+        "human_verification_required": true
+      }
+    },
+    {
+      "id": "implementation-roadmap",
+      "purpose": "授業・研修・企画を実行へ移すために、30日・90日・180日のロードマップと体制・評価・リスクを整理する実装計画支援",
+      "prompt_path": "prompts/implementation-roadmap.md",
+      "read_before_running": [
+        "ai/system-instructions.md",
+        "ai/context-brief.md",
+        "ai/manifest.json",
+        "ai/context-full.md",
+        "ai/rag/chunks.jsonl",
+        "metadata/report-sidecars/*.json",
+        "metadata/reports.json",
+        "prompts/implementation-roadmap.md"
+      ],
+      "input_contract": [],
+      "output_contract": [
+        "実装目的",
+        "関連レポート",
+        "concept_alignment",
+        "30日計画",
+        "90日計画",
+        "180日計画",
+        "必要な体制",
+        "評価指標",
+        "リスクと対策"
+      ],
+      "evidence_policy": {
+        "prefer": [
+          "ai/rag/chunks.jsonl",
+          "metadata/report-sidecars/*.json",
+          "ai/citations.json",
+          "reports/*.md"
+        ],
+        "cite_with": [
+          "report_id",
+          "chunk_id",
+          "evidence_refs",
+          "figure_ids"
+        ],
+        "mark_unsourced_claims_as_inference": true,
+        "human_verification_required": true
+      }
+    },
+    {
+      "id": "cross-report-comparison",
+      "purpose": "指定テーマについて複数レポートを比較し、共通点・差異・相互補完関係・教育実践への示唆を根拠付きで整理する横断比較支援",
+      "prompt_path": "prompts/cross-report-comparison.md",
+      "read_before_running": [
+        "ai/system-instructions.md",
+        "ai/context-brief.md",
+        "ai/manifest.json",
+        "ai/rag/chunks.jsonl",
+        "ai/citations.json",
+        "metadata/report-sidecars/*.json",
+        "metadata/figures.json",
+        "reports/*.md"
+      ],
+      "input_contract": [],
+      "output_contract": [
+        "比較テーマ",
+        "対象レポート",
+        "共通する示唆",
+        "レポートごとの差異",
+        "concept_alignment_comparison",
+        "教育実践への応用",
+        "追加調査が必要な点"
+      ],
+      "evidence_policy": {
+        "prefer": [
+          "ai/rag/chunks.jsonl",
+          "metadata/report-sidecars/*.json",
+          "ai/citations.json",
+          "reports/*.md"
+        ],
+        "cite_with": [
+          "report_id",
+          "chunk_id",
+          "evidence_refs",
+          "figure_ids"
+        ],
+        "mark_unsourced_claims_as_inference": true,
+        "human_verification_required": true
+      }
+    },
+    {
+      "id": "citation-answering",
+      "purpose": "利用者の質問に対して、レポート本文・メタデータ・図表・参考文献を根拠に、出典付きで回答するための根拠確認支援",
+      "prompt_path": "prompts/citation-answering.md",
+      "read_before_running": [
+        "ai/system-instructions.md",
+        "ai/context-brief.md",
+        "ai/manifest.json",
+        "ai/rag/chunks.jsonl",
+        "ai/citations.json",
+        "metadata/report-sidecars/*.json",
+        "metadata/figures.json",
+        "reports/*.md"
+      ],
+      "input_contract": [],
+      "output_contract": [
+        "回答",
+        "根拠",
+        "concept_alignment_relation",
+        "関連図表・参考文献",
+        "推測または未確認事項"
+      ],
+      "evidence_policy": {
+        "prefer": [
+          "ai/rag/chunks.jsonl",
+          "metadata/report-sidecars/*.json",
+          "ai/citations.json",
+          "reports/*.md"
+        ],
+        "cite_with": [
+          "report_id",
+          "chunk_id",
+          "evidence_refs",
+          "figure_ids"
+        ],
+        "mark_unsourced_claims_as_inference": true,
+        "human_verification_required": true
+      }
+    },
+    {
+      "id": "planning-template",
+      "purpose": "授業・研修・企画を始める前に、目的・対象者・AI活用・評価・ロードマップを空欄形式で整理するための計画立案テンプレート",
+      "prompt_path": "prompts/planning-template.md",
+      "read_before_running": [
+        "ai/system-instructions.md",
+        "ai/context-brief.md",
+        "ai/manifest.json",
+        "ai/context-full.md",
+        "ai/rag/chunks.jsonl",
+        "metadata/report-sidecars/*.json",
+        "metadata/concept-schema.json",
+        "prompts/planning-template.md"
+      ],
+      "input_contract": [],
+      "output_contract": [],
+      "evidence_policy": {
+        "prefer": [
+          "ai/rag/chunks.jsonl",
+          "metadata/report-sidecars/*.json",
+          "ai/citations.json",
+          "reports/*.md"
+        ],
+        "cite_with": [
+          "report_id",
+          "chunk_id",
+          "evidence_refs",
+          "figure_ids"
+        ],
+        "mark_unsourced_claims_as_inference": true,
+        "human_verification_required": true
+      }
+    }
+  ]
+}

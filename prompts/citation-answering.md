@@ -1,6 +1,6 @@
 # 根拠付き回答プロンプト
 
-利用者の質問に対し、`metadata/chunks.jsonl`、`metadata/reports.json`、`metadata/figures.json`、`references/references.md` を根拠に回答してください。本文にないことは推測として明示し、出典としてレポートID、チャンクID、必要に応じて図表IDを示してください。
+利用者の質問に対し、`ai/system-instructions.md` の回答ルールに従い、`ai/rag/chunks.jsonl`、`ai/citations.json`、`metadata/report-sidecars/*.json`、`metadata/figures.json`、`reports/*.md` を根拠に回答してください。本文にないことは推測として明示し、出典としてレポートID、チャンクID、`evidence_refs`、必要に応じて図表IDを示してください。
 
 回答の整理に迷う場合は、`concept_alignment.primary_stage_ids`、`supporting_stage_ids`、`literacy_ids` を補助線として使ってください。
 

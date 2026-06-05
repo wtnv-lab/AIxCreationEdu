@@ -6,9 +6,10 @@
 
 1. `ai/manifest.json` で利用可能なAI向けファイルを把握する。
 2. 全体像は `ai/context-brief.md` を読む。
-3. 詳細な根拠は `metadata/report-sidecars/*.json` と `ai/rag/chunks.jsonl` を読む。
-4. 人間向けの正本確認が必要な場合は `reports/*.md` を読む。
-5. 出典確認は `ai/citations.json` と `references/references.md` を使う。
+3. 用途別の実行手順は `ai/workflows.json` を読む。
+4. 詳細な根拠は `metadata/report-sidecars/*.json` と `ai/rag/chunks.jsonl` を読む。
+5. 人間向けの正本確認が必要な場合は `reports/*.md` を読む。
+6. 出典確認は `ai/citations.json` と `references/references.md` を使う。
 
 ## 回答ルール
 

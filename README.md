@@ -38,6 +38,7 @@
 | AIにパッケージ全体を知らせる | [`ai/manifest.json`](ai/manifest.json) | 正本、派生ファイル、sidecar、RAGチャンクの索引 |
 | AIに短い全体像を渡す | [`ai/context-brief.md`](ai/context-brief.md) | 最初に読むプロジェクト概要とレポート一覧 |
 | AIに詳しい全体像を渡す | [`ai/context-full.md`](ai/context-full.md) | レポート別の要旨、示唆、活用場面、実装案 |
+| AIに実行手順を選ばせる | [`ai/workflows.json`](ai/workflows.json) | プロンプト別の必要資料、入力項目、出力項目、根拠ルール |
 | AI読解ツールに全文を渡す | [`ai/notebooklm-source.txt`](ai/notebooklm-source.txt) | レポート本文、プロンプト、メタデータ、参考文献をまとめた単一テキスト |
 | レポート本文を読む、編集する | [`reports/`](reports/) | 各レポートの一次ソース。今後の本文更新はここを直接編集 |
 | 授業案や企画案を生成する | [`prompts/`](prompts/) | 利用目的別のプロンプト例 |
@@ -135,9 +136,10 @@ AIにリポジトリを読ませるときは、資料そのものと依頼文を
 1. 読む順序と回答ルールを指定する場合: [`ai/system-instructions.md`](ai/system-instructions.md)
 2. 全体像だけ必要な場合: [`ai/context-brief.md`](ai/context-brief.md)
 3. レポート群の詳しい要約と用途が必要な場合: [`ai/context-full.md`](ai/context-full.md)
-4. AI読解ツールで全文検索・質問応答をしたい場合: [`ai/notebooklm-source.txt`](ai/notebooklm-source.txt)
-5. RAGや検索システムに組み込む場合: [`ai/rag/chunks.jsonl`](ai/rag/chunks.jsonl)
-6. 出典や図版も扱う場合: [`ai/citations.json`](ai/citations.json)、[`metadata/report-sidecars/`](metadata/report-sidecars/)、[`metadata/figures.json`](metadata/figures.json)
+4. 目的に合うプロンプトと必要資料を選ぶ場合: [`ai/workflows.json`](ai/workflows.json)
+5. AI読解ツールで全文検索・質問応答をしたい場合: [`ai/notebooklm-source.txt`](ai/notebooklm-source.txt)
+6. RAGや検索システムに組み込む場合: [`ai/rag/chunks.jsonl`](ai/rag/chunks.jsonl)
+7. 出典や図版も扱う場合: [`ai/citations.json`](ai/citations.json)、[`metadata/report-sidecars/`](metadata/report-sidecars/)、[`metadata/figures.json`](metadata/figures.json)
 
 次に、目的に近いプロンプトを選びます。
 
@@ -168,6 +170,7 @@ AIには、たとえば次のように指示してください。
 | [`metadata/reports.json`](metadata/reports.json) | レポートID、タイトル、概要、著者、想定読者、テーマ、活用場面などの機械可読索引 |
 | [`metadata/chunks.jsonl`](metadata/chunks.jsonl) | レポート本文を見出し単位に分割した基礎チャンク |
 | [`metadata/report-sidecars/`](metadata/report-sidecars/) | レポート単位のAI用構造化補助。本文正本、節、図版、文献、注意点を結ぶ |
+| [`ai/workflows.json`](ai/workflows.json) | プロンプト別の必要資料、入力項目、出力項目、根拠ルール |
 | [`ai/rag/chunks.jsonl`](ai/rag/chunks.jsonl) | 基礎チャンクに根拠ID、用途、リスク注記を付けたRAG用データ |
 | [`ai/citations.json`](ai/citations.json) | 本文中の文献番号とレポート別参考文献を結ぶ引用索引 |
 | [`metadata/concept-schema.json`](metadata/concept-schema.json) | `concept_alignment` の固定語彙と分類軸 |
@@ -208,7 +211,7 @@ scripts/setup_git_hooks.sh
 - レポート本文は [`reports/`](reports/) 配下の `.md` を直接編集します。
 - プロンプト例は [`prompts/`](prompts/) 配下の `.md` を直接編集します。
 - Wordファイルからレポートを再生成する仕組みは使いません。
-- レポート、参考文献、図版、メタデータを更新したら、`python3 scripts/build_ai_package.py` を実行し、`ai/manifest.json`、`ai/rag/chunks.jsonl`、`metadata/report-sidecars/` に反映してください。
+- レポート、参考文献、図版、メタデータ、プロンプトを更新したら、`python3 scripts/build_ai_package.py` を実行し、`ai/manifest.json`、`ai/workflows.json`、`ai/rag/chunks.jsonl`、`metadata/report-sidecars/` に反映してください。
 - レポートやプロンプトの `.md` を追加・削除したら、`scripts/update_web_manifest.sh` を実行し、`config/web_content.json` に反映してください。
 - READMEやウェブアプリを更新したら、必要に応じて `scripts/update_notebooklm_source.sh` を実行し、`ai/notebooklm-source.txt` に反映してください。
 - 図版やメタデータを追加した場合は、`metadata/figures.json`、`metadata/reports.json`、`metadata/chunks.jsonl`、`metadata/report-sidecars/` との整合を確認してください。

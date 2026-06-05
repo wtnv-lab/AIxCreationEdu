@@ -49,6 +49,7 @@ cat > "$TMP_OUTPUT" <<'HEADER'
 - `ai/manifest.json`: AI向けパッケージ全体の索引
 - `ai/system-instructions.md`: AIが読む順序、回答ルール、引用・推測の扱い
 - `ai/context-brief.md` と `ai/context-full.md`: AI向けの短い概要と詳しい概要
+- `ai/workflows.json`: プロンプト別の必要資料、入力項目、出力項目、根拠ルール
 - `ai/citations.json` と `ai/rag/chunks.jsonl`: 引用索引、根拠付きRAGチャンク
 - `metadata/*.json`、`metadata/chunks.jsonl`、`metadata/report-sidecars/*.json`: レポート索引、概念スキーマ、検索用チャンク、図版メタデータ、用語集、レポート別sidecar
 - `references/*`: 参考文献・関連資料
@@ -83,6 +84,7 @@ python3 -m files_to_prompt \
   ai/system-instructions.md \
   ai/context-brief.md \
   ai/context-full.md \
+  ai/workflows.json \
   ai/citations.json \
   ai/rag \
   ai/llms.txt \
