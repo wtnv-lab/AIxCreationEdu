@@ -25,10 +25,12 @@
 
 ## AI協働ツール
 
-- ChatGPT（OpenAI）: GPT-5.5
-- Gemini（Google）: Gemini 3.1 Pro
-- Codex（OpenAI）: GPT-5.5
-- GitHub Copilot（GitHub）: GPT-5.5
+- 対話型生成AI
+- 長文読解支援AI
+- コード生成支援AI
+- AIペアプログラミング支援ツール
+
+このプロジェクトは日本マイクロソフト株式会社の支援を受けて実施されています。
 
 ## 利用想定
 

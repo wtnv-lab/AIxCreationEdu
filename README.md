@@ -4,7 +4,7 @@
 
 本リポジトリは、東京大学大学院 渡邉英徳研究室と関係者が蓄積してきた、AI・クリエイティブ・教育に関する研究資料、実践記録、参考文献をもとにした公開レポート集です。生成AIが資料群を整理し、著者との対話を通じて論点を編み直し、ヒトが根拠、文脈、表現を確認しながらMarkdown本文として編集しています。
 
-このリポジトリには、二つの入口があります。一つは、ヒトが読むための文章です。`index.html`、`README.md`、`reports/` は、生成AI時代の授業、探究学習、ワークショップ、教育サービス企画を考えるために読みやすく整えています。もう一つは、AIに読み込ませるためのデータパッケージです。`ai/notebooklm-source.txt`、`ai/llms.txt`、`metadata/`、`references/` は、AIエージェント、NotebookLM、RAGが本文、メタデータ、検索用チャンク、出典をたどれるようにまとめています。
+このリポジトリには、二つの入口があります。一つは、ヒトが読むための文章です。`index.html`、`README.md`、`reports/` は、生成AI時代の授業、探究学習、ワークショップ、教育サービス企画を考えるために読みやすく整えています。もう一つは、AIに読み込ませるためのデータパッケージです。`ai/notebooklm-source.txt`、`ai/llms.txt`、`metadata/`、`references/` は、AIエージェント、AI読解ツール、RAGが本文、メタデータ、検索用チャンク、出典をたどれるようにまとめています。
 
 基本的な使い方は、先にヒトが全体像を読み、次にAIへデータパッケージを読み込ませ、そのあと `prompts/` のプロンプトで授業案、研修案、サービス企画、ロードマップを作る流れです。AIの出力は完成品ではなく、本文と参考文献に照らしてヒトが検証し、目的に合わせて編集するためのたたき台として扱います。
 
@@ -16,7 +16,7 @@
 
 1. `index.html` または `README.md` で全体像を読む。
 2. 必要に応じて `reports/` の個別レポートを読み、使いたいテーマを決める。
-3. NotebookLMやChatGPTなどに `ai/notebooklm-source.txt` を読み込ませる。軽く試す場合は `ai/llms.txt` や `ai/llms-full.md` から始める。
+3. AI読解ツールや対話型生成AIに `ai/notebooklm-source.txt` を読み込ませる。軽く試す場合は `ai/llms.txt` や `ai/llms-full.md` から始める。
 4. 目的に近い `prompts/` のプロンプトを貼り付け、学年、教科、対象者、時間数、成果物などの条件を加える。
 5. 出力された授業案、研修案、企画案、ロードマップを、レポート本文、メタデータ、参考文献に照らして確認し、ヒトが編集する。
 
@@ -34,7 +34,7 @@
 | ヒトが全体像を把握する | [`README.md`](README.md) | このリポジトリの目的、構造、利用法、主要リソースの案内 |
 | AIに最初の案内を渡す | [`ai/llms.txt`](ai/llms.txt) | AI向けの短い索引と重要ファイル一覧 |
 | AIにレポート群の要約を渡す | [`ai/llms-full.md`](ai/llms-full.md) | 各レポートの要約、テーマ、利用想定、メタデータの統合版 |
-| NotebookLMなどに全文を渡す | [`ai/notebooklm-source.txt`](ai/notebooklm-source.txt) | レポート本文、プロンプト、メタデータ、参考文献をまとめた単一テキスト |
+| AI読解ツールに全文を渡す | [`ai/notebooklm-source.txt`](ai/notebooklm-source.txt) | レポート本文、プロンプト、メタデータ、参考文献をまとめた単一テキスト |
 | レポート本文を読む、編集する | [`reports/`](reports/) | 各レポートの一次ソース。今後の本文更新はここを直接編集 |
 | 授業案や企画案を生成する | [`prompts/`](prompts/) | 利用目的別のプロンプト例 |
 | RAGや検索に使う | [`metadata/chunks.jsonl`](metadata/chunks.jsonl) | 見出し単位に分割した検索用チャンク |
@@ -43,7 +43,7 @@
 
 | パス | 役割 |
 | --- | --- |
-| [`ai/`](ai/) | AIやNotebookLMに渡す入口ファイル、統合テキスト、AI向け概説 |
+| [`ai/`](ai/) | AIに渡す入口ファイル、統合テキスト、AI向け概説 |
 | [`reports/`](reports/) | レポート本文の一次ソース |
 | [`prompts/`](prompts/) | 授業案、企画案、比較、根拠付き回答などのプロンプト例 |
 | [`web/`](web/) | レポート・プロンプト閲覧アプリのCSSとJavaScript |
@@ -52,7 +52,7 @@
 | [`assets/`](assets/) | 図版・画像などの視覚資料 |
 | [`config/`](config/) | レポート定義、参照情報、補助設定 |
 | [`templates/`](templates/) | レポート作成時のテンプレート |
-| [`scripts/`](scripts/) | NotebookLM向け単一テキストなどの更新スクリプト |
+| [`scripts/`](scripts/) | AI読解ツール向け単一テキストなどの更新スクリプト |
 | [`.githooks/`](.githooks/) | 自動更新用のGitフック |
 | [`requirements/`](requirements/) | AI向け生成処理に必要な依存関係 |
 
@@ -60,14 +60,14 @@
 
 ヒトの読者は、次の用途で使えます。
 
-- [`index.html`](index.html) からレポートを読み、必要なプロンプトやGitHub上のソース一式へ移動する。
+- [`index.html`](index.html) からレポートを読み、必要なプロンプトや公開リポジトリ上のソース一式へ移動する。
 - 生成AIが教育、創造性、平和学習、情報リテラシー、デジタルアーカイブ、未来構想に与える影響を横断的に理解する。
 - 授業、探究学習、ワークショップ、教員研修、教育サービス企画の論点整理に使う。
 - 総括レポートから読み始め、関心に近い個別レポートへ進む。
 
 AIやRAGでは、次の用途で使えます。
 
-- NotebookLMやChatGPTに読み込ませ、レポートに根拠を置いた授業案、企画案、比較表、ロードマップを作る。
+- AI読解ツールや対話型生成AIに読み込ませ、レポートに根拠を置いた授業案、企画案、比較表、ロードマップを作る。
 - `metadata/chunks.jsonl`、`metadata/reports.json`、`metadata/concept-schema.json` を使って、検索、RAG、AIエージェント向けの知識ベースを組む。
 - `prompts/` のプロンプトを使い、出典付き回答、授業案、サービス企画、アイデア発想を行う。
 - 回答時に、本文、メタデータ、参考文献のどこに根拠があるかを確認する。
@@ -89,7 +89,7 @@ AIやRAGでは、次の用途で使えます。
 
 ## プロンプト例
 
-各プロンプトは [`prompts/`](prompts/) にあります。NotebookLMやChatGPTなどに `ai/notebooklm-source.txt`、`ai/llms.txt`、`metadata/`、`reports/` を読み込ませたうえで、目的に近いプロンプトを貼り付けて使ってください。
+各プロンプトは [`prompts/`](prompts/) にあります。AI読解ツールや対話型生成AIに `ai/notebooklm-source.txt`、`ai/llms.txt`、`metadata/`、`reports/` を読み込ませたうえで、目的に近いプロンプトを貼り付けて使ってください。
 
 | プロンプト | 用途 |
 | --- | --- |
@@ -105,7 +105,7 @@ AIやRAGでは、次の用途で使えます。
 
 ## ウェブアプリで読む
 
-[`index.html`](index.html) は、ヒトの読者がレポートとプロンプトを読みやすい順序でたどるための静的な閲覧アプリです。トップページでは、研究・実践リソースを生成AIとの対話で編集した資料群であることを説明し、概念図、レポート、プロンプト、GitHub上のソース一式へ案内します。プロンプトは、先にリポジトリ全体または [`ai/notebooklm-source.txt`](ai/notebooklm-source.txt) をAIに提供したうえで使う流れにしています。
+[`index.html`](index.html) は、ヒトの読者がレポートとプロンプトを読みやすい順序でたどるための静的な閲覧アプリです。トップページでは、研究・実践リソースを生成AIとの対話で編集した資料群であることを説明し、概念図、レポート、プロンプト、公開リポジトリ上のソース一式へ案内します。プロンプトは、先にリポジトリ全体または [`ai/notebooklm-source.txt`](ai/notebooklm-source.txt) をAIに提供したうえで使う流れにしています。
 
 ローカルで確認する場合は、ブラウザのセキュリティ制約を避けるためHTTPサーバ経由で開いてください。
 
@@ -129,7 +129,7 @@ AIにリポジトリを読ませるときは、資料そのものと依頼文を
 
 1. 全体像だけ必要な場合: [`ai/llms.txt`](ai/llms.txt)
 2. レポート群の要約とテーマも必要な場合: [`ai/llms-full.md`](ai/llms-full.md)
-3. NotebookLMなどで全文検索・質問応答をしたい場合: [`ai/notebooklm-source.txt`](ai/notebooklm-source.txt)
+3. AI読解ツールで全文検索・質問応答をしたい場合: [`ai/notebooklm-source.txt`](ai/notebooklm-source.txt)
 4. RAGや検索システムに組み込む場合: [`metadata/chunks.jsonl`](metadata/chunks.jsonl)
 5. 出典や図版も扱う場合: [`references/references.md`](references/references.md)、[`metadata/figures.json`](metadata/figures.json)
 
@@ -167,11 +167,11 @@ AIには、たとえば次のように指示してください。
 | [`references/references.md`](references/references.md) | レポート別の参考文献・関連資料 |
 | [`references/references.bib`](references/references.bib) | BibTeX形式の参考文献 |
 
-## NotebookLM向け単一テキスト
+## AI読解ツール向け単一テキスト
 
-[`ai/notebooklm-source.txt`](ai/notebooklm-source.txt) は、NotebookLMなどにリポジトリ全体を読み込ませるための単一テキストです。画像、動画、PDF、`.git`、生成ファイル自身を除外し、レポート本文、プロンプト、メタデータ、参考文献をまとめています。
+[`ai/notebooklm-source.txt`](ai/notebooklm-source.txt) は、AI読解ツールにリポジトリ全体を読み込ませるための単一テキストです。画像、動画、PDF、`.git`、生成ファイル自身を除外し、レポート本文、プロンプト、メタデータ、参考文献をまとめています。
 
-NotebookLMが内容を見つけやすいよう、生成時には次のルールを維持します。
+AI読解ツールが内容を見つけやすいよう、生成時には次のルールを維持します。
 
 - 冒頭に、このファイルの目的と読み方を説明する。
 - `reports/` のレポート本文を前方に配置する。
@@ -223,7 +223,9 @@ scripts/setup_git_hooks.sh
 
 ### AI協働ツール
 
-- ChatGPT（OpenAI）: GPT-5.5
-- Gemini（Google）: Gemini 3.1 Pro
-- Codex（OpenAI）: GPT-5.5
-- GitHub Copilot（GitHub）: GPT-5.5
+- 対話型生成AI
+- 長文読解支援AI
+- コード生成支援AI
+- AIペアプログラミング支援ツール
+
+このプロジェクトは日本マイクロソフト株式会社の支援を受けて実施されています。

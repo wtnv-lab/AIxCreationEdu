@@ -31,26 +31,19 @@
     ],
     "ai_collaborators": [
       {
-        "name": "ChatGPT",
-        "version": "GPT-5.5",
-        "provider": "OpenAI"
+        "name": "対話型生成AI"
       },
       {
-        "name": "Gemini",
-        "version": "Gemini 3.1 Pro",
-        "provider": "Google"
+        "name": "長文読解支援AI"
       },
       {
-        "name": "Codex",
-        "version": "GPT-5.5",
-        "provider": "OpenAI"
+        "name": "コード生成支援AI"
       },
       {
-        "name": "GitHub Copilot",
-        "version": "GPT-5.5",
-        "provider": "GitHub"
+        "name": "AIペアプログラミング支援ツール"
       }
-    ]
+    ],
+    "support_statement": "このプロジェクトは日本マイクロソフト株式会社の支援を受けて実施されています。"
   },
   "reports": [
     {

@@ -547,7 +547,7 @@ function renderHome() {
       <h2>AIに読み込ませて使う流れ</h2>
       <ol>
         <li>まずレポート本文で全体像と使いたいテーマを確認する。</li>
-        <li><a href="ai/notebooklm-source.txt" target="_blank" rel="noopener">AI向けデータパッケージ</a>をNotebookLMやChatGPTなどに読み込ませる。</li>
+        <li><a href="ai/notebooklm-source.txt" target="_blank" rel="noopener">AI向けデータパッケージ</a>をAI読解ツールや対話型生成AIに読み込ませる。</li>
         <li>目的に近い<a href="#prompts%2Flesson-plan-generation.md">プロンプト</a>を選び、対象者、時間数、成果物などの条件を加える。</li>
         <li>出力された授業案、研修案、企画案を、本文と参考文献に照らしてヒトが検証・編集する。</li>
       </ol>
@@ -566,6 +566,7 @@ function renderHome() {
       <p>全体像をつかむ場合は<a href="#reports%2F00-overview.md">「AIとクリエイティブと教育 総括レポート」</a>から読むと、各レポートの位置づけが分かりやすくなります。授業や研修を作る場合は、関心に近いレポートを確認し、AIに<a href="ai/notebooklm-source.txt" target="_blank" rel="noopener">資料一式</a>を読み込ませてから<a href="#prompts%2Flesson-plan-generation.md">プロンプト</a>を使ってください。</p>
     </section>
     ${renderProjectAuthors()}
+    ${renderSupportStatement()}
   `;
 }
 
@@ -589,6 +590,17 @@ function renderAuthorGroup(group) {
       <ul>
         ${members.map((member) => `<li>${renderInline(member, "README.md")}</li>`).join("")}
       </ul>
+    </section>
+  `;
+}
+
+function renderSupportStatement() {
+  const statement = state.project.support_statement;
+  if (!statement) return "";
+
+  return `
+    <section class="support-section">
+      <p>${escapeHtml(statement)}</p>
     </section>
   `;
 }
@@ -624,7 +636,7 @@ function renderPromptSnippet(text, item) {
       <p>このプロンプトは、AIがこの資料集の内容を参照できる状態で使うためのものです。先にリポジトリ全体、または単一テキストファイルをAIに提供してください。</p>
       <div class="prompt-source-actions">
         <a href="ai/notebooklm-source.txt" target="_blank" rel="noopener">単一テキストを開く</a>
-        <a href="${escapeAttr(githubUrl)}" target="_blank" rel="noopener">GitHubリポジトリを開く</a>
+        <a href="${escapeAttr(githubUrl)}" target="_blank" rel="noopener">公開リポジトリを開く</a>
       </div>
     </section>
     <section class="snippet-panel">

@@ -32,26 +32,19 @@
     ],
     "ai_collaborators": [
       {
-        "name": "ChatGPT",
-        "version": "GPT-5.5",
-        "provider": "OpenAI"
+        "name": "対話型生成AI"
       },
       {
-        "name": "Gemini",
-        "version": "Gemini 3.1 Pro",
-        "provider": "Google"
+        "name": "長文読解支援AI"
       },
       {
-        "name": "Codex",
-        "version": "GPT-5.5",
-        "provider": "OpenAI"
+        "name": "コード生成支援AI"
       },
       {
-        "name": "GitHub Copilot",
-        "version": "GPT-5.5",
-        "provider": "GitHub"
+        "name": "AIペアプログラミング支援ツール"
       }
-    ]
+    ],
+    "support_statement": "このプロジェクトは日本マイクロソフト株式会社の支援を受けて実施されています。"
   },
   "source_roots": [
     "reports",
@@ -65,7 +58,7 @@
       "title": "AIとクリエイティブと教育 総括レポート",
       "path": "reports/00-overview.md",
       "summary": "生成AI時代の教育を、問い・資料読解・制作・検証・社会発信をつなぐ創造性教育として整理。",
-      "last_updated": "2026-05-31",
+      "last_updated": "2026-06-05",
       "authors": [
         "渡邉英徳"
       ],

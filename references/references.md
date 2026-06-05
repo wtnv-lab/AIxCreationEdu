@@ -2,13 +2,12 @@
 
 ## AIとクリエイティブと教育 総括レポート
 
-1. [00-overview-ref-01] GitHub. 2022. Research: quantifying GitHub Copilot’s impact on developer productivity and happiness. GitHub Blog. Retrieved May 27, 2026 from https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/
-2. [00-overview-ref-02] Bellingcat. n.d. Online Open Source Investigation Toolkit. Bellingcat. Retrieved May 27, 2026 from https://bellingcat.gitbook.io/toolkit
-3. [00-overview-ref-03] UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students
-4. [00-overview-ref-04] UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum
-5. [00-overview-ref-05] UNESCO. n.d. Media and Information Literacy. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/media-information-literacy
-6. [00-overview-ref-06] 東京大学大学院情報学環・学際情報学府. 2025. Hack-1グランプリ2025 開催レポート. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/research/20250725report
-7. [00-overview-ref-07] 日テレ共創ラボ. 2026. 日テレ クリエイティブメディアハッカソン開催レポート. Retrieved May 27, 2026 from https://lab.ntvhd.co.jp/topics/2026/04/post-24.html
+1. [00-overview-ref-01] Bellingcat. n.d. Online Open Source Investigation Toolkit. Bellingcat. Retrieved May 27, 2026 from https://bellingcat.gitbook.io/toolkit
+2. [00-overview-ref-02] UNESCO. 2024. AI Competency Framework for Students. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/articles/ai-competency-framework-students
+3. [00-overview-ref-03] UNESCO. n.d. Media and Information Literacy Curriculum for Teachers and Learners. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/mil4teachers/en/curriculum
+4. [00-overview-ref-04] UNESCO. n.d. Media and Information Literacy. UNESCO. Retrieved May 27, 2026 from https://www.unesco.org/en/media-information-literacy
+5. [00-overview-ref-05] 東京大学大学院情報学環・学際情報学府. 2025. Hack-1グランプリ2025 開催レポート. Retrieved May 27, 2026 from https://www.iii.u-tokyo.ac.jp/research/20250725report
+6. [00-overview-ref-06] 日テレ共創ラボ. 2026. 日テレ クリエイティブメディアハッカソン開催レポート. Retrieved May 27, 2026 from https://lab.ntvhd.co.jp/topics/2026/04/post-24.html
 
 ## AIと情報可視化・OSINT教育
 
@@ -155,12 +154,3 @@ AIとクリエイティブと教育を検討するために、ウェブ調査に
    - 用途: 生成AIの教授・学習実践研究を俯瞰し、実装前の論点整理に役立つレビュー。
 5. [bellingcat-toolkit] Bellingcat. n.d. Online Open Source Investigation Toolkit. Retrieved May 27, 2026 from https://bellingcat.gitbook.io/toolkit
    - 用途: OSINT教育で使える画像・動画検証、地理情報、ウェブアーカイブ等の実践的ツール集。
-
-## AI協働ツールの最新版確認
-
-1. [openai-gpt-5-5] OpenAI. 2026. Introducing GPT-5.5. Retrieved May 27, 2026 from https://openai.com/index/introducing-gpt-5-5/
-   - 用途: ChatGPTおよびCodexにおけるGPT-5.5の利用可能性確認に使用。
-2. [google-gemini-3-1-pro] Google. 2026. Gemini 3.1 Pro: A smarter model for your most complex tasks. Retrieved May 27, 2026 from https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro
-   - 用途: Geminiの最新版表記確認に使用。
-3. [github-copilot-gpt-5-5] GitHub. 2026. GPT-5.5 is generally available for GitHub Copilot. GitHub Changelog. Retrieved May 27, 2026 from https://github.blog/changelog/2026-04-24-gpt-5-5-is-generally-available-for-github-copilot/
-   - 用途: GitHub CopilotにおけるGPT-5.5の利用可能性確認に使用。

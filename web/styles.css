@@ -781,6 +781,18 @@ body[data-section="reports"] .markdown-body p {
   padding-left: 1.25em;
 }
 
+.support-section {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.support-section p {
+  margin: 0;
+}
+
 .code-body {
   max-width: 1100px;
 }
