@@ -2,7 +2,7 @@
   "schema": "aice.web_content.v1",
   "project": {
     "title": "AIとクリエイティブと教育",
-    "description": "ヒトとAIに扱いやすい公開レポート集",
+    "description": "生成AI時代の創造性教育プロジェクト",
     "version": "1.0.0",
     "date": "2026-05-27",
     "license": "CC BY 4.0",

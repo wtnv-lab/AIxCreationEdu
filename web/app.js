@@ -1,11 +1,11 @@
-const manifestPath = "config/web_content.json?v=20260605-data-package-guide";
+const manifestPath = "config/web_content.json?v=20260605-home-structure";
 const homeHash = "home";
 const githubUrl = "https://github.com/wtnv-lab/AIxCreationEdu";
 const siteUrl = "https://wtnv-lab.github.io/AIxCreationEdu/";
 const defaultOgImage = `${siteUrl}assets/og-image.png`;
 const defaultOgImageAlt = "AIとクリエイティブと教育の概念図";
 const fallbackDescription =
-  "東京大学大学院 渡邉英徳研究室と関係者の実践・研究リソースをもとに、生成AI時代の創造性教育をヒトとAIに扱いやすいかたちで提供する公開レポート集";
+  "AIとクリエイティブと教育は、生成AI時代の創造性教育を、問い・資料読解・制作・検証・社会発信から捉えるプロジェクトです。";
 
 const state = {
   items: [],
@@ -410,7 +410,7 @@ function resetMenuScroll() {
 
 function updatePageMetadata(item = null) {
   const projectTitle = state.project.title || "AIとクリエイティブと教育";
-  const projectDescription = state.project.description || "ヒトとAIに扱いやすい公開レポート集";
+  const projectDescription = state.project.description || "生成AI時代の創造性教育プロジェクト";
   const isItemPage = Boolean(item);
   const title = isItemPage ? `${item.title} | ${projectTitle}` : `${projectTitle} | ${projectDescription}`;
   const description = trimMetaDescription(isItemPage ? item.summary || item.purpose || fallbackDescription : fallbackDescription);
@@ -527,35 +527,36 @@ function setCanonical(url) {
 }
 
 function renderHome() {
-  const description =
-    state.project.description ||
-    "ヒトとAIに扱いやすい公開レポート集";
-  const homeSubtitle = description.replace(/。$/, "");
   const reportCount = state.items.filter((item) => item.section === "reports").length;
   const promptCount = state.items.filter((item) => item.section === "prompts").length;
 
   return `
     <section class="home-intro">
-      <blockquote class="lead"><p>${escapeHtml(homeSubtitle)}</p></blockquote>
-      <p class="purpose-text">このサイトは、東京大学大学院 渡邉英徳研究室と関係者の実践・研究リソースから生まれたレポートとプロンプトを、ヒトとAIに扱いやすいかたちで提供する公開レポート集です。ヒトには読みやすい文章として、AIには本文・メタデータ・検索用チャンク・参考文献をまとめたデータパッケージとして使えるようにしています。各レポートは、研究資料や実践記録を生成AIが整理し、著者が根拠・文脈・表現を確認しながら編集しています。</p>
+      <h2>プロジェクト概要</h2>
+      <p class="lead">「AIとクリエイティブと教育」は、生成AI時代の創造性教育を、問いを立て、資料を読み解き、制作し、検証し、社会へ届ける学びとして捉え直すプロジェクトです。</p>
+      <p class="purpose-text">東京大学大学院 渡邉英徳研究室と関係者の実践・研究リソースを横断し、情報可視化、平和教育、デジタルシティズンシップ、学生ハッカソン、デジタルアーカイブ、SFプロトタイピング、ゲームベース学習などの事例から、AIとともに考え、つくり、確かめる教育のあり方を整理しています。</p>
+    </section>
+    <figure class="home-figure">
+      <img src="assets/00-overview/project-concept-map.svg" alt="AIとクリエイティブと教育の概念図">
+      <figcaption>AIとクリエイティブと教育の概念図</figcaption>
+    </figure>
+    <section>
+      <h2>ヒトとAIのために公開する資料</h2>
+      <p>このサイトでは、プロジェクトの成果を、ヒトが読みやすい文章と、AIに渡しやすいデータパッケージの二つの入口で公開しています。ヒト向けには総括レポートと個別レポートを、AI向けには本文・メタデータ・検索用チャンク・参考文献をまとめた資料を用意しています。各レポートは、研究資料や実践記録を生成AIが整理し、著者が根拠・文脈・表現を確認しながら編集したものです。</p>
     </section>
     <figure class="home-figure">
       <img src="assets/00-overview/data-package-flow.svg" alt="ヒト向けの文章とAI向けデータパッケージの使い方">
       <figcaption>ヒト向けの文章とAI向けデータパッケージの使い方</figcaption>
     </figure>
     <section>
-      <h2>AIに読み込ませて使う流れ</h2>
+      <h2>使い方の流れ</h2>
       <ol>
-        <li>まずレポート本文で全体像と使いたいテーマを確認する。</li>
+        <li>まず総括レポートと個別レポートで、全体像と使いたいテーマを確認する。</li>
         <li><a href="ai/notebooklm-source.txt" target="_blank" rel="noopener">AI向けデータパッケージ</a>をAI読解ツールや対話型生成AIに読み込ませる。</li>
         <li>目的に近い<a href="#prompts%2Flesson-plan-generation.md">プロンプト</a>を選び、対象者、時間数、成果物などの条件を加える。</li>
         <li>出力された授業案、研修案、企画案を、本文と参考文献に照らしてヒトが検証・編集する。</li>
       </ol>
     </section>
-    <figure class="home-figure">
-      <img src="assets/00-overview/project-concept-map.svg" alt="AIとクリエイティブと教育の概念図">
-      <figcaption>AIとクリエイティブと教育の概念図</figcaption>
-    </figure>
     <section class="corner-grid" aria-label="資料の入口">
       ${renderCornerCard("レポート", `${reportCount}件`, "実践と研究の資料をもとに、AI時代の教育を読み解く本文を整理しています。", "reports")}
       ${renderCornerCard("プロンプト", `${promptCount}件`, "資料一式をAIに渡したあと、授業案、研修案、企画づくりに使えます。", "prompts")}
