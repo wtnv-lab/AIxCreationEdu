@@ -107,14 +107,18 @@
       "path": "assets/02-photo-colorization-peace-education/the-day-color-returned.png",
       "caption": "写真集「あの日に色がさすとき」表紙",
       "alt": "写真集「あの日に色がさすとき」の表紙",
-      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+      "license_status": "needs_rights_review",
+      "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。"
     },
     {
       "id": "02-presentation-scene",
       "path": "assets/02-photo-colorization-peace-education/presentation-scene.jpg",
       "caption": "長崎東高校の生徒による発表風景",
       "alt": "長崎東高校の生徒による発表風景",
-      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+      "license_status": "needs_rights_review",
+      "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。"
     }
   ],
   "references": [
@@ -191,6 +195,6 @@
   "risk_notes": [
     "このsidecarはAI用の構造化補助であり、本文の正本はsource_mdにある。",
     "引用番号はsource_md内の参考文献登場順に対応する。",
-    "図版を説明するときはfigures.pathだけでなくalt/caption/license_noteも確認する。"
+    "図版を説明するときはfigures.pathだけでなくalt/caption/license_note/license_status/reuse_policyも確認する。"
   ]
 }

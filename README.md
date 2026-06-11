@@ -175,7 +175,7 @@ AIには、たとえば次のように指示してください。
 | [`ai/citations.json`](ai/citations.json) | 本文中の文献番号とレポート別参考文献を結ぶ引用索引 |
 | [`metadata/concept-schema.json`](metadata/concept-schema.json) | `concept_alignment` の固定語彙と分類軸 |
 | [`metadata/glossary.json`](metadata/glossary.json) | 用語の揺れを抑えるための用語集 |
-| [`metadata/figures.json`](metadata/figures.json) | 図版のキャプション、代替テキスト、出典メモ |
+| [`metadata/figures.json`](metadata/figures.json) | 図版のキャプション、代替テキスト、出典メモ、再利用条件 |
 | [`references/references.md`](references/references.md) | レポート別の参考文献・関連資料 |
 | [`references/references.bib`](references/references.bib) | BibTeX形式の参考文献 |
 
@@ -198,6 +198,7 @@ python3 -m pip install --user -r requirements/ai.txt
 python3 scripts/build_ai_package.py
 scripts/update_web_manifest.sh
 scripts/update_notebooklm_source.sh
+python3 scripts/validate_repository.py
 ```
 
 このリポジトリでは Git フックを `.githooks/` に置いています。次のコマンドを一度実行すると、コミット前、マージ後、ブランチ切り替え後に `config/web_content.json`、`ai/` 配下のAI向け構造化ファイル、`metadata/report-sidecars/`、`ai/notebooklm-source.txt` が自動更新されます。
@@ -215,10 +216,13 @@ scripts/setup_git_hooks.sh
 - レポートやプロンプトの `.md` を追加・削除したら、`scripts/update_web_manifest.sh` を実行し、`config/web_content.json` に反映してください。
 - READMEやウェブアプリを更新したら、必要に応じて `scripts/update_notebooklm_source.sh` を実行し、`ai/notebooklm-source.txt` に反映してください。
 - 図版やメタデータを追加した場合は、`metadata/figures.json`、`metadata/reports.json`、`metadata/chunks.jsonl`、`metadata/report-sidecars/` との整合を確認してください。
+- 公開前に `python3 scripts/validate_repository.py` を実行し、JSON、リンク、概念ID、図版権利メタデータ、AI向け単一テキストの同期を確認してください。
 
 ## ライセンス
 
 本文とメタデータは、特記がない限り `CC BY 4.0` で公開します。利用時は著者・出典を表示してください。
+
+図版・画像アセットは [`metadata/figures.json`](metadata/figures.json) の `license_status` と `reuse_policy` を確認してください。`license_status` が `needs_rights_review` のものは、リポジトリ内での表示用であり、二次利用・再配布前にプロジェクト管理者による権利確認が必要です。
 
 ## 著者・クレジット
 

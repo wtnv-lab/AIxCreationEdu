@@ -3052,6 +3052,304 @@ metadata/concept-schema.json
       "label": "公共性と社会的責任"
     }
   ],
+  "ai_roles": [
+    {
+      "id": "agent_assistance",
+      "label": "AIエージェント支援"
+    },
+    {
+      "id": "alternative_generation",
+      "label": "代替案生成"
+    },
+    {
+      "id": "case_material",
+      "label": "ケース教材"
+    },
+    {
+      "id": "co_inquiry",
+      "label": "共同探究"
+    },
+    {
+      "id": "code_generation",
+      "label": "コード生成"
+    },
+    {
+      "id": "colorization_probe",
+      "label": "カラー化を通じた探索"
+    },
+    {
+      "id": "comparison",
+      "label": "比較支援"
+    },
+    {
+      "id": "critique",
+      "label": "批評支援"
+    },
+    {
+      "id": "debugging_support",
+      "label": "デバッグ支援"
+    },
+    {
+      "id": "dialogue_support",
+      "label": "対話支援"
+    },
+    {
+      "id": "drafting",
+      "label": "草案作成"
+    },
+    {
+      "id": "editorial_support",
+      "label": "編集支援"
+    },
+    {
+      "id": "hypothesis_comparison",
+      "label": "仮説比較"
+    },
+    {
+      "id": "idea_expansion",
+      "label": "発想拡張"
+    },
+    {
+      "id": "ideation_support",
+      "label": "アイデア創出支援"
+    },
+    {
+      "id": "inference_check",
+      "label": "推論チェック"
+    },
+    {
+      "id": "interpretation_prompt",
+      "label": "解釈を促す問い"
+    },
+    {
+      "id": "knowledge_navigator",
+      "label": "知識ナビゲーション"
+    },
+    {
+      "id": "material_recomposition",
+      "label": "資料再構成"
+    },
+    {
+      "id": "observation_verbalization",
+      "label": "観察の言語化"
+    },
+    {
+      "id": "pitch_support",
+      "label": "発表支援"
+    },
+    {
+      "id": "prototyping_support",
+      "label": "プロトタイピング支援"
+    },
+    {
+      "id": "reflection_partner",
+      "label": "振り返り相手"
+    },
+    {
+      "id": "risk_prompt",
+      "label": "リスク検討を促す問い"
+    },
+    {
+      "id": "scenario_generation",
+      "label": "シナリオ生成"
+    },
+    {
+      "id": "search_support",
+      "label": "検索支援"
+    },
+    {
+      "id": "story_generation",
+      "label": "物語生成"
+    },
+    {
+      "id": "summarization",
+      "label": "要約"
+    },
+    {
+      "id": "ui_drafting",
+      "label": "UI草案作成"
+    },
+    {
+      "id": "worldbuilding",
+      "label": "世界観構築"
+    },
+    {
+      "id": "worldbuilding_support",
+      "label": "世界づくり支援"
+    }
+  ],
+  "human_responsibilities": [
+    {
+      "id": "ai_output_review",
+      "label": "AI出力のレビュー"
+    },
+    {
+      "id": "bias_check",
+      "label": "バイアス確認"
+    },
+    {
+      "id": "community_dialogue",
+      "label": "地域・当事者との対話"
+    },
+    {
+      "id": "consensus_building",
+      "label": "合意形成"
+    },
+    {
+      "id": "curation_judgment",
+      "label": "キュレーション判断"
+    },
+    {
+      "id": "ethical_editing",
+      "label": "倫理的編集"
+    },
+    {
+      "id": "evidence_transparency",
+      "label": "根拠の透明化"
+    },
+    {
+      "id": "evidence_uncertainty_handling",
+      "label": "根拠と不確実性の扱い"
+    },
+    {
+      "id": "explanatory_accountability",
+      "label": "説明責任"
+    },
+    {
+      "id": "future_assumption_critique",
+      "label": "未来前提の批判"
+    },
+    {
+      "id": "guideline_design",
+      "label": "ガイドライン設計"
+    },
+    {
+      "id": "impact_assessment",
+      "label": "影響評価"
+    },
+    {
+      "id": "knowledge_reediting",
+      "label": "知識の再編集"
+    },
+    {
+      "id": "memory_ethics",
+      "label": "記憶継承の倫理"
+    },
+    {
+      "id": "observation_inference_separation",
+      "label": "観察と推論の分離"
+    },
+    {
+      "id": "output_verification",
+      "label": "出力検証"
+    },
+    {
+      "id": "primary_source_verification",
+      "label": "一次資料確認"
+    },
+    {
+      "id": "problem_selection",
+      "label": "課題選定"
+    },
+    {
+      "id": "prototype_review",
+      "label": "プロトタイプレビュー"
+    },
+    {
+      "id": "public_accountability",
+      "label": "公開時の責任"
+    },
+    {
+      "id": "public_reframing",
+      "label": "公共的な再文脈化"
+    },
+    {
+      "id": "question_design",
+      "label": "問いの設計"
+    },
+    {
+      "id": "reconstruction_judgment",
+      "label": "再構成の判断"
+    },
+    {
+      "id": "responsible_representation",
+      "label": "責任ある表現"
+    },
+    {
+      "id": "rights_privacy_review",
+      "label": "権利・プライバシー確認"
+    },
+    {
+      "id": "scenario_revision",
+      "label": "シナリオ修正"
+    },
+    {
+      "id": "source_context_check",
+      "label": "出典と文脈の確認"
+    },
+    {
+      "id": "source_selection",
+      "label": "資料選択"
+    },
+    {
+      "id": "source_verification",
+      "label": "出典検証"
+    },
+    {
+      "id": "testimony_crosscheck",
+      "label": "証言との照合"
+    },
+    {
+      "id": "transparent_ai_use",
+      "label": "AI利用の透明化"
+    },
+    {
+      "id": "uncertainty_disclosure",
+      "label": "不確実性の明示"
+    },
+    {
+      "id": "user_value_judgment",
+      "label": "利用者価値の判断"
+    },
+    {
+      "id": "value_judgment",
+      "label": "価値判断"
+    }
+  ],
+  "domain_tags": [
+    "ai_literacy",
+    "backcasting",
+    "concept_map",
+    "creativity_education",
+    "data_visualization",
+    "digital_archive",
+    "digital_citizenship",
+    "educational_materials",
+    "future_scenarios",
+    "game_based_learning",
+    "gis",
+    "hackathon",
+    "historical_photos",
+    "implementation_democratization",
+    "knowledge_experience",
+    "media_literacy",
+    "memory_inheritance",
+    "minecraft_education",
+    "osint",
+    "overview",
+    "peace_education",
+    "photo_colorization",
+    "primary_sources",
+    "production_to_conception_shift",
+    "prototyping",
+    "public_information",
+    "publicness",
+    "regional_learning",
+    "sf_prototyping",
+    "student_projects",
+    "sukilam",
+    "workshop"
+  ],
   "concept_alignment_fields": [
     "schema",
     "primary_stage_ids",
@@ -3076,6 +3374,8 @@ metadata/figures.json
     "caption": "AIとクリエイティブと教育の概念図",
     "source": "ユーザー提供SVG gemini-svg (1).svg",
     "license_note": "CC BY 4.0",
+    "license_status": "cc_by_4_0",
+    "reuse_policy": "CC BY 4.0として再利用できる。利用時はプロジェクト名と出典を表示する。",
     "related_sections": [
       "AIとクリエイティブと教育 総括レポート"
     ]
@@ -3088,6 +3388,8 @@ metadata/figures.json
     "caption": "ヒト向けの文章とAI向けデータパッケージの使い方",
     "source": "本リポジトリで作成したSVG",
     "license_note": "CC BY 4.0",
+    "license_status": "cc_by_4_0",
+    "reuse_policy": "CC BY 4.0として再利用できる。利用時はプロジェクト名と出典を表示する。",
     "related_sections": [
       "AIとクリエイティブと教育 総括レポート",
       "README"
@@ -3101,6 +3403,8 @@ metadata/figures.json
     "caption": "GIS・データ可視化を用いた学生作品例",
     "source": "ユーザー提供画像 GIS.jpg",
     "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+    "license_status": "needs_rights_review",
+    "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。",
     "related_sections": [
       "AIと情報可視化・OSINT教育"
     ]
@@ -3113,6 +3417,8 @@ metadata/figures.json
     "caption": "写真集「あの日に色がさすとき」表紙",
     "source": "ユーザー提供資料から抽出",
     "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+    "license_status": "needs_rights_review",
+    "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。",
     "related_sections": [
       "AIによるモノクロ写真カラー化を活かした高校生の平和教育実践"
     ]
@@ -3125,6 +3431,8 @@ metadata/figures.json
     "caption": "長崎東高校の生徒による発表風景",
     "source": "ユーザー提供資料から抽出",
     "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+    "license_status": "needs_rights_review",
+    "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。",
     "related_sections": [
       "AI時代の平和教育に向けて"
     ]
@@ -3137,6 +3445,8 @@ metadata/figures.json
     "caption": "AI時代のデジタルシティズンシップ教育：禁止・管理から主体的な参加へ",
     "source": "ユーザー提供画像 AI時代のデジタルシティズンシップ教育.png から変換",
     "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+    "license_status": "needs_rights_review",
+    "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。",
     "related_sections": [
       "AIを活かしたデジタルシティズンシップ教育"
     ]
@@ -3149,6 +3459,8 @@ metadata/figures.json
     "caption": "生成AI時代のハッカソン教育における重心の移動",
     "source": "ユーザー提供画像 fig_hackathon_shift.svg",
     "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+    "license_status": "needs_rights_review",
+    "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。",
     "related_sections": [
       "AI時代の学生ハッカソン：実装の民主化と発想力への転換"
     ]
@@ -3161,6 +3473,8 @@ metadata/figures.json
     "caption": "Hack-1グランプリ2026 最終発表会の様子",
     "source": "ユーザー提供画像 hack1-2026-demoday.png",
     "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+    "license_status": "needs_rights_review",
+    "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。",
     "related_sections": [
       "AI時代の学生ハッカソン：実装の民主化と発想力への転換"
     ]
@@ -3173,6 +3487,8 @@ metadata/figures.json
     "caption": "S×UKILAMワークショップのコンセプト：多様な資料から教材を共創する",
     "source": "ユーザー提供画像 図1.png",
     "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+    "license_status": "needs_rights_review",
+    "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。",
     "related_sections": [
       "デジタルアーカイブとAIを活かした教育実践"
     ]
@@ -3185,6 +3501,8 @@ metadata/figures.json
     "caption": "S×UKILAM連携における「人」と「データ」のネットワーク",
     "source": "ユーザー提供画像 図2.png",
     "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+    "license_status": "needs_rights_review",
+    "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。",
     "related_sections": [
       "デジタルアーカイブとAIを活かした教育実践"
     ]
@@ -3197,6 +3515,8 @@ metadata/figures.json
     "caption": "生成AIを用いたSFプロトタイピング・ワークショップのイメージ",
     "source": "GitHub user attachment c14ef5d1-48fa-40f0-ab21-a040edf064f7 から変換",
     "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+    "license_status": "needs_rights_review",
+    "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。",
     "related_sections": [
       "生成AIを用いたSFプロトタイピング"
     ]
@@ -3209,6 +3529,8 @@ metadata/figures.json
     "caption": "生成AI支援SFプロトタイピングのプロセス",
     "source": "GitHub user attachment 2e3ebe3e-2625-42fd-8116-8b1d9930142f から変換",
     "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+    "license_status": "needs_rights_review",
+    "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。",
     "related_sections": [
       "生成AIを用いたSFプロトタイピング"
     ]
@@ -3221,6 +3543,8 @@ metadata/figures.json
     "caption": "長崎のMinecraftワールド",
     "source": "ユーザー提供画像 長崎のマインクラフトワールド.png から変換",
     "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+    "license_status": "needs_rights_review",
+    "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。",
     "related_sections": [
       "AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ"
     ]
@@ -3233,6 +3557,8 @@ metadata/figures.json
     "caption": "子どもたちによるMinecraftワークの様子",
     "source": "ユーザー提供画像 子どもたちのワーク.jpg から変換",
     "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+    "license_status": "needs_rights_review",
+    "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。",
     "related_sections": [
       "AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ"
     ]
@@ -4238,14 +4564,18 @@ metadata/report-sidecars/00-overview.json
       "path": "assets/00-overview/project-concept-map.svg",
       "caption": "AIとクリエイティブと教育の概念図",
       "alt": "制作技能の習熟から構想・編集・社会的責任へ教育の焦点が移り、AIと伴走する探究・制作プロセスと基盤リテラシーによって支えられる構造を示す概念図",
-      "license_note": "CC BY 4.0"
+      "license_note": "CC BY 4.0",
+      "license_status": "cc_by_4_0",
+      "reuse_policy": "CC BY 4.0として再利用できる。利用時はプロジェクト名と出典を表示する。"
     },
     {
       "id": "00-data-package-flow",
       "path": "assets/00-overview/data-package-flow.svg",
       "caption": "ヒト向けの文章とAI向けデータパッケージの使い方",
       "alt": "ヒト向けの文章とAI向けデータパッケージを分け、AIに読み込ませた後にプロンプトで計画化し、ヒトが検証・編集する流れを示す図",
-      "license_note": "CC BY 4.0"
+      "license_note": "CC BY 4.0",
+      "license_status": "cc_by_4_0",
+      "reuse_policy": "CC BY 4.0として再利用できる。利用時はプロジェクト名と出典を表示する。"
     }
   ],
   "references": [
@@ -4346,7 +4676,7 @@ metadata/report-sidecars/00-overview.json
   "risk_notes": [
     "このsidecarはAI用の構造化補助であり、本文の正本はsource_mdにある。",
     "引用番号はsource_md内の参考文献登場順に対応する。",
-    "図版を説明するときはfigures.pathだけでなくalt/caption/license_noteも確認する。"
+    "図版を説明するときはfigures.pathだけでなくalt/caption/license_note/license_status/reuse_policyも確認する。"
   ]
 }
 
@@ -4464,7 +4794,9 @@ metadata/report-sidecars/01-information-visualization-osint.json
       "path": "assets/01-information-visualization-osint/gis-education-examples.jpg",
       "caption": "GIS・データ可視化を用いた学生作品例",
       "alt": "GIS・データ可視化を用いた学生作品例のコラージュ",
-      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+      "license_status": "needs_rights_review",
+      "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。"
     }
   ],
   "references": [
@@ -4603,7 +4935,7 @@ metadata/report-sidecars/01-information-visualization-osint.json
   "risk_notes": [
     "このsidecarはAI用の構造化補助であり、本文の正本はsource_mdにある。",
     "引用番号はsource_md内の参考文献登場順に対応する。",
-    "図版を説明するときはfigures.pathだけでなくalt/caption/license_noteも確認する。"
+    "図版を説明するときはfigures.pathだけでなくalt/caption/license_note/license_status/reuse_policyも確認する。"
   ]
 }
 
@@ -4720,14 +5052,18 @@ metadata/report-sidecars/02-photo-colorization-peace-education.json
       "path": "assets/02-photo-colorization-peace-education/the-day-color-returned.png",
       "caption": "写真集「あの日に色がさすとき」表紙",
       "alt": "写真集「あの日に色がさすとき」の表紙",
-      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+      "license_status": "needs_rights_review",
+      "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。"
     },
     {
       "id": "02-presentation-scene",
       "path": "assets/02-photo-colorization-peace-education/presentation-scene.jpg",
       "caption": "長崎東高校の生徒による発表風景",
       "alt": "長崎東高校の生徒による発表風景",
-      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+      "license_status": "needs_rights_review",
+      "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。"
     }
   ],
   "references": [
@@ -4804,7 +5140,7 @@ metadata/report-sidecars/02-photo-colorization-peace-education.json
   "risk_notes": [
     "このsidecarはAI用の構造化補助であり、本文の正本はsource_mdにある。",
     "引用番号はsource_md内の参考文献登場順に対応する。",
-    "図版を説明するときはfigures.pathだけでなくalt/caption/license_noteも確認する。"
+    "図版を説明するときはfigures.pathだけでなくalt/caption/license_note/license_status/reuse_policyも確認する。"
   ]
 }
 
@@ -4922,7 +5258,9 @@ metadata/report-sidecars/03-digital-citizenship.json
       "path": "assets/03-digital-citizenship/ai-digital-citizenship-participation.jpg",
       "caption": "AI時代のデジタルシティズンシップ教育：禁止・管理から主体的な参加へ",
       "alt": "AI時代のデジタルシティズンシップ教育における禁止から主体的な参加への転換、AIとの協働、知識循環を示す図",
-      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+      "license_status": "needs_rights_review",
+      "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。"
     }
   ],
   "references": [
@@ -4998,7 +5336,7 @@ metadata/report-sidecars/03-digital-citizenship.json
   "risk_notes": [
     "このsidecarはAI用の構造化補助であり、本文の正本はsource_mdにある。",
     "引用番号はsource_md内の参考文献登場順に対応する。",
-    "図版を説明するときはfigures.pathだけでなくalt/caption/license_noteも確認する。"
+    "図版を説明するときはfigures.pathだけでなくalt/caption/license_note/license_status/reuse_policyも確認する。"
   ]
 }
 
@@ -5116,14 +5454,18 @@ metadata/report-sidecars/04-student-hackathon.json
       "path": "assets/04-student-hackathon/fig_hackathon_shift.svg",
       "caption": "生成AI時代のハッカソン教育における重心の移動",
       "alt": "生成AI時代のハッカソン教育における重心の移動を示す概念図",
-      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+      "license_status": "needs_rights_review",
+      "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。"
     },
     {
       "id": "04-hack1-2026-demoday",
       "path": "assets/04-student-hackathon/hack1-2026-demoday.png",
       "caption": "Hack-1グランプリ2026 最終発表会の様子",
       "alt": "Hack-1グランプリ2026最終発表会のピッチ、ブース展示、プロトタイプ展示の様子",
-      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+      "license_status": "needs_rights_review",
+      "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。"
     }
   ],
   "references": [
@@ -5228,7 +5570,7 @@ metadata/report-sidecars/04-student-hackathon.json
   "risk_notes": [
     "このsidecarはAI用の構造化補助であり、本文の正本はsource_mdにある。",
     "引用番号はsource_md内の参考文献登場順に対応する。",
-    "図版を説明するときはfigures.pathだけでなくalt/caption/license_noteも確認する。"
+    "図版を説明するときはfigures.pathだけでなくalt/caption/license_note/license_status/reuse_policyも確認する。"
   ]
 }
 
@@ -5345,14 +5687,18 @@ metadata/report-sidecars/05-digital-archive-ai.json
       "path": "assets/05-digital-archive-ai/sukilam-workshop.png",
       "caption": "S×UKILAMワークショップのコンセプト：多様な資料から教材を共創する",
       "alt": "S×UKILAMワークショップのコンセプトを示す教室写真ベースの図版",
-      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+      "license_status": "needs_rights_review",
+      "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。"
     },
     {
       "id": "05-sukilam-network",
       "path": "assets/05-digital-archive-ai/sukilam-network.png",
       "caption": "S×UKILAM連携における「人」と「データ」のネットワーク",
       "alt": "S×UKILAM連携における人とデータのネットワーク構造を示す図",
-      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+      "license_status": "needs_rights_review",
+      "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。"
     }
   ],
   "references": [
@@ -5429,7 +5775,7 @@ metadata/report-sidecars/05-digital-archive-ai.json
   "risk_notes": [
     "このsidecarはAI用の構造化補助であり、本文の正本はsource_mdにある。",
     "引用番号はsource_md内の参考文献登場順に対応する。",
-    "図版を説明するときはfigures.pathだけでなくalt/caption/license_noteも確認する。"
+    "図版を説明するときはfigures.pathだけでなくalt/caption/license_note/license_status/reuse_policyも確認する。"
   ]
 }
 
@@ -5546,14 +5892,18 @@ metadata/report-sidecars/06-sf-prototyping.json
       "path": "assets/06-sf-prototyping/workshop-hero.jpg",
       "caption": "生成AIを用いたSFプロトタイピング・ワークショップのイメージ",
       "alt": "生成AIを用いたSFプロトタイピング・ワークショップのイメージ",
-      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+      "license_status": "needs_rights_review",
+      "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。"
     },
     {
       "id": "06-workshop-process",
       "path": "assets/06-sf-prototyping/workshop-process.jpg",
       "caption": "生成AI支援SFプロトタイピングのプロセス",
       "alt": "生成AI支援SFプロトタイピングのプロセス",
-      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+      "license_status": "needs_rights_review",
+      "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。"
     }
   ],
   "references": [
@@ -5644,7 +5994,7 @@ metadata/report-sidecars/06-sf-prototyping.json
   "risk_notes": [
     "このsidecarはAI用の構造化補助であり、本文の正本はsource_mdにある。",
     "引用番号はsource_md内の参考文献登場順に対応する。",
-    "図版を説明するときはfigures.pathだけでなくalt/caption/license_noteも確認する。"
+    "図版を説明するときはfigures.pathだけでなくalt/caption/license_note/license_status/reuse_policyも確認する。"
   ]
 }
 
@@ -5767,14 +6117,18 @@ metadata/report-sidecars/07-minecraft-ai-education.json
       "path": "assets/07-minecraft-ai-education/nagasaki-minecraft-world.jpg",
       "caption": "長崎のMinecraftワールド",
       "alt": "長崎のMinecraftワールドの俯瞰図",
-      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+      "license_status": "needs_rights_review",
+      "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。"
     },
     {
       "id": "07-children-work",
       "path": "assets/07-minecraft-ai-education/children-work.jpg",
       "caption": "子どもたちによるMinecraftワークの様子",
       "alt": "子どもたちがMinecraftを用いたワークに取り組む様子",
-      "license_note": "出典・利用条件はプロジェクト管理者が確認する。"
+      "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+      "license_status": "needs_rights_review",
+      "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。"
     }
   ],
   "references": [
@@ -5900,7 +6254,7 @@ metadata/report-sidecars/07-minecraft-ai-education.json
   "risk_notes": [
     "このsidecarはAI用の構造化補助であり、本文の正本はsource_mdにある。",
     "引用番号はsource_md内の参考文献登場順に対応する。",
-    "図版を説明するときはfigures.pathだけでなくalt/caption/license_noteも確認する。"
+    "図版を説明するときはfigures.pathだけでなくalt/caption/license_note/license_status/reuse_policyも確認する。"
   ]
 }
 
@@ -6717,7 +7071,7 @@ AIには、たとえば次のように指示してください。
 | [`ai/citations.json`](ai/citations.json) | 本文中の文献番号とレポート別参考文献を結ぶ引用索引 |
 | [`metadata/concept-schema.json`](metadata/concept-schema.json) | `concept_alignment` の固定語彙と分類軸 |
 | [`metadata/glossary.json`](metadata/glossary.json) | 用語の揺れを抑えるための用語集 |
-| [`metadata/figures.json`](metadata/figures.json) | 図版のキャプション、代替テキスト、出典メモ |
+| [`metadata/figures.json`](metadata/figures.json) | 図版のキャプション、代替テキスト、出典メモ、再利用条件 |
 | [`references/references.md`](references/references.md) | レポート別の参考文献・関連資料 |
 | [`references/references.bib`](references/references.bib) | BibTeX形式の参考文献 |
 
@@ -6740,6 +7094,7 @@ python3 -m pip install --user -r requirements/ai.txt
 python3 scripts/build_ai_package.py
 scripts/update_web_manifest.sh
 scripts/update_notebooklm_source.sh
+python3 scripts/validate_repository.py
 ```
 
 このリポジトリでは Git フックを `.githooks/` に置いています。次のコマンドを一度実行すると、コミット前、マージ後、ブランチ切り替え後に `config/web_content.json`、`ai/` 配下のAI向け構造化ファイル、`metadata/report-sidecars/`、`ai/notebooklm-source.txt` が自動更新されます。
@@ -6757,10 +7112,13 @@ scripts/setup_git_hooks.sh
 - レポートやプロンプトの `.md` を追加・削除したら、`scripts/update_web_manifest.sh` を実行し、`config/web_content.json` に反映してください。
 - READMEやウェブアプリを更新したら、必要に応じて `scripts/update_notebooklm_source.sh` を実行し、`ai/notebooklm-source.txt` に反映してください。
 - 図版やメタデータを追加した場合は、`metadata/figures.json`、`metadata/reports.json`、`metadata/chunks.jsonl`、`metadata/report-sidecars/` との整合を確認してください。
+- 公開前に `python3 scripts/validate_repository.py` を実行し、JSON、リンク、概念ID、図版権利メタデータ、AI向け単一テキストの同期を確認してください。
 
 ## ライセンス
 
 本文とメタデータは、特記がない限り `CC BY 4.0` で公開します。利用時は著者・出典を表示してください。
+
+図版・画像アセットは [`metadata/figures.json`](metadata/figures.json) の `license_status` と `reuse_policy` を確認してください。`license_status` が `needs_rights_review` のものは、リポジトリ内での表示用であり、二次利用・再配布前にプロジェクト管理者による権利確認が必要です。
 
 ## 著者・クレジット
 
@@ -6928,7 +7286,7 @@ ai/system-instructions.md
 - 本文・メタデータ・参考文献にないことは、推測として明示する。
 - 授業案、研修案、サービス企画を出す場合は、根拠にした `report_id` と `evidence_refs` を示す。
 - AI出力を完成版として扱わず、人間による検証・編集が必要であることを前提にする。
-- 図版について述べる場合は、画像パスだけでなく `metadata/figures.json` の `alt`、`caption`、`license_note` を確認する。
+- 図版について述べる場合は、画像パスだけでなく `metadata/figures.json` の `alt`、`caption`、`license_note`、`license_status`、`reuse_policy` を確認する。
 - プロジェクト概要ではAIサービスの商品名を出さず、必要な場合は「対話型生成AI」「AI読解ツール」「コード生成支援AI」などの一般名詞で述べる。
 - レポート本文・参考文献に含まれる固有名詞は、出典や事例の正確性に関わるため、一般化せず出典として扱う。
 
@@ -10487,6 +10845,8 @@ def build_sidecar(
                 "caption": figure.get("caption", ""),
                 "alt": figure.get("alt", ""),
                 "license_note": figure.get("license_note", ""),
+                "license_status": figure.get("license_status", ""),
+                "reuse_policy": figure.get("reuse_policy", ""),
             }
             for figure in report_figures
         ],
@@ -10509,7 +10869,7 @@ def build_sidecar(
         "risk_notes": [
             "このsidecarはAI用の構造化補助であり、本文の正本はsource_mdにある。",
             "引用番号はsource_md内の参考文献登場順に対応する。",
-            "図版を説明するときはfigures.pathだけでなくalt/caption/license_noteも確認する。",
+            "図版を説明するときはfigures.pathだけでなくalt/caption/license_note/license_status/reuse_policyも確認する。",
         ],
     }
 
@@ -10723,7 +11083,7 @@ def build_system_instructions(project: dict[str, Any]) -> str:
 - 本文・メタデータ・参考文献にないことは、推測として明示する。
 - 授業案、研修案、サービス企画を出す場合は、根拠にした `report_id` と `evidence_refs` を示す。
 - AI出力を完成版として扱わず、人間による検証・編集が必要であることを前提にする。
-- 図版について述べる場合は、画像パスだけでなく `metadata/figures.json` の `alt`、`caption`、`license_note` を確認する。
+- 図版について述べる場合は、画像パスだけでなく `metadata/figures.json` の `alt`、`caption`、`license_note`、`license_status`、`reuse_policy` を確認する。
 - プロジェクト概要ではAIサービスの商品名を出さず、必要な場合は「対話型生成AI」「AI読解ツール」「コード生成支援AI」などの一般名詞で述べる。
 - レポート本文・参考文献に含まれる固有名詞は、出典や事例の正確性に関わるため、一般化せず出典として扱う。
 
@@ -11122,6 +11482,277 @@ chmod 0644 "$OUTPUT"
 
 
 ---
+scripts/validate_repository.py
+---
+#!/usr/bin/env python3
+"""Validate repository structure and AI-facing metadata consistency."""
+
+from __future__ import annotations
+
+import json
+import re
+import sys
+import urllib.parse
+from pathlib import Path
+from typing import Any
+
+
+ROOT = Path(__file__).resolve().parents[1]
+ALLOWED_LICENSE_STATUSES = {
+    "cc_by_4_0",
+    "needs_rights_review",
+    "permission_granted",
+    "external_citation_only",
+}
+
+errors: list[str] = []
+warnings: list[str] = []
+
+
+def rel(path: Path) -> str:
+    try:
+        return path.relative_to(ROOT).as_posix()
+    except ValueError:
+        return path.as_posix()
+
+
+def error(message: str) -> None:
+    errors.append(message)
+
+
+def warn(message: str) -> None:
+    warnings.append(message)
+
+
+def load_json(path: str) -> Any:
+    with (ROOT / path).open(encoding="utf-8") as fp:
+        return json.load(fp)
+
+
+def load_jsonl(path: str) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    file_path = ROOT / path
+    with file_path.open(encoding="utf-8") as fp:
+        for line_number, line in enumerate(fp, start=1):
+            stripped = line.strip()
+            if not stripped:
+                continue
+            try:
+                row = json.loads(stripped)
+            except json.JSONDecodeError as exc:
+                error(f"{path}:{line_number}: invalid JSONL: {exc}")
+                continue
+            if not isinstance(row, dict):
+                error(f"{path}:{line_number}: JSONL row must be an object")
+                continue
+            rows.append(row)
+    return rows
+
+
+def validate_json_files() -> None:
+    for path in sorted(ROOT.rglob("*.json")):
+        if ".git" in path.parts:
+            continue
+        try:
+            json.loads(path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            error(f"{rel(path)}: invalid JSON: {exc}")
+
+
+def validate_existing_paths(
+    reports: list[dict[str, Any]],
+    prompts: list[dict[str, Any]],
+    figures: list[dict[str, Any]],
+) -> None:
+    for report in reports:
+        path = report.get("output_md")
+        if not path or not (ROOT / path).is_file():
+            error(f"Report {report.get('id', '<unknown>')} points to missing output_md: {path}")
+
+    for prompt in prompts:
+        path = prompt.get("path")
+        if not path or not (ROOT / path).is_file():
+            error(f"Prompt {prompt.get('id', '<unknown>')} points to missing path: {path}")
+
+    for figure in figures:
+        path = figure.get("path")
+        if not path or not (ROOT / path).is_file():
+            error(f"Figure {figure.get('id', '<unknown>')} points to missing path: {path}")
+
+
+def validate_markdown_links() -> None:
+    link_pattern = re.compile(r"!\[[^\]]*]\(([^)]+)\)|(?<!!)\[[^\]]+]\(([^)]+)\)")
+    for path in sorted(ROOT.rglob("*.md")):
+        if ".git" in path.parts:
+            continue
+        text = path.read_text(encoding="utf-8")
+        for match in link_pattern.finditer(text):
+            href = (match.group(1) or match.group(2)).strip().strip("<>")
+            if re.match(r"^(https?:|mailto:|tel:|#)", href):
+                continue
+            href = href.split("#", 1)[0].split("?", 1)[0]
+            if not href:
+                continue
+            target = (path.parent / urllib.parse.unquote(href)).resolve()
+            try:
+                target.relative_to(ROOT)
+            except ValueError:
+                continue
+            if not target.exists():
+                error(f"{rel(path)} links to missing local target: {href}")
+
+
+def unique_values(items: list[dict[str, Any]], key: str, label: str) -> None:
+    seen: set[str] = set()
+    for item in items:
+        value = str(item.get(key, "")).strip()
+        if not value:
+            error(f"{label} entry is missing {key}")
+            continue
+        if value in seen:
+            error(f"Duplicate {label} {key}: {value}")
+        seen.add(value)
+
+
+def validate_figures(figures: list[dict[str, Any]]) -> None:
+    unique_values(figures, "id", "figure")
+    required = ["id", "report_id", "path", "alt", "caption", "source", "license_note", "license_status", "reuse_policy"]
+    for figure in figures:
+        figure_id = figure.get("id", "<unknown>")
+        for key in required:
+            if not str(figure.get(key, "")).strip():
+                error(f"Figure {figure_id} is missing {key}")
+        status = figure.get("license_status")
+        if status not in ALLOWED_LICENSE_STATUSES:
+            error(f"Figure {figure_id} has unknown license_status: {status}")
+        if status == "needs_rights_review":
+            warn(f"Figure {figure_id} still needs rights review before secondary reuse")
+
+
+def validate_report_indexes(reports_config: dict[str, Any], metadata_reports: list[dict[str, Any]]) -> None:
+    reports = reports_config.get("reports", [])
+    config_ids = [report.get("id") for report in reports]
+    metadata_ids = [report.get("id") for report in metadata_reports]
+    if config_ids != metadata_ids:
+        error("metadata/reports.json report order or IDs differ from config/reports.json")
+    if reports != metadata_reports:
+        error("metadata/reports.json is not synchronized with config/reports.json reports")
+
+
+def validate_concept_alignment(reports: list[dict[str, Any]], schema: dict[str, Any]) -> None:
+    process_ids = {item["id"] for item in schema.get("process_stages", [])}
+    literacy_ids = {item["id"] for item in schema.get("literacies", [])}
+    ai_role_ids = {item["id"] for item in schema.get("ai_roles", [])}
+    responsibility_ids = {item["id"] for item in schema.get("human_responsibilities", [])}
+    domain_tags = set(schema.get("domain_tags", []))
+
+    for report in reports:
+        report_id = report.get("id", "<unknown>")
+        alignment = report.get("concept_alignment") or {}
+        for key in ["primary_stage_ids", "supporting_stage_ids"]:
+            for value in alignment.get(key, []):
+                if value not in process_ids:
+                    error(f"{report_id}: unknown {key} value: {value}")
+        for value in alignment.get("literacy_ids", []):
+            if value not in literacy_ids:
+                error(f"{report_id}: unknown literacy_ids value: {value}")
+        for value in alignment.get("ai_role_ids", []):
+            if value not in ai_role_ids:
+                error(f"{report_id}: unknown ai_role_ids value: {value}")
+        for value in alignment.get("human_responsibility_ids", []):
+            if value not in responsibility_ids:
+                error(f"{report_id}: unknown human_responsibility_ids value: {value}")
+        for value in alignment.get("domain_tags", []):
+            if value not in domain_tags:
+                error(f"{report_id}: unknown domain_tags value: {value}")
+
+
+def validate_chunks(path: str, report_ids: set[str]) -> None:
+    required = ["id", "report_id", "title", "section", "text"]
+    for row in load_jsonl(path):
+        chunk_id = row.get("id", "<unknown>")
+        for key in required:
+            if not str(row.get(key, "")).strip():
+                error(f"{path}: chunk {chunk_id} is missing {key}")
+        if row.get("report_id") not in report_ids:
+            error(f"{path}: chunk {chunk_id} has unknown report_id: {row.get('report_id')}")
+        source = row.get("source") or row.get("source_md")
+        if not source:
+            error(f"{path}: chunk {chunk_id} is missing source/source_md")
+        elif not (ROOT / source).exists():
+            error(f"{path}: chunk {chunk_id} points to missing source: {source}")
+
+
+def validate_ai_package(reports: list[dict[str, Any]]) -> None:
+    manifest = load_json("ai/manifest.json")
+    manifest_ids = [report.get("id") for report in manifest.get("reports", [])]
+    report_ids = [report.get("id") for report in reports]
+    if manifest_ids != report_ids:
+        error("ai/manifest.json report IDs differ from config/reports.json")
+
+    for report in reports:
+        report_id = report["id"]
+        sidecar_path = ROOT / "metadata" / "report-sidecars" / f"{report_id}.json"
+        if not sidecar_path.is_file():
+            error(f"Missing sidecar for report: {report_id}")
+            continue
+        sidecar = json.loads(sidecar_path.read_text(encoding="utf-8"))
+        if sidecar.get("source_md") != report.get("output_md"):
+            error(f"Sidecar {rel(sidecar_path)} has stale source_md")
+        for figure in sidecar.get("figures", []):
+            if not figure.get("license_status") or not figure.get("reuse_policy"):
+                error(f"Sidecar {rel(sidecar_path)} figure {figure.get('id')} lacks reuse metadata")
+
+    source_text = (ROOT / "ai" / "notebooklm-source.txt").read_text(encoding="utf-8")
+    web_prefix = (ROOT / "web" / "app.js").read_text(encoding="utf-8")[:240]
+    if f"web/app.js\n---\n{web_prefix}" not in source_text:
+        error("ai/notebooklm-source.txt does not contain the current web/app.js content")
+    for required_path in [
+        "ai/manifest.json",
+        "ai/system-instructions.md",
+        "ai/rag/chunks.jsonl",
+        "metadata/report-sidecars/00-overview.json",
+    ]:
+        if required_path not in source_text:
+            error(f"ai/notebooklm-source.txt is missing {required_path}")
+
+
+def main() -> int:
+    validate_json_files()
+
+    reports_config = load_json("config/reports.json")
+    prompts_config = load_json("config/prompts.json")
+    metadata_reports = load_json("metadata/reports.json")
+    figures = load_json("metadata/figures.json")
+    schema = load_json("metadata/concept-schema.json")
+    reports = reports_config.get("reports", [])
+    prompts = prompts_config.get("prompts", [])
+    report_ids = {report["id"] for report in reports}
+
+    validate_existing_paths(reports, prompts, figures)
+    validate_markdown_links()
+    validate_figures(figures)
+    validate_report_indexes(reports_config, metadata_reports)
+    validate_concept_alignment(reports, schema)
+    validate_chunks("metadata/chunks.jsonl", report_ids)
+    validate_chunks("ai/rag/chunks.jsonl", report_ids)
+    validate_ai_package(reports)
+
+    for message in warnings:
+        print(f"WARNING: {message}", file=sys.stderr)
+    if errors:
+        for message in errors:
+            print(f"ERROR: {message}", file=sys.stderr)
+        return 1
+    print("Repository validation passed.")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+
+
+---
 .githooks/post-checkout
 ---
 #!/usr/bin/env bash
@@ -11161,6 +11792,7 @@ cd "$ROOT"
 python3 scripts/build_ai_package.py
 scripts/update_web_manifest.sh
 scripts/update_notebooklm_source.sh
+python3 scripts/validate_repository.py
 git add \
   ai/manifest.json \
   ai/system-instructions.md \

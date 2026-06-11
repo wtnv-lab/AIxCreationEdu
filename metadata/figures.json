@@ -7,6 +7,8 @@
     "caption": "AIとクリエイティブと教育の概念図",
     "source": "ユーザー提供SVG gemini-svg (1).svg",
     "license_note": "CC BY 4.0",
+    "license_status": "cc_by_4_0",
+    "reuse_policy": "CC BY 4.0として再利用できる。利用時はプロジェクト名と出典を表示する。",
     "related_sections": [
       "AIとクリエイティブと教育 総括レポート"
     ]
@@ -19,6 +21,8 @@
     "caption": "ヒト向けの文章とAI向けデータパッケージの使い方",
     "source": "本リポジトリで作成したSVG",
     "license_note": "CC BY 4.0",
+    "license_status": "cc_by_4_0",
+    "reuse_policy": "CC BY 4.0として再利用できる。利用時はプロジェクト名と出典を表示する。",
     "related_sections": [
       "AIとクリエイティブと教育 総括レポート",
       "README"
@@ -32,6 +36,8 @@
     "caption": "GIS・データ可視化を用いた学生作品例",
     "source": "ユーザー提供画像 GIS.jpg",
     "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+    "license_status": "needs_rights_review",
+    "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。",
     "related_sections": [
       "AIと情報可視化・OSINT教育"
     ]
@@ -44,6 +50,8 @@
     "caption": "写真集「あの日に色がさすとき」表紙",
     "source": "ユーザー提供資料から抽出",
     "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+    "license_status": "needs_rights_review",
+    "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。",
     "related_sections": [
       "AIによるモノクロ写真カラー化を活かした高校生の平和教育実践"
     ]
@@ -56,6 +64,8 @@
     "caption": "長崎東高校の生徒による発表風景",
     "source": "ユーザー提供資料から抽出",
     "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+    "license_status": "needs_rights_review",
+    "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。",
     "related_sections": [
       "AI時代の平和教育に向けて"
     ]
@@ -68,6 +78,8 @@
     "caption": "AI時代のデジタルシティズンシップ教育：禁止・管理から主体的な参加へ",
     "source": "ユーザー提供画像 AI時代のデジタルシティズンシップ教育.png から変換",
     "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+    "license_status": "needs_rights_review",
+    "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。",
     "related_sections": [
       "AIを活かしたデジタルシティズンシップ教育"
     ]
@@ -80,6 +92,8 @@
     "caption": "生成AI時代のハッカソン教育における重心の移動",
     "source": "ユーザー提供画像 fig_hackathon_shift.svg",
     "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+    "license_status": "needs_rights_review",
+    "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。",
     "related_sections": [
       "AI時代の学生ハッカソン：実装の民主化と発想力への転換"
     ]
@@ -92,6 +106,8 @@
     "caption": "Hack-1グランプリ2026 最終発表会の様子",
     "source": "ユーザー提供画像 hack1-2026-demoday.png",
     "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+    "license_status": "needs_rights_review",
+    "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。",
     "related_sections": [
       "AI時代の学生ハッカソン：実装の民主化と発想力への転換"
     ]
@@ -104,6 +120,8 @@
     "caption": "S×UKILAMワークショップのコンセプト：多様な資料から教材を共創する",
     "source": "ユーザー提供画像 図1.png",
     "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+    "license_status": "needs_rights_review",
+    "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。",
     "related_sections": [
       "デジタルアーカイブとAIを活かした教育実践"
     ]
@@ -116,6 +134,8 @@
     "caption": "S×UKILAM連携における「人」と「データ」のネットワーク",
     "source": "ユーザー提供画像 図2.png",
     "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+    "license_status": "needs_rights_review",
+    "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。",
     "related_sections": [
       "デジタルアーカイブとAIを活かした教育実践"
     ]
@@ -128,6 +148,8 @@
     "caption": "生成AIを用いたSFプロトタイピング・ワークショップのイメージ",
     "source": "GitHub user attachment c14ef5d1-48fa-40f0-ab21-a040edf064f7 から変換",
     "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+    "license_status": "needs_rights_review",
+    "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。",
     "related_sections": [
       "生成AIを用いたSFプロトタイピング"
     ]
@@ -140,6 +162,8 @@
     "caption": "生成AI支援SFプロトタイピングのプロセス",
     "source": "GitHub user attachment 2e3ebe3e-2625-42fd-8116-8b1d9930142f から変換",
     "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+    "license_status": "needs_rights_review",
+    "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。",
     "related_sections": [
       "生成AIを用いたSFプロトタイピング"
     ]
@@ -152,6 +176,8 @@
     "caption": "長崎のMinecraftワールド",
     "source": "ユーザー提供画像 長崎のマインクラフトワールド.png から変換",
     "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+    "license_status": "needs_rights_review",
+    "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。",
     "related_sections": [
       "AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ"
     ]
@@ -164,6 +190,8 @@
     "caption": "子どもたちによるMinecraftワークの様子",
     "source": "ユーザー提供画像 子どもたちのワーク.jpg から変換",
     "license_note": "出典・利用条件はプロジェクト管理者が確認する。",
+    "license_status": "needs_rights_review",
+    "reuse_policy": "リポジトリ内での表示用。二次利用・再配布前にプロジェクト管理者による権利確認が必要。",
     "related_sections": [
       "AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ"
     ]

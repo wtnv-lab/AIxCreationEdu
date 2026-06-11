@@ -41,6 +41,304 @@
       "label": "公共性と社会的責任"
     }
   ],
+  "ai_roles": [
+    {
+      "id": "agent_assistance",
+      "label": "AIエージェント支援"
+    },
+    {
+      "id": "alternative_generation",
+      "label": "代替案生成"
+    },
+    {
+      "id": "case_material",
+      "label": "ケース教材"
+    },
+    {
+      "id": "co_inquiry",
+      "label": "共同探究"
+    },
+    {
+      "id": "code_generation",
+      "label": "コード生成"
+    },
+    {
+      "id": "colorization_probe",
+      "label": "カラー化を通じた探索"
+    },
+    {
+      "id": "comparison",
+      "label": "比較支援"
+    },
+    {
+      "id": "critique",
+      "label": "批評支援"
+    },
+    {
+      "id": "debugging_support",
+      "label": "デバッグ支援"
+    },
+    {
+      "id": "dialogue_support",
+      "label": "対話支援"
+    },
+    {
+      "id": "drafting",
+      "label": "草案作成"
+    },
+    {
+      "id": "editorial_support",
+      "label": "編集支援"
+    },
+    {
+      "id": "hypothesis_comparison",
+      "label": "仮説比較"
+    },
+    {
+      "id": "idea_expansion",
+      "label": "発想拡張"
+    },
+    {
+      "id": "ideation_support",
+      "label": "アイデア創出支援"
+    },
+    {
+      "id": "inference_check",
+      "label": "推論チェック"
+    },
+    {
+      "id": "interpretation_prompt",
+      "label": "解釈を促す問い"
+    },
+    {
+      "id": "knowledge_navigator",
+      "label": "知識ナビゲーション"
+    },
+    {
+      "id": "material_recomposition",
+      "label": "資料再構成"
+    },
+    {
+      "id": "observation_verbalization",
+      "label": "観察の言語化"
+    },
+    {
+      "id": "pitch_support",
+      "label": "発表支援"
+    },
+    {
+      "id": "prototyping_support",
+      "label": "プロトタイピング支援"
+    },
+    {
+      "id": "reflection_partner",
+      "label": "振り返り相手"
+    },
+    {
+      "id": "risk_prompt",
+      "label": "リスク検討を促す問い"
+    },
+    {
+      "id": "scenario_generation",
+      "label": "シナリオ生成"
+    },
+    {
+      "id": "search_support",
+      "label": "検索支援"
+    },
+    {
+      "id": "story_generation",
+      "label": "物語生成"
+    },
+    {
+      "id": "summarization",
+      "label": "要約"
+    },
+    {
+      "id": "ui_drafting",
+      "label": "UI草案作成"
+    },
+    {
+      "id": "worldbuilding",
+      "label": "世界観構築"
+    },
+    {
+      "id": "worldbuilding_support",
+      "label": "世界づくり支援"
+    }
+  ],
+  "human_responsibilities": [
+    {
+      "id": "ai_output_review",
+      "label": "AI出力のレビュー"
+    },
+    {
+      "id": "bias_check",
+      "label": "バイアス確認"
+    },
+    {
+      "id": "community_dialogue",
+      "label": "地域・当事者との対話"
+    },
+    {
+      "id": "consensus_building",
+      "label": "合意形成"
+    },
+    {
+      "id": "curation_judgment",
+      "label": "キュレーション判断"
+    },
+    {
+      "id": "ethical_editing",
+      "label": "倫理的編集"
+    },
+    {
+      "id": "evidence_transparency",
+      "label": "根拠の透明化"
+    },
+    {
+      "id": "evidence_uncertainty_handling",
+      "label": "根拠と不確実性の扱い"
+    },
+    {
+      "id": "explanatory_accountability",
+      "label": "説明責任"
+    },
+    {
+      "id": "future_assumption_critique",
+      "label": "未来前提の批判"
+    },
+    {
+      "id": "guideline_design",
+      "label": "ガイドライン設計"
+    },
+    {
+      "id": "impact_assessment",
+      "label": "影響評価"
+    },
+    {
+      "id": "knowledge_reediting",
+      "label": "知識の再編集"
+    },
+    {
+      "id": "memory_ethics",
+      "label": "記憶継承の倫理"
+    },
+    {
+      "id": "observation_inference_separation",
+      "label": "観察と推論の分離"
+    },
+    {
+      "id": "output_verification",
+      "label": "出力検証"
+    },
+    {
+      "id": "primary_source_verification",
+      "label": "一次資料確認"
+    },
+    {
+      "id": "problem_selection",
+      "label": "課題選定"
+    },
+    {
+      "id": "prototype_review",
+      "label": "プロトタイプレビュー"
+    },
+    {
+      "id": "public_accountability",
+      "label": "公開時の責任"
+    },
+    {
+      "id": "public_reframing",
+      "label": "公共的な再文脈化"
+    },
+    {
+      "id": "question_design",
+      "label": "問いの設計"
+    },
+    {
+      "id": "reconstruction_judgment",
+      "label": "再構成の判断"
+    },
+    {
+      "id": "responsible_representation",
+      "label": "責任ある表現"
+    },
+    {
+      "id": "rights_privacy_review",
+      "label": "権利・プライバシー確認"
+    },
+    {
+      "id": "scenario_revision",
+      "label": "シナリオ修正"
+    },
+    {
+      "id": "source_context_check",
+      "label": "出典と文脈の確認"
+    },
+    {
+      "id": "source_selection",
+      "label": "資料選択"
+    },
+    {
+      "id": "source_verification",
+      "label": "出典検証"
+    },
+    {
+      "id": "testimony_crosscheck",
+      "label": "証言との照合"
+    },
+    {
+      "id": "transparent_ai_use",
+      "label": "AI利用の透明化"
+    },
+    {
+      "id": "uncertainty_disclosure",
+      "label": "不確実性の明示"
+    },
+    {
+      "id": "user_value_judgment",
+      "label": "利用者価値の判断"
+    },
+    {
+      "id": "value_judgment",
+      "label": "価値判断"
+    }
+  ],
+  "domain_tags": [
+    "ai_literacy",
+    "backcasting",
+    "concept_map",
+    "creativity_education",
+    "data_visualization",
+    "digital_archive",
+    "digital_citizenship",
+    "educational_materials",
+    "future_scenarios",
+    "game_based_learning",
+    "gis",
+    "hackathon",
+    "historical_photos",
+    "implementation_democratization",
+    "knowledge_experience",
+    "media_literacy",
+    "memory_inheritance",
+    "minecraft_education",
+    "osint",
+    "overview",
+    "peace_education",
+    "photo_colorization",
+    "primary_sources",
+    "production_to_conception_shift",
+    "prototyping",
+    "public_information",
+    "publicness",
+    "regional_learning",
+    "sf_prototyping",
+    "student_projects",
+    "sukilam",
+    "workshop"
+  ],
   "concept_alignment_fields": [
     "schema",
     "primary_stage_ids",

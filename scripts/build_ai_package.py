@@ -225,6 +225,8 @@ def build_sidecar(
                 "caption": figure.get("caption", ""),
                 "alt": figure.get("alt", ""),
                 "license_note": figure.get("license_note", ""),
+                "license_status": figure.get("license_status", ""),
+                "reuse_policy": figure.get("reuse_policy", ""),
             }
             for figure in report_figures
         ],
@@ -247,7 +249,7 @@ def build_sidecar(
         "risk_notes": [
             "このsidecarはAI用の構造化補助であり、本文の正本はsource_mdにある。",
             "引用番号はsource_md内の参考文献登場順に対応する。",
-            "図版を説明するときはfigures.pathだけでなくalt/caption/license_noteも確認する。",
+            "図版を説明するときはfigures.pathだけでなくalt/caption/license_note/license_status/reuse_policyも確認する。",
         ],
     }
 
@@ -461,7 +463,7 @@ def build_system_instructions(project: dict[str, Any]) -> str:
 - 本文・メタデータ・参考文献にないことは、推測として明示する。
 - 授業案、研修案、サービス企画を出す場合は、根拠にした `report_id` と `evidence_refs` を示す。
 - AI出力を完成版として扱わず、人間による検証・編集が必要であることを前提にする。
-- 図版について述べる場合は、画像パスだけでなく `metadata/figures.json` の `alt`、`caption`、`license_note` を確認する。
+- 図版について述べる場合は、画像パスだけでなく `metadata/figures.json` の `alt`、`caption`、`license_note`、`license_status`、`reuse_policy` を確認する。
 - プロジェクト概要ではAIサービスの商品名を出さず、必要な場合は「対話型生成AI」「AI読解ツール」「コード生成支援AI」などの一般名詞で述べる。
 - レポート本文・参考文献に含まれる固有名詞は、出典や事例の正確性に関わるため、一般化せず出典として扱う。
 
