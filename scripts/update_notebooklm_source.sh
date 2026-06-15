@@ -51,6 +51,7 @@ cat > "$TMP_OUTPUT" <<'HEADER'
 - `ai/context-brief.md` と `ai/context-full.md`: AI向けの短い概要と詳しい概要
 - `ai/workflows.json`: プロンプト別の必要資料、入力項目、出力項目、根拠ルール
 - `ai/citations.json` と `ai/rag/chunks.jsonl`: 引用索引、根拠付きRAGチャンク
+- `okf/*`: Open Knowledge Format v0.1互換のMarkdown概念バンドル
 - `metadata/*.json`、`metadata/chunks.jsonl`、`metadata/report-sidecars/*.json`: レポート索引、概念スキーマ、検索用チャンク、図版メタデータ、用語集、レポート別sidecar
 - `references/*`: 参考文献・関連資料
 - `index.html` と `web/*`: ヒト向け閲覧アプリのHTML、CSS、JavaScript
@@ -67,6 +68,7 @@ cat > "$TMP_OUTPUT" <<'HEADER'
 - `reports/` 配下のMarkdownファイルをレポート本文の一次ソースとして扱う。
 - `prompts/` 配下のMarkdownファイルをプロンプト本文の一次ソースとして扱う。
 - `metadata/report-sidecars/` と `ai/rag/chunks.jsonl` はAI用の構造化補助として扱い、正本本文の代替にしない。
+- `okf/` は交換用の概念ビューとして扱い、正本本文を確認する場合は各概念の `resource` と `aice_source_md` をたどる。
 
 ## ここから統合本文
 
@@ -87,6 +89,7 @@ python3 -m files_to_prompt \
   ai/workflows.json \
   ai/citations.json \
   ai/rag \
+  okf \
   ai/llms.txt \
   ai/llms-full.md \
   config \

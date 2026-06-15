@@ -27,6 +27,7 @@
 - `ai/context-brief.md` と `ai/context-full.md`: AI向けの短い概要と詳しい概要
 - `ai/workflows.json`: プロンプト別の必要資料、入力項目、出力項目、根拠ルール
 - `ai/citations.json` と `ai/rag/chunks.jsonl`: 引用索引、根拠付きRAGチャンク
+- `okf/*`: Open Knowledge Format v0.1互換のMarkdown概念バンドル
 - `metadata/*.json`、`metadata/chunks.jsonl`、`metadata/report-sidecars/*.json`: レポート索引、概念スキーマ、検索用チャンク、図版メタデータ、用語集、レポート別sidecar
 - `references/*`: 参考文献・関連資料
 - `index.html` と `web/*`: ヒト向け閲覧アプリのHTML、CSS、JavaScript
@@ -43,6 +44,7 @@
 - `reports/` 配下のMarkdownファイルをレポート本文の一次ソースとして扱う。
 - `prompts/` 配下のMarkdownファイルをプロンプト本文の一次ソースとして扱う。
 - `metadata/report-sidecars/` と `ai/rag/chunks.jsonl` はAI用の構造化補助として扱い、正本本文の代替にしない。
+- `okf/` は交換用の概念ビューとして扱い、正本本文を確認する場合は各概念の `resource` と `aice_source_md` をたどる。
 
 ## ここから統合本文
 
@@ -905,6 +907,7 @@ index.html
         <nav class="header-links" aria-label="関連ファイル">
           <a href="#reports/00-overview.md">レポート</a>
           <a href="#prompts/lesson-plan-generation.md">プロンプト</a>
+          <a href="https://github.com/wtnv-lab/AIxCreationEdu/tree/main/okf" target="_blank" rel="noopener">OKF</a>
           <a href="https://github.com/wtnv-lab/AIxCreationEdu" target="_blank" rel="noopener">ソースコード</a>
         </nav>
       </header>
@@ -945,6 +948,7 @@ web/app.js
 const manifestPath = "config/web_content.json?v=20260605-home-structure";
 const homeHash = "home";
 const githubUrl = "https://github.com/wtnv-lab/AIxCreationEdu";
+const okfUrl = `${githubUrl}/tree/main/okf`;
 const siteUrl = "https://wtnv-lab.github.io/AIxCreationEdu/";
 const defaultOgImage = `${siteUrl}assets/og-image.png`;
 const defaultOgImageAlt = "AIとクリエイティブと教育の概念図";
@@ -1486,7 +1490,7 @@ function renderHome() {
     </figure>
     <section>
       <h2>ヒトとAIのために公開する資料</h2>
-      <p>このサイトでは、プロジェクトの成果を、ヒトが読みやすい文章と、AIに渡しやすいデータパッケージの二つの入口で公開しています。ヒト向けには総括レポートと個別レポートを、AI向けには本文・メタデータ・検索用チャンク・参考文献をまとめた資料を用意しています。各レポートは、研究資料や実践記録を生成AIが整理し、著者が根拠・文脈・表現を確認しながら編集したものです。</p>
+      <p>このサイトでは、プロジェクトの成果を、ヒトが読みやすい文章、AIに渡しやすいデータパッケージ、交換しやすいOKF知識バンドルの三つの入口で公開しています。ヒト向けには総括レポートと個別レポートを、AI向けには本文・メタデータ・検索用チャンク・参考文献をまとめた資料を用意しています。各レポートは、研究資料や実践記録を生成AIが整理し、著者が根拠・文脈・表現を確認しながら編集したものです。</p>
     </section>
     <figure class="home-figure">
       <img src="assets/00-overview/data-package-flow.svg" alt="ヒト向けの文章とAI向けデータパッケージの使い方">
@@ -1499,11 +1503,13 @@ function renderHome() {
         <li><a href="ai/notebooklm-source.txt" target="_blank" rel="noopener">AI向けデータパッケージ</a>をAI読解ツールや対話型生成AIに読み込ませる。</li>
         <li>目的に近い<a href="#prompts%2Flesson-plan-generation.md">プロンプト</a>を選び、対象者、時間数、成果物などの条件を加える。</li>
         <li>出力された授業案、研修案、企画案を、本文と参考文献に照らしてヒトが検証・編集する。</li>
+        <li>他システムへ知識単位で渡す場合は<a href="${okfUrl}">OKFバンドル</a>を使う。</li>
       </ol>
     </section>
     <section class="corner-grid" aria-label="資料の入口">
       ${renderCornerCard("レポート", `${reportCount}件`, "実践と研究の資料をもとに、AI時代の教育を読み解く本文を整理しています。", "reports")}
       ${renderCornerCard("プロンプト", `${promptCount}件`, "資料一式をAIに渡したあと、授業案、研修案、企画づくりに使えます。", "prompts")}
+      ${renderLinkCornerCard("OKF", "v0.1", "レポート、プロンプト、参考文献をMarkdown + YAML frontmatterの概念として交換できます。", okfUrl)}
       ${renderExternalCornerCard("ソースコード", "AIに読み込ませやすいMarkdown本文、メタデータ、プロンプト、生成スクリプトを公開しています。", githubUrl)}
     </section>
     <section>
@@ -1566,6 +1572,17 @@ function renderExternalCornerCard(title, summary, href) {
   return `
     <a class="corner-card" href="${escapeAttr(href)}" target="_blank" rel="noopener">
       <span class="corner-count">${renderGithubIcon("corner-github-icon")}</span>
+      <h2>${escapeHtml(title)}</h2>
+      <p>${escapeHtml(summary)}</p>
+    </a>
+  `;
+}
+
+function renderLinkCornerCard(title, count, summary, href) {
+  const externalAttrs = href.startsWith("http") ? ' target="_blank" rel="noopener"' : "";
+  return `
+    <a class="corner-card" href="${escapeAttr(href)}"${externalAttrs}>
+      <span class="corner-count">${escapeHtml(count)}</span>
       <h2>${escapeHtml(title)}</h2>
       <p>${escapeHtml(summary)}</p>
     </a>
@@ -2662,7 +2679,7 @@ body[data-section="reports"] .markdown-body p {
 
 .corner-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   gap: 14px;
   margin: 28px 0 36px;
 }
@@ -6900,7 +6917,7 @@ README.md
 
 本リポジトリは、東京大学大学院 渡邉英徳研究室と関係者が蓄積してきた、AI・クリエイティブ・教育に関する研究資料、実践記録、参考文献をもとにした公開レポート集です。生成AIが資料群を整理し、著者との対話を通じて論点を編み直し、ヒトが根拠、文脈、表現を確認しながらMarkdown本文として編集しています。
 
-このリポジトリには、二つの入口があります。一つは、ヒトが読むための文章です。`index.html`、`README.md`、`reports/` は、生成AI時代の授業、探究学習、ワークショップ、教育サービス企画を考えるために読みやすく整えています。もう一つは、AIに読み込ませるためのデータパッケージです。`ai/manifest.json`、`ai/system-instructions.md`、`ai/rag/chunks.jsonl`、`metadata/report-sidecars/`、`references/` は、AIエージェント、AI読解ツール、RAGが本文、メタデータ、検索用チャンク、出典をたどれるようにまとめています。
+このリポジトリには、三つの入口があります。一つは、ヒトが読むための文章です。`index.html`、`README.md`、`reports/` は、生成AI時代の授業、探究学習、ワークショップ、教育サービス企画を考えるために読みやすく整えています。もう一つは、AIに読み込ませるためのデータパッケージです。`ai/manifest.json`、`ai/system-instructions.md`、`ai/rag/chunks.jsonl`、`metadata/report-sidecars/`、`references/` は、AIエージェント、AI読解ツール、RAGが本文、メタデータ、検索用チャンク、出典をたどれるようにまとめています。さらに、他のエージェントや組織と交換しやすい知識バンドルとして、GoogleのOpen Knowledge Format v0.1を参考にした `okf/` も生成します。
 
 基本的な使い方は、先にヒトが全体像を読み、次にAIへデータパッケージを読み込ませ、そのあと `prompts/` のプロンプトで授業案、研修案、サービス企画、ロードマップを作る流れです。AIの出力は完成品ではなく、本文と参考文献に照らしてヒトが検証し、目的に合わせて編集するためのたたき台として扱います。
 
@@ -6915,6 +6932,7 @@ README.md
 3. AI読解ツールや対話型生成AIに `ai/system-instructions.md` と `ai/context-brief.md` を渡す。全文をまとめて読み込ませる場合は `ai/notebooklm-source.txt` を使う。
 4. 目的に近い `prompts/` のプロンプトを貼り付け、学年、教科、対象者、時間数、成果物などの条件を加える。
 5. 出力された授業案、研修案、企画案、ロードマップを、レポート本文、メタデータ、参考文献に照らして確認し、ヒトが編集する。
+6. 他システムへ知識単位で渡す場合は、`okf/index.md` を入口にして `okf/reports/`、`okf/prompts/`、`okf/references/` をたどる。
 
 このREADMEは、ヒトが目的に合うファイルをすばやく見つけるための案内であり、同時に、リポジトリごと読み込んだAIが構造、内容、利用法を理解するための入口です。
 
@@ -6936,6 +6954,7 @@ README.md
 | AIに詳しい全体像を渡す | [`ai/context-full.md`](ai/context-full.md) | レポート別の要旨、示唆、活用場面、実装案 |
 | AIに実行手順を選ばせる | [`ai/workflows.json`](ai/workflows.json) | プロンプト別の必要資料、入力項目、出力項目、根拠ルール |
 | AI読解ツールに全文を渡す | [`ai/notebooklm-source.txt`](ai/notebooklm-source.txt) | レポート本文、プロンプト、メタデータ、参考文献をまとめた単一テキスト |
+| 知識バンドルとして交換する | [`okf/index.md`](okf/index.md) | Open Knowledge Format v0.1互換のMarkdown + YAML frontmatterによる概念ビュー |
 | レポート本文を読む、編集する | [`reports/`](reports/) | 各レポートの一次ソース。今後の本文更新はここを直接編集 |
 | 授業案や企画案を生成する | [`prompts/`](prompts/) | 利用目的別のプロンプト例 |
 | RAGや検索に使う | [`ai/rag/chunks.jsonl`](ai/rag/chunks.jsonl) | 根拠、用途、リスク注記を付けたAI向けチャンク |
@@ -6946,6 +6965,7 @@ README.md
 | パス | 役割 |
 | --- | --- |
 | [`ai/`](ai/) | AIに渡す入口ファイル、統合テキスト、AI向け概説、引用索引、RAGチャンク |
+| [`okf/`](okf/) | Open Knowledge Format v0.1互換の交換用知識バンドル |
 | [`reports/`](reports/) | レポート本文の一次ソース |
 | [`prompts/`](prompts/) | 授業案、企画案、比較、根拠付き回答などのプロンプト例 |
 | [`web/`](web/) | レポート・プロンプト閲覧アプリのCSSとJavaScript |
@@ -6971,6 +6991,7 @@ AIやRAGでは、次の用途で使えます。
 
 - AI読解ツールや対話型生成AIに読み込ませ、レポートに根拠を置いた授業案、企画案、比較表、ロードマップを作る。
 - `ai/rag/chunks.jsonl`、`metadata/report-sidecars/`、`metadata/reports.json`、`metadata/concept-schema.json` を使って、検索、RAG、AIエージェント向けの知識ベースを組む。
+- `okf/` を使って、レポート、プロンプト、参考文献をMarkdown概念として他のエージェントや組織へ渡す。
 - `prompts/` のプロンプトを使い、出典付き回答、授業案、サービス企画、アイデア発想を行う。
 - 回答時に、本文、メタデータ、参考文献のどこに根拠があるかを確認する。
 
@@ -7036,6 +7057,7 @@ AIにリポジトリを読ませるときは、資料そのものと依頼文を
 5. AI読解ツールで全文検索・質問応答をしたい場合: [`ai/notebooklm-source.txt`](ai/notebooklm-source.txt)
 6. RAGや検索システムに組み込む場合: [`ai/rag/chunks.jsonl`](ai/rag/chunks.jsonl)
 7. 出典や図版も扱う場合: [`ai/citations.json`](ai/citations.json)、[`metadata/report-sidecars/`](metadata/report-sidecars/)、[`metadata/figures.json`](metadata/figures.json)
+8. OKF互換の知識バンドルとして交換する場合: [`okf/index.md`](okf/index.md)
 
 次に、目的に近いプロンプトを選びます。
 
@@ -7054,7 +7076,7 @@ AIには、たとえば次のように指示してください。
 ```text
 この資料群は「AIとクリエイティブと教育」に関する公開レポート集です。
 東京大学大学院 渡邉英徳研究室と関係者の実践・研究リソースをもとに、生成AIとの対話を通じて編集されています。
-回答では reports/ の本文、ai/rag/chunks.jsonl、ai/citations.json、metadata/report-sidecars/ を根拠にしてください。
+回答では reports/ の本文、ai/rag/chunks.jsonl、ai/citations.json、metadata/report-sidecars/、okf/ を根拠にしてください。
 本文にない情報を補う場合は、推測または外部知識であることを明示してください。
 授業案、研修案、サービス企画を作る場合は、prompts/ の該当プロンプトの形式に従い、どのレポートに基づく提案かを示してください。
 ```
@@ -7068,6 +7090,7 @@ AIには、たとえば次のように指示してください。
 | [`metadata/report-sidecars/`](metadata/report-sidecars/) | レポート単位のAI用構造化補助。本文正本、節、図版、文献、注意点を結ぶ |
 | [`ai/workflows.json`](ai/workflows.json) | プロンプト別の必要資料、入力項目、出力項目、根拠ルール |
 | [`ai/rag/chunks.jsonl`](ai/rag/chunks.jsonl) | 基礎チャンクに根拠ID、用途、リスク注記を付けたRAG用データ |
+| [`okf/index.md`](okf/index.md) | OKF v0.1互換の知識バンドル入口。各概念はMarkdown + YAML frontmatterで表現 |
 | [`ai/citations.json`](ai/citations.json) | 本文中の文献番号とレポート別参考文献を結ぶ引用索引 |
 | [`metadata/concept-schema.json`](metadata/concept-schema.json) | `concept_alignment` の固定語彙と分類軸 |
 | [`metadata/glossary.json`](metadata/glossary.json) | 用語の揺れを抑えるための用語集 |
@@ -7097,7 +7120,7 @@ scripts/update_notebooklm_source.sh
 python3 scripts/validate_repository.py
 ```
 
-このリポジトリでは Git フックを `.githooks/` に置いています。次のコマンドを一度実行すると、コミット前、マージ後、ブランチ切り替え後に `config/web_content.json`、`ai/` 配下のAI向け構造化ファイル、`metadata/report-sidecars/`、`ai/notebooklm-source.txt` が自動更新されます。
+このリポジトリでは Git フックを `.githooks/` に置いています。次のコマンドを一度実行すると、コミット前、マージ後、ブランチ切り替え後に `config/web_content.json`、`ai/` 配下のAI向け構造化ファイル、`metadata/report-sidecars/`、`okf/`、`ai/notebooklm-source.txt` が自動更新されます。
 
 ```sh
 scripts/setup_git_hooks.sh
@@ -7108,7 +7131,7 @@ scripts/setup_git_hooks.sh
 - レポート本文は [`reports/`](reports/) 配下の `.md` を直接編集します。
 - プロンプト例は [`prompts/`](prompts/) 配下の `.md` を直接編集します。
 - Wordファイルからレポートを再生成する仕組みは使いません。
-- レポート、参考文献、図版、メタデータ、プロンプトを更新したら、`python3 scripts/build_ai_package.py` を実行し、`ai/manifest.json`、`ai/workflows.json`、`ai/rag/chunks.jsonl`、`metadata/report-sidecars/` に反映してください。
+- レポート、参考文献、図版、メタデータ、プロンプトを更新したら、`python3 scripts/build_ai_package.py` を実行し、`ai/manifest.json`、`ai/workflows.json`、`ai/rag/chunks.jsonl`、`metadata/report-sidecars/`、`okf/` に反映してください。
 - レポートやプロンプトの `.md` を追加・削除したら、`scripts/update_web_manifest.sh` を実行し、`config/web_content.json` に反映してください。
 - READMEやウェブアプリを更新したら、必要に応じて `scripts/update_notebooklm_source.sh` を実行し、`ai/notebooklm-source.txt` に反映してください。
 - 図版やメタデータを追加した場合は、`metadata/figures.json`、`metadata/reports.json`、`metadata/chunks.jsonl`、`metadata/report-sidecars/` との整合を確認してください。
@@ -7200,7 +7223,8 @@ ai/manifest.json
     "human_markdown": "reports/*.md",
     "report_config": "config/reports.json",
     "references": "config/report_references.json",
-    "figures": "metadata/figures.json"
+    "figures": "metadata/figures.json",
+    "okf_bundle": "okf/"
   },
   "ai_first_outputs": [
     "ai/system-instructions.md",
@@ -7209,56 +7233,65 @@ ai/manifest.json
     "ai/workflows.json",
     "ai/citations.json",
     "ai/rag/chunks.jsonl",
-    "metadata/report-sidecars/*.json"
+    "metadata/report-sidecars/*.json",
+    "okf/"
   ],
   "reports": [
     {
       "id": "00-overview",
       "title": "AIとクリエイティブと教育 総括レポート",
       "source_md": "reports/00-overview.md",
-      "sidecar": "metadata/report-sidecars/00-overview.json"
+      "sidecar": "metadata/report-sidecars/00-overview.json",
+      "okf_concept": "okf/reports/00-overview.md"
     },
     {
       "id": "01-information-visualization-osint",
       "title": "AIと情報可視化・OSINT教育",
       "source_md": "reports/01-information-visualization-osint.md",
-      "sidecar": "metadata/report-sidecars/01-information-visualization-osint.json"
+      "sidecar": "metadata/report-sidecars/01-information-visualization-osint.json",
+      "okf_concept": "okf/reports/01-information-visualization-osint.md"
     },
     {
       "id": "02-photo-colorization-peace-education",
       "title": "AIによるモノクロ写真カラー化を活かした高校生の平和教育実践",
       "source_md": "reports/02-photo-colorization-peace-education.md",
-      "sidecar": "metadata/report-sidecars/02-photo-colorization-peace-education.json"
+      "sidecar": "metadata/report-sidecars/02-photo-colorization-peace-education.json",
+      "okf_concept": "okf/reports/02-photo-colorization-peace-education.md"
     },
     {
       "id": "03-digital-citizenship",
       "title": "AIを活かしたデジタルシティズンシップ教育",
       "source_md": "reports/03-digital-citizenship.md",
-      "sidecar": "metadata/report-sidecars/03-digital-citizenship.json"
+      "sidecar": "metadata/report-sidecars/03-digital-citizenship.json",
+      "okf_concept": "okf/reports/03-digital-citizenship.md"
     },
     {
       "id": "04-student-hackathon",
       "title": "AI時代の学生ハッカソン：実装の民主化と発想力への転換",
       "source_md": "reports/04-student-hackathon.md",
-      "sidecar": "metadata/report-sidecars/04-student-hackathon.json"
+      "sidecar": "metadata/report-sidecars/04-student-hackathon.json",
+      "okf_concept": "okf/reports/04-student-hackathon.md"
     },
     {
       "id": "05-digital-archive-ai",
       "title": "デジタルアーカイブとAIを活かした教育実践",
       "source_md": "reports/05-digital-archive-ai.md",
-      "sidecar": "metadata/report-sidecars/05-digital-archive-ai.json"
+      "sidecar": "metadata/report-sidecars/05-digital-archive-ai.json",
+      "okf_concept": "okf/reports/05-digital-archive-ai.md"
     },
     {
       "id": "06-sf-prototyping",
       "title": "生成AIを用いたSFプロトタイピング",
       "source_md": "reports/06-sf-prototyping.md",
-      "sidecar": "metadata/report-sidecars/06-sf-prototyping.json"
+      "sidecar": "metadata/report-sidecars/06-sf-prototyping.json",
+      "okf_concept": "okf/reports/06-sf-prototyping.md"
     },
     {
       "id": "07-minecraft-ai-education",
       "title": "AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ",
       "source_md": "reports/07-minecraft-ai-education.md",
-      "sidecar": "metadata/report-sidecars/07-minecraft-ai-education.json"
+      "sidecar": "metadata/report-sidecars/07-minecraft-ai-education.json",
+      "okf_concept": "okf/reports/07-minecraft-ai-education.md"
     }
   ],
   "human_verification_required": true
@@ -7280,6 +7313,7 @@ ai/system-instructions.md
 4. 詳細な根拠は `metadata/report-sidecars/*.json` と `ai/rag/chunks.jsonl` を読む。
 5. 人間向けの正本確認が必要な場合は `reports/*.md` を読む。
 6. 出典確認は `ai/citations.json` と `references/references.md` を使う。
+7. 他システムへ知識バンドルとして渡す場合は `okf/index.md` から始める。
 
 ## 回答ルール
 
@@ -7296,6 +7330,7 @@ ai/system-instructions.md
 - `metadata/report-sidecars/*.json` はAI用の構造化補助であり、本文の代替ではない。
 - `ai/rag/chunks.jsonl` は検索・RAG用であり、チャンク単体で結論を断定しない。
 - `ai/notebooklm-source.txt` は単一テキスト読解ツール向けの互換パッケージである。
+- `okf/` はOpen Knowledge Format v0.1互換の交換用ビューであり、正本本文やsidecarから生成される。
 
 
 ---
@@ -7314,6 +7349,7 @@ ai/context-brief.md
 2. `ai/system-instructions.md` の回答ルールを守る。
 3. 根拠が必要な回答では `ai/rag/chunks.jsonl` と `ai/citations.json` を使う。
 4. 重要な判断では `reports/*.md` の本文を確認する。
+5. 他のエージェントや組織へ交換する場合は `okf/index.md` を入口にする。
 
 ## レポート一覧
 
@@ -7325,6 +7361,7 @@ ai/context-brief.md
 - 想定読者: 生成AI時代の教育方針を検討する学校管理職・教育委員会担当者, AI・創造性・情報リテラシーを横断するカリキュラム設計者, 教育ソリューションやEdTechサービスの企画担当者, AIと教育実践の全体像を把握したい研究者・実践者
 - 正本: `reports/00-overview.md`
 - AI sidecar: `metadata/report-sidecars/00-overview.json`
+- OKF concept: `okf/reports/00-overview.md`
 
 ### 01-information-visualization-osint: AIと情報可視化・OSINT教育
 
@@ -7334,6 +7371,7 @@ ai/context-brief.md
 - 想定読者: 情報・メディア・探究学習を担当する高校・大学教員, データ可視化、GIS、デジタルアーカイブを授業に取り入れたい教育者, OSINTや調査報道の基礎を教育・研修化したい報道関係者, 公開情報の検証と社会的説明を扱う教材・サービス企画者
 - 正本: `reports/01-information-visualization-osint.md`
 - AI sidecar: `metadata/report-sidecars/01-information-visualization-osint.json`
+- OKF concept: `okf/reports/01-information-visualization-osint.md`
 
 ### 02-photo-colorization-peace-education: AIによるモノクロ写真カラー化を活かした高校生の平和教育実践
 
@@ -7343,6 +7381,7 @@ ai/context-brief.md
 - 想定読者: 平和教育・歴史教育・地域学習を担当する中学・高校教員, 写真資料や証言を活用する博物館・資料館・地域アーカイブ担当者, AIカラー化を探究学習や記憶継承に活かしたい教育実践者, 生徒の成果発信や社会連携型プロジェクトを支援する担当者
 - 正本: `reports/02-photo-colorization-peace-education.md`
 - AI sidecar: `metadata/report-sidecars/02-photo-colorization-peace-education.json`
+- OKF concept: `okf/reports/02-photo-colorization-peace-education.md`
 
 ### 03-digital-citizenship: AIを活かしたデジタルシティズンシップ教育
 
@@ -7352,6 +7391,7 @@ ai/context-brief.md
 - 想定読者: 小中高の情報活用能力・情報モラル・ICT活用を担当する教員, デジタルシティズンシップ教育のカリキュラム設計者, 生成AI利用ルールや校内研修を設計する学校管理職・ICT担当者, AIリテラシー教材や安全な学習環境を開発する教育サービス担当者
 - 正本: `reports/03-digital-citizenship.md`
 - AI sidecar: `metadata/report-sidecars/03-digital-citizenship.json`
+- OKF concept: `okf/reports/03-digital-citizenship.md`
 
 ### 04-student-hackathon: AI時代の学生ハッカソン：実装の民主化と発想力への転換
 
@@ -7361,6 +7401,7 @@ ai/context-brief.md
 - 想定読者: 大学・高専・高校でハッカソンやPBLを運営する教職員, AIを用いたプロトタイピング教育を設計するメンター・ファシリテーター, 学生起業、地域課題解決、産学連携プログラムの企画担当者, 生成AI時代の開発教育や創造性評価に関心を持つ実践者
 - 正本: `reports/04-student-hackathon.md`
 - AI sidecar: `metadata/report-sidecars/04-student-hackathon.json`
+- OKF concept: `okf/reports/04-student-hackathon.md`
 
 ### 05-digital-archive-ai: デジタルアーカイブとAIを活かした教育実践
 
@@ -7370,6 +7411,7 @@ ai/context-brief.md
 - 想定読者: 学校教育で一次資料や地域資料を活用したい教員, デジタルアーカイブの教育利用を進める図書館・博物館・自治体担当者, 探究学習、キュレーション授業、教材アーカイブを設計する教育者, AIと資料検索・要約・再編集を組み合わせた学習サービス企画者
 - 正本: `reports/05-digital-archive-ai.md`
 - AI sidecar: `metadata/report-sidecars/05-digital-archive-ai.json`
+- OKF concept: `okf/reports/05-digital-archive-ai.md`
 
 ### 06-sf-prototyping: 生成AIを用いたSFプロトタイピング
 
@@ -7379,6 +7421,7 @@ ai/context-brief.md
 - 想定読者: 未来構想・探究学習・創造性教育を担当する大学・高校教員, 産学協創、企業研修、ワークショップを設計するファシリテーター, 新規事業開発やビジョン策定にSFプロトタイピングを使いたい企画担当者, 生成AIを用いた物語生成・合意形成・アイデア創出に関心を持つ実践者
 - 正本: `reports/06-sf-prototyping.md`
 - AI sidecar: `metadata/report-sidecars/06-sf-prototyping.json`
+- OKF concept: `okf/reports/06-sf-prototyping.md`
 
 ### 07-minecraft-ai-education: AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ
 
@@ -7388,6 +7431,7 @@ ai/context-brief.md
 - 想定読者: Minecraft Educationやゲームベース学習を授業に取り入れたい小中高・大学教員, 平和教育・地域学習・災害復興学習で仮想空間制作を活用したい教育実践者, AIリテラシー，プログラミング，デジタルシティズンシップを横断する教材設計者, Minecraftや生成AIを活用した学習サービス・ワークショップの企画担当者
 - 正本: `reports/07-minecraft-ai-education.md`
 - AI sidecar: `metadata/report-sidecars/07-minecraft-ai-education.json`
+- OKF concept: `okf/reports/07-minecraft-ai-education.md`
 
 
 ---
@@ -7409,6 +7453,7 @@ ai/context-full.md
 - 種別: overview
 - 正本Markdown: `reports/00-overview.md`
 - Sidecar: `metadata/report-sidecars/00-overview.json`
+- OKF concept: `okf/reports/00-overview.md`
 - 要旨: 生成AI時代の教育を、問い・資料読解・制作・検証・社会発信をつなぐ創造性教育として整理。
 - 著者: 渡邉英徳
 - 想定読者: 生成AI時代の教育方針を検討する学校管理職・教育委員会担当者, AI・創造性・情報リテラシーを横断するカリキュラム設計者, 教育ソリューションやEdTechサービスの企画担当者, AIと教育実践の全体像を把握したい研究者・実践者
@@ -7441,6 +7486,7 @@ ai/context-full.md
 - 種別: report
 - 正本Markdown: `reports/01-information-visualization-osint.md`
 - Sidecar: `metadata/report-sidecars/01-information-visualization-osint.json`
+- OKF concept: `okf/reports/01-information-visualization-osint.md`
 - 要旨: GIS・データ可視化・OSINTを通じて、公開情報を検証し社会へ伝える情報メディア教育モデル。
 - 著者: 渡邉英徳
 - 想定読者: 情報・メディア・探究学習を担当する高校・大学教員, データ可視化、GIS、デジタルアーカイブを授業に取り入れたい教育者, OSINTや調査報道の基礎を教育・研修化したい報道関係者, 公開情報の検証と社会的説明を扱う教材・サービス企画者
@@ -7473,6 +7519,7 @@ ai/context-full.md
 - 種別: report
 - 正本Markdown: `reports/02-photo-colorization-peace-education.md`
 - Sidecar: `metadata/report-sidecars/02-photo-colorization-peace-education.json`
+- OKF concept: `okf/reports/02-photo-colorization-peace-education.md`
 - 要旨: AIカラー化を、写真資料・証言・地域の記憶をつなぐ平和教育と記憶継承の探究へ展開。
 - 著者: 森吉蓉子, 渡邉英徳
 - 想定読者: 平和教育・歴史教育・地域学習を担当する中学・高校教員, 写真資料や証言を活用する博物館・資料館・地域アーカイブ担当者, AIカラー化を探究学習や記憶継承に活かしたい教育実践者, 生徒の成果発信や社会連携型プロジェクトを支援する担当者
@@ -7505,6 +7552,7 @@ ai/context-full.md
 - 種別: report
 - 正本Markdown: `reports/03-digital-citizenship.md`
 - Sidecar: `metadata/report-sidecars/03-digital-citizenship.json`
+- OKF concept: `okf/reports/03-digital-citizenship.md`
 - 要旨: AIの禁止・管理を超え、判断・参加・公共性を育てるデジタルシティズンシップ教育。
 - 著者: 原田真喜子
 - 想定読者: 小中高の情報活用能力・情報モラル・ICT活用を担当する教員, デジタルシティズンシップ教育のカリキュラム設計者, 生成AI利用ルールや校内研修を設計する学校管理職・ICT担当者, AIリテラシー教材や安全な学習環境を開発する教育サービス担当者
@@ -7537,6 +7585,7 @@ ai/context-full.md
 - 種別: report
 - 正本Markdown: `reports/04-student-hackathon.md`
 - Sidecar: `metadata/report-sidecars/04-student-hackathon.json`
+- OKF concept: `okf/reports/04-student-hackathon.md`
 - 要旨: 生成AIで実装負荷が下がる時代の学生ハッカソンを、課題設定と発想力の学びとして再定義。
 - 著者: 小松尚平, 渡邉英徳
 - 想定読者: 大学・高専・高校でハッカソンやPBLを運営する教職員, AIを用いたプロトタイピング教育を設計するメンター・ファシリテーター, 学生起業、地域課題解決、産学連携プログラムの企画担当者, 生成AI時代の開発教育や創造性評価に関心を持つ実践者
@@ -7569,6 +7618,7 @@ ai/context-full.md
 - 種別: report
 - 正本Markdown: `reports/05-digital-archive-ai.md`
 - Sidecar: `metadata/report-sidecars/05-digital-archive-ai.json`
+- OKF concept: `okf/reports/05-digital-archive-ai.md`
 - 要旨: デジタルアーカイブと生成AIを組み合わせ、一次資料を用いた探究と社会発信を支える教育実践。
 - 著者: 大井将生
 - 想定読者: 学校教育で一次資料や地域資料を活用したい教員, デジタルアーカイブの教育利用を進める図書館・博物館・自治体担当者, 探究学習、キュレーション授業、教材アーカイブを設計する教育者, AIと資料検索・要約・再編集を組み合わせた学習サービス企画者
@@ -7601,6 +7651,7 @@ ai/context-full.md
 - 種別: report
 - 正本Markdown: `reports/06-sf-prototyping.md`
 - Sidecar: `metadata/report-sidecars/06-sf-prototyping.json`
+- OKF concept: `okf/reports/06-sf-prototyping.md`
 - 要旨: 生成AIで未来シナリオを素早く仮設し、人間が批判・修正するSFプロトタイピングの教育活用。
 - 著者: 楊欽, 渡邉英徳
 - 想定読者: 未来構想・探究学習・創造性教育を担当する大学・高校教員, 産学協創、企業研修、ワークショップを設計するファシリテーター, 新規事業開発やビジョン策定にSFプロトタイピングを使いたい企画担当者, 生成AIを用いた物語生成・合意形成・アイデア創出に関心を持つ実践者
@@ -7633,6 +7684,7 @@ ai/context-full.md
 - 種別: report
 - 正本Markdown: `reports/07-minecraft-ai-education.md`
 - Sidecar: `metadata/report-sidecars/07-minecraft-ai-education.json`
+- OKF concept: `okf/reports/07-minecraft-ai-education.md`
 - 要旨: MinecraftとAIを、記憶継承・地域学習・創造・AIリテラシーを横断する学習空間として整理。
 - 著者: 片山実咲, 渡邉英徳
 - 想定読者: Minecraft Educationやゲームベース学習を授業に取り入れたい小中高・大学教員, 平和教育・地域学習・災害復興学習で仮想空間制作を活用したい教育実践者, AIリテラシー，プログラミング，デジタルシティズンシップを横断する教材設計者, Minecraftや生成AIを活用した学習サービス・ワークショップの企画担当者
@@ -8609,6 +8661,1572 @@ ai/rag/chunks.jsonl
 
 
 ---
+okf/index.md
+---
+---
+okf_version: "0.1"
+---
+# Knowledge Bundle
+
+* [Project](project.md) - 生成AI時代の創造性教育プロジェクト
+* [Reports](reports/) - 8件のレポート概念
+* [Prompts](prompts/) - 9件のプロンプト概念
+* [References](references/) - 参考文献・関連資料の入口
+
+# Maintenance
+
+* [Update log](log.md) - OKFバンドルの更新履歴
+
+
+---
+okf/log.md
+---
+# Directory Update Log
+
+## 2026-06-16
+* **Creation**: Added an Open Knowledge Format v0.1-compatible bundle generated from `config/reports.json`, `config/prompts.json`, and the AI package metadata.
+
+
+---
+okf/project.md
+---
+---
+type: "Knowledge Bundle"
+title: "AIとクリエイティブと教育"
+description: "生成AI時代の創造性教育プロジェクト"
+resource: "https://github.com/wtnv-lab/AIxCreationEdu/blob/main/README.md"
+tags: ["AI education", "creativity education", "knowledge bundle"]
+timestamp: "2026-05-27T00:00:00Z"
+license: "CC BY 4.0"
+aice_source: "README.md"
+---
+
+# AIとクリエイティブと教育
+
+生成AI時代の創造性教育プロジェクト
+
+# Bundle Scope
+
+このOKFバンドルは、レポート、プロンプト、参考文献を、人間とAIエージェントが同じMarkdown概念としてたどれるようにした交換用ビューです。
+本文正本は `reports/*.md`、構造化補助は `metadata/report-sidecars/*.json` と `ai/rag/chunks.jsonl` にあります。
+
+# Entry Points
+
+* [Reports](/reports/) - レポート単位の概念
+* [Prompts](/prompts/) - 利用目的別プロンプト
+* [References](/references/project-references.md) - 参考文献・関連資料
+
+# Citations
+
+[1] [README.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/README.md)
+
+
+---
+okf/references/index.md
+---
+# References
+
+* [Project references](project-references.md) - レポート別の参考文献・関連資料
+
+
+---
+okf/references/project-references.md
+---
+---
+type: "Reference Collection"
+title: "参考文献・関連資料"
+description: "レポート本文で使われる参考文献・関連資料の索引。"
+resource: "https://github.com/wtnv-lab/AIxCreationEdu/blob/main/references/references.md"
+tags: ["references", "citations", "evidence"]
+timestamp: "2026-05-27T00:00:00Z"
+aice_source_md: "references/references.md"
+---
+
+# 参考文献・関連資料
+
+この概念は、レポート本文で使われる参考文献・関連資料の束を示します。詳細な文献リストは正本ファイルを参照してください。
+
+# Report Reference Groups
+
+* [AIとクリエイティブと教育 総括レポート](/reports/00-overview.md) - 6件
+* [AIと情報可視化・OSINT教育](/reports/01-information-visualization-osint.md) - 14件
+* [AIによるモノクロ写真カラー化を活かした高校生の平和教育実践](/reports/02-photo-colorization-peace-education.md) - 5件
+* [AIを活かしたデジタルシティズンシップ教育](/reports/03-digital-citizenship.md) - 5件
+* [AI時代の学生ハッカソン：実装の民主化と発想力への転換](/reports/04-student-hackathon.md) - 9件
+* [デジタルアーカイブとAIを活かした教育実践](/reports/05-digital-archive-ai.md) - 5件
+* [生成AIを用いたSFプロトタイピング](/reports/06-sf-prototyping.md) - 7件
+* [AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ](/reports/07-minecraft-ai-education.md) - 12件
+
+# Source
+
+* References markdown: [references/references.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/references/references.md)
+* BibTeX: [references/references.bib](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/references/references.bib)
+
+# Citations
+
+[1] [references/references.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/references/references.md)
+[2] [references/references.bib](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/references/references.bib)
+
+
+---
+okf/prompts/citation-answering.md
+---
+---
+type: "Prompt"
+title: "根拠付き回答プロンプト"
+description: "利用者の質問に対して、レポート本文・メタデータ・図表・参考文献を根拠に、出典付きで回答するための根拠確認支援"
+resource: "https://github.com/wtnv-lab/AIxCreationEdu/blob/main/prompts/citation-answering.md"
+tags: ["prompt", "AI workflow", "education planning"]
+timestamp: "2026-05-27T00:00:00Z"
+aice_prompt_id: "citation-answering"
+aice_source_md: "prompts/citation-answering.md"
+---
+
+# 根拠付き回答プロンプト
+
+利用者の質問に対して、レポート本文・メタデータ・図表・参考文献を根拠に、出典付きで回答するための根拠確認支援
+
+# Source
+
+* Prompt source: [prompts/citation-answering.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/prompts/citation-answering.md)
+
+# Prompt Body
+
+# 根拠付き回答プロンプト
+
+利用者の質問に対し、`ai/system-instructions.md` の回答ルールに従い、`ai/rag/chunks.jsonl`、`ai/citations.json`、`metadata/report-sidecars/*.json`、`metadata/figures.json`、`reports/*.md` を根拠に回答してください。本文にないことは推測として明示し、出典としてレポートID、チャンクID、`evidence_refs`、必要に応じて図表IDを示してください。
+
+回答の整理に迷う場合は、`concept_alignment.primary_stage_ids`、`supporting_stage_ids`、`literacy_ids` を補助線として使ってください。
+
+## 出力形式
+
+1. 回答
+2. 根拠
+3. concept_alignment_relation
+4. 関連図表・参考文献
+5. 推測または未確認事項
+
+# Citations
+
+[1] [prompts/citation-answering.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/prompts/citation-answering.md)
+
+
+---
+okf/prompts/cross-report-comparison.md
+---
+---
+type: "Prompt"
+title: "レポート横断比較プロンプト"
+description: "指定テーマについて複数レポートを比較し、共通点・差異・相互補完関係・教育実践への示唆を根拠付きで整理する横断比較支援"
+resource: "https://github.com/wtnv-lab/AIxCreationEdu/blob/main/prompts/cross-report-comparison.md"
+tags: ["prompt", "AI workflow", "education planning"]
+timestamp: "2026-05-27T00:00:00Z"
+aice_prompt_id: "cross-report-comparison"
+aice_source_md: "prompts/cross-report-comparison.md"
+---
+
+# レポート横断比較プロンプト
+
+指定テーマについて複数レポートを比較し、共通点・差異・相互補完関係・教育実践への示唆を根拠付きで整理する横断比較支援
+
+# Source
+
+* Prompt source: [prompts/cross-report-comparison.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/prompts/cross-report-comparison.md)
+
+# Prompt Body
+
+# レポート横断比較プロンプト
+
+`ai/system-instructions.md` の回答ルールに従い、`ai/rag/chunks.jsonl`、`metadata/report-sidecars/*.json`、`ai/citations.json` を使い、指定テーマについて複数レポートを比較してください。共通点、相違点、相互補完関係、未検討の論点を分け、必ずレポートID、チャンクID、`evidence_refs` を添えてください。
+
+比較の軸には、各レポートの `concept_alignment` に含まれる `primary_stage_ids`、`literacy_ids`、`domain_tags` を含めてください。
+
+## 出力形式
+
+1. 比較テーマ
+2. 対象レポート
+3. 共通する示唆
+4. レポートごとの差異
+5. concept_alignment_comparison
+6. 教育実践への応用
+7. 追加調査が必要な点
+
+# Citations
+
+[1] [prompts/cross-report-comparison.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/prompts/cross-report-comparison.md)
+
+
+---
+okf/prompts/excursion-ideation.md
+---
+---
+type: "Prompt"
+title: "エクスカーション法アイデア創出プロンプト"
+description: "固定観念をゆるめ、遠い領域の特徴を借りて、教育実践やサービスのアイデアを広げるための発想支援"
+resource: "https://github.com/wtnv-lab/AIxCreationEdu/blob/main/prompts/excursion-ideation.md"
+tags: ["prompt", "AI workflow", "education planning"]
+timestamp: "2026-05-27T00:00:00Z"
+aice_prompt_id: "excursion-ideation"
+aice_source_md: "prompts/excursion-ideation.md"
+---
+
+# エクスカーション法アイデア創出プロンプト
+
+固定観念をゆるめ、遠い領域の特徴を借りて、教育実践やサービスのアイデアを広げるための発想支援
+
+# Source
+
+* Prompt source: [prompts/excursion-ideation.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/prompts/excursion-ideation.md)
+
+# Prompt Body
+
+# エクスカーション法アイデア創出プロンプト
+
+あなたは，AI時代の教育実践と教育ソリューション設計を支援するファシリテーターです。利用者の固定観念をゆるめ，遠い世界の特徴を借りて，新しい授業，教材，ワークショップ，サービス，表現活動のアイデアを広げてください。
+
+このリポジトリの `ai/system-instructions.md`，`ai/context-brief.md`，`ai/context-full.md`，`ai/rag/chunks.jsonl`，`metadata/report-sidecars/*.json`，`metadata/reports.json`，`metadata/concept-schema.json` を参照できる場合は，関連するレポートID，チャンクID，`evidence_refs`，`concept_alignment` を使って整理してください。本文にないことは推測として扱い，断定しないでください。
+
+## 入力条件
+
+- 解決したい課題: [ここに課題，考えたい商品・サービス，授業テーマ，ワークショップテーマを記入]
+- 対象者: [小学生，中高生，大学生，教員，社会人，自治体，企業など]
+- 活用場面: [授業，探究学習，校内研修，地域連携，EdTech企画，展示，発表など]
+- 重視するテーマ: [創造性，情報リテラシー，デジタルシティズンシップ，平和教育，未来構想，地域課題など]
+- 制約条件: [時間，人数，使用できるAI，公開範囲，倫理・著作権上の注意など]
+
+## 進め方
+
+### 1. 課題の捉え直し
+
+- 入力された課題を一文で言い換えてください。
+- その課題に含まれる思い込みを3つ挙げてください。
+- `concept_alignment` の五段階から，特に関係する段階を選んでください。
+  - `question_framing`
+  - `source_evaluation`
+  - `prototyping`
+  - `human_verification`
+  - `public_communication`
+
+### 2. 無関係な世界の選定
+
+課題からできるだけ遠い世界を3つ選んでください。カテゴリは，次の例から重ならないように選びます。
+
+- 自然現象
+- 歴史上の出来事
+- 職業
+- 伝統文化
+- スポーツ
+- 料理
+- 交通
+- 建築
+- 宇宙の現象
+- エンタメ
+
+各対象について，なぜ課題から遠いのか，どの点が発想の刺激になりそうかを短く添えてください。
+
+### 3. 特徴・本質の抽出
+
+選んだ3つの対象について，課題のことはいったん忘れ，それぞれの特徴を3つずつ抽出してください。
+
+- 構造
+- 動き
+- ルール
+- 関係性
+- 失敗のしかた
+- 変化のきっかけ
+
+### 4. 強制結びつけ
+
+各対象について，「もしこの課題が，その世界の特徴を持っていたら？」という問いから，アイデアの種を3つずつ出してください。
+
+各アイデアの種には，次を含めてください。
+
+- アイデア名
+- 着想元の特徴
+- 何が新しいか
+- AIの役割
+- 人間が判断する点
+- 30分で試せる小さなプロトタイプ
+
+### 5. 教育・実践への翻訳
+
+出てきたアイデアの種から，有望なものを3つ選び，このプロジェクト向けに整理してください。
+
+- 参照できる関連レポートID
+- 学習活動またはサービス体験
+- 必要な資料・データ
+- 成果物
+- 評価観点
+- 倫理・著作権・プライバシー上の注意
+
+### 6. リフレクション
+
+利用者の常識を揺さぶる問いを5つ投げかけてください。
+
+- もし，この課題の「正解」を決めないとしたら，何を評価しますか。
+- もし，AIが最初の答えではなく反論だけを返すとしたら，活動はどう変わりますか。
+- もし，成果物よりも修正履歴を公開するとしたら，何が学びになりますか。
+- もし，利用者ではなく影響を受ける第三者から設計を始めるとしたら，何が変わりますか。
+- もし，このアイデアを地域や社会に返す必要があるとしたら，誰と対話しますか。
+
+## 出力形式
+
+1. 課題の捉え直し
+2. 無関係な世界の選定
+3. 特徴・本質の抽出
+4. 強制結びつけによるアイデアの種
+5. 有望案トップ3
+6. concept_alignment
+7. AIの役割と人間の責任
+8. 小さく試すプロトタイプ案
+9. リスクと配慮
+10. リフレクションの問い
+
+専門用語を使いすぎず，直感的で試したくなる表現にしてください。ただし，実施時の安全性，根拠確認，公開時の責任は省略しないでください。
+
+# Citations
+
+[1] [prompts/excursion-ideation.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/prompts/excursion-ideation.md)
+
+
+---
+okf/prompts/idea-generation.md
+---
+---
+type: "Prompt"
+title: "アイデア創出プロンプト"
+description: "対象者やテーマに応じて、リポジトリ内の知見を横断し、新しい授業・研修・サービス企画の種を提案するためのアイデア創出支援"
+resource: "https://github.com/wtnv-lab/AIxCreationEdu/blob/main/prompts/idea-generation.md"
+tags: ["prompt", "AI workflow", "education planning"]
+timestamp: "2026-05-27T00:00:00Z"
+aice_prompt_id: "idea-generation"
+aice_source_md: "prompts/idea-generation.md"
+---
+
+# アイデア創出プロンプト
+
+対象者やテーマに応じて、リポジトリ内の知見を横断し、新しい授業・研修・サービス企画の種を提案するためのアイデア創出支援
+
+# Source
+
+* Prompt source: [prompts/idea-generation.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/prompts/idea-generation.md)
+
+# Prompt Body
+
+# アイデア創出プロンプト
+
+あなたは教育実践と教育ソリューション設計の専門家です。このリポジトリの `ai/system-instructions.md`、`ai/context-brief.md`、`ai/context-full.md`、`ai/rag/chunks.jsonl`、`metadata/report-sidecars/*.json`、`metadata/reports.json` を読み、次の観点で新しい企画案を提案してください。重要な根拠は `reports/*.md` の本文正本で確認してください。
+
+提案は、各レポートの `concept_alignment.primary_stage_ids`、`supporting_stage_ids`、`literacy_ids` に沿って整理してください。
+
+## 入力条件
+
+- 対象: 教育機関、自治体、企業研修、EdTechサービスのいずれか
+- 学習者: 小学生、中高生、大学生、教員、社会人のいずれか
+- 重視するテーマ: 創造性、情報リテラシー、デジタルシティズンシップ、平和教育、未来構想、地域課題のいずれか
+
+## 出力形式
+
+1. 企画名
+2. 背景となる課題
+3. 参照したレポートと示唆
+4. concept_alignment
+5. 学習活動またはサービス体験
+6. AIの役割
+7. 人間の判断が必要な点
+8. 実施上のリスクと対策
+9. 90日間の実装計画
+
+# Citations
+
+[1] [prompts/idea-generation.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/prompts/idea-generation.md)
+
+
+---
+okf/prompts/implementation-roadmap.md
+---
+---
+type: "Prompt"
+title: "実装ロードマップ生成プロンプト"
+description: "授業・研修・企画を実行へ移すために、30日・90日・180日のロードマップと体制・評価・リスクを整理する実装計画支援"
+resource: "https://github.com/wtnv-lab/AIxCreationEdu/blob/main/prompts/implementation-roadmap.md"
+tags: ["prompt", "AI workflow", "education planning"]
+timestamp: "2026-05-27T00:00:00Z"
+aice_prompt_id: "implementation-roadmap"
+aice_source_md: "prompts/implementation-roadmap.md"
+---
+
+# 実装ロードマップ生成プロンプト
+
+授業・研修・企画を実行へ移すために、30日・90日・180日のロードマップと体制・評価・リスクを整理する実装計画支援
+
+# Source
+
+* Prompt source: [prompts/implementation-roadmap.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/prompts/implementation-roadmap.md)
+
+# Prompt Body
+
+# 実装ロードマップ生成プロンプト
+
+指定された組織や授業テーマに対して、`ai/system-instructions.md` の回答ルールに従い、`metadata/report-sidecars/*.json`、`ai/rag/chunks.jsonl`、`metadata/reports.json` から関連レポートの `implementation_ideas`、`learning_activities`、`concept_alignment` を参照し、30日・90日・180日の実装ロードマップを作成してください。小さく始める検証、関係者の巻き込み、評価、公開・発信まで含めてください。
+
+ロードマップは、`primary_stage_ids` と `human_responsibility_ids` を明示し、AIに任せる部分・人間が責任を持つ部分を分けてください。
+
+## 出力形式
+
+1. 実装目的
+2. 関連レポート
+3. concept_alignment
+4. 30日計画
+5. 90日計画
+6. 180日計画
+7. 必要な体制
+8. 評価指標
+9. リスクと対策
+
+# Citations
+
+[1] [prompts/implementation-roadmap.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/prompts/implementation-roadmap.md)
+
+
+---
+okf/prompts/index.md
+---
+# Prompts
+
+* [lesson-plan-generation](lesson-plan-generation.md) - 指定した学年・教科・時間数に合わせ、レポートの根拠を示しながら授業案を組み立てるための授業設計支援
+* [workshop-design](workshop-design.md) - 学校・自治体・企業研修向けに、半日または1日のワークショップをタイムテーブルや成果物まで整理するための設計支援
+* [service-planning](service-planning.md) - レポートの示唆をもとに、生成AI時代の教育サービス案を利用者課題・体験・検証計画まで具体化するためのサービス企画支援
+* [idea-generation](idea-generation.md) - 対象者やテーマに応じて、リポジトリ内の知見を横断し、新しい授業・研修・サービス企画の種を提案するためのアイデア創出支援
+* [excursion-ideation](excursion-ideation.md) - 固定観念をゆるめ、遠い領域の特徴を借りて、教育実践やサービスのアイデアを広げるための発想支援
+* [implementation-roadmap](implementation-roadmap.md) - 授業・研修・企画を実行へ移すために、30日・90日・180日のロードマップと体制・評価・リスクを整理する実装計画支援
+* [cross-report-comparison](cross-report-comparison.md) - 指定テーマについて複数レポートを比較し、共通点・差異・相互補完関係・教育実践への示唆を根拠付きで整理する横断比較支援
+* [citation-answering](citation-answering.md) - 利用者の質問に対して、レポート本文・メタデータ・図表・参考文献を根拠に、出典付きで回答するための根拠確認支援
+* [planning-template](planning-template.md) - 授業・研修・企画を始める前に、目的・対象者・AI活用・評価・ロードマップを空欄形式で整理するための計画立案テンプレート
+
+
+---
+okf/prompts/lesson-plan-generation.md
+---
+---
+type: "Prompt"
+title: "授業案生成プロンプト"
+description: "指定した学年・教科・時間数に合わせ、レポートの根拠を示しながら授業案を組み立てるための授業設計支援"
+resource: "https://github.com/wtnv-lab/AIxCreationEdu/blob/main/prompts/lesson-plan-generation.md"
+tags: ["prompt", "AI workflow", "education planning"]
+timestamp: "2026-05-27T00:00:00Z"
+aice_prompt_id: "lesson-plan-generation"
+aice_source_md: "prompts/lesson-plan-generation.md"
+---
+
+# 授業案生成プロンプト
+
+指定した学年・教科・時間数に合わせ、レポートの根拠を示しながら授業案を組み立てるための授業設計支援
+
+# Source
+
+* Prompt source: [prompts/lesson-plan-generation.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/prompts/lesson-plan-generation.md)
+
+# Prompt Body
+
+# 授業案生成プロンプト
+
+`ai/system-instructions.md` の回答ルールに従い、`ai/rag/chunks.jsonl`、`metadata/report-sidecars/*.json`、`metadata/reports.json` を根拠に、指定された学年・教科・時間数に合わせた授業案を作成してください。出典として利用したレポートID、チャンクID、`evidence_refs`、図表IDを明記し、AIの利用場面と人間が判断する場面を分けてください。重要な判断は `reports/*.md` の本文正本で確認してください。
+
+授業の流れは、各レポートの `concept_alignment.primary_stage_ids`、`supporting_stage_ids`、`human_responsibility_ids` を参照して組み立ててください。
+
+## 出力形式
+
+1. 授業名
+2. 対象学年・教科
+3. 到達目標
+4. 参照レポートと根拠チャンク
+5. concept_alignment
+6. 時間配分
+7. 学習活動
+8. AI利用の役割
+9. 評価観点
+10. 倫理・著作権・安全上の配慮
+
+# Citations
+
+[1] [prompts/lesson-plan-generation.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/prompts/lesson-plan-generation.md)
+
+
+---
+okf/prompts/planning-template.md
+---
+---
+type: "Prompt"
+title: "計画立案テンプレート"
+description: "授業・研修・企画を始める前に、目的・対象者・AI活用・評価・ロードマップを空欄形式で整理するための計画立案テンプレート"
+resource: "https://github.com/wtnv-lab/AIxCreationEdu/blob/main/prompts/planning-template.md"
+tags: ["prompt", "AI workflow", "education planning"]
+timestamp: "2026-05-27T00:00:00Z"
+aice_prompt_id: "planning-template"
+aice_source_md: "prompts/planning-template.md"
+---
+
+# 計画立案テンプレート
+
+授業・研修・企画を始める前に、目的・対象者・AI活用・評価・ロードマップを空欄形式で整理するための計画立案テンプレート
+
+# Source
+
+* Prompt source: [prompts/planning-template.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/prompts/planning-template.md)
+
+# Prompt Body
+
+# 計画立案テンプレート
+
+## 目的
+
+## 対象者
+
+## 参照するレポート
+
+## 根拠チャンク・文献ID
+
+## concept_alignment
+
+## 教育的価値
+
+## 使用するAI・デジタル技術
+
+## 探究・制作プロセス
+
+## 実践またはサービスの流れ
+
+## 評価方法
+
+## ヒトが確認・編集する点
+
+## 倫理・安全・著作権上の配慮
+
+## 実装ロードマップ
+
+## 必要なパートナー・資料・データ
+
+# Citations
+
+[1] [prompts/planning-template.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/prompts/planning-template.md)
+
+
+---
+okf/prompts/service-planning.md
+---
+---
+type: "Prompt"
+title: "教育サービス企画プロンプト"
+description: "レポートの示唆をもとに、生成AI時代の教育サービス案を利用者課題・体験・検証計画まで具体化するためのサービス企画支援"
+resource: "https://github.com/wtnv-lab/AIxCreationEdu/blob/main/prompts/service-planning.md"
+tags: ["prompt", "AI workflow", "education planning"]
+timestamp: "2026-05-27T00:00:00Z"
+aice_prompt_id: "service-planning"
+aice_source_md: "prompts/service-planning.md"
+---
+
+# 教育サービス企画プロンプト
+
+レポートの示唆をもとに、生成AI時代の教育サービス案を利用者課題・体験・検証計画まで具体化するためのサービス企画支援
+
+# Source
+
+* Prompt source: [prompts/service-planning.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/prompts/service-planning.md)
+
+# Prompt Body
+
+# 教育サービス企画プロンプト
+
+あなたはEdTechサービスの企画担当者です。`ai/system-instructions.md` の回答ルールに従い、`metadata/report-sidecars/*.json`、`ai/rag/chunks.jsonl`、`metadata/reports.json` の想定読者、活用場面、実装アイデア、`concept_alignment` をもとに、生成AI時代の教育サービス案を作成してください。機能の羅列ではなく、利用者の課題、学習体験、導入条件を中心に整理してください。
+
+サービス体験は、`ai_role_ids` と `human_responsibility_ids` の分担が分かる構造として示してください。
+
+## 出力形式
+
+1. サービス名
+2. 対象ユーザー
+3. 解決する課題
+4. 根拠にしたレポート
+5. concept_alignment
+6. 主要機能
+7. 学習者・教員・管理者の体験
+8. 導入に必要なデータ・パートナー
+9. 評価指標
+10. 3か月の検証計画
+
+# Citations
+
+[1] [prompts/service-planning.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/prompts/service-planning.md)
+
+
+---
+okf/prompts/workshop-design.md
+---
+---
+type: "Prompt"
+title: "ワークショップ設計プロンプト"
+description: "学校・自治体・企業研修向けに、半日または1日のワークショップをタイムテーブルや成果物まで整理するための設計支援"
+resource: "https://github.com/wtnv-lab/AIxCreationEdu/blob/main/prompts/workshop-design.md"
+tags: ["prompt", "AI workflow", "education planning"]
+timestamp: "2026-05-27T00:00:00Z"
+aice_prompt_id: "workshop-design"
+aice_source_md: "prompts/workshop-design.md"
+---
+
+# ワークショップ設計プロンプト
+
+学校・自治体・企業研修向けに、半日または1日のワークショップをタイムテーブルや成果物まで整理するための設計支援
+
+# Source
+
+* Prompt source: [prompts/workshop-design.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/prompts/workshop-design.md)
+
+# Prompt Body
+
+# ワークショップ設計プロンプト
+
+`ai/system-instructions.md` の回答ルールに従い、`metadata/report-sidecars/*.json`、`ai/rag/chunks.jsonl` の `use_cases`、`learning_activities`、`implementation_ideas`、`concept_alignment` を参照し、学校・自治体・企業研修のいずれかに向けた半日または1日のワークショップを設計してください。参加者の前提知識、必要な資料、ファシリテーション上の注意を含めてください。
+
+タイムテーブルは、`stage_id` 単位で対応が分かるようにしてください。
+
+## 出力形式
+
+1. ワークショップ名
+2. 対象者
+3. ねらい
+4. 使用するレポート
+5. concept_alignment
+6. タイムテーブル
+7. 個人活動・グループ活動
+8. 成果物
+9. リスクと対策
+
+# Citations
+
+[1] [prompts/workshop-design.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/prompts/workshop-design.md)
+
+
+---
+okf/reports/00-overview.md
+---
+---
+type: "Report"
+title: "AIとクリエイティブと教育 総括レポート"
+description: "生成AI時代の教育を、問い・資料読解・制作・検証・社会発信をつなぐ創造性教育として整理。"
+resource: "https://github.com/wtnv-lab/AIxCreationEdu/blob/main/reports/00-overview.md"
+tags: ["overview", "生成AI", "創造性", "教育実践", "総括", "AIと教育", "クリエイティブ", "学習設計", "concept_map", "creativity_education", "production_to_conception_shift"]
+timestamp: "2026-05-27T00:00:00Z"
+authors: ["渡邉英徳"]
+license: "CC BY 4.0"
+aice_report_id: "00-overview"
+aice_kind: "overview"
+aice_source_md: "reports/00-overview.md"
+aice_sidecar: "metadata/report-sidecars/00-overview.json"
+---
+
+# AIとクリエイティブと教育 総括レポート
+
+生成AI時代の教育を、問い・資料読解・制作・検証・社会発信をつなぐ創造性教育として整理。
+
+# Source
+
+* 正本Markdown: [reports/00-overview.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/reports/00-overview.md)
+* AI sidecar: [metadata/report-sidecars/00-overview.json](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/metadata/report-sidecars/00-overview.json)
+* RAG chunks: [ai/rag/chunks.jsonl](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/ai/rag/chunks.jsonl)
+
+# Audience
+
+* 生成AI時代の教育方針を検討する学校管理職・教育委員会担当者
+* AI・創造性・情報リテラシーを横断するカリキュラム設計者
+* 教育ソリューションやEdTechサービスの企画担当者
+* AIと教育実践の全体像を把握したい研究者・実践者
+
+# Key Takeaways
+
+* 生成AIにより制作や調査のハードルが下がるほど、問いの設定と社会的価値への接続が重要になる。
+* AIは効率化ツールだけでなく、構想・検証・編集を支える伴走者として設計する必要がある。
+* 七つの実践は、創造性教育を技能習得から判断・編集・発信の学習へ広げる視点を共有している。
+
+# Use Cases
+
+* 生成AI時代の教育方針や校内研修の導入資料
+* AI・創造性・情報リテラシーを横断するカリキュラム設計
+* EdTechサービスや教材企画の論点整理
+* 複数レポートを比較するRAG・AIエージェントの入口
+
+# Learning Activities
+
+* 各レポートの共通概念をマッピングし、AI活用教育の全体像を整理する。
+* AIに任せる作業と人間が判断する作業を分類し、授業設計原則を作る。
+* レポート群を比較し、学校・地域・企業研修に応用できる実践案を提案する。
+
+# Implementation Ideas
+
+* 90分の教員研修で、レポート群をもとに自校のAI活用方針を検討する。
+* 教育委員会や学校向けに、生成AI活用のカリキュラム横断マップを作成する。
+* AIエージェントに読み込ませる基礎資料として、授業案・研修案・サービス案の生成に使う。
+
+# Related Concepts
+
+* [01-information-visualization-osint](/reports/01-information-visualization-osint.md)
+* [02-photo-colorization-peace-education](/reports/02-photo-colorization-peace-education.md)
+* [03-digital-citizenship](/reports/03-digital-citizenship.md)
+* [04-student-hackathon](/reports/04-student-hackathon.md)
+* [05-digital-archive-ai](/reports/05-digital-archive-ai.md)
+* [06-sf-prototyping](/reports/06-sf-prototyping.md)
+* [07-minecraft-ai-education](/reports/07-minecraft-ai-education.md)
+
+# Concept Alignment
+
+```json
+{
+  "schema": "aice.concept_alignment.v1",
+  "primary_stage_ids": [
+    "question_framing",
+    "source_evaluation",
+    "prototyping",
+    "human_verification",
+    "public_communication"
+  ],
+  "supporting_stage_ids": [],
+  "literacy_ids": [
+    "ai_competency_citizenship",
+    "design_editing_critical_thinking",
+    "publicness_social_responsibility"
+  ],
+  "ai_role_ids": [
+    "co_inquiry",
+    "idea_expansion",
+    "drafting",
+    "critique",
+    "prototyping_support"
+  ],
+  "human_responsibility_ids": [
+    "question_design",
+    "source_selection",
+    "output_verification",
+    "ethical_editing",
+    "public_accountability"
+  ],
+  "domain_tags": [
+    "overview",
+    "concept_map",
+    "creativity_education",
+    "production_to_conception_shift"
+  ]
+}
+```
+
+# Citations
+
+[1] [reports/00-overview.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/reports/00-overview.md)
+[2] [metadata/report-sidecars/00-overview.json](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/metadata/report-sidecars/00-overview.json)
+
+
+---
+okf/reports/01-information-visualization-osint.md
+---
+---
+type: "Report"
+title: "AIと情報可視化・OSINT教育"
+description: "GIS・データ可視化・OSINTを通じて、公開情報を検証し社会へ伝える情報メディア教育モデル。"
+resource: "https://github.com/wtnv-lab/AIxCreationEdu/blob/main/reports/01-information-visualization-osint.md"
+tags: ["report", "生成AI", "情報可視化", "OSINT", "探究学習", "メディアリテラシー", "osint", "gis", "data_visualization", "public_information", "media_literacy"]
+timestamp: "2026-05-27T00:00:00Z"
+authors: ["渡邉英徳"]
+license: "CC BY 4.0"
+aice_report_id: "01-information-visualization-osint"
+aice_kind: "report"
+aice_source_md: "reports/01-information-visualization-osint.md"
+aice_sidecar: "metadata/report-sidecars/01-information-visualization-osint.json"
+---
+
+# AIと情報可視化・OSINT教育
+
+GIS・データ可視化・OSINTを通じて、公開情報を検証し社会へ伝える情報メディア教育モデル。
+
+# Source
+
+* 正本Markdown: [reports/01-information-visualization-osint.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/reports/01-information-visualization-osint.md)
+* AI sidecar: [metadata/report-sidecars/01-information-visualization-osint.json](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/metadata/report-sidecars/01-information-visualization-osint.json)
+* RAG chunks: [ai/rag/chunks.jsonl](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/ai/rag/chunks.jsonl)
+
+# Audience
+
+* 情報・メディア・探究学習を担当する高校・大学教員
+* データ可視化、GIS、デジタルアーカイブを授業に取り入れたい教育者
+* OSINTや調査報道の基礎を教育・研修化したい報道関係者
+* 公開情報の検証と社会的説明を扱う教材・サービス企画者
+
+# Key Takeaways
+
+* GIS、データ可視化、OSINTは、公開情報を検証可能な形で読み解く情報メディア教育の中核になる。
+* AIは結論を代行するのではなく、観察、仮説比較、説明の点検を支援する対話的編集者として使う。
+* 読売新聞への学術指導や日本テレビとの共同研究事例は、教育・報道・社会課題を接続する実践モデルになる。
+
+# Use Cases
+
+* 高校・大学のGIS、データ可視化、OSINT授業
+* 報道機関や自治体と連携した公開情報検証ワークショップ
+* 災害、地域課題、都市分析を扱う探究学習
+* 情報可視化教材や調査支援サービスの企画
+
+# Learning Activities
+
+* 地域の公開データを地図化し、分布や偏りについてAIと対話しながら仮説を作る。
+* ニュースやSNS投稿の位置情報・時系列・出典を検証し、確実に言えることと推測を分ける。
+* 地図、グラフ、テキストを組み合わせ、第三者に説明可能な調査レポートを作成する。
+
+# Implementation Ideas
+
+* GIS作品例を使った導入ワークショップを設計し、地図表現の読み解きから始める。
+* OSINT検証ラボとして、公開情報の収集、照合、説明文作成、AIによる推論チェックを行う。
+* 報道機関や自治体と連携し、地域課題を扱うデータストーリーテリング課題を実施する。
+
+# Related Concepts
+
+* [00-overview](/reports/00-overview.md)
+* [03-digital-citizenship](/reports/03-digital-citizenship.md)
+* [05-digital-archive-ai](/reports/05-digital-archive-ai.md)
+
+# Concept Alignment
+
+```json
+{
+  "schema": "aice.concept_alignment.v1",
+  "primary_stage_ids": [
+    "question_framing",
+    "source_evaluation",
+    "human_verification",
+    "public_communication"
+  ],
+  "supporting_stage_ids": [
+    "prototyping"
+  ],
+  "literacy_ids": [
+    "ai_competency_citizenship",
+    "design_editing_critical_thinking",
+    "publicness_social_responsibility"
+  ],
+  "ai_role_ids": [
+    "observation_verbalization",
+    "hypothesis_comparison",
+    "inference_check",
+    "editorial_support"
+  ],
+  "human_responsibility_ids": [
+    "source_verification",
+    "observation_inference_separation",
+    "evidence_transparency",
+    "explanatory_accountability"
+  ],
+  "domain_tags": [
+    "osint",
+    "gis",
+    "data_visualization",
+    "public_information",
+    "media_literacy"
+  ]
+}
+```
+
+# Citations
+
+[1] [reports/01-information-visualization-osint.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/reports/01-information-visualization-osint.md)
+[2] [metadata/report-sidecars/01-information-visualization-osint.json](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/metadata/report-sidecars/01-information-visualization-osint.json)
+
+
+---
+okf/reports/02-photo-colorization-peace-education.md
+---
+---
+type: "Report"
+title: "AIによるモノクロ写真カラー化を活かした高校生の平和教育実践"
+description: "AIカラー化を、写真資料・証言・地域の記憶をつなぐ平和教育と記憶継承の探究へ展開。"
+resource: "https://github.com/wtnv-lab/AIxCreationEdu/blob/main/reports/02-photo-colorization-peace-education.md"
+tags: ["report", "生成AI", "写真カラー化", "平和教育", "歴史学習", "高校教育", "歴史資料", "photo_colorization", "peace_education", "memory_inheritance", "historical_photos"]
+timestamp: "2026-05-27T00:00:00Z"
+authors: ["森吉蓉子", "渡邉英徳"]
+license: "CC BY 4.0"
+aice_report_id: "02-photo-colorization-peace-education"
+aice_kind: "report"
+aice_source_md: "reports/02-photo-colorization-peace-education.md"
+aice_sidecar: "metadata/report-sidecars/02-photo-colorization-peace-education.json"
+---
+
+# AIによるモノクロ写真カラー化を活かした高校生の平和教育実践
+
+AIカラー化を、写真資料・証言・地域の記憶をつなぐ平和教育と記憶継承の探究へ展開。
+
+# Source
+
+* 正本Markdown: [reports/02-photo-colorization-peace-education.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/reports/02-photo-colorization-peace-education.md)
+* AI sidecar: [metadata/report-sidecars/02-photo-colorization-peace-education.json](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/metadata/report-sidecars/02-photo-colorization-peace-education.json)
+* RAG chunks: [ai/rag/chunks.jsonl](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/ai/rag/chunks.jsonl)
+
+# Audience
+
+* 平和教育・歴史教育・地域学習を担当する中学・高校教員
+* 写真資料や証言を活用する博物館・資料館・地域アーカイブ担当者
+* AIカラー化を探究学習や記憶継承に活かしたい教育実践者
+* 生徒の成果発信や社会連携型プロジェクトを支援する担当者
+
+# Key Takeaways
+
+* AIカラー化は過去を正確に復元する処理ではなく、資料批判と対話を促す探究の入口になる。
+* 高校生が写真、証言、地域の記憶を照合することで、平和教育を受け身の学習から社会発信へ広げられる。
+* AIリテラシーと歴史資料の扱いを結び、記憶継承を若い世代の表現活動として設計できる。
+
+# Use Cases
+
+* 中学・高校の平和教育、歴史教育、地域学習
+* 博物館・資料館と学校が連携する写真資料活用授業
+* AIカラー化をめぐる資料批判と倫理の教材化
+* 生徒による展示、発表、写真集制作プロジェクト
+
+# Learning Activities
+
+* 白黒写真を観察し、AIカラー化前後で印象や解釈がどう変わるかを記録する。
+* 証言や専門資料を参照し、AIが生成した色の妥当性と限界を検討する。
+* 写真に添えるキャプションや発表原稿を作り、記憶継承の表現として公開する。
+
+# Implementation Ideas
+
+* 地域資料館と連携し、写真選定、カラー化、検証、展示までを一連の探究にする。
+* 発表風景や制作物の図版を含め、学習成果を外部に説明できるポートフォリオにまとめる。
+* AI利用の透明性、資料出典、証言者への配慮を評価項目に入れたルーブリックを作る。
+
+# Related Concepts
+
+* [00-overview](/reports/00-overview.md)
+* [03-digital-citizenship](/reports/03-digital-citizenship.md)
+* [05-digital-archive-ai](/reports/05-digital-archive-ai.md)
+
+# Concept Alignment
+
+```json
+{
+  "schema": "aice.concept_alignment.v1",
+  "primary_stage_ids": [
+    "source_evaluation",
+    "human_verification",
+    "public_communication"
+  ],
+  "supporting_stage_ids": [
+    "question_framing",
+    "prototyping"
+  ],
+  "literacy_ids": [
+    "ai_competency_citizenship",
+    "design_editing_critical_thinking",
+    "publicness_social_responsibility"
+  ],
+  "ai_role_ids": [
+    "colorization_probe",
+    "interpretation_prompt",
+    "dialogue_support"
+  ],
+  "human_responsibility_ids": [
+    "testimony_crosscheck",
+    "uncertainty_disclosure",
+    "responsible_representation",
+    "memory_ethics"
+  ],
+  "domain_tags": [
+    "photo_colorization",
+    "peace_education",
+    "memory_inheritance",
+    "historical_photos"
+  ]
+}
+```
+
+# Citations
+
+[1] [reports/02-photo-colorization-peace-education.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/reports/02-photo-colorization-peace-education.md)
+[2] [metadata/report-sidecars/02-photo-colorization-peace-education.json](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/metadata/report-sidecars/02-photo-colorization-peace-education.json)
+
+
+---
+okf/reports/03-digital-citizenship.md
+---
+---
+type: "Report"
+title: "AIを活かしたデジタルシティズンシップ教育"
+description: "AIの禁止・管理を超え、判断・参加・公共性を育てるデジタルシティズンシップ教育。"
+resource: "https://github.com/wtnv-lab/AIxCreationEdu/blob/main/reports/03-digital-citizenship.md"
+tags: ["report", "生成AI", "デジタルシティズンシップ", "AIリテラシー", "情報モラル", "教育実践", "digital_citizenship", "ai_literacy", "media_literacy", "publicness", "knowledge_experience"]
+timestamp: "2026-05-27T00:00:00Z"
+authors: ["原田真喜子"]
+license: "CC BY 4.0"
+aice_report_id: "03-digital-citizenship"
+aice_kind: "report"
+aice_source_md: "reports/03-digital-citizenship.md"
+aice_sidecar: "metadata/report-sidecars/03-digital-citizenship.json"
+---
+
+# AIを活かしたデジタルシティズンシップ教育
+
+AIの禁止・管理を超え、判断・参加・公共性を育てるデジタルシティズンシップ教育。
+
+# Source
+
+* 正本Markdown: [reports/03-digital-citizenship.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/reports/03-digital-citizenship.md)
+* AI sidecar: [metadata/report-sidecars/03-digital-citizenship.json](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/metadata/report-sidecars/03-digital-citizenship.json)
+* RAG chunks: [ai/rag/chunks.jsonl](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/ai/rag/chunks.jsonl)
+
+# Audience
+
+* 小中高の情報活用能力・情報モラル・ICT活用を担当する教員
+* デジタルシティズンシップ教育のカリキュラム設計者
+* 生成AI利用ルールや校内研修を設計する学校管理職・ICT担当者
+* AIリテラシー教材や安全な学習環境を開発する教育サービス担当者
+
+# Key Takeaways
+
+* 生成AI時代のデジタルシティズンシップは，禁止や管理ではなく，技術社会への判断と参加を学ぶ教育である。
+* AI出力を疑い，根拠を確認し，自分の判断として再構成する経験が中核になる。
+* 知識を獲得・再編集・共有・表出する過程を，公共的価値へ接続する設計が重要になる。
+
+# Use Cases
+
+* 小中高の情報モラル、ICT活用、AIリテラシー授業
+* 学校の生成AI利用ルールや校内研修の設計
+* 安全な学習環境を備えた教育サービスの企画
+* 生徒の表現活動における倫理・著作権・プライバシー指導
+
+# Learning Activities
+
+* AIの回答について，根拠，偏り，未確認情報をチェックするワークを行う。
+* プロンプト，出力，修正過程，利用後の判断を記録し，AI利用を検証可能な学習過程として振り返る。
+* 生成物を公開する前に，影響を受ける他者，著作権，個人情報を点検する。
+
+# Implementation Ideas
+
+* 各教科で使えるAI利用チェックリストを作り，授業ごとに更新する。
+* 校内研修で，禁止事項だけでなく判断プロセスを共有するケーススタディを行う。
+* AI教材に，根拠確認，出典表示，公開前レビュー，振り返り記録の流れを組み込む。
+
+# Related Concepts
+
+* [00-overview](/reports/00-overview.md)
+* [01-information-visualization-osint](/reports/01-information-visualization-osint.md)
+* [04-student-hackathon](/reports/04-student-hackathon.md)
+
+# Concept Alignment
+
+```json
+{
+  "schema": "aice.concept_alignment.v1",
+  "primary_stage_ids": [
+    "human_verification",
+    "public_communication"
+  ],
+  "supporting_stage_ids": [
+    "question_framing",
+    "source_evaluation"
+  ],
+  "literacy_ids": [
+    "ai_competency_citizenship",
+    "design_editing_critical_thinking",
+    "publicness_social_responsibility"
+  ],
+  "ai_role_ids": [
+    "case_material",
+    "risk_prompt",
+    "reflection_partner",
+    "knowledge_navigator"
+  ],
+  "human_responsibility_ids": [
+    "bias_check",
+    "rights_privacy_review",
+    "impact_assessment",
+    "guideline_design",
+    "knowledge_reediting"
+  ],
+  "domain_tags": [
+    "digital_citizenship",
+    "ai_literacy",
+    "media_literacy",
+    "publicness",
+    "knowledge_experience"
+  ]
+}
+```
+
+# Citations
+
+[1] [reports/03-digital-citizenship.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/reports/03-digital-citizenship.md)
+[2] [metadata/report-sidecars/03-digital-citizenship.json](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/metadata/report-sidecars/03-digital-citizenship.json)
+
+
+---
+okf/reports/04-student-hackathon.md
+---
+---
+type: "Report"
+title: "AI時代の学生ハッカソン：実装の民主化と発想力への転換"
+description: "生成AIで実装負荷が下がる時代の学生ハッカソンを、課題設定と発想力の学びとして再定義。"
+resource: "https://github.com/wtnv-lab/AIxCreationEdu/blob/main/reports/04-student-hackathon.md"
+tags: ["report", "生成AI", "ハッカソン", "プロトタイピング", "実装教育", "学生ハッカソン", "プロダクト開発", "実装の民主化", "創造性", "hackathon", "prototyping", "implementation_democratization", "student_projects"]
+timestamp: "2026-05-27T00:00:00Z"
+authors: ["小松尚平", "渡邉英徳"]
+license: "CC BY 4.0"
+aice_report_id: "04-student-hackathon"
+aice_kind: "report"
+aice_source_md: "reports/04-student-hackathon.md"
+aice_sidecar: "metadata/report-sidecars/04-student-hackathon.json"
+---
+
+# AI時代の学生ハッカソン：実装の民主化と発想力への転換
+
+生成AIで実装負荷が下がる時代の学生ハッカソンを、課題設定と発想力の学びとして再定義。
+
+# Source
+
+* 正本Markdown: [reports/04-student-hackathon.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/reports/04-student-hackathon.md)
+* AI sidecar: [metadata/report-sidecars/04-student-hackathon.json](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/metadata/report-sidecars/04-student-hackathon.json)
+* RAG chunks: [ai/rag/chunks.jsonl](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/ai/rag/chunks.jsonl)
+
+# Audience
+
+* 大学・高専・高校でハッカソンやPBLを運営する教職員
+* AIを用いたプロトタイピング教育を設計するメンター・ファシリテーター
+* 学生起業、地域課題解決、産学連携プログラムの企画担当者
+* 生成AI時代の開発教育や創造性評価に関心を持つ実践者
+
+# Key Takeaways
+
+* 生成AIにより実装のハードルが下がると、ハッカソンの評価軸は課題設定、体験設計、社会的価値へ移る。
+* AIはコード生成やデバッグを支援するが、何を作るか、誰に価値があるかの判断は人間が担う。
+* 学生ハッカソンは、技術競争だけでなく、発想を検証し社会に説明する教育機会として再設計できる。
+
+# Use Cases
+
+* 大学・高専・高校のハッカソンやPBL設計
+* AIプロトタイピング研修やメンター育成
+* 地域課題解決、学生起業、産学連携プログラム
+* AI時代の創造性評価や成果発表の設計
+
+# Learning Activities
+
+* AIを用いて複数のプロトタイプ案を作り、利用者価値とリスクで比較する。
+* 生成されたコードやUIを検証し、発想、実装、説明のどこに人間の判断が必要かを振り返る。
+* 発表資料を作る際に、課題、ユーザー、価値、検証結果を明確にする。
+
+# Implementation Ideas
+
+* 短時間のAIプロトタイピング演習を導入し、実装より課題定義と検証を重視する。
+* 審査基準に、社会的価値、利用者理解、AI利用の透明性、検証プロセスを加える。
+* メンター向けに、AI出力を鵜呑みにしないレビュー観点を共有する。
+
+# Related Concepts
+
+* [00-overview](/reports/00-overview.md)
+* [03-digital-citizenship](/reports/03-digital-citizenship.md)
+* [06-sf-prototyping](/reports/06-sf-prototyping.md)
+
+# Concept Alignment
+
+```json
+{
+  "schema": "aice.concept_alignment.v1",
+  "primary_stage_ids": [
+    "question_framing",
+    "prototyping",
+    "human_verification",
+    "public_communication"
+  ],
+  "supporting_stage_ids": [
+    "source_evaluation"
+  ],
+  "literacy_ids": [
+    "ai_competency_citizenship",
+    "design_editing_critical_thinking",
+    "publicness_social_responsibility"
+  ],
+  "ai_role_ids": [
+    "code_generation",
+    "ui_drafting",
+    "debugging_support",
+    "pitch_support"
+  ],
+  "human_responsibility_ids": [
+    "problem_selection",
+    "user_value_judgment",
+    "prototype_review",
+    "transparent_ai_use"
+  ],
+  "domain_tags": [
+    "hackathon",
+    "prototyping",
+    "implementation_democratization",
+    "student_projects"
+  ]
+}
+```
+
+# Citations
+
+[1] [reports/04-student-hackathon.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/reports/04-student-hackathon.md)
+[2] [metadata/report-sidecars/04-student-hackathon.json](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/metadata/report-sidecars/04-student-hackathon.json)
+
+
+---
+okf/reports/05-digital-archive-ai.md
+---
+---
+type: "Report"
+title: "デジタルアーカイブとAIを活かした教育実践"
+description: "デジタルアーカイブと生成AIを組み合わせ、一次資料を用いた探究と社会発信を支える教育実践。"
+resource: "https://github.com/wtnv-lab/AIxCreationEdu/blob/main/reports/05-digital-archive-ai.md"
+tags: ["report", "生成AI", "デジタルアーカイブ", "教育実践", "資料活用", "探究学習", "AI教育", "digital_archive", "primary_sources", "sukilam", "educational_materials"]
+timestamp: "2026-05-27T00:00:00Z"
+authors: ["大井将生"]
+license: "CC BY 4.0"
+aice_report_id: "05-digital-archive-ai"
+aice_kind: "report"
+aice_source_md: "reports/05-digital-archive-ai.md"
+aice_sidecar: "metadata/report-sidecars/05-digital-archive-ai.json"
+---
+
+# デジタルアーカイブとAIを活かした教育実践
+
+デジタルアーカイブと生成AIを組み合わせ、一次資料を用いた探究と社会発信を支える教育実践。
+
+# Source
+
+* 正本Markdown: [reports/05-digital-archive-ai.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/reports/05-digital-archive-ai.md)
+* AI sidecar: [metadata/report-sidecars/05-digital-archive-ai.json](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/metadata/report-sidecars/05-digital-archive-ai.json)
+* RAG chunks: [ai/rag/chunks.jsonl](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/ai/rag/chunks.jsonl)
+
+# Audience
+
+* 学校教育で一次資料や地域資料を活用したい教員
+* デジタルアーカイブの教育利用を進める図書館・博物館・自治体担当者
+* 探究学習、キュレーション授業、教材アーカイブを設計する教育者
+* AIと資料検索・要約・再編集を組み合わせた学習サービス企画者
+
+# Key Takeaways
+
+* デジタルアーカイブは保存基盤にとどまらず、学習者が問いを立て資料を再編集する探究環境になる。
+* AIは検索、要約、比較、表現を支援するが、一次資料性と出典確認を学習活動に組み込む必要がある。
+* 資料活用、AIカラー化、S×UKILAM連携は、学校と文化資源を結ぶ教育実践の基盤になる。
+
+# Use Cases
+
+* 一次資料や地域資料を活用した探究学習
+* 図書館・博物館・自治体の教育連携プログラム
+* デジタルアーカイブを使う教材・検索支援サービスの企画
+* AIによる資料要約、比較、再編集を扱う授業
+
+# Learning Activities
+
+* ジャパンサーチ等で資料を探し、出典、作成時期、文脈を確認して問いを立てる。
+* AIに資料の要約や比較をさせ、その妥当性を原資料に戻って検証する。
+* 複数資料を組み合わせ、展示案、教材、地域ストーリーとして再構成する。
+
+# Implementation Ideas
+
+* 学校と図書館・博物館が連携し、地域資料を使う探究単元を設計する。
+* AI検索・要約機能に、出典確認と一次資料へのリンクを必ず表示する設計にする。
+* 学習成果をデジタル展示や教材アーカイブとして蓄積し、次年度の学習資源にする。
+
+# Related Concepts
+
+* [00-overview](/reports/00-overview.md)
+* [01-information-visualization-osint](/reports/01-information-visualization-osint.md)
+* [02-photo-colorization-peace-education](/reports/02-photo-colorization-peace-education.md)
+
+# Concept Alignment
+
+```json
+{
+  "schema": "aice.concept_alignment.v1",
+  "primary_stage_ids": [
+    "source_evaluation",
+    "prototyping",
+    "public_communication"
+  ],
+  "supporting_stage_ids": [
+    "question_framing",
+    "human_verification"
+  ],
+  "literacy_ids": [
+    "ai_competency_citizenship",
+    "design_editing_critical_thinking",
+    "publicness_social_responsibility"
+  ],
+  "ai_role_ids": [
+    "search_support",
+    "summarization",
+    "comparison",
+    "material_recomposition"
+  ],
+  "human_responsibility_ids": [
+    "source_context_check",
+    "primary_source_verification",
+    "curation_judgment",
+    "public_reframing"
+  ],
+  "domain_tags": [
+    "digital_archive",
+    "primary_sources",
+    "sukilam",
+    "educational_materials"
+  ]
+}
+```
+
+# Citations
+
+[1] [reports/05-digital-archive-ai.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/reports/05-digital-archive-ai.md)
+[2] [metadata/report-sidecars/05-digital-archive-ai.json](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/metadata/report-sidecars/05-digital-archive-ai.json)
+
+
+---
+okf/reports/06-sf-prototyping.md
+---
+---
+type: "Report"
+title: "生成AIを用いたSFプロトタイピング"
+description: "生成AIで未来シナリオを素早く仮設し、人間が批判・修正するSFプロトタイピングの教育活用。"
+resource: "https://github.com/wtnv-lab/AIxCreationEdu/blob/main/reports/06-sf-prototyping.md"
+tags: ["report", "生成AI", "SFプロトタイピング", "未来構想", "創造性教育", "未来洞察", "創造性", "ワークショップ", "sf_prototyping", "future_scenarios", "workshop", "backcasting"]
+timestamp: "2026-05-27T00:00:00Z"
+authors: ["楊欽", "渡邉英徳"]
+license: "CC BY 4.0"
+aice_report_id: "06-sf-prototyping"
+aice_kind: "report"
+aice_source_md: "reports/06-sf-prototyping.md"
+aice_sidecar: "metadata/report-sidecars/06-sf-prototyping.json"
+---
+
+# 生成AIを用いたSFプロトタイピング
+
+生成AIで未来シナリオを素早く仮設し、人間が批判・修正するSFプロトタイピングの教育活用。
+
+# Source
+
+* 正本Markdown: [reports/06-sf-prototyping.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/reports/06-sf-prototyping.md)
+* AI sidecar: [metadata/report-sidecars/06-sf-prototyping.json](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/metadata/report-sidecars/06-sf-prototyping.json)
+* RAG chunks: [ai/rag/chunks.jsonl](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/ai/rag/chunks.jsonl)
+
+# Audience
+
+* 未来構想・探究学習・創造性教育を担当する大学・高校教員
+* 産学協創、企業研修、ワークショップを設計するファシリテーター
+* 新規事業開発やビジョン策定にSFプロトタイピングを使いたい企画担当者
+* 生成AIを用いた物語生成・合意形成・アイデア創出に関心を持つ実践者
+
+# Key Takeaways
+
+* 生成AIは未来社会の物語や世界観を短時間で立ち上げ、SFプロトタイピングの参加ハードルを下げる。
+* 重要なのはAIが出した未来像を批判、修正、再構成し、望ましい未来と避けたい未来を議論することである。
+* SFプロトタイピングは教育、産学協創、事業開発における想像力と合意形成を支援する。
+
+# Use Cases
+
+* 高校・大学の未来構想、探究学習、創造性教育
+* 企業研修、産学協創、新規事業開発ワークショップ
+* 地域や組織のビジョン策定
+* 生成AIを用いた物語生成・アイデア創出教材
+
+# Learning Activities
+
+* AIに未来シナリオを複数生成させ、前提、価値観、リスクを読み解く。
+* 参加者が未来像を修正し、望ましい技術利用や社会制度を提案する。
+* SFプロトタイプを短編、新聞記事、サービス広告、政策提案などの形式で表現する。
+
+# Implementation Ideas
+
+* 90分から半日のSFプロトタイピングワークショップを設計し、AI生成と人間の批評を交互に行う。
+* 新規事業や研究テーマ検討で、未来シナリオ、ステークホルダー、倫理的論点を可視化する。
+* 成果物をハッカソンやPBLの課題設定に接続し、プロトタイプ制作へ展開する。
+
+# Related Concepts
+
+* [00-overview](/reports/00-overview.md)
+* [03-digital-citizenship](/reports/03-digital-citizenship.md)
+* [04-student-hackathon](/reports/04-student-hackathon.md)
+
+# Concept Alignment
+
+```json
+{
+  "schema": "aice.concept_alignment.v1",
+  "primary_stage_ids": [
+    "question_framing",
+    "prototyping",
+    "human_verification"
+  ],
+  "supporting_stage_ids": [
+    "public_communication"
+  ],
+  "literacy_ids": [
+    "ai_competency_citizenship",
+    "design_editing_critical_thinking",
+    "publicness_social_responsibility"
+  ],
+  "ai_role_ids": [
+    "scenario_generation",
+    "worldbuilding",
+    "alternative_generation",
+    "ideation_support"
+  ],
+  "human_responsibility_ids": [
+    "future_assumption_critique",
+    "value_judgment",
+    "scenario_revision",
+    "consensus_building"
+  ],
+  "domain_tags": [
+    "sf_prototyping",
+    "future_scenarios",
+    "workshop",
+    "backcasting"
+  ]
+}
+```
+
+# Citations
+
+[1] [reports/06-sf-prototyping.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/reports/06-sf-prototyping.md)
+[2] [metadata/report-sidecars/06-sf-prototyping.json](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/metadata/report-sidecars/06-sf-prototyping.json)
+
+
+---
+okf/reports/07-minecraft-ai-education.md
+---
+---
+type: "Report"
+title: "AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ"
+description: "MinecraftとAIを、記憶継承・地域学習・創造・AIリテラシーを横断する学習空間として整理。"
+resource: "https://github.com/wtnv-lab/AIxCreationEdu/blob/main/reports/07-minecraft-ai-education.md"
+tags: ["report", "生成AI", "Minecraft", "ゲームベース学習", "AIリテラシー", "記憶継承", "Minecraft Education", "Peacecraft", "地域学習", "minecraft_education", "game_based_learning", "memory_inheritance", "regional_learning", "ai_literacy"]
+timestamp: "2026-05-27T00:00:00Z"
+authors: ["片山実咲", "渡邉英徳"]
+license: "CC BY 4.0"
+aice_report_id: "07-minecraft-ai-education"
+aice_kind: "report"
+aice_source_md: "reports/07-minecraft-ai-education.md"
+aice_sidecar: "metadata/report-sidecars/07-minecraft-ai-education.json"
+---
+
+# AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ
+
+MinecraftとAIを、記憶継承・地域学習・創造・AIリテラシーを横断する学習空間として整理。
+
+# Source
+
+* 正本Markdown: [reports/07-minecraft-ai-education.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/reports/07-minecraft-ai-education.md)
+* AI sidecar: [metadata/report-sidecars/07-minecraft-ai-education.json](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/metadata/report-sidecars/07-minecraft-ai-education.json)
+* RAG chunks: [ai/rag/chunks.jsonl](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/ai/rag/chunks.jsonl)
+
+# Audience
+
+* Minecraft Educationやゲームベース学習を授業に取り入れたい小中高・大学教員
+* 平和教育・地域学習・災害復興学習で仮想空間制作を活用したい教育実践者
+* AIリテラシー，プログラミング，デジタルシティズンシップを横断する教材設計者
+* Minecraftや生成AIを活用した学習サービス・ワークショップの企画担当者
+
+# Key Takeaways
+
+* Minecraftは単なるゲームではなく，過去を再現し，地域や未来を構想する共有可能な学習空間になる。
+* AIカラー化，AIエージェント，生成AIによる物語化は，Minecraft内の制作を支える一方で，資料批判と人間の判断を必要とする。
+* 国内のPeacecraft系実践と海外のAIリテラシー教材は，平和教育，地域学習，プログラミング，デジタルシティズンシップを横断するモデルを示している。
+
+# Use Cases
+
+* Minecraftを用いた平和教育・災害復興学習・地域学習の設計
+* AIエージェントや生成AIを使う小中高向けAIリテラシー授業
+* 教育機関・自治体・企業が連携するゲームベース学習ワークショップ
+* 過去の資料や証言をもとに仮想空間を制作する探究学習
+
+# Learning Activities
+
+* 白黒写真や証言をもとに，失われた街並みや地域の記憶をMinecraft内で再構築する。
+* AIが生成した色，説明，建築案を資料や証言と照合し，どこまで信頼できるかを検討する。
+* AIエージェントに指示を出し，目的設定，プロンプト，検証，修正の過程を振り返る。
+
+# Implementation Ideas
+
+* 地域資料館や自治体と連携し，写真・地図・証言を使うMinecraft制作ワークショップを実施する。
+* Minecraft Educationの既存AI教材を導入し，デジタルシティズンシップや情報モラルの授業と接続する。
+* 完成した仮想空間を展示・発表し，地域住民や専門家との対話を通じて学習成果を検証する。
+
+# Related Concepts
+
+* [00-overview](/reports/00-overview.md)
+* [02-photo-colorization-peace-education](/reports/02-photo-colorization-peace-education.md)
+* [03-digital-citizenship](/reports/03-digital-citizenship.md)
+* [05-digital-archive-ai](/reports/05-digital-archive-ai.md)
+* [06-sf-prototyping](/reports/06-sf-prototyping.md)
+
+# Concept Alignment
+
+```json
+{
+  "schema": "aice.concept_alignment.v1",
+  "primary_stage_ids": [
+    "source_evaluation",
+    "prototyping",
+    "human_verification",
+    "public_communication"
+  ],
+  "supporting_stage_ids": [
+    "question_framing"
+  ],
+  "literacy_ids": [
+    "ai_competency_citizenship",
+    "design_editing_critical_thinking",
+    "publicness_social_responsibility"
+  ],
+  "ai_role_ids": [
+    "worldbuilding_support",
+    "agent_assistance",
+    "story_generation",
+    "colorization_probe"
+  ],
+  "human_responsibility_ids": [
+    "evidence_uncertainty_handling",
+    "reconstruction_judgment",
+    "community_dialogue",
+    "ai_output_review"
+  ],
+  "domain_tags": [
+    "minecraft_education",
+    "game_based_learning",
+    "memory_inheritance",
+    "regional_learning",
+    "ai_literacy"
+  ]
+}
+```
+
+# Citations
+
+[1] [reports/07-minecraft-ai-education.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/reports/07-minecraft-ai-education.md)
+[2] [metadata/report-sidecars/07-minecraft-ai-education.json](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/metadata/report-sidecars/07-minecraft-ai-education.json)
+
+
+---
+okf/reports/index.md
+---
+# Reports
+
+* [AIとクリエイティブと教育 総括レポート](00-overview.md) - 生成AI時代の教育を、問い・資料読解・制作・検証・社会発信をつなぐ創造性教育として整理。
+* [AIと情報可視化・OSINT教育](01-information-visualization-osint.md) - GIS・データ可視化・OSINTを通じて、公開情報を検証し社会へ伝える情報メディア教育モデル。
+* [AIによるモノクロ写真カラー化を活かした高校生の平和教育実践](02-photo-colorization-peace-education.md) - AIカラー化を、写真資料・証言・地域の記憶をつなぐ平和教育と記憶継承の探究へ展開。
+* [AIを活かしたデジタルシティズンシップ教育](03-digital-citizenship.md) - AIの禁止・管理を超え、判断・参加・公共性を育てるデジタルシティズンシップ教育。
+* [AI時代の学生ハッカソン：実装の民主化と発想力への転換](04-student-hackathon.md) - 生成AIで実装負荷が下がる時代の学生ハッカソンを、課題設定と発想力の学びとして再定義。
+* [デジタルアーカイブとAIを活かした教育実践](05-digital-archive-ai.md) - デジタルアーカイブと生成AIを組み合わせ、一次資料を用いた探究と社会発信を支える教育実践。
+* [生成AIを用いたSFプロトタイピング](06-sf-prototyping.md) - 生成AIで未来シナリオを素早く仮設し、人間が批判・修正するSFプロトタイピングの教育活用。
+* [AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ](07-minecraft-ai-education.md) - MinecraftとAIを、記憶継承・地域学習・創造・AIリテラシーを横断する学習空間として整理。
+
+
+---
 ai/llms.txt
 ---
 # AIとクリエイティブと教育
@@ -8620,9 +10238,9 @@ This repository publishes Markdown reports, prompts, and AI-readable metadata fo
 Use this repository in two layers:
 
 1. Human-readable layer: README, index.html, and reports/*.md explain the project, reports, examples, and references for people.
-2. AI-readable data package: ai/manifest.json, ai/system-instructions.md, ai/context-brief.md, ai/context-full.md, ai/workflows.json, ai/citations.json, ai/rag/chunks.jsonl, metadata/report-sidecars/*.json, and references/* provide grounded context for AI agents, AI reading tools, and RAG.
+2. AI-readable data package: ai/manifest.json, ai/system-instructions.md, ai/context-brief.md, ai/context-full.md, ai/workflows.json, ai/citations.json, ai/rag/chunks.jsonl, metadata/report-sidecars/*.json, references/*, and okf/* provide grounded context for AI agents, AI reading tools, RAG, and exchange with other systems.
 
-Recommended workflow: read the overview, load ai/system-instructions.md and ai/context-brief.md first, use ai/workflows.json to choose the right prompt and required context, use ai/rag/chunks.jsonl or metadata/report-sidecars/*.json for grounded retrieval, then use a prompt from ../prompts/ to generate a lesson plan, workshop plan, service concept, comparison, citation-aware answer, or implementation roadmap. Treat AI outputs as drafts and verify them against reports/*.md and references.
+Recommended workflow: read the overview, load ai/system-instructions.md and ai/context-brief.md first, use ai/workflows.json to choose the right prompt and required context, use ai/rag/chunks.jsonl or metadata/report-sidecars/*.json for grounded retrieval, and use okf/index.md when another agent or organization needs a Markdown + YAML frontmatter knowledge bundle. Then use a prompt from ../prompts/ to generate a lesson plan, workshop plan, service concept, comparison, citation-aware answer, or implementation roadmap. Treat AI outputs as drafts and verify them against reports/*.md and references.
 
 ## Authors
 
@@ -8671,6 +10289,7 @@ The Markdown files in `../reports/` are the source of truth for report text.
 - [AI workflows](workflows.json): Machine-readable prompt workflows with required context, input contract, output contract, and evidence policy.
 - [Citation index](citations.json): Mapping from report-local citation numbers to stable evidence IDs.
 - [RAG chunks](rag/chunks.jsonl): Retrieval chunks with claims, evidence IDs, figure IDs, use cases, and risk notes.
+- [OKF bundle](../okf/index.md): Open Knowledge Format v0.1-compatible Markdown concept bundle for reports, prompts, and references.
 - [AI source package](notebooklm-source.txt): Single text file generated by files-to-prompt from README, reports, metadata, config, prompts, and scripts.
 - [Report sidecars](../metadata/report-sidecars/): Per-report JSON sidecars linking Markdown source, sections, references, figures, and AI constraints.
 - [Report metadata](../metadata/reports.json): Machine-readable report index.
@@ -8697,7 +10316,7 @@ ai/llms-full.md
 
 ## 使い方
 
-このリポジトリは、ヒト向けの文章とAI向けのデータパッケージを分けて提供する。ヒトはREADME、index.html、reports/*.mdで全体像と個別レポートを読む。AIにはai/system-instructions.md、ai/context-brief.md、ai/context-full.md、ai/workflows.json、ai/rag/chunks.jsonl、ai/citations.json、metadata/report-sidecars/*.json、references/*を読み込ませ、読む順序、本文、メタデータ、用途別プロンプト、検索用チャンク、参考文献を参照できる状態にする。単一ファイルで渡す必要がある場合はai/notebooklm-source.txtを使う。そのあとでprompts/のプロンプトを使い、授業案、ワークショップ、教育サービス企画、比較表、根拠付き回答、実装ロードマップを作る。AIの出力はたたき台であり、ヒトがレポート本文と参考文献に照らして検証・編集する。
+このリポジトリは、ヒト向けの文章、AI向けのデータパッケージ、交換用のOKF知識バンドルを分けて提供する。ヒトはREADME、index.html、reports/*.mdで全体像と個別レポートを読む。AIにはai/system-instructions.md、ai/context-brief.md、ai/context-full.md、ai/workflows.json、ai/rag/chunks.jsonl、ai/citations.json、metadata/report-sidecars/*.json、references/*を読み込ませ、読む順序、本文、メタデータ、用途別プロンプト、検索用チャンク、参考文献を参照できる状態にする。他のエージェントや組織へMarkdown概念として渡す場合はokf/index.mdから始める。単一ファイルで渡す必要がある場合はai/notebooklm-source.txtを使う。そのあとでprompts/のプロンプトを使い、授業案、ワークショップ、教育サービス企画、比較表、根拠付き回答、実装ロードマップを作る。AIの出力はたたき台であり、ヒトがレポート本文と参考文献に照らして検証・編集する。
 
 図解: [ヒト向けの文章とAI向けデータパッケージの使い方](../assets/00-overview/data-package-flow.svg)
 
@@ -8749,6 +10368,7 @@ ai/llms-full.md
 - 引用索引: [`citations.json`](citations.json)
 - RAGチャンク: [`rag/chunks.jsonl`](rag/chunks.jsonl)
 - レポート別sidecar: [`../metadata/report-sidecars/`](../metadata/report-sidecars/)
+- OKF知識バンドル: [`../okf/index.md`](../okf/index.md)
 - 本文正本: [`../reports/`](../reports/)
 
 ## レポート概要
@@ -10625,6 +12245,7 @@ from __future__ import annotations
 
 import json
 import re
+import shutil
 from pathlib import Path
 from typing import Any
 
@@ -10633,6 +12254,10 @@ ROOT = Path(__file__).resolve().parents[1]
 AI_DIR = ROOT / "ai"
 RAG_DIR = AI_DIR / "rag"
 SIDECAR_DIR = ROOT / "metadata" / "report-sidecars"
+OKF_DIR = ROOT / "okf"
+OKF_VERSION = "0.1"
+OKF_LOG_DATE = "2026-06-16"
+REPOSITORY_BASE_URL = "https://github.com/wtnv-lab/AIxCreationEdu/blob/main"
 
 
 def load_json(path: Path) -> Any:
@@ -10669,6 +12294,10 @@ def write_jsonl(path: Path, rows: list[dict[str, Any]]) -> None:
     with path.open("w", encoding="utf-8") as fp:
         for row in rows:
             fp.write(json.dumps(row, ensure_ascii=False, separators=(",", ":")) + "\n")
+
+
+def source_url(path: str) -> str:
+    return f"{REPOSITORY_BASE_URL}/{path}"
 
 
 def read_markdown(report: dict[str, Any]) -> str:
@@ -10883,6 +12512,7 @@ def build_ai_manifest(project: dict[str, Any], reports: list[dict[str, Any]]) ->
             "report_config": "config/reports.json",
             "references": "config/report_references.json",
             "figures": "metadata/figures.json",
+            "okf_bundle": "okf/",
         },
         "ai_first_outputs": [
             "ai/system-instructions.md",
@@ -10892,6 +12522,7 @@ def build_ai_manifest(project: dict[str, Any], reports: list[dict[str, Any]]) ->
             "ai/citations.json",
             "ai/rag/chunks.jsonl",
             "metadata/report-sidecars/*.json",
+            "okf/",
         ],
         "reports": [
             {
@@ -10899,6 +12530,7 @@ def build_ai_manifest(project: dict[str, Any], reports: list[dict[str, Any]]) ->
                 "title": report["title"],
                 "source_md": report["output_md"],
                 "sidecar": f"metadata/report-sidecars/{report['id']}.json",
+                "okf_concept": f"okf/reports/{report['id']}.md",
             }
             for report in reports
         ],
@@ -11077,6 +12709,7 @@ def build_system_instructions(project: dict[str, Any]) -> str:
 4. 詳細な根拠は `metadata/report-sidecars/*.json` と `ai/rag/chunks.jsonl` を読む。
 5. 人間向けの正本確認が必要な場合は `reports/*.md` を読む。
 6. 出典確認は `ai/citations.json` と `references/references.md` を使う。
+7. 他システムへ知識バンドルとして渡す場合は `okf/index.md` から始める。
 
 ## 回答ルール
 
@@ -11093,6 +12726,7 @@ def build_system_instructions(project: dict[str, Any]) -> str:
 - `metadata/report-sidecars/*.json` はAI用の構造化補助であり、本文の代替ではない。
 - `ai/rag/chunks.jsonl` は検索・RAG用であり、チャンク単体で結論を断定しない。
 - `ai/notebooklm-source.txt` は単一テキスト読解ツール向けの互換パッケージである。
+- `okf/` はOpen Knowledge Format v0.1互換の交換用ビューであり、正本本文やsidecarから生成される。
 """
 
 
@@ -11111,6 +12745,7 @@ def build_context_brief(project: dict[str, Any], reports: list[dict[str, Any]]) 
         "2. `ai/system-instructions.md` の回答ルールを守る。",
         "3. 根拠が必要な回答では `ai/rag/chunks.jsonl` と `ai/citations.json` を使う。",
         "4. 重要な判断では `reports/*.md` の本文を確認する。",
+        "5. 他のエージェントや組織へ交換する場合は `okf/index.md` を入口にする。",
         "",
         "## レポート一覧",
         "",
@@ -11126,6 +12761,7 @@ def build_context_brief(project: dict[str, Any], reports: list[dict[str, Any]]) 
                 f"- 想定読者: {', '.join(report.get('audience', []))}",
                 f"- 正本: `{report['output_md']}`",
                 f"- AI sidecar: `metadata/report-sidecars/{report['id']}.json`",
+                f"- OKF concept: `okf/reports/{report['id']}.md`",
                 "",
             ]
         )
@@ -11154,6 +12790,7 @@ def build_context_full(project: dict[str, Any], reports: list[dict[str, Any]]) -
                 f"- 種別: {report.get('kind', '')}",
                 f"- 正本Markdown: `{report['output_md']}`",
                 f"- Sidecar: `metadata/report-sidecars/{report['id']}.json`",
+                f"- OKF concept: `okf/reports/{report['id']}.md`",
                 f"- 要旨: {report.get('abstract', '')}",
                 f"- 著者: {', '.join(report.get('authors', []))}",
                 f"- 想定読者: {', '.join(report.get('audience', []))}",
@@ -11175,6 +12812,347 @@ def build_context_full(project: dict[str, Any], reports: list[dict[str, Any]]) -
             ]
         )
     return "\n".join(lines)
+
+
+def yaml_value(value: Any) -> str:
+    if value is None:
+        return '""'
+    if isinstance(value, bool):
+        return "true" if value else "false"
+    if isinstance(value, (int, float)):
+        return str(value)
+    if isinstance(value, list):
+        return "[" + ", ".join(yaml_value(item) for item in value) + "]"
+    return json.dumps(str(value), ensure_ascii=False)
+
+
+def okf_frontmatter(fields: dict[str, Any]) -> str:
+    lines = ["---"]
+    for key, value in fields.items():
+        lines.append(f"{key}: {yaml_value(value)}")
+    lines.append("---")
+    return "\n".join(lines)
+
+
+def unique_tags(*groups: list[str]) -> list[str]:
+    tags: list[str] = []
+    seen: set[str] = set()
+    for group in groups:
+        for value in group:
+            normalized = str(value).strip()
+            if not normalized or normalized in seen:
+                continue
+            tags.append(normalized)
+            seen.add(normalized)
+    return tags
+
+
+def first_heading(markdown: str, fallback: str) -> str:
+    match = re.search(r"^#\s+(.+)$", markdown, re.MULTILINE)
+    return match.group(1).strip() if match else fallback
+
+
+def okf_timestamp(project: dict[str, Any]) -> str:
+    date = project.get("date") or OKF_LOG_DATE
+    return f"{date}T00:00:00Z"
+
+
+def okf_report_filename(report: dict[str, Any]) -> str:
+    return f"{report['id']}.md"
+
+
+def okf_markdown_list(items: list[str]) -> str:
+    return "\n".join(f"* {item}" for item in items) if items else "* 未設定"
+
+
+def build_okf_root_index(project: dict[str, Any], reports: list[dict[str, Any]], prompts: list[dict[str, Any]]) -> str:
+    report_count = len(reports)
+    prompt_count = len(prompts)
+    frontmatter = okf_frontmatter({"okf_version": OKF_VERSION})
+    return f"""{frontmatter}
+# Knowledge Bundle
+
+* [Project](project.md) - {project.get("description", "プロジェクト概要")}
+* [Reports](reports/) - {report_count}件のレポート概念
+* [Prompts](prompts/) - {prompt_count}件のプロンプト概念
+* [References](references/) - 参考文献・関連資料の入口
+
+# Maintenance
+
+* [Update log](log.md) - OKFバンドルの更新履歴
+"""
+
+
+def build_okf_log() -> str:
+    return f"""# Directory Update Log
+
+## {OKF_LOG_DATE}
+* **Creation**: Added an Open Knowledge Format v{OKF_VERSION}-compatible bundle generated from `config/reports.json`, `config/prompts.json`, and the AI package metadata.
+"""
+
+
+def build_okf_project(project: dict[str, Any]) -> str:
+    body = [
+        f"# {project.get('title', 'AIとクリエイティブと教育')}",
+        "",
+        project.get("description", ""),
+        "",
+        "# Bundle Scope",
+        "",
+        "このOKFバンドルは、レポート、プロンプト、参考文献を、人間とAIエージェントが同じMarkdown概念としてたどれるようにした交換用ビューです。",
+        "本文正本は `reports/*.md`、構造化補助は `metadata/report-sidecars/*.json` と `ai/rag/chunks.jsonl` にあります。",
+        "",
+        "# Entry Points",
+        "",
+        "* [Reports](/reports/) - レポート単位の概念",
+        "* [Prompts](/prompts/) - 利用目的別プロンプト",
+        "* [References](/references/project-references.md) - 参考文献・関連資料",
+        "",
+        "# Citations",
+        "",
+        f"[1] [README.md]({source_url('README.md')})",
+    ]
+    return "\n".join(
+        [
+            okf_frontmatter(
+                {
+                    "type": "Knowledge Bundle",
+                    "title": project.get("title", "AIとクリエイティブと教育"),
+                    "description": project.get("description", ""),
+                    "resource": source_url("README.md"),
+                    "tags": ["AI education", "creativity education", "knowledge bundle"],
+                    "timestamp": okf_timestamp(project),
+                    "license": project.get("license", ""),
+                    "aice_source": "README.md",
+                }
+            ),
+            "",
+            "\n".join(body),
+        ]
+    )
+
+
+def build_okf_reports_index(reports: list[dict[str, Any]]) -> str:
+    lines = ["# Reports", ""]
+    for report in reports:
+        lines.append(
+            f"* [{report['title']}]({okf_report_filename(report)}) - {report.get('abstract', '')}"
+        )
+    return "\n".join(lines)
+
+
+def build_okf_report_concept(project: dict[str, Any], report: dict[str, Any]) -> str:
+    alignment = report.get("concept_alignment") or {}
+    sidecar_path = f"metadata/report-sidecars/{report['id']}.json"
+    tags = unique_tags(
+        [report.get("kind", "report")],
+        report.get("themes", []),
+        report.get("keywords", []),
+        alignment.get("domain_tags", []),
+    )
+    related = report.get("related_reports", [])
+    body = [
+        f"# {report['title']}",
+        "",
+        report.get("abstract", ""),
+        "",
+        "# Source",
+        "",
+        f"* 正本Markdown: [{report['output_md']}]({source_url(report['output_md'])})",
+        f"* AI sidecar: [{sidecar_path}]({source_url(sidecar_path)})",
+        f"* RAG chunks: [ai/rag/chunks.jsonl]({source_url('ai/rag/chunks.jsonl')})",
+        "",
+        "# Audience",
+        "",
+        okf_markdown_list(report.get("audience", [])),
+        "",
+        "# Key Takeaways",
+        "",
+        okf_markdown_list(report.get("key_takeaways", [])),
+        "",
+        "# Use Cases",
+        "",
+        okf_markdown_list(report.get("use_cases", [])),
+        "",
+        "# Learning Activities",
+        "",
+        okf_markdown_list(report.get("learning_activities", [])),
+        "",
+        "# Implementation Ideas",
+        "",
+        okf_markdown_list(report.get("implementation_ideas", [])),
+        "",
+        "# Related Concepts",
+        "",
+        "\n".join(f"* [{item}](/reports/{item}.md)" for item in related) if related else "* 未設定",
+        "",
+        "# Concept Alignment",
+        "",
+        "```json",
+        json.dumps(alignment, ensure_ascii=False, indent=2),
+        "```",
+        "",
+        "# Citations",
+        "",
+        f"[1] [{report['output_md']}]({source_url(report['output_md'])})",
+        f"[2] [{sidecar_path}]({source_url(sidecar_path)})",
+    ]
+    return "\n".join(
+        [
+            okf_frontmatter(
+                {
+                    "type": "Report",
+                    "title": report["title"],
+                    "description": report.get("abstract", ""),
+                    "resource": source_url(report["output_md"]),
+                    "tags": tags,
+                    "timestamp": okf_timestamp(project),
+                    "authors": report.get("authors", []),
+                    "license": project.get("license", ""),
+                    "aice_report_id": report["id"],
+                    "aice_kind": report.get("kind", ""),
+                    "aice_source_md": report["output_md"],
+                    "aice_sidecar": sidecar_path,
+                }
+            ),
+            "",
+            "\n".join(body),
+        ]
+    )
+
+
+def build_okf_prompts_index(prompts: list[dict[str, Any]]) -> str:
+    lines = ["# Prompts", ""]
+    for prompt in prompts:
+        lines.append(f"* [{prompt['id']}]({prompt['id']}.md) - {prompt.get('purpose', '')}")
+    return "\n".join(lines)
+
+
+def build_okf_prompt_concept(project: dict[str, Any], prompt: dict[str, Any]) -> str:
+    markdown = (ROOT / prompt["path"]).read_text(encoding="utf-8")
+    title = first_heading(markdown, prompt["id"])
+    body = [
+        f"# {title}",
+        "",
+        prompt.get("purpose", ""),
+        "",
+        "# Source",
+        "",
+        f"* Prompt source: [{prompt['path']}]({source_url(prompt['path'])})",
+        "",
+        "# Prompt Body",
+        "",
+        markdown.strip(),
+        "",
+        "# Citations",
+        "",
+        f"[1] [{prompt['path']}]({source_url(prompt['path'])})",
+    ]
+    return "\n".join(
+        [
+            okf_frontmatter(
+                {
+                    "type": "Prompt",
+                    "title": title,
+                    "description": prompt.get("purpose", ""),
+                    "resource": source_url(prompt["path"]),
+                    "tags": ["prompt", "AI workflow", "education planning"],
+                    "timestamp": okf_timestamp(project),
+                    "aice_prompt_id": prompt["id"],
+                    "aice_source_md": prompt["path"],
+                }
+            ),
+            "",
+            "\n".join(body),
+        ]
+    )
+
+
+def build_okf_references_index() -> str:
+    return """# References
+
+* [Project references](project-references.md) - レポート別の参考文献・関連資料
+"""
+
+
+def build_okf_reference_concept(project: dict[str, Any], reports: list[dict[str, Any]], references: dict[str, list[str]]) -> str:
+    lines = [
+        "# 参考文献・関連資料",
+        "",
+        "この概念は、レポート本文で使われる参考文献・関連資料の束を示します。詳細な文献リストは正本ファイルを参照してください。",
+        "",
+        "# Report Reference Groups",
+        "",
+    ]
+    for report in reports:
+        count = len(references.get(report["id"], []))
+        lines.append(f"* [{report['title']}](/reports/{report['id']}.md) - {count}件")
+    lines.extend(
+        [
+            "",
+            "# Source",
+            "",
+            f"* References markdown: [references/references.md]({source_url('references/references.md')})",
+            f"* BibTeX: [references/references.bib]({source_url('references/references.bib')})",
+            "",
+            "# Citations",
+            "",
+            f"[1] [references/references.md]({source_url('references/references.md')})",
+            f"[2] [references/references.bib]({source_url('references/references.bib')})",
+        ]
+    )
+    return "\n".join(
+        [
+            okf_frontmatter(
+                {
+                    "type": "Reference Collection",
+                    "title": "参考文献・関連資料",
+                    "description": "レポート本文で使われる参考文献・関連資料の索引。",
+                    "resource": source_url("references/references.md"),
+                    "tags": ["references", "citations", "evidence"],
+                    "timestamp": okf_timestamp(project),
+                    "aice_source_md": "references/references.md",
+                }
+            ),
+            "",
+            "\n".join(lines),
+        ]
+    )
+
+
+def write_okf_bundle(
+    project: dict[str, Any],
+    reports: list[dict[str, Any]],
+    prompts_config: dict[str, Any],
+    references: dict[str, list[str]],
+) -> None:
+    prompts = prompts_config.get("prompts", [])
+    if OKF_DIR.exists():
+        shutil.rmtree(OKF_DIR)
+
+    write_text(OKF_DIR / "index.md", build_okf_root_index(project, reports, prompts))
+    write_text(OKF_DIR / "log.md", build_okf_log())
+    write_text(OKF_DIR / "project.md", build_okf_project(project))
+
+    write_text(OKF_DIR / "reports" / "index.md", build_okf_reports_index(reports))
+    for report in reports:
+        write_text(
+            OKF_DIR / "reports" / okf_report_filename(report),
+            build_okf_report_concept(project, report),
+        )
+
+    write_text(OKF_DIR / "prompts" / "index.md", build_okf_prompts_index(prompts))
+    for prompt in prompts:
+        write_text(
+            OKF_DIR / "prompts" / f"{prompt['id']}.md",
+            build_okf_prompt_concept(project, prompt),
+        )
+
+    write_text(OKF_DIR / "references" / "index.md", build_okf_references_index())
+    write_text(
+        OKF_DIR / "references" / "project-references.md",
+        build_okf_reference_concept(project, reports, references),
+    )
 
 
 def main() -> None:
@@ -11207,6 +13185,8 @@ def main() -> None:
             SIDECAR_DIR / f"{report['id']}.json",
             build_sidecar(report, references, figures),
         )
+
+    write_okf_bundle(project, reports, prompts_config, references)
 
 
 if __name__ == "__main__":
@@ -11283,6 +13263,7 @@ cat > "$TMP_OUTPUT" <<'HEADER'
 - `ai/context-brief.md` と `ai/context-full.md`: AI向けの短い概要と詳しい概要
 - `ai/workflows.json`: プロンプト別の必要資料、入力項目、出力項目、根拠ルール
 - `ai/citations.json` と `ai/rag/chunks.jsonl`: 引用索引、根拠付きRAGチャンク
+- `okf/*`: Open Knowledge Format v0.1互換のMarkdown概念バンドル
 - `metadata/*.json`、`metadata/chunks.jsonl`、`metadata/report-sidecars/*.json`: レポート索引、概念スキーマ、検索用チャンク、図版メタデータ、用語集、レポート別sidecar
 - `references/*`: 参考文献・関連資料
 - `index.html` と `web/*`: ヒト向け閲覧アプリのHTML、CSS、JavaScript
@@ -11299,6 +13280,7 @@ cat > "$TMP_OUTPUT" <<'HEADER'
 - `reports/` 配下のMarkdownファイルをレポート本文の一次ソースとして扱う。
 - `prompts/` 配下のMarkdownファイルをプロンプト本文の一次ソースとして扱う。
 - `metadata/report-sidecars/` と `ai/rag/chunks.jsonl` はAI用の構造化補助として扱い、正本本文の代替にしない。
+- `okf/` は交換用の概念ビューとして扱い、正本本文を確認する場合は各概念の `resource` と `aice_source_md` をたどる。
 
 ## ここから統合本文
 
@@ -11319,6 +13301,7 @@ python3 -m files_to_prompt \
   ai/workflows.json \
   ai/citations.json \
   ai/rag \
+  okf \
   ai/llms.txt \
   ai/llms-full.md \
   config \
@@ -11498,6 +13481,7 @@ from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[1]
+OKF_DIR = ROOT / "okf"
 ALLOWED_LICENSE_STATUSES = {
     "cc_by_4_0",
     "needs_rights_review",
@@ -11717,6 +13701,88 @@ def validate_ai_package(reports: list[dict[str, Any]]) -> None:
             error(f"ai/notebooklm-source.txt is missing {required_path}")
 
 
+def split_frontmatter(text: str) -> tuple[list[str] | None, str]:
+    lines = text.splitlines()
+    if not lines or lines[0].strip() != "---":
+        return None, text
+    for index, line in enumerate(lines[1:], start=1):
+        if line.strip() == "---":
+            return lines[1:index], "\n".join(lines[index + 1 :])
+    return None, text
+
+
+def frontmatter_value(lines: list[str], key: str) -> str:
+    for line in lines:
+        match = re.match(rf"^{re.escape(key)}:\s*(.+?)\s*$", line)
+        if match:
+            return match.group(1).strip().strip("\"'")
+    return ""
+
+
+def has_frontmatter(text: str) -> bool:
+    frontmatter, _ = split_frontmatter(text)
+    return frontmatter is not None
+
+
+def validate_okf_index(path: Path, text: str) -> None:
+    frontmatter, body = split_frontmatter(text)
+    if path == OKF_DIR / "index.md":
+        if frontmatter is None:
+            error("okf/index.md must declare okf_version frontmatter")
+            body = text
+        elif frontmatter_value(frontmatter, "okf_version") != "0.1":
+            error("okf/index.md must declare okf_version: \"0.1\"")
+    elif frontmatter is not None:
+        error(f"{rel(path)} must not contain frontmatter because index.md is reserved")
+
+    if not re.search(r"^#\s+.+", body, re.MULTILINE):
+        error(f"{rel(path)} must contain at least one markdown heading")
+    if not re.search(r"^\*\s+\[[^\]]+\]\([^)]+\)\s+-\s+.+", body, re.MULTILINE):
+        warn(f"{rel(path)} has no OKF-style index entries")
+
+
+def validate_okf_log(path: Path, text: str) -> None:
+    if has_frontmatter(text):
+        error(f"{rel(path)} must not contain frontmatter because log.md is reserved")
+    if not re.search(r"^#\s+.+", text, re.MULTILINE):
+        error(f"{rel(path)} must contain a log title heading")
+    for heading in re.findall(r"^##\s+(.+)$", text, re.MULTILINE):
+        if not re.match(r"^\d{4}-\d{2}-\d{2}$", heading.strip()):
+            error(f"{rel(path)} has non-ISO date heading: {heading}")
+
+
+def validate_okf_concept(path: Path, text: str) -> None:
+    frontmatter, body = split_frontmatter(text)
+    if frontmatter is None:
+        error(f"{rel(path)} must start with YAML frontmatter")
+        return
+    concept_type = frontmatter_value(frontmatter, "type")
+    if not concept_type:
+        error(f"{rel(path)} frontmatter is missing required type")
+    if not body.strip():
+        error(f"{rel(path)} must contain a markdown body after frontmatter")
+
+
+def validate_okf_bundle() -> None:
+    if not OKF_DIR.is_dir():
+        error("Missing OKF bundle directory: okf/")
+        return
+
+    markdown_paths = sorted(OKF_DIR.rglob("*.md"))
+    if not markdown_paths:
+        error("OKF bundle contains no markdown files")
+        return
+
+    for path in markdown_paths:
+        text = path.read_text(encoding="utf-8")
+        if path.name == "index.md":
+            validate_okf_index(path, text)
+        elif path.name == "log.md":
+            validate_okf_log(path, text)
+        else:
+            validate_okf_concept(path, text)
+
+
 def main() -> int:
     validate_json_files()
 
@@ -11737,6 +13803,7 @@ def main() -> int:
     validate_chunks("metadata/chunks.jsonl", report_ids)
     validate_chunks("ai/rag/chunks.jsonl", report_ids)
     validate_ai_package(reports)
+    validate_okf_bundle()
 
     for message in warnings:
         print(f"WARNING: {message}", file=sys.stderr)
@@ -11802,6 +13869,7 @@ git add \
   ai/citations.json \
   ai/rag/chunks.jsonl \
   metadata/report-sidecars \
+  okf \
   config/web_content.json \
   ai/notebooklm-source.txt
 

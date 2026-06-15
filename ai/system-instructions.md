@@ -10,6 +10,7 @@
 4. 詳細な根拠は `metadata/report-sidecars/*.json` と `ai/rag/chunks.jsonl` を読む。
 5. 人間向けの正本確認が必要な場合は `reports/*.md` を読む。
 6. 出典確認は `ai/citations.json` と `references/references.md` を使う。
+7. 他システムへ知識バンドルとして渡す場合は `okf/index.md` から始める。
 
 ## 回答ルール
 
@@ -26,3 +27,4 @@
 - `metadata/report-sidecars/*.json` はAI用の構造化補助であり、本文の代替ではない。
 - `ai/rag/chunks.jsonl` は検索・RAG用であり、チャンク単体で結論を断定しない。
 - `ai/notebooklm-source.txt` は単一テキスト読解ツール向けの互換パッケージである。
+- `okf/` はOpen Knowledge Format v0.1互換の交換用ビューであり、正本本文やsidecarから生成される。

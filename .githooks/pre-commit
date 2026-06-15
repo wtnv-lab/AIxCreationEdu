@@ -17,5 +17,6 @@ git add \
   ai/citations.json \
   ai/rag/chunks.jsonl \
   metadata/report-sidecars \
+  okf \
   config/web_content.json \
   ai/notebooklm-source.txt

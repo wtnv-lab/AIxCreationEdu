@@ -1,6 +1,7 @@
 const manifestPath = "config/web_content.json?v=20260605-home-structure";
 const homeHash = "home";
 const githubUrl = "https://github.com/wtnv-lab/AIxCreationEdu";
+const okfUrl = `${githubUrl}/tree/main/okf`;
 const siteUrl = "https://wtnv-lab.github.io/AIxCreationEdu/";
 const defaultOgImage = `${siteUrl}assets/og-image.png`;
 const defaultOgImageAlt = "AIとクリエイティブと教育の概念図";
@@ -542,7 +543,7 @@ function renderHome() {
     </figure>
     <section>
       <h2>ヒトとAIのために公開する資料</h2>
-      <p>このサイトでは、プロジェクトの成果を、ヒトが読みやすい文章と、AIに渡しやすいデータパッケージの二つの入口で公開しています。ヒト向けには総括レポートと個別レポートを、AI向けには本文・メタデータ・検索用チャンク・参考文献をまとめた資料を用意しています。各レポートは、研究資料や実践記録を生成AIが整理し、著者が根拠・文脈・表現を確認しながら編集したものです。</p>
+      <p>このサイトでは、プロジェクトの成果を、ヒトが読みやすい文章、AIに渡しやすいデータパッケージ、交換しやすいOKF知識バンドルの三つの入口で公開しています。ヒト向けには総括レポートと個別レポートを、AI向けには本文・メタデータ・検索用チャンク・参考文献をまとめた資料を用意しています。各レポートは、研究資料や実践記録を生成AIが整理し、著者が根拠・文脈・表現を確認しながら編集したものです。</p>
     </section>
     <figure class="home-figure">
       <img src="assets/00-overview/data-package-flow.svg" alt="ヒト向けの文章とAI向けデータパッケージの使い方">
@@ -555,11 +556,13 @@ function renderHome() {
         <li><a href="ai/notebooklm-source.txt" target="_blank" rel="noopener">AI向けデータパッケージ</a>をAI読解ツールや対話型生成AIに読み込ませる。</li>
         <li>目的に近い<a href="#prompts%2Flesson-plan-generation.md">プロンプト</a>を選び、対象者、時間数、成果物などの条件を加える。</li>
         <li>出力された授業案、研修案、企画案を、本文と参考文献に照らしてヒトが検証・編集する。</li>
+        <li>他システムへ知識単位で渡す場合は<a href="${okfUrl}">OKFバンドル</a>を使う。</li>
       </ol>
     </section>
     <section class="corner-grid" aria-label="資料の入口">
       ${renderCornerCard("レポート", `${reportCount}件`, "実践と研究の資料をもとに、AI時代の教育を読み解く本文を整理しています。", "reports")}
       ${renderCornerCard("プロンプト", `${promptCount}件`, "資料一式をAIに渡したあと、授業案、研修案、企画づくりに使えます。", "prompts")}
+      ${renderLinkCornerCard("OKF", "v0.1", "レポート、プロンプト、参考文献をMarkdown + YAML frontmatterの概念として交換できます。", okfUrl)}
       ${renderExternalCornerCard("ソースコード", "AIに読み込ませやすいMarkdown本文、メタデータ、プロンプト、生成スクリプトを公開しています。", githubUrl)}
     </section>
     <section>
@@ -622,6 +625,17 @@ function renderExternalCornerCard(title, summary, href) {
   return `
     <a class="corner-card" href="${escapeAttr(href)}" target="_blank" rel="noopener">
       <span class="corner-count">${renderGithubIcon("corner-github-icon")}</span>
+      <h2>${escapeHtml(title)}</h2>
+      <p>${escapeHtml(summary)}</p>
+    </a>
+  `;
+}
+
+function renderLinkCornerCard(title, count, summary, href) {
+  const externalAttrs = href.startsWith("http") ? ' target="_blank" rel="noopener"' : "";
+  return `
+    <a class="corner-card" href="${escapeAttr(href)}"${externalAttrs}>
+      <span class="corner-count">${escapeHtml(count)}</span>
       <h2>${escapeHtml(title)}</h2>
       <p>${escapeHtml(summary)}</p>
     </a>

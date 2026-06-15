@@ -12,6 +12,7 @@ from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[1]
+OKF_DIR = ROOT / "okf"
 ALLOWED_LICENSE_STATUSES = {
     "cc_by_4_0",
     "needs_rights_review",
@@ -231,6 +232,88 @@ def validate_ai_package(reports: list[dict[str, Any]]) -> None:
             error(f"ai/notebooklm-source.txt is missing {required_path}")
 
 
+def split_frontmatter(text: str) -> tuple[list[str] | None, str]:
+    lines = text.splitlines()
+    if not lines or lines[0].strip() != "---":
+        return None, text
+    for index, line in enumerate(lines[1:], start=1):
+        if line.strip() == "---":
+            return lines[1:index], "\n".join(lines[index + 1 :])
+    return None, text
+
+
+def frontmatter_value(lines: list[str], key: str) -> str:
+    for line in lines:
+        match = re.match(rf"^{re.escape(key)}:\s*(.+?)\s*$", line)
+        if match:
+            return match.group(1).strip().strip("\"'")
+    return ""
+
+
+def has_frontmatter(text: str) -> bool:
+    frontmatter, _ = split_frontmatter(text)
+    return frontmatter is not None
+
+
+def validate_okf_index(path: Path, text: str) -> None:
+    frontmatter, body = split_frontmatter(text)
+    if path == OKF_DIR / "index.md":
+        if frontmatter is None:
+            error("okf/index.md must declare okf_version frontmatter")
+            body = text
+        elif frontmatter_value(frontmatter, "okf_version") != "0.1":
+            error("okf/index.md must declare okf_version: \"0.1\"")
+    elif frontmatter is not None:
+        error(f"{rel(path)} must not contain frontmatter because index.md is reserved")
+
+    if not re.search(r"^#\s+.+", body, re.MULTILINE):
+        error(f"{rel(path)} must contain at least one markdown heading")
+    if not re.search(r"^\*\s+\[[^\]]+\]\([^)]+\)\s+-\s+.+", body, re.MULTILINE):
+        warn(f"{rel(path)} has no OKF-style index entries")
+
+
+def validate_okf_log(path: Path, text: str) -> None:
+    if has_frontmatter(text):
+        error(f"{rel(path)} must not contain frontmatter because log.md is reserved")
+    if not re.search(r"^#\s+.+", text, re.MULTILINE):
+        error(f"{rel(path)} must contain a log title heading")
+    for heading in re.findall(r"^##\s+(.+)$", text, re.MULTILINE):
+        if not re.match(r"^\d{4}-\d{2}-\d{2}$", heading.strip()):
+            error(f"{rel(path)} has non-ISO date heading: {heading}")
+
+
+def validate_okf_concept(path: Path, text: str) -> None:
+    frontmatter, body = split_frontmatter(text)
+    if frontmatter is None:
+        error(f"{rel(path)} must start with YAML frontmatter")
+        return
+    concept_type = frontmatter_value(frontmatter, "type")
+    if not concept_type:
+        error(f"{rel(path)} frontmatter is missing required type")
+    if not body.strip():
+        error(f"{rel(path)} must contain a markdown body after frontmatter")
+
+
+def validate_okf_bundle() -> None:
+    if not OKF_DIR.is_dir():
+        error("Missing OKF bundle directory: okf/")
+        return
+
+    markdown_paths = sorted(OKF_DIR.rglob("*.md"))
+    if not markdown_paths:
+        error("OKF bundle contains no markdown files")
+        return
+
+    for path in markdown_paths:
+        text = path.read_text(encoding="utf-8")
+        if path.name == "index.md":
+            validate_okf_index(path, text)
+        elif path.name == "log.md":
+            validate_okf_log(path, text)
+        else:
+            validate_okf_concept(path, text)
+
+
 def main() -> int:
     validate_json_files()
 
@@ -251,6 +334,7 @@ def main() -> int:
     validate_chunks("metadata/chunks.jsonl", report_ids)
     validate_chunks("ai/rag/chunks.jsonl", report_ids)
     validate_ai_package(reports)
+    validate_okf_bundle()
 
     for message in warnings:
         print(f"WARNING: {message}", file=sys.stderr)

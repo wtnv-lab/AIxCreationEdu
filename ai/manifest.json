@@ -50,7 +50,8 @@
     "human_markdown": "reports/*.md",
     "report_config": "config/reports.json",
     "references": "config/report_references.json",
-    "figures": "metadata/figures.json"
+    "figures": "metadata/figures.json",
+    "okf_bundle": "okf/"
   },
   "ai_first_outputs": [
     "ai/system-instructions.md",
@@ -59,56 +60,65 @@
     "ai/workflows.json",
     "ai/citations.json",
     "ai/rag/chunks.jsonl",
-    "metadata/report-sidecars/*.json"
+    "metadata/report-sidecars/*.json",
+    "okf/"
   ],
   "reports": [
     {
       "id": "00-overview",
       "title": "AIとクリエイティブと教育 総括レポート",
       "source_md": "reports/00-overview.md",
-      "sidecar": "metadata/report-sidecars/00-overview.json"
+      "sidecar": "metadata/report-sidecars/00-overview.json",
+      "okf_concept": "okf/reports/00-overview.md"
     },
     {
       "id": "01-information-visualization-osint",
       "title": "AIと情報可視化・OSINT教育",
       "source_md": "reports/01-information-visualization-osint.md",
-      "sidecar": "metadata/report-sidecars/01-information-visualization-osint.json"
+      "sidecar": "metadata/report-sidecars/01-information-visualization-osint.json",
+      "okf_concept": "okf/reports/01-information-visualization-osint.md"
     },
     {
       "id": "02-photo-colorization-peace-education",
       "title": "AIによるモノクロ写真カラー化を活かした高校生の平和教育実践",
       "source_md": "reports/02-photo-colorization-peace-education.md",
-      "sidecar": "metadata/report-sidecars/02-photo-colorization-peace-education.json"
+      "sidecar": "metadata/report-sidecars/02-photo-colorization-peace-education.json",
+      "okf_concept": "okf/reports/02-photo-colorization-peace-education.md"
     },
     {
       "id": "03-digital-citizenship",
       "title": "AIを活かしたデジタルシティズンシップ教育",
       "source_md": "reports/03-digital-citizenship.md",
-      "sidecar": "metadata/report-sidecars/03-digital-citizenship.json"
+      "sidecar": "metadata/report-sidecars/03-digital-citizenship.json",
+      "okf_concept": "okf/reports/03-digital-citizenship.md"
     },
     {
       "id": "04-student-hackathon",
       "title": "AI時代の学生ハッカソン：実装の民主化と発想力への転換",
       "source_md": "reports/04-student-hackathon.md",
-      "sidecar": "metadata/report-sidecars/04-student-hackathon.json"
+      "sidecar": "metadata/report-sidecars/04-student-hackathon.json",
+      "okf_concept": "okf/reports/04-student-hackathon.md"
     },
     {
       "id": "05-digital-archive-ai",
       "title": "デジタルアーカイブとAIを活かした教育実践",
       "source_md": "reports/05-digital-archive-ai.md",
-      "sidecar": "metadata/report-sidecars/05-digital-archive-ai.json"
+      "sidecar": "metadata/report-sidecars/05-digital-archive-ai.json",
+      "okf_concept": "okf/reports/05-digital-archive-ai.md"
     },
     {
       "id": "06-sf-prototyping",
       "title": "生成AIを用いたSFプロトタイピング",
       "source_md": "reports/06-sf-prototyping.md",
-      "sidecar": "metadata/report-sidecars/06-sf-prototyping.json"
+      "sidecar": "metadata/report-sidecars/06-sf-prototyping.json",
+      "okf_concept": "okf/reports/06-sf-prototyping.md"
     },
     {
       "id": "07-minecraft-ai-education",
       "title": "AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ",
       "source_md": "reports/07-minecraft-ai-education.md",
-      "sidecar": "metadata/report-sidecars/07-minecraft-ai-education.json"
+      "sidecar": "metadata/report-sidecars/07-minecraft-ai-education.json",
+      "okf_concept": "okf/reports/07-minecraft-ai-education.md"
     }
   ],
   "human_verification_required": true

@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 import re
+import shutil
 from pathlib import Path
 from typing import Any
 
@@ -13,6 +14,10 @@ ROOT = Path(__file__).resolve().parents[1]
 AI_DIR = ROOT / "ai"
 RAG_DIR = AI_DIR / "rag"
 SIDECAR_DIR = ROOT / "metadata" / "report-sidecars"
+OKF_DIR = ROOT / "okf"
+OKF_VERSION = "0.1"
+OKF_LOG_DATE = "2026-06-16"
+REPOSITORY_BASE_URL = "https://github.com/wtnv-lab/AIxCreationEdu/blob/main"
 
 
 def load_json(path: Path) -> Any:
@@ -49,6 +54,10 @@ def write_jsonl(path: Path, rows: list[dict[str, Any]]) -> None:
     with path.open("w", encoding="utf-8") as fp:
         for row in rows:
             fp.write(json.dumps(row, ensure_ascii=False, separators=(",", ":")) + "\n")
+
+
+def source_url(path: str) -> str:
+    return f"{REPOSITORY_BASE_URL}/{path}"
 
 
 def read_markdown(report: dict[str, Any]) -> str:
@@ -263,6 +272,7 @@ def build_ai_manifest(project: dict[str, Any], reports: list[dict[str, Any]]) ->
             "report_config": "config/reports.json",
             "references": "config/report_references.json",
             "figures": "metadata/figures.json",
+            "okf_bundle": "okf/",
         },
         "ai_first_outputs": [
             "ai/system-instructions.md",
@@ -272,6 +282,7 @@ def build_ai_manifest(project: dict[str, Any], reports: list[dict[str, Any]]) ->
             "ai/citations.json",
             "ai/rag/chunks.jsonl",
             "metadata/report-sidecars/*.json",
+            "okf/",
         ],
         "reports": [
             {
@@ -279,6 +290,7 @@ def build_ai_manifest(project: dict[str, Any], reports: list[dict[str, Any]]) ->
                 "title": report["title"],
                 "source_md": report["output_md"],
                 "sidecar": f"metadata/report-sidecars/{report['id']}.json",
+                "okf_concept": f"okf/reports/{report['id']}.md",
             }
             for report in reports
         ],
@@ -457,6 +469,7 @@ def build_system_instructions(project: dict[str, Any]) -> str:
 4. 詳細な根拠は `metadata/report-sidecars/*.json` と `ai/rag/chunks.jsonl` を読む。
 5. 人間向けの正本確認が必要な場合は `reports/*.md` を読む。
 6. 出典確認は `ai/citations.json` と `references/references.md` を使う。
+7. 他システムへ知識バンドルとして渡す場合は `okf/index.md` から始める。
 
 ## 回答ルール
 
@@ -473,6 +486,7 @@ def build_system_instructions(project: dict[str, Any]) -> str:
 - `metadata/report-sidecars/*.json` はAI用の構造化補助であり、本文の代替ではない。
 - `ai/rag/chunks.jsonl` は検索・RAG用であり、チャンク単体で結論を断定しない。
 - `ai/notebooklm-source.txt` は単一テキスト読解ツール向けの互換パッケージである。
+- `okf/` はOpen Knowledge Format v0.1互換の交換用ビューであり、正本本文やsidecarから生成される。
 """
 
 
@@ -491,6 +505,7 @@ def build_context_brief(project: dict[str, Any], reports: list[dict[str, Any]]) 
         "2. `ai/system-instructions.md` の回答ルールを守る。",
         "3. 根拠が必要な回答では `ai/rag/chunks.jsonl` と `ai/citations.json` を使う。",
         "4. 重要な判断では `reports/*.md` の本文を確認する。",
+        "5. 他のエージェントや組織へ交換する場合は `okf/index.md` を入口にする。",
         "",
         "## レポート一覧",
         "",
@@ -506,6 +521,7 @@ def build_context_brief(project: dict[str, Any], reports: list[dict[str, Any]]) 
                 f"- 想定読者: {', '.join(report.get('audience', []))}",
                 f"- 正本: `{report['output_md']}`",
                 f"- AI sidecar: `metadata/report-sidecars/{report['id']}.json`",
+                f"- OKF concept: `okf/reports/{report['id']}.md`",
                 "",
             ]
         )
@@ -534,6 +550,7 @@ def build_context_full(project: dict[str, Any], reports: list[dict[str, Any]]) -
                 f"- 種別: {report.get('kind', '')}",
                 f"- 正本Markdown: `{report['output_md']}`",
                 f"- Sidecar: `metadata/report-sidecars/{report['id']}.json`",
+                f"- OKF concept: `okf/reports/{report['id']}.md`",
                 f"- 要旨: {report.get('abstract', '')}",
                 f"- 著者: {', '.join(report.get('authors', []))}",
                 f"- 想定読者: {', '.join(report.get('audience', []))}",
@@ -555,6 +572,347 @@ def build_context_full(project: dict[str, Any], reports: list[dict[str, Any]]) -
             ]
         )
     return "\n".join(lines)
+
+
+def yaml_value(value: Any) -> str:
+    if value is None:
+        return '""'
+    if isinstance(value, bool):
+        return "true" if value else "false"
+    if isinstance(value, (int, float)):
+        return str(value)
+    if isinstance(value, list):
+        return "[" + ", ".join(yaml_value(item) for item in value) + "]"
+    return json.dumps(str(value), ensure_ascii=False)
+
+
+def okf_frontmatter(fields: dict[str, Any]) -> str:
+    lines = ["---"]
+    for key, value in fields.items():
+        lines.append(f"{key}: {yaml_value(value)}")
+    lines.append("---")
+    return "\n".join(lines)
+
+
+def unique_tags(*groups: list[str]) -> list[str]:
+    tags: list[str] = []
+    seen: set[str] = set()
+    for group in groups:
+        for value in group:
+            normalized = str(value).strip()
+            if not normalized or normalized in seen:
+                continue
+            tags.append(normalized)
+            seen.add(normalized)
+    return tags
+
+
+def first_heading(markdown: str, fallback: str) -> str:
+    match = re.search(r"^#\s+(.+)$", markdown, re.MULTILINE)
+    return match.group(1).strip() if match else fallback
+
+
+def okf_timestamp(project: dict[str, Any]) -> str:
+    date = project.get("date") or OKF_LOG_DATE
+    return f"{date}T00:00:00Z"
+
+
+def okf_report_filename(report: dict[str, Any]) -> str:
+    return f"{report['id']}.md"
+
+
+def okf_markdown_list(items: list[str]) -> str:
+    return "\n".join(f"* {item}" for item in items) if items else "* 未設定"
+
+
+def build_okf_root_index(project: dict[str, Any], reports: list[dict[str, Any]], prompts: list[dict[str, Any]]) -> str:
+    report_count = len(reports)
+    prompt_count = len(prompts)
+    frontmatter = okf_frontmatter({"okf_version": OKF_VERSION})
+    return f"""{frontmatter}
+# Knowledge Bundle
+
+* [Project](project.md) - {project.get("description", "プロジェクト概要")}
+* [Reports](reports/) - {report_count}件のレポート概念
+* [Prompts](prompts/) - {prompt_count}件のプロンプト概念
+* [References](references/) - 参考文献・関連資料の入口
+
+# Maintenance
+
+* [Update log](log.md) - OKFバンドルの更新履歴
+"""
+
+
+def build_okf_log() -> str:
+    return f"""# Directory Update Log
+
+## {OKF_LOG_DATE}
+* **Creation**: Added an Open Knowledge Format v{OKF_VERSION}-compatible bundle generated from `config/reports.json`, `config/prompts.json`, and the AI package metadata.
+"""
+
+
+def build_okf_project(project: dict[str, Any]) -> str:
+    body = [
+        f"# {project.get('title', 'AIとクリエイティブと教育')}",
+        "",
+        project.get("description", ""),
+        "",
+        "# Bundle Scope",
+        "",
+        "このOKFバンドルは、レポート、プロンプト、参考文献を、人間とAIエージェントが同じMarkdown概念としてたどれるようにした交換用ビューです。",
+        "本文正本は `reports/*.md`、構造化補助は `metadata/report-sidecars/*.json` と `ai/rag/chunks.jsonl` にあります。",
+        "",
+        "# Entry Points",
+        "",
+        "* [Reports](/reports/) - レポート単位の概念",
+        "* [Prompts](/prompts/) - 利用目的別プロンプト",
+        "* [References](/references/project-references.md) - 参考文献・関連資料",
+        "",
+        "# Citations",
+        "",
+        f"[1] [README.md]({source_url('README.md')})",
+    ]
+    return "\n".join(
+        [
+            okf_frontmatter(
+                {
+                    "type": "Knowledge Bundle",
+                    "title": project.get("title", "AIとクリエイティブと教育"),
+                    "description": project.get("description", ""),
+                    "resource": source_url("README.md"),
+                    "tags": ["AI education", "creativity education", "knowledge bundle"],
+                    "timestamp": okf_timestamp(project),
+                    "license": project.get("license", ""),
+                    "aice_source": "README.md",
+                }
+            ),
+            "",
+            "\n".join(body),
+        ]
+    )
+
+
+def build_okf_reports_index(reports: list[dict[str, Any]]) -> str:
+    lines = ["# Reports", ""]
+    for report in reports:
+        lines.append(
+            f"* [{report['title']}]({okf_report_filename(report)}) - {report.get('abstract', '')}"
+        )
+    return "\n".join(lines)
+
+
+def build_okf_report_concept(project: dict[str, Any], report: dict[str, Any]) -> str:
+    alignment = report.get("concept_alignment") or {}
+    sidecar_path = f"metadata/report-sidecars/{report['id']}.json"
+    tags = unique_tags(
+        [report.get("kind", "report")],
+        report.get("themes", []),
+        report.get("keywords", []),
+        alignment.get("domain_tags", []),
+    )
+    related = report.get("related_reports", [])
+    body = [
+        f"# {report['title']}",
+        "",
+        report.get("abstract", ""),
+        "",
+        "# Source",
+        "",
+        f"* 正本Markdown: [{report['output_md']}]({source_url(report['output_md'])})",
+        f"* AI sidecar: [{sidecar_path}]({source_url(sidecar_path)})",
+        f"* RAG chunks: [ai/rag/chunks.jsonl]({source_url('ai/rag/chunks.jsonl')})",
+        "",
+        "# Audience",
+        "",
+        okf_markdown_list(report.get("audience", [])),
+        "",
+        "# Key Takeaways",
+        "",
+        okf_markdown_list(report.get("key_takeaways", [])),
+        "",
+        "# Use Cases",
+        "",
+        okf_markdown_list(report.get("use_cases", [])),
+        "",
+        "# Learning Activities",
+        "",
+        okf_markdown_list(report.get("learning_activities", [])),
+        "",
+        "# Implementation Ideas",
+        "",
+        okf_markdown_list(report.get("implementation_ideas", [])),
+        "",
+        "# Related Concepts",
+        "",
+        "\n".join(f"* [{item}](/reports/{item}.md)" for item in related) if related else "* 未設定",
+        "",
+        "# Concept Alignment",
+        "",
+        "```json",
+        json.dumps(alignment, ensure_ascii=False, indent=2),
+        "```",
+        "",
+        "# Citations",
+        "",
+        f"[1] [{report['output_md']}]({source_url(report['output_md'])})",
+        f"[2] [{sidecar_path}]({source_url(sidecar_path)})",
+    ]
+    return "\n".join(
+        [
+            okf_frontmatter(
+                {
+                    "type": "Report",
+                    "title": report["title"],
+                    "description": report.get("abstract", ""),
+                    "resource": source_url(report["output_md"]),
+                    "tags": tags,
+                    "timestamp": okf_timestamp(project),
+                    "authors": report.get("authors", []),
+                    "license": project.get("license", ""),
+                    "aice_report_id": report["id"],
+                    "aice_kind": report.get("kind", ""),
+                    "aice_source_md": report["output_md"],
+                    "aice_sidecar": sidecar_path,
+                }
+            ),
+            "",
+            "\n".join(body),
+        ]
+    )
+
+
+def build_okf_prompts_index(prompts: list[dict[str, Any]]) -> str:
+    lines = ["# Prompts", ""]
+    for prompt in prompts:
+        lines.append(f"* [{prompt['id']}]({prompt['id']}.md) - {prompt.get('purpose', '')}")
+    return "\n".join(lines)
+
+
+def build_okf_prompt_concept(project: dict[str, Any], prompt: dict[str, Any]) -> str:
+    markdown = (ROOT / prompt["path"]).read_text(encoding="utf-8")
+    title = first_heading(markdown, prompt["id"])
+    body = [
+        f"# {title}",
+        "",
+        prompt.get("purpose", ""),
+        "",
+        "# Source",
+        "",
+        f"* Prompt source: [{prompt['path']}]({source_url(prompt['path'])})",
+        "",
+        "# Prompt Body",
+        "",
+        markdown.strip(),
+        "",
+        "# Citations",
+        "",
+        f"[1] [{prompt['path']}]({source_url(prompt['path'])})",
+    ]
+    return "\n".join(
+        [
+            okf_frontmatter(
+                {
+                    "type": "Prompt",
+                    "title": title,
+                    "description": prompt.get("purpose", ""),
+                    "resource": source_url(prompt["path"]),
+                    "tags": ["prompt", "AI workflow", "education planning"],
+                    "timestamp": okf_timestamp(project),
+                    "aice_prompt_id": prompt["id"],
+                    "aice_source_md": prompt["path"],
+                }
+            ),
+            "",
+            "\n".join(body),
+        ]
+    )
+
+
+def build_okf_references_index() -> str:
+    return """# References
+
+* [Project references](project-references.md) - レポート別の参考文献・関連資料
+"""
+
+
+def build_okf_reference_concept(project: dict[str, Any], reports: list[dict[str, Any]], references: dict[str, list[str]]) -> str:
+    lines = [
+        "# 参考文献・関連資料",
+        "",
+        "この概念は、レポート本文で使われる参考文献・関連資料の束を示します。詳細な文献リストは正本ファイルを参照してください。",
+        "",
+        "# Report Reference Groups",
+        "",
+    ]
+    for report in reports:
+        count = len(references.get(report["id"], []))
+        lines.append(f"* [{report['title']}](/reports/{report['id']}.md) - {count}件")
+    lines.extend(
+        [
+            "",
+            "# Source",
+            "",
+            f"* References markdown: [references/references.md]({source_url('references/references.md')})",
+            f"* BibTeX: [references/references.bib]({source_url('references/references.bib')})",
+            "",
+            "# Citations",
+            "",
+            f"[1] [references/references.md]({source_url('references/references.md')})",
+            f"[2] [references/references.bib]({source_url('references/references.bib')})",
+        ]
+    )
+    return "\n".join(
+        [
+            okf_frontmatter(
+                {
+                    "type": "Reference Collection",
+                    "title": "参考文献・関連資料",
+                    "description": "レポート本文で使われる参考文献・関連資料の索引。",
+                    "resource": source_url("references/references.md"),
+                    "tags": ["references", "citations", "evidence"],
+                    "timestamp": okf_timestamp(project),
+                    "aice_source_md": "references/references.md",
+                }
+            ),
+            "",
+            "\n".join(lines),
+        ]
+    )
+
+
+def write_okf_bundle(
+    project: dict[str, Any],
+    reports: list[dict[str, Any]],
+    prompts_config: dict[str, Any],
+    references: dict[str, list[str]],
+) -> None:
+    prompts = prompts_config.get("prompts", [])
+    if OKF_DIR.exists():
+        shutil.rmtree(OKF_DIR)
+
+    write_text(OKF_DIR / "index.md", build_okf_root_index(project, reports, prompts))
+    write_text(OKF_DIR / "log.md", build_okf_log())
+    write_text(OKF_DIR / "project.md", build_okf_project(project))
+
+    write_text(OKF_DIR / "reports" / "index.md", build_okf_reports_index(reports))
+    for report in reports:
+        write_text(
+            OKF_DIR / "reports" / okf_report_filename(report),
+            build_okf_report_concept(project, report),
+        )
+
+    write_text(OKF_DIR / "prompts" / "index.md", build_okf_prompts_index(prompts))
+    for prompt in prompts:
+        write_text(
+            OKF_DIR / "prompts" / f"{prompt['id']}.md",
+            build_okf_prompt_concept(project, prompt),
+        )
+
+    write_text(OKF_DIR / "references" / "index.md", build_okf_references_index())
+    write_text(
+        OKF_DIR / "references" / "project-references.md",
+        build_okf_reference_concept(project, reports, references),
+    )
 
 
 def main() -> None:
@@ -587,6 +945,8 @@ def main() -> None:
             SIDECAR_DIR / f"{report['id']}.json",
             build_sidecar(report, references, figures),
         )
+
+    write_okf_bundle(project, reports, prompts_config, references)
 
 
 if __name__ == "__main__":
