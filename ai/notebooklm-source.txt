@@ -13928,7 +13928,7 @@ changes are indicated.
 ---
 requirements/ai.txt
 ---
-files-to-prompt>=0.6
+files-to-prompt==0.6
 
 
 ---
