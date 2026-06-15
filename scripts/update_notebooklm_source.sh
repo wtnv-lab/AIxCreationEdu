@@ -74,51 +74,92 @@ cat > "$TMP_OUTPUT" <<'HEADER'
 
 HEADER
 
-python3 -m files_to_prompt \
-  reports \
-  prompts \
-  index.html \
-  web \
-  metadata \
-  references \
-  README.md \
-  ai/manifest.json \
-  ai/system-instructions.md \
-  ai/context-brief.md \
-  ai/context-full.md \
-  ai/workflows.json \
-  ai/citations.json \
-  ai/rag \
-  okf \
-  ai/llms.txt \
-  ai/llms-full.md \
-  config \
-  templates \
-  assets/00-overview/project-concept-map.svg \
-  assets/00-overview/data-package-flow.svg \
-  scripts \
-  .githooks \
-  .gitignore \
-  CITATION.cff \
-  LICENSE \
-  requirements/ai.txt \
-  --include-hidden \
-  --ignore ".git" \
-  --ignore ".DS_Store" \
-  --ignore "__pycache__" \
-  --ignore "*.pyc" \
-  --ignore "ai/notebooklm-source.txt" \
-  --ignore "config/report_replacements.json" \
-  --ignore "report_replacements.json" \
-  --ignore "*.jpg" \
-  --ignore "*.jpeg" \
-  --ignore "*.png" \
-  --ignore "*.gif" \
-  --ignore "*.webp" \
-  --ignore "*.mp4" \
-  --ignore "*.mov" \
-  --ignore "*.pdf" \
-  >> "$TMP_OUTPUT"
+TMP_OUTPUT="$TMP_OUTPUT" python3 - <<'PY'
+import os
+
+from files_to_prompt import cli as files_to_prompt_cli
+
+paths = [
+    "reports",
+    "prompts",
+    "index.html",
+    "web",
+    "metadata",
+    "references",
+    "README.md",
+    "ai/manifest.json",
+    "ai/system-instructions.md",
+    "ai/context-brief.md",
+    "ai/context-full.md",
+    "ai/workflows.json",
+    "ai/citations.json",
+    "ai/rag",
+    "okf",
+    "ai/llms.txt",
+    "ai/llms-full.md",
+    "config",
+    "templates",
+    "assets/00-overview/project-concept-map.svg",
+    "assets/00-overview/data-package-flow.svg",
+    "scripts",
+    ".githooks",
+    ".gitignore",
+    "CITATION.cff",
+    "LICENSE",
+    "requirements/ai.txt",
+]
+
+ignore_patterns = [
+    ".git",
+    ".DS_Store",
+    "__pycache__",
+    "*.pyc",
+    "ai/notebooklm-source.txt",
+    "config/report_replacements.json",
+    "report_replacements.json",
+    "*.jpg",
+    "*.jpeg",
+    "*.png",
+    "*.gif",
+    "*.webp",
+    "*.mp4",
+    "*.mov",
+    "*.pdf",
+]
+
+original_walk = files_to_prompt_cli.os.walk
+
+
+def sorted_walk(*args, **kwargs):
+    for root, dirs, files in original_walk(*args, **kwargs):
+        dirs.sort()
+        files.sort()
+        yield root, dirs, files
+
+
+files_to_prompt_cli.os.walk = sorted_walk
+
+gitignore_rules = []
+with open(os.environ["TMP_OUTPUT"], "a", encoding="utf-8") as fp:
+    writer = lambda value: print(value, file=fp)
+    for path in paths:
+        if not os.path.exists(path):
+            raise SystemExit(f"Path does not exist: {path}")
+        gitignore_rules.extend(files_to_prompt_cli.read_gitignore(os.path.dirname(path)))
+        files_to_prompt_cli.process_path(
+            path=path,
+            extensions=(),
+            include_hidden=True,
+            ignore_files_only=False,
+            ignore_gitignore=False,
+            gitignore_rules=gitignore_rules,
+            ignore_patterns=ignore_patterns,
+            writer=writer,
+            claude_xml=False,
+            markdown=False,
+            line_numbers=False,
+        )
+PY
 
 mv "$TMP_OUTPUT" "$OUTPUT"
 chmod 0644 "$OUTPUT"

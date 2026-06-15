@@ -8722,53 +8722,6 @@ aice_source: "README.md"
 
 
 ---
-okf/references/index.md
----
-# References
-
-* [Project references](project-references.md) - レポート別の参考文献・関連資料
-
-
----
-okf/references/project-references.md
----
----
-type: "Reference Collection"
-title: "参考文献・関連資料"
-description: "レポート本文で使われる参考文献・関連資料の索引。"
-resource: "https://github.com/wtnv-lab/AIxCreationEdu/blob/main/references/references.md"
-tags: ["references", "citations", "evidence"]
-timestamp: "2026-05-27T00:00:00Z"
-aice_source_md: "references/references.md"
----
-
-# 参考文献・関連資料
-
-この概念は、レポート本文で使われる参考文献・関連資料の束を示します。詳細な文献リストは正本ファイルを参照してください。
-
-# Report Reference Groups
-
-* [AIとクリエイティブと教育 総括レポート](/reports/00-overview.md) - 6件
-* [AIと情報可視化・OSINT教育](/reports/01-information-visualization-osint.md) - 14件
-* [AIによるモノクロ写真カラー化を活かした高校生の平和教育実践](/reports/02-photo-colorization-peace-education.md) - 5件
-* [AIを活かしたデジタルシティズンシップ教育](/reports/03-digital-citizenship.md) - 5件
-* [AI時代の学生ハッカソン：実装の民主化と発想力への転換](/reports/04-student-hackathon.md) - 9件
-* [デジタルアーカイブとAIを活かした教育実践](/reports/05-digital-archive-ai.md) - 5件
-* [生成AIを用いたSFプロトタイピング](/reports/06-sf-prototyping.md) - 7件
-* [AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ](/reports/07-minecraft-ai-education.md) - 12件
-
-# Source
-
-* References markdown: [references/references.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/references/references.md)
-* BibTeX: [references/references.bib](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/references/references.bib)
-
-# Citations
-
-[1] [references/references.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/references/references.md)
-[2] [references/references.bib](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/references/references.bib)
-
-
----
 okf/prompts/citation-answering.md
 ---
 ---
@@ -9305,6 +9258,53 @@ aice_source_md: "prompts/workshop-design.md"
 # Citations
 
 [1] [prompts/workshop-design.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/prompts/workshop-design.md)
+
+
+---
+okf/references/index.md
+---
+# References
+
+* [Project references](project-references.md) - レポート別の参考文献・関連資料
+
+
+---
+okf/references/project-references.md
+---
+---
+type: "Reference Collection"
+title: "参考文献・関連資料"
+description: "レポート本文で使われる参考文献・関連資料の索引。"
+resource: "https://github.com/wtnv-lab/AIxCreationEdu/blob/main/references/references.md"
+tags: ["references", "citations", "evidence"]
+timestamp: "2026-05-27T00:00:00Z"
+aice_source_md: "references/references.md"
+---
+
+# 参考文献・関連資料
+
+この概念は、レポート本文で使われる参考文献・関連資料の束を示します。詳細な文献リストは正本ファイルを参照してください。
+
+# Report Reference Groups
+
+* [AIとクリエイティブと教育 総括レポート](/reports/00-overview.md) - 6件
+* [AIと情報可視化・OSINT教育](/reports/01-information-visualization-osint.md) - 14件
+* [AIによるモノクロ写真カラー化を活かした高校生の平和教育実践](/reports/02-photo-colorization-peace-education.md) - 5件
+* [AIを活かしたデジタルシティズンシップ教育](/reports/03-digital-citizenship.md) - 5件
+* [AI時代の学生ハッカソン：実装の民主化と発想力への転換](/reports/04-student-hackathon.md) - 9件
+* [デジタルアーカイブとAIを活かした教育実践](/reports/05-digital-archive-ai.md) - 5件
+* [生成AIを用いたSFプロトタイピング](/reports/06-sf-prototyping.md) - 7件
+* [AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ](/reports/07-minecraft-ai-education.md) - 12件
+
+# Source
+
+* References markdown: [references/references.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/references/references.md)
+* BibTeX: [references/references.bib](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/references/references.bib)
+
+# Citations
+
+[1] [references/references.md](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/references/references.md)
+[2] [references/references.bib](https://github.com/wtnv-lab/AIxCreationEdu/blob/main/references/references.bib)
 
 
 ---
@@ -13286,51 +13286,92 @@ cat > "$TMP_OUTPUT" <<'HEADER'
 
 HEADER
 
-python3 -m files_to_prompt \
-  reports \
-  prompts \
-  index.html \
-  web \
-  metadata \
-  references \
-  README.md \
-  ai/manifest.json \
-  ai/system-instructions.md \
-  ai/context-brief.md \
-  ai/context-full.md \
-  ai/workflows.json \
-  ai/citations.json \
-  ai/rag \
-  okf \
-  ai/llms.txt \
-  ai/llms-full.md \
-  config \
-  templates \
-  assets/00-overview/project-concept-map.svg \
-  assets/00-overview/data-package-flow.svg \
-  scripts \
-  .githooks \
-  .gitignore \
-  CITATION.cff \
-  LICENSE \
-  requirements/ai.txt \
-  --include-hidden \
-  --ignore ".git" \
-  --ignore ".DS_Store" \
-  --ignore "__pycache__" \
-  --ignore "*.pyc" \
-  --ignore "ai/notebooklm-source.txt" \
-  --ignore "config/report_replacements.json" \
-  --ignore "report_replacements.json" \
-  --ignore "*.jpg" \
-  --ignore "*.jpeg" \
-  --ignore "*.png" \
-  --ignore "*.gif" \
-  --ignore "*.webp" \
-  --ignore "*.mp4" \
-  --ignore "*.mov" \
-  --ignore "*.pdf" \
-  >> "$TMP_OUTPUT"
+TMP_OUTPUT="$TMP_OUTPUT" python3 - <<'PY'
+import os
+
+from files_to_prompt import cli as files_to_prompt_cli
+
+paths = [
+    "reports",
+    "prompts",
+    "index.html",
+    "web",
+    "metadata",
+    "references",
+    "README.md",
+    "ai/manifest.json",
+    "ai/system-instructions.md",
+    "ai/context-brief.md",
+    "ai/context-full.md",
+    "ai/workflows.json",
+    "ai/citations.json",
+    "ai/rag",
+    "okf",
+    "ai/llms.txt",
+    "ai/llms-full.md",
+    "config",
+    "templates",
+    "assets/00-overview/project-concept-map.svg",
+    "assets/00-overview/data-package-flow.svg",
+    "scripts",
+    ".githooks",
+    ".gitignore",
+    "CITATION.cff",
+    "LICENSE",
+    "requirements/ai.txt",
+]
+
+ignore_patterns = [
+    ".git",
+    ".DS_Store",
+    "__pycache__",
+    "*.pyc",
+    "ai/notebooklm-source.txt",
+    "config/report_replacements.json",
+    "report_replacements.json",
+    "*.jpg",
+    "*.jpeg",
+    "*.png",
+    "*.gif",
+    "*.webp",
+    "*.mp4",
+    "*.mov",
+    "*.pdf",
+]
+
+original_walk = files_to_prompt_cli.os.walk
+
+
+def sorted_walk(*args, **kwargs):
+    for root, dirs, files in original_walk(*args, **kwargs):
+        dirs.sort()
+        files.sort()
+        yield root, dirs, files
+
+
+files_to_prompt_cli.os.walk = sorted_walk
+
+gitignore_rules = []
+with open(os.environ["TMP_OUTPUT"], "a", encoding="utf-8") as fp:
+    writer = lambda value: print(value, file=fp)
+    for path in paths:
+        if not os.path.exists(path):
+            raise SystemExit(f"Path does not exist: {path}")
+        gitignore_rules.extend(files_to_prompt_cli.read_gitignore(os.path.dirname(path)))
+        files_to_prompt_cli.process_path(
+            path=path,
+            extensions=(),
+            include_hidden=True,
+            ignore_files_only=False,
+            ignore_gitignore=False,
+            gitignore_rules=gitignore_rules,
+            ignore_patterns=ignore_patterns,
+            writer=writer,
+            claude_xml=False,
+            markdown=False,
+            line_numbers=False,
+        )
+PY
 
 mv "$TMP_OUTPUT" "$OUTPUT"
 chmod 0644 "$OUTPUT"
