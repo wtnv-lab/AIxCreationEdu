@@ -648,9 +648,10 @@ function renderPromptSnippet(text, item) {
     ${renderPromptPurpose(item)}
     <section class="prompt-flow">
       <h2>使う前に</h2>
-      <p>このプロンプトは、AIがこの資料集の内容を参照できる状態で使うためのものです。先にリポジトリ全体、または単一テキストファイルをAIに提供してください。</p>
+      <p>このプロンプトは、AIがこの資料集の内容を参照できる状態で使うためのものです。先にリポジトリ全体、単一テキストファイル、またはOKFバンドルをAIに提供してください。</p>
       <div class="prompt-source-actions">
         <a href="ai/notebooklm-source.txt" target="_blank" rel="noopener">単一テキストを開く</a>
+        <a href="${escapeAttr(okfUrl)}" target="_blank" rel="noopener">OKFバンドルを開く</a>
         <a href="${escapeAttr(githubUrl)}" target="_blank" rel="noopener">公開リポジトリを開く</a>
       </div>
     </section>

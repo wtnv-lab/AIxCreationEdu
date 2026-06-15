@@ -937,7 +937,7 @@ index.html
       </main>
     </div>
 
-    <script type="module" src="web/app.js?v=20260605-home-structure"></script>
+    <script type="module" src="web/app.js?v=20260616-okf-prompt-source"></script>
   </body>
 </html>
 
@@ -1595,9 +1595,10 @@ function renderPromptSnippet(text, item) {
     ${renderPromptPurpose(item)}
     <section class="prompt-flow">
       <h2>使う前に</h2>
-      <p>このプロンプトは、AIがこの資料集の内容を参照できる状態で使うためのものです。先にリポジトリ全体、または単一テキストファイルをAIに提供してください。</p>
+      <p>このプロンプトは、AIがこの資料集の内容を参照できる状態で使うためのものです。先にリポジトリ全体、単一テキストファイル、またはOKFバンドルをAIに提供してください。</p>
       <div class="prompt-source-actions">
         <a href="ai/notebooklm-source.txt" target="_blank" rel="noopener">単一テキストを開く</a>
+        <a href="${escapeAttr(okfUrl)}" target="_blank" rel="noopener">OKFバンドルを開く</a>
         <a href="${escapeAttr(githubUrl)}" target="_blank" rel="noopener">公開リポジトリを開く</a>
       </div>
     </section>
@@ -7035,7 +7036,7 @@ AIやRAGでは、次の用途で使えます。
 
 ## ウェブアプリで読む
 
-[`index.html`](index.html) は、ヒトの読者がレポートとプロンプトを読みやすい順序でたどるための静的な閲覧アプリです。トップページでは、研究・実践リソースを生成AIとの対話で編集した資料群であることを説明し、概念図、レポート、プロンプト、公開リポジトリ上のソース一式へ案内します。プロンプトは、先にリポジトリ全体または [`ai/notebooklm-source.txt`](ai/notebooklm-source.txt) をAIに提供したうえで使う流れにしています。
+[`index.html`](index.html) は、ヒトの読者がレポートとプロンプトを読みやすい順序でたどるための静的な閲覧アプリです。トップページでは、研究・実践リソースを生成AIとの対話で編集した資料群であることを説明し、概念図、レポート、プロンプト、公開リポジトリ上のソース一式へ案内します。プロンプトは、先にリポジトリ全体、[`ai/notebooklm-source.txt`](ai/notebooklm-source.txt)、または [`okf/index.md`](okf/index.md) をAIに提供したうえで使う流れにしています。
 
 ローカルで確認する場合は、ブラウザのセキュリティ制約を避けるためHTTPサーバ経由で開いてください。
 
