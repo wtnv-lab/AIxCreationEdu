@@ -2,7 +2,14 @@
   {
     "id": "00-overview",
     "title": "AIとクリエイティブと教育 総括レポート",
+    "output_md": "reports/00-overview.md",
     "kind": "overview",
+    "audience": [
+      "生成AI時代の教育方針を検討する学校管理職・教育委員会担当者",
+      "AI・創造性・情報リテラシーを横断するカリキュラム設計者",
+      "教育ソリューションやEdTechサービスの企画担当者",
+      "AIと教育実践の全体像を把握したい研究者・実践者"
+    ],
     "themes": [
       "生成AI",
       "創造性",
@@ -15,15 +22,9 @@
       "学習設計",
       "教育実践"
     ],
-    "output_md": "reports/00-overview.md",
+    "abstract": "生成AI時代の教育を、問い・資料読解・制作・検証・社会発信をつなぐ創造性教育として整理。",
     "authors": [
       "渡邉英徳"
-    ],
-    "audience": [
-      "生成AI時代の教育方針を検討する学校管理職・教育委員会担当者",
-      "AI・創造性・情報リテラシーを横断するカリキュラム設計者",
-      "教育ソリューションやEdTechサービスの企画担当者",
-      "AIと教育実践の全体像を把握したい研究者・実践者"
     ],
     "key_takeaways": [
       "生成AIにより制作や調査のハードルが下がるほど、問いの設定と社会的価値への接続が重要になる。",
@@ -46,6 +47,16 @@
       "教育委員会や学校向けに、生成AI活用のカリキュラム横断マップを作成する。",
       "AIエージェントに読み込ませる基礎資料として、授業案・研修案・サービス案の生成に使う。"
     ],
+    "related_reports": [
+      "01-information-visualization-osint",
+      "02-photo-colorization-peace-education",
+      "03-digital-citizenship",
+      "04-student-hackathon",
+      "05-digital-archive-ai",
+      "06-sf-prototyping",
+      "07-minecraft-ai-education"
+    ],
+    "citation_note": "生成AI時代の創造性教育を横断的に整理する総括レポート。",
     "concept_alignment": {
       "schema": "aice.concept_alignment.v1",
       "primary_stage_ids": [
@@ -81,23 +92,19 @@
         "creativity_education",
         "production_to_conception_shift"
       ]
-    },
-    "related_reports": [
-      "01-information-visualization-osint",
-      "02-photo-colorization-peace-education",
-      "03-digital-citizenship",
-      "04-student-hackathon",
-      "05-digital-archive-ai",
-      "06-sf-prototyping",
-      "07-minecraft-ai-education"
-    ],
-    "citation_note": "生成AI時代の創造性教育を横断的に整理する総括レポート。",
-    "abstract": "生成AI時代の教育を、問い・資料読解・制作・検証・社会発信をつなぐ創造性教育として整理。"
+    }
   },
   {
     "id": "01-information-visualization-osint",
     "title": "AIと情報可視化・OSINT教育",
+    "output_md": "reports/01-information-visualization-osint.md",
     "kind": "report",
+    "audience": [
+      "情報・メディア・探究学習を担当する高校・大学教員",
+      "データ可視化、GIS、デジタルアーカイブを授業に取り入れたい教育者",
+      "OSINTや調査報道の基礎を教育・研修化したい報道関係者",
+      "公開情報の検証と社会的説明を扱う教材・サービス企画者"
+    ],
     "themes": [
       "生成AI",
       "情報可視化",
@@ -110,18 +117,13 @@
       "メディアリテラシー",
       "探究学習"
     ],
-    "output_md": "reports/01-information-visualization-osint.md",
+    "abstract": "GIS・データ可視化・OSINTを通じて、公開情報を観測・検証・物語化・発信・更新する情報メディア教育モデル。",
     "authors": [
       "渡邉英徳"
     ],
-    "audience": [
-      "情報・メディア・探究学習を担当する高校・大学教員",
-      "データ可視化、GIS、デジタルアーカイブを授業に取り入れたい教育者",
-      "OSINTや調査報道の基礎を教育・研修化したい報道関係者",
-      "公開情報の検証と社会的説明を扱う教材・サービス企画者"
-    ],
     "key_takeaways": [
       "GIS、データ可視化、OSINTは、公開情報を検証可能な形で読み解く情報メディア教育の中核になる。",
+      "観測、検証、物語化、発信、更新の5層で設計すると、リアルタイムな出来事を後から検証できるアーカイブとして扱える。",
       "AIは結論を代行するのではなく、観察、仮説比較、説明の点検を支援する対話的編集者として使う。",
       "読売新聞への学術指導や日本テレビとの共同研究事例は、教育・報道・社会課題を接続する実践モデルになる。"
     ],
@@ -134,13 +136,21 @@
     "learning_activities": [
       "地域の公開データを地図化し、分布や偏りについてAIと対話しながら仮説を作る。",
       "ニュースやSNS投稿の位置情報・時系列・出典を検証し、確実に言えることと推測を分ける。",
+      "観測、検証、物語化の3層を説明シートに整理し、公開後の発信・更新計画も記述する。",
       "地図、グラフ、テキストを組み合わせ、第三者に説明可能な調査レポートを作成する。"
     ],
     "implementation_ideas": [
       "GIS作品例を使った導入ワークショップを設計し、地図表現の読み解きから始める。",
       "OSINT検証ラボとして、公開情報の収集、照合、説明文作成、AIによる推論チェックを行う。",
+      "リアルタイム・デジタルアーカイブ課題として、公開後の講評や新情報を取り込む更新フェーズを設定する。",
       "報道機関や自治体と連携し、地域課題を扱うデータストーリーテリング課題を実施する。"
     ],
+    "related_reports": [
+      "00-overview",
+      "03-digital-citizenship",
+      "05-digital-archive-ai"
+    ],
+    "citation_note": "GIS・情報可視化・OSINTを組み合わせた情報メディア教育モデル。",
     "concept_alignment": {
       "schema": "aice.concept_alignment.v1",
       "primary_stage_ids": [
@@ -174,21 +184,23 @@
         "gis",
         "data_visualization",
         "public_information",
-        "media_literacy"
+        "media_literacy",
+        "digital_archive",
+        "publicness"
       ]
-    },
-    "related_reports": [
-      "00-overview",
-      "03-digital-citizenship",
-      "05-digital-archive-ai"
-    ],
-    "citation_note": "GIS・情報可視化・OSINTを組み合わせた情報メディア教育モデル。",
-    "abstract": "GIS・データ可視化・OSINTを通じて、公開情報を検証し社会へ伝える情報メディア教育モデル。"
+    }
   },
   {
     "id": "02-photo-colorization-peace-education",
     "title": "AIによるモノクロ写真カラー化を活かした高校生の平和教育実践",
+    "output_md": "reports/02-photo-colorization-peace-education.md",
     "kind": "report",
+    "audience": [
+      "平和教育・歴史教育・地域学習を担当する中学・高校教員",
+      "写真資料や証言を活用する博物館・資料館・地域アーカイブ担当者",
+      "AIカラー化を探究学習や記憶継承に活かしたい教育実践者",
+      "生徒の成果発信や社会連携型プロジェクトを支援する担当者"
+    ],
     "themes": [
       "生成AI",
       "写真カラー化",
@@ -201,16 +213,10 @@
       "高校教育",
       "歴史資料"
     ],
-    "output_md": "reports/02-photo-colorization-peace-education.md",
+    "abstract": "AIカラー化を、写真資料・証言・地域の記憶をつなぐ平和教育と記憶継承の探究へ展開。",
     "authors": [
       "森吉蓉子",
       "渡邉英徳"
-    ],
-    "audience": [
-      "平和教育・歴史教育・地域学習を担当する中学・高校教員",
-      "写真資料や証言を活用する博物館・資料館・地域アーカイブ担当者",
-      "AIカラー化を探究学習や記憶継承に活かしたい教育実践者",
-      "生徒の成果発信や社会連携型プロジェクトを支援する担当者"
     ],
     "key_takeaways": [
       "AIカラー化は過去を正確に復元する処理ではなく、資料批判と対話を促す探究の入口になる。",
@@ -233,6 +239,12 @@
       "発表風景や制作物の図版を含め、学習成果を外部に説明できるポートフォリオにまとめる。",
       "AI利用の透明性、資料出典、証言者への配慮を評価項目に入れたルーブリックを作る。"
     ],
+    "related_reports": [
+      "00-overview",
+      "03-digital-citizenship",
+      "05-digital-archive-ai"
+    ],
+    "citation_note": "AIカラー化を平和教育、資料批判、社会発信に結びつけた高校生の実践事例。",
     "concept_alignment": {
       "schema": "aice.concept_alignment.v1",
       "primary_stage_ids": [
@@ -266,19 +278,19 @@
         "memory_inheritance",
         "historical_photos"
       ]
-    },
-    "related_reports": [
-      "00-overview",
-      "03-digital-citizenship",
-      "05-digital-archive-ai"
-    ],
-    "citation_note": "AIカラー化を平和教育、資料批判、社会発信に結びつけた高校生の実践事例。",
-    "abstract": "AIカラー化を、写真資料・証言・地域の記憶をつなぐ平和教育と記憶継承の探究へ展開。"
+    }
   },
   {
     "id": "03-digital-citizenship",
     "title": "AIを活かしたデジタルシティズンシップ教育",
+    "output_md": "reports/03-digital-citizenship.md",
     "kind": "report",
+    "audience": [
+      "小中高の情報活用能力・情報モラル・ICT活用を担当する教員",
+      "デジタルシティズンシップ教育のカリキュラム設計者",
+      "生成AI利用ルールや校内研修を設計する学校管理職・ICT担当者",
+      "AIリテラシー教材や安全な学習環境を開発する教育サービス担当者"
+    ],
     "themes": [
       "生成AI",
       "デジタルシティズンシップ",
@@ -291,15 +303,9 @@
       "情報モラル",
       "教育実践"
     ],
-    "output_md": "reports/03-digital-citizenship.md",
+    "abstract": "AIの禁止・管理を超え、判断・参加・公共性を育てるデジタルシティズンシップ教育。",
     "authors": [
       "原田真喜子"
-    ],
-    "audience": [
-      "小中高の情報活用能力・情報モラル・ICT活用を担当する教員",
-      "デジタルシティズンシップ教育のカリキュラム設計者",
-      "生成AI利用ルールや校内研修を設計する学校管理職・ICT担当者",
-      "AIリテラシー教材や安全な学習環境を開発する教育サービス担当者"
     ],
     "key_takeaways": [
       "生成AI時代のデジタルシティズンシップは，禁止や管理ではなく，技術社会への判断と参加を学ぶ教育である。",
@@ -322,6 +328,12 @@
       "校内研修で，禁止事項だけでなく判断プロセスを共有するケーススタディを行う。",
       "AI教材に，根拠確認，出典表示，公開前レビュー，振り返り記録の流れを組み込む。"
     ],
+    "related_reports": [
+      "00-overview",
+      "01-information-visualization-osint",
+      "04-student-hackathon"
+    ],
+    "citation_note": "AI利用を判断・参加・知識体験・公共性の学習として捉えるデジタルシティズンシップ教育レポート。",
     "concept_alignment": {
       "schema": "aice.concept_alignment.v1",
       "primary_stage_ids": [
@@ -357,19 +369,19 @@
         "publicness",
         "knowledge_experience"
       ]
-    },
-    "related_reports": [
-      "00-overview",
-      "01-information-visualization-osint",
-      "04-student-hackathon"
-    ],
-    "citation_note": "AI利用を判断・参加・知識体験・公共性の学習として捉えるデジタルシティズンシップ教育レポート。",
-    "abstract": "AIの禁止・管理を超え、判断・参加・公共性を育てるデジタルシティズンシップ教育。"
+    }
   },
   {
     "id": "04-student-hackathon",
     "title": "AI時代の学生ハッカソン：実装の民主化と発想力への転換",
+    "output_md": "reports/04-student-hackathon.md",
     "kind": "report",
+    "audience": [
+      "大学・高専・高校でハッカソンやPBLを運営する教職員",
+      "AIを用いたプロトタイピング教育を設計するメンター・ファシリテーター",
+      "学生起業、地域課題解決、産学連携プログラムの企画担当者",
+      "生成AI時代の開発教育や創造性評価に関心を持つ実践者"
+    ],
     "themes": [
       "生成AI",
       "ハッカソン",
@@ -382,16 +394,10 @@
       "実装の民主化",
       "創造性"
     ],
-    "output_md": "reports/04-student-hackathon.md",
+    "abstract": "生成AIで実装負荷が下がる時代の学生ハッカソンを、課題設定と発想力の学びとして再定義。",
     "authors": [
       "小松尚平",
       "渡邉英徳"
-    ],
-    "audience": [
-      "大学・高専・高校でハッカソンやPBLを運営する教職員",
-      "AIを用いたプロトタイピング教育を設計するメンター・ファシリテーター",
-      "学生起業、地域課題解決、産学連携プログラムの企画担当者",
-      "生成AI時代の開発教育や創造性評価に関心を持つ実践者"
     ],
     "key_takeaways": [
       "生成AIにより実装のハードルが下がると、ハッカソンの評価軸は課題設定、体験設計、社会的価値へ移る。",
@@ -414,6 +420,12 @@
       "審査基準に、社会的価値、利用者理解、AI利用の透明性、検証プロセスを加える。",
       "メンター向けに、AI出力を鵜呑みにしないレビュー観点を共有する。"
     ],
+    "related_reports": [
+      "00-overview",
+      "03-digital-citizenship",
+      "06-sf-prototyping"
+    ],
+    "citation_note": "生成AIによる実装支援を前提に、学生ハッカソンの教育的価値を再定義するレポート。",
     "concept_alignment": {
       "schema": "aice.concept_alignment.v1",
       "primary_stage_ids": [
@@ -448,19 +460,19 @@
         "implementation_democratization",
         "student_projects"
       ]
-    },
-    "related_reports": [
-      "00-overview",
-      "03-digital-citizenship",
-      "06-sf-prototyping"
-    ],
-    "citation_note": "生成AIによる実装支援を前提に、学生ハッカソンの教育的価値を再定義するレポート。",
-    "abstract": "生成AIで実装負荷が下がる時代の学生ハッカソンを、課題設定と発想力の学びとして再定義。"
+    }
   },
   {
     "id": "05-digital-archive-ai",
     "title": "デジタルアーカイブとAIを活かした教育実践",
+    "output_md": "reports/05-digital-archive-ai.md",
     "kind": "report",
+    "audience": [
+      "学校教育で一次資料や地域資料を活用したい教員",
+      "デジタルアーカイブの教育利用を進める図書館・博物館・自治体担当者",
+      "探究学習、キュレーション授業、教材アーカイブを設計する教育者",
+      "AIと資料検索・要約・再編集を組み合わせた学習サービス企画者"
+    ],
     "themes": [
       "生成AI",
       "デジタルアーカイブ",
@@ -473,15 +485,9 @@
       "探究学習",
       "AI教育"
     ],
-    "output_md": "reports/05-digital-archive-ai.md",
+    "abstract": "デジタルアーカイブと生成AIを組み合わせ、一次資料を用いた探究と社会発信を支える教育実践。",
     "authors": [
       "大井将生"
-    ],
-    "audience": [
-      "学校教育で一次資料や地域資料を活用したい教員",
-      "デジタルアーカイブの教育利用を進める図書館・博物館・自治体担当者",
-      "探究学習、キュレーション授業、教材アーカイブを設計する教育者",
-      "AIと資料検索・要約・再編集を組み合わせた学習サービス企画者"
     ],
     "key_takeaways": [
       "デジタルアーカイブは保存基盤にとどまらず、学習者が問いを立て資料を再編集する探究環境になる。",
@@ -504,6 +510,12 @@
       "AI検索・要約機能に、出典確認と一次資料へのリンクを必ず表示する設計にする。",
       "学習成果をデジタル展示や教材アーカイブとして蓄積し、次年度の学習資源にする。"
     ],
+    "related_reports": [
+      "00-overview",
+      "01-information-visualization-osint",
+      "02-photo-colorization-peace-education"
+    ],
+    "citation_note": "デジタルアーカイブと生成AIを組み合わせ、一次資料を用いた探究学習を設計するレポート。",
     "concept_alignment": {
       "schema": "aice.concept_alignment.v1",
       "primary_stage_ids": [
@@ -538,19 +550,19 @@
         "sukilam",
         "educational_materials"
       ]
-    },
-    "related_reports": [
-      "00-overview",
-      "01-information-visualization-osint",
-      "02-photo-colorization-peace-education"
-    ],
-    "citation_note": "デジタルアーカイブと生成AIを組み合わせ、一次資料を用いた探究学習を設計するレポート。",
-    "abstract": "デジタルアーカイブと生成AIを組み合わせ、一次資料を用いた探究と社会発信を支える教育実践。"
+    }
   },
   {
     "id": "06-sf-prototyping",
     "title": "生成AIを用いたSFプロトタイピング",
+    "output_md": "reports/06-sf-prototyping.md",
     "kind": "report",
+    "audience": [
+      "未来構想・探究学習・創造性教育を担当する大学・高校教員",
+      "産学協創、企業研修、ワークショップを設計するファシリテーター",
+      "新規事業開発やビジョン策定にSFプロトタイピングを使いたい企画担当者",
+      "生成AIを用いた物語生成・合意形成・アイデア創出に関心を持つ実践者"
+    ],
     "themes": [
       "生成AI",
       "SFプロトタイピング",
@@ -563,16 +575,10 @@
       "創造性",
       "ワークショップ"
     ],
-    "output_md": "reports/06-sf-prototyping.md",
+    "abstract": "生成AIで未来シナリオを素早く仮設し、人間が批判・修正するSFプロトタイピングの教育活用。",
     "authors": [
       "楊欽",
       "渡邉英徳"
-    ],
-    "audience": [
-      "未来構想・探究学習・創造性教育を担当する大学・高校教員",
-      "産学協創、企業研修、ワークショップを設計するファシリテーター",
-      "新規事業開発やビジョン策定にSFプロトタイピングを使いたい企画担当者",
-      "生成AIを用いた物語生成・合意形成・アイデア創出に関心を持つ実践者"
     ],
     "key_takeaways": [
       "生成AIは未来社会の物語や世界観を短時間で立ち上げ、SFプロトタイピングの参加ハードルを下げる。",
@@ -595,6 +601,12 @@
       "新規事業や研究テーマ検討で、未来シナリオ、ステークホルダー、倫理的論点を可視化する。",
       "成果物をハッカソンやPBLの課題設定に接続し、プロトタイプ制作へ展開する。"
     ],
+    "related_reports": [
+      "00-overview",
+      "03-digital-citizenship",
+      "04-student-hackathon"
+    ],
+    "citation_note": "生成AIを用いて未来構想を民主化し、教育・産学協創・事業開発に応用するSFプロトタイピングのレポート。",
     "concept_alignment": {
       "schema": "aice.concept_alignment.v1",
       "primary_stage_ids": [
@@ -628,19 +640,19 @@
         "workshop",
         "backcasting"
       ]
-    },
-    "related_reports": [
-      "00-overview",
-      "03-digital-citizenship",
-      "04-student-hackathon"
-    ],
-    "citation_note": "生成AIを用いて未来構想を民主化し、教育・産学協創・事業開発に応用するSFプロトタイピングのレポート。",
-    "abstract": "生成AIで未来シナリオを素早く仮設し、人間が批判・修正するSFプロトタイピングの教育活用。"
+    }
   },
   {
     "id": "07-minecraft-ai-education",
     "title": "AIとMinecraft教育：遊びの空間を，記憶・創造・AIリテラシーの学びへ",
+    "output_md": "reports/07-minecraft-ai-education.md",
     "kind": "report",
+    "audience": [
+      "Minecraft Educationやゲームベース学習を授業に取り入れたい小中高・大学教員",
+      "平和教育・地域学習・災害復興学習で仮想空間制作を活用したい教育実践者",
+      "AIリテラシー，プログラミング，デジタルシティズンシップを横断する教材設計者",
+      "Minecraftや生成AIを活用した学習サービス・ワークショップの企画担当者"
+    ],
     "themes": [
       "生成AI",
       "Minecraft",
@@ -655,16 +667,10 @@
       "ゲームベース学習",
       "地域学習"
     ],
-    "output_md": "reports/07-minecraft-ai-education.md",
+    "abstract": "MinecraftとAIを、記憶継承・地域学習・創造・AIリテラシーを横断する学習空間として整理。",
     "authors": [
       "片山実咲",
       "渡邉英徳"
-    ],
-    "audience": [
-      "Minecraft Educationやゲームベース学習を授業に取り入れたい小中高・大学教員",
-      "平和教育・地域学習・災害復興学習で仮想空間制作を活用したい教育実践者",
-      "AIリテラシー，プログラミング，デジタルシティズンシップを横断する教材設計者",
-      "Minecraftや生成AIを活用した学習サービス・ワークショップの企画担当者"
     ],
     "key_takeaways": [
       "Minecraftは単なるゲームではなく，過去を再現し，地域や未来を構想する共有可能な学習空間になる。",
@@ -687,6 +693,14 @@
       "Minecraft Educationの既存AI教材を導入し，デジタルシティズンシップや情報モラルの授業と接続する。",
       "完成した仮想空間を展示・発表し，地域住民や専門家との対話を通じて学習成果を検証する。"
     ],
+    "related_reports": [
+      "00-overview",
+      "02-photo-colorization-peace-education",
+      "03-digital-citizenship",
+      "05-digital-archive-ai",
+      "06-sf-prototyping"
+    ],
+    "citation_note": "MinecraftとAIを，記憶継承，地域学習，創造，AIリテラシーを横断する教育メディアとして整理するレポート。",
     "concept_alignment": {
       "schema": "aice.concept_alignment.v1",
       "primary_stage_ids": [
@@ -722,15 +736,6 @@
         "regional_learning",
         "ai_literacy"
       ]
-    },
-    "related_reports": [
-      "00-overview",
-      "02-photo-colorization-peace-education",
-      "03-digital-citizenship",
-      "05-digital-archive-ai",
-      "06-sf-prototyping"
-    ],
-    "citation_note": "MinecraftとAIを，記憶継承，地域学習，創造，AIリテラシーを横断する教育メディアとして整理するレポート。",
-    "abstract": "MinecraftとAIを、記憶継承・地域学習・創造・AIリテラシーを横断する学習空間として整理。"
+    }
   }
 ]

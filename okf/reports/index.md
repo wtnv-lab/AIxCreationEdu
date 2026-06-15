@@ -1,7 +1,7 @@
 # Reports
 
 * [AIとクリエイティブと教育 総括レポート](00-overview.md) - 生成AI時代の教育を、問い・資料読解・制作・検証・社会発信をつなぐ創造性教育として整理。
-* [AIと情報可視化・OSINT教育](01-information-visualization-osint.md) - GIS・データ可視化・OSINTを通じて、公開情報を検証し社会へ伝える情報メディア教育モデル。
+* [AIと情報可視化・OSINT教育](01-information-visualization-osint.md) - GIS・データ可視化・OSINTを通じて、公開情報を観測・検証・物語化・発信・更新する情報メディア教育モデル。
 * [AIによるモノクロ写真カラー化を活かした高校生の平和教育実践](02-photo-colorization-peace-education.md) - AIカラー化を、写真資料・証言・地域の記憶をつなぐ平和教育と記憶継承の探究へ展開。
 * [AIを活かしたデジタルシティズンシップ教育](03-digital-citizenship.md) - AIの禁止・管理を超え、判断・参加・公共性を育てるデジタルシティズンシップ教育。
 * [AI時代の学生ハッカソン：実装の民主化と発想力への転換](04-student-hackathon.md) - 生成AIで実装負荷が下がる時代の学生ハッカソンを、課題設定と発想力の学びとして再定義。
