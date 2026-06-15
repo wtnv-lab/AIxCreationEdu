@@ -2679,16 +2679,18 @@ body[data-section="reports"] .markdown-body p {
 
 .corner-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 16px;
   margin: 28px 0 36px;
 }
 
 .corner-card {
-  display: grid;
-  gap: 8px;
-  min-height: 210px;
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  min-height: 180px;
+  padding: 22px;
   border: 1px solid var(--line);
   background: var(--surface-strong);
   border-radius: 8px;
@@ -2707,15 +2709,20 @@ body[data-section="reports"] .markdown-body p {
   padding: 0;
   border: 0;
   font-size: 1.24rem;
+  line-height: 1.35;
 }
 
 .corner-card p {
   margin: 0;
   color: var(--muted);
   font-size: 0.94rem;
+  line-height: 1.78;
 }
 
 .corner-count {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.25rem;
   color: var(--warm);
   font-size: 0.84rem;
   font-weight: 800;
